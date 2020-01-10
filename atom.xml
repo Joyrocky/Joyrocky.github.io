@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2019-05-05T13:56:59.082Z</updated>
+  <updated>2020-01-09T13:40:57.569Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -17,84 +17,22 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>五大经典算法分析</title>
-    <link href="https://blog.zxkidea.top/posts/31d96ab6.html"/>
-    <id>https://blog.zxkidea.top/posts/31d96ab6.html</id>
-    <published>2019-05-01T08:24:03.000Z</published>
-    <updated>2019-05-05T13:56:59.082Z</updated>
+    <title>Hello World</title>
+    <link href="https://blog.zxkidea.top/posts/4a17b156.html"/>
+    <id>https://blog.zxkidea.top/posts/4a17b156.html</id>
+    <published>2020-01-09T07:56:33.820Z</published>
+    <updated>2020-01-09T13:40:57.569Z</updated>
     
     <summary type="html">
     
-      &lt;h1&gt;分治算法&lt;/h1&gt;
-&lt;p&gt;&lt;font size = 5&gt;1. 基本概念&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……&lt;/p&gt;
-&lt;p&gt;任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
     
     </summary>
     
     
-      <category term="算法学习" scheme="https://blog.zxkidea.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="算法" scheme="https://blog.zxkidea.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>职场工作效率手册</title>
-    <link href="https://blog.zxkidea.top/posts/efadcc2c.html"/>
-    <id>https://blog.zxkidea.top/posts/efadcc2c.html</id>
-    <published>2019-05-01T08:05:45.000Z</published>
-    <updated>2019-12-27T14:25:05.975Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;任务管理&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br&gt;
-现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br&gt;
-基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br&gt;
-List是一层一层嵌套的，通过列表来组织任务，不断拆分，直到拆分到每一个具体的任务。列表用来确定一个东西的位置，而Tag用来表示一个任务的属性。标签在任务管理工具里可以横跨列表。Tag可以包括时间、优先级、人物，一个比较有趣的思路是用精力来做标签，我们可以把精力分为两档，“Focus”和“Brain Dead”。Filter是过滤，表示通过一定的条件，把我们需要的东西从一大堆信息中筛选出来。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="工作效率" scheme="https://blog.zxkidea.top/categories/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
-    
-    
-      <category term="职场" scheme="https://blog.zxkidea.top/tags/%E8%81%8C%E5%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux基本命令</title>
-    <link href="https://blog.zxkidea.top/posts/4b6ea061.html"/>
-    <id>https://blog.zxkidea.top/posts/4b6ea061.html</id>
-    <published>2019-04-30T14:42:13.000Z</published>
-    <updated>2019-12-27T14:22:18.106Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;命令的基本格式&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[root@localhost~]&lt;/p&gt;
-&lt;p&gt;root为用户名&lt;/p&gt;
-&lt;p&gt;～表示当前所在位置&lt;/p&gt;
-&lt;p&gt;localhost主机名&lt;/p&gt;
-&lt;p&gt;‘#’超级用户&lt;/p&gt;
-&lt;p&gt;&#39;$&amp;quot;  普通用户&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux指令" scheme="https://blog.zxkidea.top/categories/Linux%E6%8C%87%E4%BB%A4/"/>
-    
-    
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
-    
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
     
   </entry>
   
