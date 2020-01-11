@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
@@ -30,7 +30,7 @@
     version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":false,"style":null},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
@@ -52,13 +52,22 @@
 </script>
 
 
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "20a100a4"
+    });
+  daovoice('update');
+  </script>
+
+
   <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
+<meta property="og:title" content="全部标签">
 <meta property="og:url" content="https://blog.zxkidea.top/tags/index.html">
 <meta property="og:site_name" content="遇见时光">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-09T08:52:49.000Z">
-<meta property="article:modified_time" content="2020-01-09T08:52:49.829Z">
+<meta property="article:published_time" content="2019-01-18T06:33:14.000Z">
+<meta property="article:modified_time" content="2020-01-11T10:30:58.313Z">
 <meta property="article:author" content="Joyrocky">
 <meta property="article:tag" content="Java开发">
 <meta property="article:tag" content="Devops">
@@ -80,7 +89,7 @@
   };
 </script>
 
-  <title>tags | 遇见时光
+  <title>全部标签 | 遇见时光
   </title>
   
 
@@ -236,7 +245,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">tags
+<h2 class="post-title" itemprop="name headline">全部标签
 </h2>
 
 <div class="post-meta">
@@ -250,7 +259,15 @@
       
       
       <div class="post-body">
-          
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              目前共计 4 个标签
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/Linux/" style="font-size: 12px; color: #ccc">Linux</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px; color: #ccc">算法</a> <a href="/tags/%E8%81%8C%E5%9C%BA/" style="font-size: 12px; color: #ccc">职场</a> <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" style="font-size: 12px; color: #ccc">资料整理</a>
+            </div>
+          </div>
+        
       </div>
       
       
@@ -328,9 +345,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -352,7 +381,7 @@
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -390,14 +419,17 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">15k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">13 分钟</span>
 </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>
+  </div>
 
         
 <div class="busuanzi-count">
