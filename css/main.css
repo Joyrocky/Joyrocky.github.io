@@ -1139,6 +1139,30 @@ pre .javascript .function {
 .use-motion .menu-item {
   opacity: 0;
 }
+.book-mark-link {
+  border-bottom: none;
+  display: inline-block;
+  position: fixed;
+  right: 30px;
+  top: -10px;
+  transition: 0.3s;
+}
+@media (max-width: 991px) {
+  .book-mark-link {
+    display: none;
+  }
+}
+.book-mark-link::before {
+  color: #222;
+  content: '\f02e';
+  font-family: 'FontAwesome';
+  font-size: 32px;
+  line-height: 1;
+}
+.book-mark-link:hover,
+.book-mark-link-fixed {
+  top: -2px;
+}
 .github-corner :hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
 }
@@ -1308,7 +1332,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff00c4;
+  background: #867326;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2491,6 +2515,10 @@ ul.breadcrumb li+li:last-child {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.has-jax {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .header {
   margin: 0 auto;
