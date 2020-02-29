@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-01-13T08:46:37.963Z</updated>
+  <updated>2020-02-29T06:51:27.136Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -17,26 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Database Notes</title>
-    <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
-    <id>https://blog.zxkidea.top/posts/786bf771.html</id>
-    <published>2020-01-12T14:48:33.010Z</published>
-    <updated>2020-01-13T08:46:37.963Z</updated>
+    <title>DatabaseNotes-Ch3,4</title>
+    <link href="https://blog.zxkidea.top/posts/928c862a.html"/>
+    <id>https://blog.zxkidea.top/posts/928c862a.html</id>
+    <published>2020-02-29T04:24:34.000Z</published>
+    <updated>2020-02-29T06:51:27.136Z</updated>
     
     <summary type="html">
     
-      &lt;h1&gt;Database  Notes&lt;/h1&gt;
-&lt;h2 id=&quot;Ch1-Introduction&quot;&gt;Ch1:  Introduction&lt;/h2&gt;
+      &lt;h2 id=&quot;Ch3-Basic-SQL-Query-Language&quot;&gt;Ch3:  Basic SQL Query Language&lt;/h2&gt;
+&lt;h3 id=&quot;一-Setting-up-the-Database&quot;&gt;一. Setting up the Database&lt;/h3&gt;
+&lt;h4 id=&quot;1-SQL-Datatype&quot;&gt;1. SQL  Datatype&lt;/h4&gt;
+&lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER(n), CHAR(n)：&lt;/font&gt; fixed-length character strings&lt;/p&gt;
+&lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER VARYING(n), CHAR VARYING(n)：&lt;/font&gt;variable-length character strings&lt;/p&gt;
+&lt;p&gt;&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DatabaseNotes-Ch1,2</title>
+    <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
+    <id>https://blog.zxkidea.top/posts/786bf771.html</id>
+    <published>2020-01-12T14:48:33.010Z</published>
+    <updated>2020-02-29T02:45:15.516Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Ch1-Introduction&quot;&gt;Ch1:  Introduction&lt;/h2&gt;
 &lt;h2 id=&quot;Ch2-The-Rational-Model&quot;&gt;Ch2:  The Rational Model&lt;/h2&gt;
 &lt;h3 id=&quot;1-The-CAP-Database&quot;&gt;1.The CAP Database&lt;/h3&gt;
 &lt;h3 id=&quot;2-Naming-the-Parts-of-the-Database&quot;&gt;2.Naming the Parts of the Database&lt;/h3&gt;
 &lt;h3 id=&quot;3-Rational-Rules&quot;&gt;3.Rational Rules:&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;First Normal Form Rules&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Access Rows By Content Only Rule&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The Unique Row Rule&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Entity Integrity rule&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
     
     </summary>
     
