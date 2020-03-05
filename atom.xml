@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-02-29T06:51:27.136Z</updated>
+  <updated>2020-03-05T16:37:12.121Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DatabaseNotes-Ch5,6</title>
+    <link href="https://blog.zxkidea.top/posts/780f9bb4.html"/>
+    <id>https://blog.zxkidea.top/posts/780f9bb4.html</id>
+    <published>2020-03-05T15:30:17.000Z</published>
+    <updated>2020-03-05T16:37:12.121Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Ch5-Embedded-SQL-（嵌入式SQL）&quot;&gt;Ch5. Embedded SQL （嵌入式SQL）&lt;/h2&gt;
+&lt;h3 id=&quot;1-定义&quot;&gt;1. 定义&lt;/h3&gt;
+&lt;p&gt;&lt;font color = blue size = 4&gt;嵌入式SQL是将SQL嵌入到某一种高级语言之中，如C/C++,Java等 这种高级语言被称为宿主语言&lt;/font&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;h3 id=&quot;2-特性&quot;&gt;2. 特性&lt;/h3&gt;
+&lt;p&gt;​	&lt;font color = blue size = 4&gt;1）继承了高级语言的过程控制性&lt;/font&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>DatabaseNotes-Ch3,4</title>
