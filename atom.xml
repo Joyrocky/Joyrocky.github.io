@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-03-05T16:37:12.121Z</updated>
+  <updated>2020-03-08T02:24:08.008Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关系模式范式分解教程（3NF与BCNF口诀）</title>
+    <link href="https://blog.zxkidea.top/posts/6244050a.html"/>
+    <id>https://blog.zxkidea.top/posts/6244050a.html</id>
+    <published>2020-03-08T01:42:02.000Z</published>
+    <updated>2020-03-08T02:24:08.008Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/kungfupanda/p/12362163.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/kungfupanda/p/12362163.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。&quot;&gt;1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&lt;/h2&gt;
+&lt;p&gt;1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。&lt;/p&gt;
+&lt;p&gt;2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>DatabaseNotes-Ch5,6</title>
