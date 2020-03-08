@@ -6,15 +6,46 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-03-08T02:24:08.008Z</updated>
+  <updated>2020-03-08T03:40:36.654Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
-    <name>Joyrocky</name>
+    <name>Rocky Zhou</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DatabaseNotes-Ch7,8</title>
+    <link href="https://blog.zxkidea.top/posts/9c3362dd.html"/>
+    <id>https://blog.zxkidea.top/posts/9c3362dd.html</id>
+    <published>2020-03-08T03:27:21.000Z</published>
+    <updated>2020-03-08T03:40:36.654Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Ch7-Database-Manage-数据库管理&quot;&gt;Ch7.  Database Manage(数据库管理)&lt;/h2&gt;
+&lt;h3 id=&quot;1-Integrity-Constraints-完整性约束&quot;&gt;1. Integrity Constraints (完整性约束)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font color = green size = 4&gt;数据完整性：&lt;/font&gt;存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br/&gt;
+&lt;h4 id=&quot;1）实体完整性&quot;&gt;1）实体完整性&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>关系模式范式分解教程（3NF与BCNF口诀）</title>
