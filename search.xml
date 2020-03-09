@@ -1,6 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DatabaseNotes-Ch10</title>
+    <url>/posts/7755ff13.html</url>
+    <content><![CDATA[<h2 id="Ch10-Update-Transaction">Ch10.  Update Transaction</h2>
+<h3 id="1-事务及其特性：">1. 事务及其特性：</h3>
+<p><font color = green size = 4>事务：</font>是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。</p>
+<br/>
+<p><font color = green size = 4>事务的四大特性：ACID</font></p>
+<a id="more"></a>
+<ul>
+<li>
+<p><font color = blue>原子性（Atomicity）</font></p>
+<blockquote>
+<p>原子性是指一个事务是一个不可分割的工作单位，其中的操作要么都做，要么都不做；如果事务中一个SQL语句执行失败，则已执行的语句也必须回滚，数据库退回到事务前的状态。</p>
+<p><font color = red>注：</font><font color = green>MySQL 使用 undo log 来保证事务的原子性。</font></p>
+</blockquote>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>持久性（Durability）</font></p>
+<blockquote>
+<p>持久性是指事务一旦提交，它对数据库的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
+<p><font color = red>注：</font><font color = green>MySQL 使用 redo log 来保证事务的持久性。</font></p>
+</blockquote>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>隔离性（Isolation）</font></p>
+<blockquote>
+<p>与原子性、持久性侧重于研究事务本身不同，隔高性研究的是不同事务之间的相互影响。隔离性是指，事务内部的操作与其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</p>
+<p><font color = red>注：</font><font color = green>MySQL 通过锁机制来保证事务的隔离性。</font></p>
+</blockquote>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>一致性（Consistency）</font></p>
+<blockquote>
+<p>一致性是指事务执行结束后，数据库的完整性约束没有被破坏，事务执行的前后都是合法的数据状态；</p>
+<p>数据库的完整性约束包括但不限于：实体完整性（如行的主键存在且唯一）、列完整性（如字段的类型、大小、长度要符合要求）、外键约束、用户自定义完整性（如转账前后，两个账户余额的和应该不变）。</p>
+</blockquote>
+</li>
+</ul>
+<br/>
+<h3 id="2-事务操作：">2. 事务操作：</h3>
+<p><font color = green size = 4>典型的事务操作：</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">start transaction;</span><br><span class="line">……  # 一条或多条sql语句</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其中start transaction标识事务开始，commit提交事务，将执行结果写入到数据库。如果SQL语句执行出现问题，会调用rollback，回滚所有已经执行成功的SQL语句。当然，也可以在事务中直接使用rollback语句进行回滚。</p>
+</blockquote>
+<br/>
+<p><font color = green size = 4>特殊操作：</font></p>
+<blockquote>
+<p>在MySQL中，存在一些特殊的命令，如果在事务中执行了这些命令，会马上强制执行commit提交事务；如DDL语句(create table/drop table/alter/table)、lock tables语句等等。</p>
+</blockquote>
+<p><font color = brown>不过，常用的select、insert、update和delete命令，都不会强制提交事务。</font></p>
+<br/>
+<h3 id="3-事务的实现">3. 事务的实现</h3>
+<h4 id="1-undo-log（回滚日志）">1. undo log（回滚日志）</h4>
+<ul>
+<li>
+<p><font color = green size = 4>InnoDB实现回滚，靠的是undo log：</font></p>
+<blockquote>
+<p>当事务对数据库进行修改时，InnoDB会生成对应的undo log；如果事务执行失败或调用了rollback，导致事务需要回滚，便可以利用undo log中的信息将数据回滚到修改之前的样子。</p>
+</blockquote>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>undo log属于逻辑日志，它记录的是SQL执行相关的信息：</font></p>
+<blockquote>
+<p>当发生回滚时，InnoDB会根据undo log的内容做与之前相反的工作：对于每个insert，回滚时会执行delete；对于每个delete，回滚时会执行insert；对于每个update，回滚时会执行一个相反的update，把数据改回去。</p>
+</blockquote>
+</li>
+</ul>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim" alt="mark"></p>
+<br/>
+<h4 id="2-redo-log（重做日志）">2. redo log（重做日志）</h4>
+<ul>
+<li>
+<p><font color = green size = 4>更新流程</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/Py2TYgYapShW.png?imageslim" alt="mark"></p>
+<ul>
+<li>执行update操作。</li>
+<li>先将原始数据从磁盘读取到内存，修改内存中的数据。</li>
+<li>生成一条重做日志写入redo log buffer，记录数据被修改后的值。</li>
+<li>当事务提交时，需要将redo log buffer中的内容刷新到redo log file。</li>
+<li>事务提交后，也会将内存中修改数据的值写入磁盘。</li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>恢复机制</font></p>
+<blockquote>
+<p>于是，redo log被引入来解决这个问题：当数据修改时，除了修改缓冲区中的数据，还会在redo log记录这次操作；当事务提交时，会调用fsync接口对redo log进行刷盘。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复。</p>
+</blockquote>
+<br/>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">redo log实现事务的原子性和持久性：</span></p>
+<ul>
+<li>原子性，是redo log记录了事务期间操作的物理日志，事务提交之前，并没有写入磁盘，保存在内存里，如果事务失败，数据库磁盘不会有影响，回滚掉事务内存部分即可。</li>
+<li>持久性，redo log 会在事务提交时将日志存储到磁盘redo log file，保证日志的持久性。</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h3 id="4-事务的隔离级别">4. 事务的隔离级别</h3>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/EK19I1B5Ynqm.png?imageslim" alt="mark"></p>
+<br/>
+<h4 id="1-READ-UNCOMMITTED">1. READ-UNCOMMITTED</h4>
+<p><font color = green>READ-UNCOMMITTED 中文叫未提交读，即一个事务读到了另一个未提交事务修改过的数据，整个过程如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/Y48xImrVT3X2.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>如上图，SessionA和SessionB分别开启一个事务，SessionB中的事务先将id为1的记录的name列更新为’lisi’，然后SessionA中的事务再去查询这条id为1的记录，那么在未提交读的隔离级别下，查询结果由’zhangsan’变成了’lisi’，也就是说某个事务读到了另一个未提交事务修改过的记录。但是如果SessionB中的事务稍后进行了回滚，那么SessionA中的事务相当于读到了一个不存在的数据，这种现象也称为<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">脏读</span>。</p>
+</blockquote>
+<br/>
+<h4 id="2-READ-COMMITTED">2. READ COMMITTED</h4>
+<p><font color = green>READ COMMITTED 中文叫已提交读，或者叫不可重复读。即一个事务能读到另一个已经提交事务修改后的数据，如果其他事务均对该数据进行修改并提交，该事务也能查询到最新值。如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/PMYGTQlwvl1b.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>在SessionA中先后两次读取同一个数据，两次读取的结果不一样；在第4步 SessionB 修改后，如果未提交，SessionA是读不到，但SessionB一旦提交后，SessionA即可读到SessionB修改的内容。</p>
+</blockquote>
+<br/>
+<h4 id="3-REPEATABLE-READ">3. REPEATABLE READ</h4>
+<p><font color = green>REPEATABLE READ 中文叫可重复读，即事务能读到另一个已经提交的事务修改过的数据，但是第一次读过某条记录后，即使后面其他事务修改了该记录的值并且提交，该事务之后再读该条记录时，读到的仍是第一次读到的值，而不是每次都读到不同的数据。如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/qPMDkMLIGmDm.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>InnoDB<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">默认</span>是这种隔离级别，SessionB无论怎么修改id=1的值，SessionA读到依然是自己开启事务第一次读到的内容；但是可能会出现<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">幻读现象</span>。</p>
+</blockquote>
+<br/>
+<h4 id="4-SERIALIZABLE">4. SERIALIZABLE</h4>
+<p><font color = green>SERIALIZABLE 叫串行化， 上面三种隔离级别可以进行 读-读 或者 读-写、写-读三种并发操作，而SERIALIZABLE不允许读-写，写-读的并发操作。 如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/rpRJ6Pp9pWcL.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>SessionB 对 id=1 进行修改的时候，SessionA 读取id=1则需要等待 SessionB 提交事务。可以理解SessionB在更新的时候加了X锁。</p>
+</blockquote>
+<br/>
+<ul>
+<li>
+<p><font color = red size = 4>幻读：</font></p>
+<p><font color = green>在事务A中按照某个条件先后两次查询数据库，两次查询结果的条数不同，这种现象称为幻读。不可重复读与幻读的区别可以通俗的理解为：前者是数据变了，后者是数据的行数变了。</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/O6gfdeqVrpXI.png?imageslim" alt="mark"></p>
+</li>
+</ul>
+<br/>
+<h4 id="5-隔离级别与读问题的关系">5. 隔离级别与读问题的关系</h4>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/ExlJ4uV9oYI2.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>在实际应用中，读未提交在并发时会导致很多问题，而性能相对于其他隔离级别提高却很有限，因此使用较少。可串行化强制事务串行，并发效率很低，只有当对数据一致性要求极高且可以接受没有并发时使用，因此使用也较少。因此在大多数数据库系统中，默认的隔离级别是读已提交(如Oracle)或可重复读。</p>
+</blockquote>
+<br/>
+<h3 id="5-锁机制">5. 锁机制</h3>
+<p><font color = green size = 4>锁机制使得在对数据库进行并发访问时，可以保障数据的完整性和一致性。</font></p>
+<blockquote>
+<p><font color = red size = 4>基本原理：</font></p>
+<p>事务在修改数据之前，需要先获得相应的锁；获得锁之后，事务便可以修改数据；该事务操作期间，这部分数据是锁定的，其他事务如果需要修改数据，需要等待当前事务提交或回滚后释放锁。</p>
+</blockquote>
+<br/>
+<h4 id="1-锁的类型">1. 锁的类型</h4>
+<ul>
+<li>
+<p><font color = green>共享锁（也称为 S 锁）：</font>允许事务读取一行数据。</p>
+<blockquote>
+<p>共享锁又称为读锁。若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁为止。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 手动加S锁</span><br><span class="line">select * from tableName where … lock in share mode;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green>排他锁（也称为 X 锁）：</font>允许事务删除或更新一行数据。</p>
+<blockquote>
+<p>排他锁又称为写锁。若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放A上的锁为止。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 手动加 X 锁</span><br><span class="line">select * from tableName where … for update;</span><br></pre></td></tr></table></figure>
+<br/>
+<img data-src="http://image.zxkidea.top/blog/20200309/lUJVMrtKqSft.png?imageslim" alt="mark" style="zoom:50%;" />
+</li>
+</ul>
+<blockquote>
+<p>S 锁和 S 锁是兼容的，X 锁和其它锁都不兼容，举个例子，事务 T1 获取了一个行 r1 的 S 锁，另外事务 T2 可以立即获得行 r1 的 S 锁，此时 T1 和 T2 共同获得行 r1 的 S 锁，此种情况称为锁兼容，但是另外一个事务 T2 此时如果想获得行 r1 的 X 锁，则必须等待 T1 对行 r 锁的释放，此种情况也成为锁冲突。</p>
+</blockquote>
+<br/>
+<h4 id="2-锁的优化">2. 锁的优化</h4>
+<p><font color = green size = 4>锁如果利用不好，会给业务造成大量的卡顿现象，在了解了锁相关的一些知识点后，我们可以有意识的去避免锁带来的一些问题。</font></p>
+<ul>
+<li>合理设计索引，让 InnoDB 在索引键上面加锁的时候尽可能准确，尽可能的缩小锁定范围，避免造成不必要的锁定而影响其他 Query 的执行。</li>
+<li>尽可能减少基于范围的数据检索过滤条件，避免因为间隙锁带来的负面影响而锁定了不该锁定的记录。</li>
+<li>尽量控制事务的大小，减少锁定的资源量和锁定时间长度</li>
+<li>在业务环境允许的情况下，尽量使用较低级别的事务隔离，以减少 MySQL 因为实现事务隔离级别所带来的附加成本。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>考研</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DatabaseNotes-Ch7,8</title>
     <url>/posts/9c3362dd.html</url>
     <content><![CDATA[<h2 id="Ch7-Database-Manage-数据库管理">Ch7.  Database Manage(数据库管理)</h2>

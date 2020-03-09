@@ -53,48 +53,32 @@
 
 
 
-  <meta name="description" content="Ch1:  Introduction Ch2:  The Rational Model 1.The CAP Database 2.Naming the Parts of the Database 3.Rational Rules:">
+  <meta name="description" content="Ch10.  Update Transaction 1. 事务及其特性： 事务：是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。  事务的四大特性：ACID">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DatabaseNotes-Ch1,2">
-<meta property="og:url" content="https://blog.zxkidea.top/posts/786bf771.html">
+<meta property="og:title" content="DatabaseNotes-Ch10">
+<meta property="og:url" content="https://blog.zxkidea.top/posts/7755ff13.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="Ch1:  Introduction Ch2:  The Rational Model 1.The CAP Database 2.Naming the Parts of the Database 3.Rational Rules:">
+<meta property="og:description" content="Ch10.  Update Transaction 1. 事务及其特性： 事务：是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。  事务的四大特性：ACID">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://image.zxkidea.top/1547706516510.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547706548705.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547707597889.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547707646859.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547707694254.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547707712319.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547708058177.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547708130599.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547708187008.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547708591736.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547709820322.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547710588795.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547710757123.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547711394006.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547711561855.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547711610818.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547712009184.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547712100317.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547712143439.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547775339292.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547775424573.png">
-<meta property="og:image" content="http://image.zxkidea.top/1547775604826.png">
-<meta property="og:image" content="http://image.zxkidea.top/databasenote1.png">
-<meta property="og:image" content="http://image.zxkidea.top/databasenote2.png">
-<meta property="og:image" content="http://image.zxkidea.top/databasenote3.png">
-<meta property="og:image" content="http://image.zxkidea.top/databasenote4.png">
-<meta property="article:published_time" content="2020-01-12T14:48:33.010Z">
-<meta property="article:modified_time" content="2020-02-29T02:45:15.516Z">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/Py2TYgYapShW.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/EK19I1B5Ynqm.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/Y48xImrVT3X2.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/PMYGTQlwvl1b.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/qPMDkMLIGmDm.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/rpRJ6Pp9pWcL.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/O6gfdeqVrpXI.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200308/ExlJ4uV9oYI2.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200309/lUJVMrtKqSft.png?imageslim">
+<meta property="article:published_time" content="2020-03-09T01:35:13.000Z">
+<meta property="article:modified_time" content="2020-03-09T01:38:44.156Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://image.zxkidea.top/1547706516510.png">
+<meta name="twitter:image" content="http://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim">
 
-<link rel="canonical" href="https://blog.zxkidea.top/posts/786bf771.html">
+<link rel="canonical" href="https://blog.zxkidea.top/posts/7755ff13.html">
 
 
 <script id="page-configurations">
@@ -106,7 +90,7 @@
   };
 </script>
 
-  <title>DatabaseNotes-Ch1,2 | 遇见时光</title>
+  <title>DatabaseNotes-Ch10 | 遇见时光</title>
   
 
 
@@ -258,7 +242,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/786bf771.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/7755ff13.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -271,7 +255,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          DatabaseNotes-Ch1,2
+          DatabaseNotes-Ch10
         </h2>
 
         <div class="post-meta">
@@ -280,18 +264,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-01-12 22:48:33" itemprop="dateCreated datePublished" datetime="2020-01-12T22:48:33+08:00">2020-01-12</time>
+              <time title="创建时间：2020-03-09 09:35:13 / 修改时间：09:38:44" itemprop="dateCreated datePublished" datetime="2020-03-09T09:35:13+08:00">2020-03-09</time>
             </span>
 
           <span class="post-meta-divider">|</span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-29 10:45:15" itemprop="dateModified" datetime="2020-02-29T10:45:15+08:00">2020-02-29</time>
-              </span>
 
           <span class="post-meta-divider">|</span>
             <span class="post-meta-item">
@@ -324,8 +302,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/posts/786bf771.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/posts/786bf771.html" itemprop="commentCount"></span>
+    <a title="valine" href="/posts/7755ff13.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/7755ff13.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -337,7 +315,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.9k</span>
+              <span>3.6k</span>
             </span>
 
           <span class="post-meta-divider">|</span>
@@ -346,7 +324,7 @@
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -358,454 +336,202 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Ch1-Introduction">Ch1:  Introduction</h2>
-<h2 id="Ch2-The-Rational-Model">Ch2:  The Rational Model</h2>
-<h3 id="1-The-CAP-Database">1.The CAP Database</h3>
-<h3 id="2-Naming-the-Parts-of-the-Database">2.Naming the Parts of the Database</h3>
-<h3 id="3-Rational-Rules">3.Rational Rules:</h3>
+        <h2 id="Ch10-Update-Transaction">Ch10.  Update Transaction</h2>
+<h3 id="1-事务及其特性：">1. 事务及其特性：</h3>
+<p><font color = green size = 4>事务：</font>是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。</p>
+<br/>
+<p><font color = green size = 4>事务的四大特性：ACID</font></p>
 <a id="more"></a>
-<ol>
-<li><strong>First Normal Form Rules</strong></li>
-<li><strong>Access Rows By Content Only Rule</strong></li>
-<li><strong>The Unique Row Rule</strong></li>
-<li><strong>Entity Integrity rule</strong></li>
-</ol>
-<h3 id="4-Keys-Superkeys-and-Null-values">4.Keys, Superkeys and Null values</h3>
-<h3 id="5-Rational-Algebra-关系代数">5.Rational Algebra(关系代数)</h3>
-<table>
-<thead>
-<tr>
-<th><font color = red>NAME   </font></th>
-<th><font color = red> SYMBOL   </font></th>
-<th><font color = red>FORM   </font></th>
-<th><font color = red>EXAMPLE   </font></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UNION   (并)</td>
-<td>∪</td>
-<td>UNION</td>
-<td>R   ∪ S</td>
-</tr>
-<tr>
-<td>INTERSECTION   (交)</td>
-<td>∩</td>
-<td>INTERSECT</td>
-<td>R   ∩ S</td>
-</tr>
-<tr>
-<td>DIFFERENCE   (差)</td>
-<td>—</td>
-<td>MINUS</td>
-<td>R  —  S</td>
-</tr>
-<tr>
-<td>PRODUCT   (乘积)</td>
-<td>$\times$</td>
-<td>TIMES</td>
-<td>R  $\times$ S</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><font color = red> NAME   </font></th>
-<th><font color = red>SYMBOL   </font></th>
-<th><font color = red> FORM   </font></th>
-<th><font color = red>EXAMPLE   </font></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PROJECT   (投影)</td>
-<td>R   [  ]</td>
-<td>R   [  ]</td>
-<td>R[A<sub>i1</sub>,…,A<sub>ik</sub>]</td>
-</tr>
-<tr>
-<td></td>
-<td>$\Pi $</td>
-<td></td>
-<td>$\Pi$<sub>Ai1,…,Aik</sub>  ®</td>
-</tr>
-<tr>
-<td>SELECT   (选择)</td>
-<td>R   where C</td>
-<td>R   where C</td>
-<td>R   where A<sub>1</sub>=5</td>
-</tr>
-<tr>
-<td></td>
-<td>$\sigma$</td>
-<td>$\sigma$<sub>c</sub>®</td>
-<td>$\sigma$<sub>A1=5</sub>®</td>
-</tr>
-<tr>
-<td>JOIN   (联接)</td>
-<td>$\infty$</td>
-<td>JOIN</td>
-<td>R  $\infty$ S</td>
-</tr>
-<tr>
-<td>DIVISION   (除法)</td>
-<td>$\div$</td>
-<td>DIVIDEBY</td>
-<td>R  $\div$ S</td>
-</tr>
-</tbody>
-</table>
-<p><font size = 4 color = purple>Compatible Tables (相容表)</font></p>
-<p>表R和表S是相容表，当且仅当，</p>
-<p>表R和表S的表头相同，并且对应的列中的数据是相同的类型和相同的语义。</p>
-<p><font size = 4 color = purple>Assignment(赋值/取别名)</font></p>
-<ol>
+<ul>
 <li>
-<p>符号：:=</p>
+<p><font color = blue>原子性（Atomicity）</font></p>
+<blockquote>
+<p>原子性是指一个事务是一个不可分割的工作单位，其中的操作要么都做，要么都不做；如果事务中一个SQL语句执行失败，则已执行的语句也必须回滚，数据库退回到事务前的状态。</p>
+<p><font color = red>注：</font><font color = green>MySQL 使用 undo log 来保证事务的原子性。</font></p>
+</blockquote>
 </li>
+</ul>
+<br/>
+<ul>
 <li>
-<p>将表格R的值赋给(取别名)S: S := R</p>
+<p><font color = blue>持久性（Durability）</font></p>
+<blockquote>
+<p>持久性是指事务一旦提交，它对数据库的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
+<p><font color = red>注：</font><font color = green>MySQL 使用 redo log 来保证事务的持久性。</font></p>
+</blockquote>
 </li>
+</ul>
+<br/>
+<ul>
 <li>
-<p>举个栗子：<br>
-$$<br>
-T1 := (R \cap S)\<br>
-T2 := (R \cup S)\<br>
-T := T1 – T2<br>
-$$</p>
+<p><font color = blue>隔离性（Isolation）</font></p>
+<blockquote>
+<p>与原子性、持久性侧重于研究事务本身不同，隔高性研究的是不同事务之间的相互影响。隔离性是指，事务内部的操作与其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</p>
+<p><font color = red>注：</font><font color = green>MySQL 通过锁机制来保证事务的隔离性。</font></p>
+</blockquote>
 </li>
-</ol>
-<hr>
-<h4 id="1-Set-Theoretic-Operation">1) Set-Theoretic Operation</h4>
-<div align="center"><font color = blue size = 4>Union,Intersection,Difference,Product</font></div>
-- Example:
-<p>$$<br>
-R\cup S,\ R\cap S,\ R-S,\ R\times S<br>
-$$</p>
-<table>
-<thead>
-<tr>
-<th><img data-src="http://image.zxkidea.top/1547706516510.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547706548705.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547707597889.png" alt="img"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img data-src="http://image.zxkidea.top/1547707646859.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547707694254.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547707712319.png" alt="img"></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><img data-src="http://image.zxkidea.top/1547708058177.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547708130599.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547708187008.png" alt="img"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><font size = 4 color = red>Tips:</font></p>
-<ul>
-<li>Product运算产生的新表列的个数为$C_S + C_R$，新表行的个数为$N_R \times N_S$</li>
 </ul>
-<hr>
-<h4 id="2-Native-Theoretic-Operation">2) Native Theoretic Operation</h4>
-<div align="center"><font color = blue size = 4>Project,Select,Join,Division</font></div>
-- Example:
-<p>$$<br>
-R[A_{i1},…A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S<br>
-$$</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">(Projection)CN:= C[cname]</th>
-<th><img data-src="http://image.zxkidea.top/1547708591736.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547709820322.png" alt="img"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>(Selection)T :=CUSTOMERS where city = 'Kyoto’</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547710588795.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547710757123.png" alt="img"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>(Selection)Pairs:=(L$\times$ M)  where L.city=M.city</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547711394006.png" alt="img"><img data-src="http://image.zxkidea.top/1547711561855.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547711610818.png" alt="img" style="zoom: 150%;" /></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>Join($R\infty S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547712009184.png" alt="img"><img data-src="http://image.zxkidea.top/1547712100317.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547712143439.png" alt="img"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>Division($R\div S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547775339292.png" alt="img"><img data-src="http://image.zxkidea.top/1547775424573.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547775604826.png" alt="img"></td>
-</tr>
-</tbody>
-</table>
-<p><font size = 4 color = red>关系代数运算的优先级：</font></p>
-<table>
-<thead>
-<tr>
-<th>Precedence（优先级）</th>
-<th>Operators(运算符)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Highest</td>
-<td>PROJECT</td>
-</tr>
-<tr>
-<td>…</td>
-<td>SELECT</td>
-</tr>
-<tr>
-<td>…</td>
-<td>PRODUCT</td>
-</tr>
-<tr>
-<td>…</td>
-<td>JOIN,   DIVIDEBY</td>
-</tr>
-<tr>
-<td>…</td>
-<td>INTERSECTION</td>
-</tr>
-<tr>
-<td>Lowest</td>
-<td>UNION,   DIFFERENCE</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h4 id="3-Complex-Query">3) Complex Query</h4>
-<p><img data-src="http://image.zxkidea.top/databasenote1.png" alt=""></p>
-<p><font size = 4 color = blue>1. Find cname and city of customers and aname of agents that the customer lives in the same city with agents.</font></p>
-<blockquote>
-<p>((C$\times$A) where C.city=A.city)[C.cname,C.city,A.aname]</p>
-<p>相当于</p>
-<p>(C$\infty$ A)[C.cname,C.city,A.aname]</p>
-</blockquote>
-<p><font size = 4 color = blue>2. Find pid, month and qty of order whose customer’s name is ‘Allied’.</font></p>
-<blockquote>
-<p>((C$\times$O) where C.cid=O.cid and C.cname=‘Allied’)[O.pid,O.month,O.qty]</p>
-<p>or</p>
-<p>( ( ( (C where cname = ‘Allied’) [cid] ) x O ) where C.cid = O.cid ) [ O.pid, O.month, O.qty ]</p>
-<p>相当于</p>
-<p>((C$\infty$O)where C.cname=‘Allied’)[O.pid,O.month,O.qty]</p>
-</blockquote>
-<p><font size = 4 color = blue>3. Find ordno of orders for customer, agent and product combinations that are all in the same city.</font></p>
-<blockquote>
-<p>( (C [ cid, city ] x A [ aid, city ] x P [ pid, city ] x O)</p>
-<p>where C.city = A.city and P.city = A.city and</p>
-<p>C.cid = O.cid and A.aid = O.aid and P.pid = O.pid )</p>
-<p>[ O.ordno ]</p>
-<p>相当于</p>
-<p>(C$\infty$ O$\infty$ P$\infty$ A)[O.ordno]</p>
-</blockquote>
 <br/>
-<br/>
-<p><img data-src="http://image.zxkidea.top/databasenote2.png" alt=""></p>
-<p><font size = 4 color = blue>4. Find cid of customers who have a <font color = black size = 5>highest </font>discount in all customers.</font></p>
-<blockquote>
-<p><font color=red size=6>Step 1:</font> Find all cids of customers</p>
-<p><font color=red size=5>R1 := C[pid]</font></p>
-<p><font color=red size=6>Step 2:</font> Find cid of customers whose discount less than another customer. Let <font color = green size = 5>S := C</font>, then</p>
-<p><font color=red size=5>R2: = ((CxS) where C.discnt&lt;S.discnt)[C.cid]</font></p>
-<p><font color=red size =6>Step 3:</font>  calculate the result of this query by DIFFERENCE operation.</p>
-<p><font color=red size=5>T := R1 - R2</font></p>
-</blockquote>
-<p><font color = blue size = 4>注意：除法法则：</font></p>
-<p><strong>if  R = T $ \times $ S, then</strong></p>
-<p><strong>T = R $\div$ S</strong></p>
-<p><strong>S = R $\div$ T</strong></p>
-<p><strong>if T = R $\div$ S，then</strong></p>
-<p><strong>T $\times$ S $\subseteq$ R</strong></p>
 <ul>
-<li><font color = green>举个栗子：</font></li>
+<li>
+<p><font color = blue>一致性（Consistency）</font></p>
+<blockquote>
+<p>一致性是指事务执行结束后，数据库的完整性约束没有被破坏，事务执行的前后都是合法的数据状态；</p>
+<p>数据库的完整性约束包括但不限于：实体完整性（如行的主键存在且唯一）、列完整性（如字段的类型、大小、长度要符合要求）、外键约束、用户自定义完整性（如转账前后，两个账户余额的和应该不变）。</p>
+</blockquote>
+</li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/databasenote3.png" alt=""></p>
-<hr>
-<h4 id="4-Native-Relational-Operation">4) Native Relational Operation</h4>
-<p><font color=green size=5>Questions:</font></p>
-<p><font color = blue size = 4>1. Get cids of customers who order  products  p01 ?</font></p>
+<br/>
+<h3 id="2-事务操作：">2. 事务操作：</h3>
+<p><font color = green size = 4>典型的事务操作：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start transaction;</span><br><span class="line">……  # 一条或多条sql语句</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><font color=red size=5>(O  where pid=‘p01’) [ cid ]</font></p>
+<p>其中start transaction标识事务开始，commit提交事务，将执行结果写入到数据库。如果SQL语句执行出现问题，会调用rollback，回滚所有已经执行成功的SQL语句。当然，也可以在事务中直接使用rollback语句进行回滚。</p>
 </blockquote>
-<p><font color = blue size = 4>2. Get cids of customers who order  <font size = 5 color = black>products  p01 and p02 ?</font></font></p>
+<br/>
+<p><font color = green size = 4>特殊操作：</font></p>
 <blockquote>
-<p><font color=red size=5>(O  where pid=‘p01’)[cid] $\cap$ (O  where pid=‘p02’)[cid]</font></p>
+<p>在MySQL中，存在一些特殊的命令，如果在事务中执行了这些命令，会马上强制执行commit提交事务；如DDL语句(create table/drop table/alter/table)、lock tables语句等等。</p>
 </blockquote>
-<p><font color = blue size = 4>3. Get cnames of customers who order <font color = black size = 5>all products</font> ?</font></p>
-<blockquote>
-<p><font color = green>//出现求ALL(所有一类属性)的记录时，需要使用除法运算</font></p>
-<p><font color=red size=5>First:</font>  get cids of customers who orders all products</p>
-<p><font color=red size=5>T := ORDERS[cid , pid] $\div$ PRODUCTS[pid]</font></p>
-</blockquote>
-<blockquote>
-<p><font color = blue size = 4><font color=red>注意：</font>//使用除法运算时，Dividend(被除数)中的属性经过除法运算后剩余属性也需要是候选键性质</font></p>
-<p><font color=brown size = 5>1.Why must project PRODUCTS on pid ?</font></p>
+<p><font color = brown>不过，常用的select、insert、update和delete命令，都不会强制提交事务。</font></p>
+<br/>
+<h3 id="3-事务的实现">3. 事务的实现</h3>
+<h4 id="1-undo-log（回滚日志）">1. undo log（回滚日志）</h4>
 <ul>
-<li><font color = green size=5>columns of divisor must be subset of columns of dividend.</font></li>
+<li>
+<p><font color = green size = 4>InnoDB实现回滚，靠的是undo log：</font></p>
+<blockquote>
+<p>当事务对数据库进行修改时，InnoDB会生成对应的undo log；如果事务执行失败或调用了rollback，导致事务需要回滚，便可以利用undo log中的信息将数据回滚到修改之前的样子。</p>
+</blockquote>
+</li>
 </ul>
-<p><font color=brown size=5>Why must project ORDERS on cid,pid?</font></p>
+<br/>
 <ul>
-<li><font color = green size = 5>We only try to find the value of the cid in ORDERS of the same for all cid.</font></li>
+<li>
+<p><font color = green size = 4>undo log属于逻辑日志，它记录的是SQL执行相关的信息：</font></p>
+<blockquote>
+<p>当发生回滚时，InnoDB会根据undo log的内容做与之前相反的工作：对于每个insert，回滚时会执行delete；对于每个delete，回滚时会执行insert；对于每个update，回滚时会执行一个相反的update，把数据改回去。</p>
+</blockquote>
+</li>
 </ul>
-</blockquote>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim" alt="mark"></p>
+<br/>
+<h4 id="2-redo-log（重做日志）">2. redo log（重做日志）</h4>
+<ul>
+<li>
+<p><font color = green size = 4>更新流程</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/Py2TYgYapShW.png?imageslim" alt="mark"></p>
+<ul>
+<li>执行update操作。</li>
+<li>先将原始数据从磁盘读取到内存，修改内存中的数据。</li>
+<li>生成一条重做日志写入redo log buffer，记录数据被修改后的值。</li>
+<li>当事务提交时，需要将redo log buffer中的内容刷新到redo log file。</li>
+<li>事务提交后，也会将内存中修改数据的值写入磁盘。</li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>恢复机制</font></p>
 <blockquote>
-<p><font color=red size=5>Second:</font> get names of customers</p>
-<p><font color = red size = 5>T1 := ( ( T ) $\infty$ C ) [cname]</font></p>
-</blockquote>
-<p><font color = blue size = 4>4. Get names of customers who order  all products ordered by customer ‘c006’ ?</font></p>
-<blockquote>
-<p><font color=red size=5>Step 1:</font>  find all products ordered by customer ‘c006’</p>
-<p><font color=red size=5>R1 := (ORDERS where cid = ‘c006’)[pid]</font></p>
-<p><font color=red size = 5>Step 2:</font>  find cid of customers who order all products ordered by customer ‘c006’</p>
-<p><font color=red size=5>R2 := ORDERS[cid,pid] $\div$R1</font></p>
-<p><font color=red size = 5>Step 3:</font>  find cnames of customers</p>
-<p><font color=red size=5>R3 := ( R2 $\infty$ C ) [ cname ]</font></p>
-</blockquote>
-<p><font color = blue size = 4>5. Get pid of products ordered through all agents ?</font></p>
-<blockquote>
-<p><font color=red size=5>ORDERS [ aid, pid ] $\div$ AGENTS [ aid ]</font></p>
-</blockquote>
-<p><font color = blue size = 4>6. Get name of products ordered by all customers who live in Dallas ?</font></p>
-<blockquote>
-<p><font color=red size=5>R1 := (CUSTOMERS where city=‘Dallas’)[cid]</font></p>
-<p><font color =red size=5>R2 := ORDERS [ cid, pid ] $\div$ R1</font></p>
-<p><font color = red size = 5>R3 := ( PRODUCTS $\infty$ R2 )[ pname ]</font></p>
-</blockquote>
-<p><font color = blue size = 4>7. Get cids of customers who order all products priced at $0.50.</font></p>
-<blockquote>
-<p><font color = red size = 5>R1 := (PRODUCTS where price = 0.50) [pid]</font></p>
-<p><font color = red size = 5>R2 := ORDERS [ cid, pid ] $\div$ R1</font></p>
-</blockquote>
-<p><font color = blue size = 4>8. Get cids of customers who order all products that <font color = black size = 5>anybody</font> orders.</font></p>
-<blockquote>
-<p><font color = red size = 5>ORDERS [ cid, pid ] $\div$ ORDERS [ pid ]</font></p>
+<p>于是，redo log被引入来解决这个问题：当数据修改时，除了修改缓冲区中的数据，还会在redo log记录这次操作；当事务提交时，会调用fsync接口对redo log进行刷盘。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复。</p>
 </blockquote>
 <br/>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">redo log实现事务的原子性和持久性：</span></p>
+<ul>
+<li>原子性，是redo log记录了事务期间操作的物理日志，事务提交之前，并没有写入磁盘，保存在内存里，如果事务失败，数据库磁盘不会有影响，回滚掉事务内存部分即可。</li>
+<li>持久性，redo log 会在事务提交时将日志存储到磁盘redo log file，保证日志的持久性。</li>
+</ul>
+</li>
+</ul>
 <br/>
+<h3 id="4-事务的隔离级别">4. 事务的隔离级别</h3>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/EK19I1B5Ynqm.png?imageslim" alt="mark"></p>
+<br/>
+<h4 id="1-READ-UNCOMMITTED">1. READ-UNCOMMITTED</h4>
+<p><font color = green>READ-UNCOMMITTED 中文叫未提交读，即一个事务读到了另一个未提交事务修改过的数据，整个过程如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/Y48xImrVT3X2.png?imageslim" alt="mark"></p>
 <blockquote>
-<p><font color = green size = 5>条件：</font></p>
-<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
-<p><font color = green size = 5>Agents: A(aid, aname, city, percent)</font></p>
-<p><font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font></p>
-<p><font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
-</blockquote>
-<p><font color = blue size = 4>9. Get aids of agents who take orders on <font color = black size = 5>at least that set of products(相当于all the products)</font> ordered by c004.</font></p>
-<blockquote>
-<p><font color = red size = 5>O[aid, pid] ÷ (O where cid = ‘c004’)[pid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>10. Get cids of customers who order p01 and p07.</font></p>
-<blockquote>
-<p><font color = red size = 5>(O where pid = ‘p01’)[cid] $\cap$ (O where pid = ‘p07’)[cid]</font><font color = red size = 5>(正确)</font></p>
-<p><font color = grey size = 5>(O where pid = ‘p01’ and pid = ‘p07’)[cid]</font><font color  = grey size = 5>(错误)</font></p>
-</blockquote>
-<p><font color = blue size = 4>11. Get cids of customers who order p01 or p07.</font></p>
-<blockquote>
-<p><font color = red size = 5>(O where pid=‘p01’)[cid] $\cup$ (O where pid=‘p07’)[cid]</font></p>
-<p><font color = green size = 4>或者</font></p>
-<p><font color = red size = 5>(O where pid = ‘p01’ or pid = ‘p07’)[cid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>12. List all cities inhabited by customers who order product p02 or agents who place an order for p02.</font></p>
-<blockquote>
-<p><font color = red size = 5>T1 := ((O where pid = ‘p02’) $\infty$ C)[city]</font></p>
-<p><font color = red size = 5>T2 := ((O where pid = ‘p02’) $\infty$  A)[city]</font></p>
-<p><font color = red size = 5>T := T1 $\cup$ T2</font></p>
-</blockquote>
-<p><font color = blue size = 4>13. Get aids of agents who place an order for <font color = black size = 5>at least one customer</font> that uses product p01.</font></p>
-<blockquote>
-<p><font color = red size = 5>((O where pid = ‘p01’)[cid] $\infty$ O) [aid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>14. Get aids of agents who place orders for <font color = black size = 5>all customers</font> that uses product p01.</font></p>
-<blockquote>
-<p><font color = red size = 5>O[cid, aid] ÷ (O where pid =  ‘p01’)[cid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>15. Retrieve product ids for all products that are <font color = black size = 5>not ordered by</font> any customers living in a city <font color = black size = 5>beginning with the letter “D”</font>.</font></p>
-<blockquote>
-<p><font color = red size = 5>T1  :=  C where <u>C.city &gt;= ‘D’ and C.city &lt; ‘E’</u></font></p>
-<p><font color = red size = 5>T2  :=  P [ pid ] - ( O $\infty$ T1 ) [ pid ]</font></p>
+<p>如上图，SessionA和SessionB分别开启一个事务，SessionB中的事务先将id为1的记录的name列更新为’lisi’，然后SessionA中的事务再去查询这条id为1的记录，那么在未提交读的隔离级别下，查询结果由’zhangsan’变成了’lisi’，也就是说某个事务读到了另一个未提交事务修改过的记录。但是如果SessionB中的事务稍后进行了回滚，那么SessionA中的事务相当于读到了一个不存在的数据，这种现象也称为<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">脏读</span>。</p>
 </blockquote>
 <br/>
-<br/>
+<h4 id="2-READ-COMMITTED">2. READ COMMITTED</h4>
+<p><font color = green>READ COMMITTED 中文叫已提交读，或者叫不可重复读。即一个事务能读到另一个已经提交事务修改后的数据，如果其他事务均对该数据进行修改并提交，该事务也能查询到最新值。如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/PMYGTQlwvl1b.png?imageslim" alt="mark"></p>
 <blockquote>
-<p><font color = green size = 5>条件：</font></p>
-<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
-</blockquote>
-<p><font color = blue size = 4>16. Retrieve cids of customers with the <font color = black size = 5>largest</font> discounts.</font></p>
-<blockquote>
-<p><font color = green size = 5>Answer 1:</font></p>
-<p><font color = red size = 5>1)CY := C</font></p>
-<p><font color = red size = 5>2)T1:=((CY $\times$ C) where <u>CY.discnt &gt; C.discnt</u>)[C.cid]</font></p>
-<p><font color = red size = 5>3)T2 := C[cid] - T1</font></p>
-</blockquote>
-<blockquote>
-<p><font color = green size  = 5>Answer 2:</font></p>
-<p><font color = red size = 5>1)CY := C</font></p>
-<p><font color = red size = 5>2)T1(cyid, cid) := ((CY $\times$ C) where <u>CY.discnt &gt;= C.discnt</u>) [CY.cid, C.cid]</font></p>
-<p><font color = red size = 5>3)T2 := T1 ÷ C[cid]</font></p>
+<p>在SessionA中先后两次读取同一个数据，两次读取的结果不一样；在第4步 SessionB 修改后，如果未提交，SessionA是读不到，但SessionB一旦提交后，SessionA即可读到SessionB修改的内容。</p>
 </blockquote>
 <br/>
+<h4 id="3-REPEATABLE-READ">3. REPEATABLE READ</h4>
+<p><font color = green>REPEATABLE READ 中文叫可重复读，即事务能读到另一个已经提交的事务修改过的数据，但是第一次读过某条记录后，即使后面其他事务修改了该记录的值并且提交，该事务之后再读该条记录时，读到的仍是第一次读到的值，而不是每次都读到不同的数据。如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/qPMDkMLIGmDm.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>InnoDB<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">默认</span>是这种隔离级别，SessionB无论怎么修改id=1的值，SessionA读到依然是自己开启事务第一次读到的内容；但是可能会出现<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">幻读现象</span>。</p>
+</blockquote>
 <br/>
+<h4 id="4-SERIALIZABLE">4. SERIALIZABLE</h4>
+<p><font color = green>SERIALIZABLE 叫串行化， 上面三种隔离级别可以进行 读-读 或者 读-写、写-读三种并发操作，而SERIALIZABLE不允许读-写，写-读的并发操作。 如下图:</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/rpRJ6Pp9pWcL.png?imageslim" alt="mark"></p>
 <blockquote>
-<p><font color = green size = 5>条件：</font></p>
-<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font><br>
-<font color = green size = 5>Agents: A(aid, aname, city, percent)</font><br>
-<font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font><br>
-<font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
+<p>SessionB 对 id=1 进行修改的时候，SessionA 读取id=1则需要等待 SessionB 提交事务。可以理解SessionB在更新的时候加了X锁。</p>
 </blockquote>
-<p><font color = blue size = 4>17. Get aids of agents who <font color = black size = 5>do not supply</font> product p02. </font></p>
-<blockquote>
-<p><font color = red size = 5>A[aid]  —  (O where pid = ‘p02’)[aid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>18. Get aids of agents who <font color = black size = 5>supply only</font> product p02.</font></p>
-<blockquote>
-<p><font color = red size = 5>O[aid]  —  (O where pid &lt;&gt; ‘p02’)[aid]</font><font color = red size = 5>  (正确)</font><br>
-<font color = grey size = 5>A[aid]  —  (O where pid &lt;&gt; ‘p02’)[aid]</font><font color = grey size = 5>  (错误)</font></p>
-</blockquote>
-<hr>
-<h4 id="5-Illustrative-Examples-示例">5) Illustrative Examples(示例)</h4>
-<blockquote>
-<p><font color = green size = 5>条件：</font></p>
-<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
-<p><font color = green size = 5>Agents: A(aid, aname, city, percent)</font></p>
-<p><font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font></p>
-<p><font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
-</blockquote>
-<p><font color = blue size = 4>1.Get the names of customers who order <font color = black size = 5>at least one product</font> priced at $0.50.</font></p>
-<blockquote>
-<p><font color = red size = 5>(((P where price=0.50)[pid] $\infty$ O) $\infty$ C) [cname]</font></p>
-</blockquote>
-<p><font color = blue size = 4>2.Find cids of all customers who <font color = black size = 5>don’t place</font> any order through agent a03.</font></p>
-<blockquote>
-<p><font color = red size = 5>C[cid] – (O where aid = ‘a03’) [cid]</font></p>
-<p><font color = green size = 5>而不是O[cid] – (O where aid = ‘a03’) [cid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>3.Retrieve customers who place orders <font color = black size = 5>only through</font> agent a03.</font></p>
-<blockquote>
-<p><font color = red size = 5>O[cid] – (O where aid $\neq$ ‘a03’) [cid]</font></p>
-<p><font color = green size = 5>而不是C[cid] – (O where aid $\neq$ ‘a03’) [cid]</font></p>
-</blockquote>
-<p><font color = blue size = 4>4.More Complex One <font color = red><u>(Question And Steps)</u></font>:</font></p>
 <br/>
-<p><img data-src="http://image.zxkidea.top/databasenote4.png" alt=""></p>
+<ul>
+<li>
+<p><font color = red size = 4>幻读：</font></p>
+<p><font color = green>在事务A中按照某个条件先后两次查询数据库，两次查询结果的条数不同，这种现象称为幻读。不可重复读与幻读的区别可以通俗的理解为：前者是数据变了，后者是数据的行数变了。</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/O6gfdeqVrpXI.png?imageslim" alt="mark"></p>
+</li>
+</ul>
+<br/>
+<h4 id="5-隔离级别与读问题的关系">5. 隔离级别与读问题的关系</h4>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/ExlJ4uV9oYI2.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>在实际应用中，读未提交在并发时会导致很多问题，而性能相对于其他隔离级别提高却很有限，因此使用较少。可串行化强制事务串行，并发效率很低，只有当对数据一致性要求极高且可以接受没有并发时使用，因此使用也较少。因此在大多数数据库系统中，默认的隔离级别是读已提交(如Oracle)或可重复读。</p>
+</blockquote>
+<br/>
+<h3 id="5-锁机制">5. 锁机制</h3>
+<p><font color = green size = 4>锁机制使得在对数据库进行并发访问时，可以保障数据的完整性和一致性。</font></p>
+<blockquote>
+<p><font color = red size = 4>基本原理：</font></p>
+<p>事务在修改数据之前，需要先获得相应的锁；获得锁之后，事务便可以修改数据；该事务操作期间，这部分数据是锁定的，其他事务如果需要修改数据，需要等待当前事务提交或回滚后释放锁。</p>
+</blockquote>
+<br/>
+<h4 id="1-锁的类型">1. 锁的类型</h4>
+<ul>
+<li>
+<p><font color = green>共享锁（也称为 S 锁）：</font>允许事务读取一行数据。</p>
+<blockquote>
+<p>共享锁又称为读锁。若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁为止。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 手动加S锁</span><br><span class="line">select * from tableName where … lock in share mode;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green>排他锁（也称为 X 锁）：</font>允许事务删除或更新一行数据。</p>
+<blockquote>
+<p>排他锁又称为写锁。若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放A上的锁为止。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 手动加 X 锁</span><br><span class="line">select * from tableName where … for update;</span><br></pre></td></tr></table></figure>
+<br/>
+<img data-src="http://image.zxkidea.top/blog/20200309/lUJVMrtKqSft.png?imageslim" alt="mark" style="zoom:50%;" />
+</li>
+</ul>
+<blockquote>
+<p>S 锁和 S 锁是兼容的，X 锁和其它锁都不兼容，举个例子，事务 T1 获取了一个行 r1 的 S 锁，另外事务 T2 可以立即获得行 r1 的 S 锁，此时 T1 和 T2 共同获得行 r1 的 S 锁，此种情况称为锁兼容，但是另外一个事务 T2 此时如果想获得行 r1 的 X 锁，则必须等待 T1 对行 r 锁的释放，此种情况也成为锁冲突。</p>
+</blockquote>
+<br/>
+<h4 id="2-锁的优化">2. 锁的优化</h4>
+<p><font color = green size = 4>锁如果利用不好，会给业务造成大量的卡顿现象，在了解了锁相关的一些知识点后，我们可以有意识的去避免锁带来的一些问题。</font></p>
+<ul>
+<li>合理设计索引，让 InnoDB 在索引键上面加锁的时候尽可能准确，尽可能的缩小锁定范围，避免造成不必要的锁定而影响其他 Query 的执行。</li>
+<li>尽可能减少基于范围的数据检索过滤条件，避免因为间隙锁带来的负面影响而锁定了不该锁定的记录。</li>
+<li>尽量控制事务的大小，减少锁定的资源量和锁定时间长度</li>
+<li>在业务环境允许的情况下，尽量使用较低级别的事务隔离，以减少 MySQL 因为实现事务隔离级别所带来的附加成本。</li>
+</ul>
 
     </div>
 
@@ -849,7 +575,7 @@ $$</p>
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.zxkidea.top/posts/786bf771.html" title="DatabaseNotes-Ch1,2">https://blog.zxkidea.top/posts/786bf771.html</a>
+    <a href="https://blog.zxkidea.top/posts/7755ff13.html" title="DatabaseNotes-Ch10">https://blog.zxkidea.top/posts/7755ff13.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -872,13 +598,10 @@ $$</p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/31d96ab6.html" rel="prev" title="五大经典算法分析">
-      <i class="fa fa-chevron-left"></i> 五大经典算法分析
+    <a href="/posts/9c3362dd.html" rel="prev" title="DatabaseNotes-Ch7,8">
+      <i class="fa fa-chevron-left"></i> DatabaseNotes-Ch7,8
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/928c862a.html" rel="next" title="DatabaseNotes-Ch3,4">
-      DatabaseNotes-Ch3,4 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -942,7 +665,7 @@ $$</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch1-Introduction"><span class="nav-text">Ch1:  Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch2-The-Rational-Model"><span class="nav-text">Ch2:  The Rational Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-The-CAP-Database"><span class="nav-text">1.The CAP Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Naming-the-Parts-of-the-Database"><span class="nav-text">2.Naming the Parts of the Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Rational-Rules"><span class="nav-text">3.Rational Rules:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Keys-Superkeys-and-Null-values"><span class="nav-text">4.Keys, Superkeys and Null values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Rational-Algebra-关系代数"><span class="nav-text">5.Rational Algebra(关系代数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Set-Theoretic-Operation"><span class="nav-text">1) Set-Theoretic Operation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Native-Theoretic-Operation"><span class="nav-text">2) Native Theoretic Operation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Complex-Query"><span class="nav-text">3) Complex Query</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Native-Relational-Operation"><span class="nav-text">4) Native Relational Operation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Illustrative-Examples-示例"><span class="nav-text">5) Illustrative Examples(示例)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch10-Update-Transaction"><span class="nav-text">Ch10.  Update Transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-事务及其特性："><span class="nav-text">1. 事务及其特性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-事务操作："><span class="nav-text">2. 事务操作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-事务的实现"><span class="nav-text">3. 事务的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-undo-log（回滚日志）"><span class="nav-text">1. undo log（回滚日志）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-redo-log（重做日志）"><span class="nav-text">2. redo log（重做日志）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-事务的隔离级别"><span class="nav-text">4. 事务的隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-READ-UNCOMMITTED"><span class="nav-text">1. READ-UNCOMMITTED</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-READ-COMMITTED"><span class="nav-text">2. READ COMMITTED</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-REPEATABLE-READ"><span class="nav-text">3. REPEATABLE READ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-SERIALIZABLE"><span class="nav-text">4. SERIALIZABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-隔离级别与读问题的关系"><span class="nav-text">5. 隔离级别与读问题的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-锁机制"><span class="nav-text">5. 锁机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-锁的类型"><span class="nav-text">1. 锁的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-锁的优化"><span class="nav-text">2. 锁的优化</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
