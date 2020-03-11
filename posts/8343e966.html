@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+  <meta name="baidu-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.zxkidea.top').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: true,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+
+
+  <meta name="description" content="一、常用函数大全 1. 数学函数  ABS(x)  返回x的绝对值 BIN(x)  返回x的二进制（OCT返回八进制，HEX返回十六进制） CEILING(x)  返回大于x的最小整数值 EXP(x)  返回值e（自然对数的底）的x次方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL语句技巧">
+<meta property="og:url" content="https://blog.zxkidea.top/posts/8343e966.html">
+<meta property="og:site_name" content="遇见时光">
+<meta property="og:description" content="一、常用函数大全 1. 数学函数  ABS(x)  返回x的绝对值 BIN(x)  返回x的二进制（OCT返回八进制，HEX返回十六进制） CEILING(x)  返回大于x的最小整数值 EXP(x)  返回值e（自然对数的底）的x次方">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/HYGfjyJT6mQF.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/xG1IugBQWj6H.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/NEyjruN4tjA9.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/6a6hYrVUqpOX.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/ijiuhW0KtKic.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/d7Q25OfCYKax.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/UrcNY0cP6S4D.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20200310/rFgh9TE088g7.png?imageslim">
+<meta property="article:published_time" content="2020-03-11T03:26:23.000Z">
+<meta property="article:modified_time" content="2020-03-11T04:20:26.339Z">
+<meta property="article:author" content="Rocky Zhou">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.zxkidea.top/blog/20200310/HYGfjyJT6mQF.png?imageslim">
+
+<link rel="canonical" href="https://blog.zxkidea.top/posts/8343e966.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>MySQL语句技巧 | 遇见时光</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="遇见时光" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<!-- 动态线条 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+<!-- 页面点击烟花 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+<!-- 不蒜子 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">遇见时光</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Joyrocky" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/8343e966.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Rocky Zhou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="遇见时光">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          MySQL语句技巧
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-11 11:26:23 / 修改时间：12:20:26" itemprop="dateCreated datePublished" datetime="2020-03-11T11:26:23+08:00">2020-03-11</time>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/8343e966.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/8343e966.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+          <span class="post-meta-divider">|</span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、常用函数大全">一、常用函数大全</h2>
+<h3 id="1-数学函数">1. 数学函数</h3>
+<ul>
+<li><code>ABS(x)</code>  返回x的绝对值</li>
+<li><code>BIN(x)</code>  返回x的二进制（OCT返回八进制，HEX返回十六进制）</li>
+<li><code>CEILING(x)</code>  返回大于x的最小整数值</li>
+<li><code>EXP(x) </code> 返回值e（自然对数的底）的x次方</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><code>FLOOR(x)</code>  返回小于x的最大整数值</li>
+<li><code>GREATEST(x1,x2,...,xn)</code>返回集合中最大的值</li>
+<li><code>LEAST(x1,x2,...,xn) </code>   返回集合中最小的值</li>
+<li><code>LN(x)  </code>         返回x的自然对数</li>
+<li><code>LOG(x,y)</code>返回x的以y为底的对数</li>
+<li><code>MOD(x,y) </code>        返回x/y的模（余数）</li>
+<li><code>PI()</code>返回pi的值（圆周率）</li>
+<li><code>RAND()</code>返回０到１内的随机值,可以通过提供一个参数(种子)使RAND()随机数生成器生成一个指定的值。</li>
+<li><code>ROUND(x,y)</code>返回参数x的四舍五入的有y位小数的值</li>
+<li><code>SIGN(x) </code>返回代表数字x的符号的值</li>
+<li><code>SQRT(x) </code>返回一个数的平方根</li>
+<li><code>TRUNCATE(x,y) </code>      返回数字x截短为y位小数的结果</li>
+</ul>
+<br/>
+<h3 id="2-聚合函数-常用于GROUP-BY从句的SELECT查询中">2. 聚合函数(常用于GROUP BY从句的SELECT查询中)</h3>
+<ul>
+<li><code>AVG(col)</code>返回指定列的平均值</li>
+<li><code>COUNT(col)</code>返回指定列中非NULL值的个数</li>
+<li><code>MIN(col)</code>返回指定列的最小值</li>
+<li><code>MAX(col)</code>返回指定列的最大值</li>
+<li><code>SUM(col)</code>返回指定列的所有值之和</li>
+<li><code>GROUP_CONCAT(col) </code>返回由属于一组的列值连接组合而成的结果</li>
+</ul>
+<br/>
+<h3 id="3-字符串函数">3. 字符串函数</h3>
+<ul>
+<li><code>ASCII(char)</code>返回字符的ASCII码值</li>
+<li><code>BIT_LENGTH(str)</code>返回字符串的比特长度</li>
+<li><code>CONCAT(s1,s2...,sn)</code>将s1,s2…,sn连接成字符串</li>
+<li><code>CONCAT_WS(sep,s1,s2...,sn)</code>将s1,s2…,sn连接成字符串，并用sep字符间隔</li>
+<li><code>INSERT(str,x,y,instr) </code>将字符串str从第x位置开始，y个字符长的子串替换为字符串instr，返回结果</li>
+<li><code>FIND_IN_SET(str,list)</code>分析逗号分隔的list列表，如果发现str，返回str在list中的位置</li>
+<li><code>LCASE(str)或LOWER(str) </code>返回将字符串str中所有字符改变为小写后的结果</li>
+<li><code>LEFT(str,x)</code>返回字符串str中最左边的x个字符</li>
+<li><code>LENGTH(s)</code>返回字符串str中的字符数</li>
+<li><code>LTRIM(str) </code>从字符串str中切掉开头的空格</li>
+<li><code>POSITION(substr,str)</code> 返回子串substr在字符串str中第一次出现的位置</li>
+<li><code>QUOTE(str) </code>用反斜杠转义str中的单引号</li>
+<li><code>REPEAT(str,srchstr,rplcstr)</code>返回字符串str重复x次的结果</li>
+<li><code>REVERSE(str) </code>返回颠倒字符串str的结果</li>
+<li><code>RIGHT(str,x) </code>返回字符串str中最右边的x个字符</li>
+<li><code>RTRIM(str)</code> 返回字符串str尾部的空格</li>
+<li><code>STRCMP(s1,s2)</code>比较字符串s1和s2</li>
+<li><code>TRIM(str)</code>去除字符串首部和尾部的所有空格</li>
+<li><code>UCASE(str)</code>或<code>UPPER(str) </code>返回将字符串str中所有字符转变为大写后的结果</li>
+</ul>
+<br/>
+<h3 id="4-日期和时间函数">4. 日期和时间函数</h3>
+<ul>
+<li><code>CURDATE()</code>或<code>CURRENT_DATE() </code>返回当前的日期</li>
+<li><code>CURTIME()</code>或<code>CURRENT_TIME() </code>返回当前的时间</li>
+<li><code>DATE_ADD(date,INTERVAL int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>SELECTDATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
+<li><code>DATE_FORMAT(date,fmt) </code> 依照指定的fmt格式格式化日期date值</li>
+<li><code>DATE_SUB(date,INTERVAL int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>SELECTDATE_SUB(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
+<li><code>DAYOFWEEK(date)</code>  返回date所代表的一星期中的第几天(1~7)</li>
+<li><code>DAYOFMONTH(date) </code> 返回date是一个月的第几天(1~31)</li>
+<li><code>DAYOFYEAR(date)</code>  返回date是一年的第几天(1~366)</li>
+<li><code>DAYNAME(date)</code>  返回date的星期名，如：<code>SELECT DAYNAME(CURRENT_DATE);</code></li>
+<li><code>FROM_UNIXTIME(ts,fmt) </code> 根据指定的fmt格式，格式化UNIX时间戳ts</li>
+<li><code>HOUR(time) </code> 返回time的小时值(0~23)</li>
+<li><code>MINUTE(time) </code> 返回time的分钟值(0~59)</li>
+<li><code>MONTH(date) </code> 返回date的月份值(1~12)</li>
+<li><code>MONTHNAME(date) </code> 返回date的月份名，如：<code>SELECT MONTHNAME(CURRENT_DATE);</code></li>
+<li><code>NOW() </code>  返回当前的日期和时间</li>
+<li><code>QUARTER(date) </code> 返回date在一年中的季度(1~4)，如<code>SELECT QUARTER(CURRENT_DATE);</code></li>
+<li><code>WEEK(date) </code> 返回日期date为一年中第几周(0~53)</li>
+<li><code>YEAR(date) </code> 返回日期date的年份(1000~9999)</li>
+<li><code>EXTRACT(date) </code> Extract() 函数除了没有date(),time() 的功能外，其他功能一应具全。</li>
+<li><code>period_add(P,N) </code>日期加/减去N月。</li>
+<li><code>period_diff(P1,P2)</code> 日期 P1-P2，返回 N 个月</li>
+<li><code>datediff(date1,date2)</code> 两个日期相减 date1 - date2，返回天数</li>
+<li><code>TIMEDIFF(time1,time2)</code> 两个日期相减 time1 - time2，返回 TIME 差值</li>
+<li><code>TO_DAYS(date)</code> 给出一个日期 date，返回一个天数(从 0 年开始的天数)</li>
+<li><code>FROM_DAYS(N)</code> 给出一个天数 N，返回一个 DATE 值</li>
+</ul>
+<br/>
+<p><font color = green size = 4>一些示例：</font></p>
+<p><font color = blue>1. 返回两个日期值之间的差值(月数)：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT PERIOD_DIFF(200302,199802);</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = blue>2. 在Mysql中计算年龄：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(birthday)),&#39;%Y&#39;)+0 AS age FROM employee;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><font color = red>注：</font><font color = green>此处利用to_days()将年龄转换为从0年经过的时间，再用date_format求出年份即为年龄。</font></p>
+</blockquote>
+<br/>
+<p><font color = blue>3. EXTRACT()提取函数</font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXTRACT</span>(<span class="keyword">YEAR</span> <span class="keyword">FROM</span> <span class="string">'2017-05-15 10:37:14.123456'</span>); <span class="comment">-- 年</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXTRACT</span>(<span class="keyword">MONTH</span> <span class="keyword">FROM</span> <span class="string">'2017-05-15 10:37:14.123456'</span>); <span class="comment">-- 月</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXTRACT</span>(YEAR_MONTH <span class="keyword">FROM</span> <span class="string">'2017-05-15 10:37:14.123456'</span>); <span class="comment">-- 年月</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXTRACT</span>(DAY_HOUR <span class="keyword">FROM</span> <span class="string">'2017-05-15 10:37:14.123456'</span>); <span class="comment">-- 日时</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">EXTRACT</span>(DAY_MINUTE <span class="keyword">FROM</span> <span class="string">'2017-05-15 10:37:14.123456'</span>);<span class="comment">-- 151037(日时分)</span></span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="5-控制流函数">5. 控制流函数</h3>
+<ul>
+<li><code>CASE WHEN[test1] THEN [result1]...ELSE [default] END</code>如果testN是真，则返回resultN，否则返回default</li>
+<li><code>CASE [test] WHEN[val1] THEN [result]...ELSE [default]END </code> 如果test和valN相等，则返回resultN，否则返回default</li>
+<li><code>IF(test,t,f) </code> 如果test是真，返回t；否则返回f</li>
+<li><code>IFNULL(arg1,arg2) </code>如果arg1不是空，返回arg1，否则返回arg2</li>
+<li><code>NULLIF(arg1,arg2) </code>如果arg1=arg2返回NULL；否则返回arg1</li>
+</ul>
+<br/>
+<p>这些函数的第一个是<code>IFNULL()</code>，它有两个参数，并且对第一个参数进行判断。如果第一个参数不是NULL，函数就会向调用者返回第一个参数；如果是NULL,将返回第二个参数。</p>
+<p>如：<code>SELECT IFNULL(1,2), IFNULL(NULL,10),IFNULL(4*NULL,'false');</code></p>
+<br/>
+<p>NULLIF()函数将会检验提供的两个参数是否相等，如果相等，则返回NULL，如果不相等，就返回第一个参数。</p>
+<p>如：<code>SELECT NULLIF(1,1),NULLIF('A','B'),NULLIF(2+3,4+1);</code></p>
+<br/>
+<p>和许多脚本语言提供的<code>IF()</code>函数一样，MySQL的IF()函数也可以建立一个简单的条件测试，这个函数有三个参数，第一个是要被判断的表达式，如果表达式为真，IF()将会返回第二个参数，如果为假，IF()将会返回第三个参数。</p>
+<p>如：<code>SELECTIF(1&lt;10,2,3),IF(56&gt;100,'true','false');</code></p>
+<p><code>IF()</code>函数在只有两种可能结果时才适合使用。然而，在现实世界中，我们可能发现在条件测试中会需要多个分支。在这种情况下，MySQL提供了CASE函数，它和PHP及Perl语言的<code>switch-case</code>条件例程一样。</p>
+<br/>
+<p><font color = green size = 4>CASE函数的格式有些复杂，通常如下所示：</font></p>
+<p><font color = blue>1. 类似于java中点switch语句，一般用于实现等值判断</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CASE [expression to be evaluated]</span><br><span class="line">WHEN [val 1] THEN [result 1]</span><br><span class="line">WHEN [val 2] THEN [result 2]</span><br><span class="line">WHEN [val 3] THEN [result 3]</span><br><span class="line">......</span><br><span class="line">WHEN [val n] THEN [result n]</span><br><span class="line">ELSE [default result]</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = blue>2. 类似于java中的多重if语句，一般用于实现区间判断</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CASE</span><br><span class="line">WHEN [conditional test 1] THEN [result 1]</span><br><span class="line">WHEN [conditional test 2] THEN [result 2]</span><br><span class="line">ELSE [default result]</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = blue>3. 例子</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">-- 数值判断</span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE t.sex</span><br><span class="line">        WHEN 1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN 2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br><span class="line">    </span><br><span class="line">-- 条件判断    </span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE </span><br><span class="line">        WHEN t.sex&#x3D;1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN t.sex&#x3D;2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- IF()函数</span><br><span class="line">select t.name,if(t.weight&lt;80,&#39;正常&#39;,&#39;肥胖&#39;) 体重 from t_customer t</span><br><span class="line"></span><br><span class="line">-- IFNULL(value1,value2)函数,这个函数一般用来替换NULL值的</span><br><span class="line">-- 把emp员工表的员工的提成给加100</span><br><span class="line">update emp set comm  &#x3D; IFNULL(comm,0)+100</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="6-格式化函数">6. 格式化函数</h3>
+<ul>
+<li><code>DATE_FORMAT(date,fmt) </code> 依照字符串fmt格式化日期date值</li>
+<li><code>FORMAT(x,y) </code> 把x格式化为以逗号隔开的数字序列，y是结果的小数位数</li>
+<li><code>INET_ATON(ip) </code> 返回IP地址的数字表示</li>
+<li><code>INET_NTOA(num) </code> 返回数字所代表的IP地址</li>
+<li><code>TIME_FORMAT(time,fmt) </code> 依照字符串fmt格式化时间time值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT FORMAT(34234.34323432,3);</span><br><span class="line">SELECT DATE_FORMAT(NOW(),&#39;%W,%D %M %Y %r&#39;);</span><br><span class="line">SELECT DATE_FORMAT(NOW(),&#39;%Y-%m-%d&#39;);</span><br><span class="line">SELECT DATE_FORMAT(19990330,&#39;%Y-%m-%d&#39;);</span><br><span class="line">SELECT DATE_FORMAT(NOW(),&#39;%h:%i %p&#39;);</span><br><span class="line">SELECT INET_ATON(&#39;10.122.89.47&#39;);</span><br><span class="line">SELECT INET_NTOA(175790383);</span><br></pre></td></tr></table></figure>
+<br/>
+<hr>
+<h2 id="二、存储过程">二、存储过程</h2>
+<h3 id="1-创建存储过程">1. 创建存储过程</h3>
+<blockquote>
+<p>创建存储过程的语句为 CREATE PROCEDURE，创建存储函数的语句为CREATE FUNCTION。</p>
+<p>调用存储过程的语句为CALL。</p>
+<p>调用存储函数的形式就像调用MySQL内部函数一样。</p>
+</blockquote>
+<p><font color = green size = 4>1. 创建存储过程示例</font></p>
+<ul>
+<li>
+<p><font color = blue>1. 创建存储过程简单示例：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER &#x2F;&#x2F;</span><br><span class="line">CREATE PROCEDURE ccgc()</span><br><span class="line">BEGIN</span><br><span class="line">SELECT * FROM TEXT;</span><br><span class="line">SELECT * FROM s_user;</span><br><span class="line">END</span><br><span class="line">&#x2F;&#x2F;DELIMITER ;</span><br><span class="line"></span><br><span class="line">-- 调用</span><br><span class="line">CALL ccgc()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>2. 创建带参数的存储过程：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER &#x2F;&#x2F;</span><br><span class="line">CREATE PROCEDURE ccgc2(IN c_name VARCHAR(32))</span><br><span class="line">BEGIN</span><br><span class="line">    SELECT * FROM TEXT WHERE NAME &#x3D; c_name;</span><br><span class="line">    SELECT * FROM s_user;</span><br><span class="line">END</span><br><span class="line">&#x2F;&#x2F;DELIMITER ;</span><br><span class="line"></span><br><span class="line">-- 调用</span><br><span class="line">CALL ccgc2(参数)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>3. 创建输出参数存储过程</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER &#x2F;&#x2F;</span><br><span class="line">CREATE PROCEDURE ccgc3(OUT c_name VARCHAR(32))</span><br><span class="line">BEGIN</span><br><span class="line">    SET c_name &#x3D; &#39;666&#39;;</span><br><span class="line">    SELECT c_name;</span><br><span class="line">END</span><br><span class="line">&#x2F;&#x2F;DELIMITER ;</span><br><span class="line"></span><br><span class="line">-- 调用</span><br><span class="line">CALL ccgc3(@c_name)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>4. 输入输出和变量</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER &#x2F;&#x2F;</span><br><span class="line">CREATE PROCEDURE ccgc7(INOUT c_name VARCHAR(32))</span><br><span class="line">BEGIN</span><br><span class="line">    DECLARE hh VARCHAR(32) DEFAULT &#39;1111111111&#39;;</span><br><span class="line">    SELECT * FROM TEXT WHERE NAME &#x3D; hh;</span><br><span class="line">END</span><br><span class="line">&#x2F;&#x2F;DELIMITER ;</span><br><span class="line"></span><br><span class="line">CALL ccgc7(@c_name)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<blockquote>
+<p><font color = red>总结：</font></p>
+<ol>
+<li>如果仅仅想把数据传给MySQL存储过程，那就用in类型参数；</li>
+<li>如果仅仅从MySQL存储过程返回值，那就用out类型参数；</li>
+<li>如果需要把数据传给MySQL存储过程经过计算再传回给我们，那就用inout类型参数</li>
+</ol>
+</blockquote>
+<br/>
+<ul>
+<li><font color = blue>5. 其他存储过程方法</font></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 查看存储过程;</span><br><span class="line">SHOW CREATE PROCEDURE proc_name;</span><br><span class="line"></span><br><span class="line">-- 查看函数:</span><br><span class="line">SHOW CREATE FUNCTION func_name;</span><br><span class="line"></span><br><span class="line">-- 删除存储过程:</span><br><span class="line">DROP PROCEDURE proc_name;</span><br><span class="line"></span><br><span class="line">-- 删除函数:</span><br><span class="line">DROP FUNCTION func_nmae;</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = green size = 4>2. 存储过程实践</font></p>
+<p><font color = blue>1. 定义一个根据ID查询学生记录的存储过程。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DROP PROCEDURE IF EXISTS getStuById;</span><br><span class="line"> </span><br><span class="line">DELIMITER &#x2F;&#x2F;  -- 定义存储过程结束符号为&#x2F;&#x2F;</span><br><span class="line">-- IN表示输入参数的存储过程；OUT表示输出参数的存储过程（可用@变量的方式调用）</span><br><span class="line">CREATE PROCEDURE getStuById(IN stuId INT(11),OUT stuName VARCHAR(255),OUT stuAge INT(11)) </span><br><span class="line">-- 定义输入与输出参数</span><br><span class="line">BEGIN</span><br><span class="line">   SELECT name ,age INTO stuName , stuAge FROM t_student WHERE id &#x3D; stuId; -- 分号要加</span><br><span class="line">END &#x2F;&#x2F; -- 结束符要加</span><br><span class="line">DELIMITER ;  -- 重新定义存储过程结束符为分号</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = blue>2. 查看刚才创建的存储过程。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW PROCEDURE STATUS LIKE &#39;g%&#39;;</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = blue>3. 下面是调用存储过程。对于存储过程提供的临时变量而言，MySQL规定要加上@开头。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># study是当前数据库名称</span><br><span class="line"> </span><br><span class="line">CALL study.getStuById(1,@name,@age);</span><br><span class="line"> </span><br><span class="line">SELECT @name AS stuName,@age AS stuAge;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/HYGfjyJT6mQF.png?imageslim" alt="mark"></p>
+<br/>
+<h3 id="2-创建存储函数">2. 创建存储函数</h3>
+<p><font color = green size = 4>1. 创建存储函数</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS getStuNameById;</span><br><span class="line"> </span><br><span class="line">DELIMITER &#x2F;&#x2F;</span><br><span class="line">-- 默认是IN，但是不能写上去。stuId视为输入的临时变量</span><br><span class="line">CREATE FUNCTION getStuNameById(stuId INT)  </span><br><span class="line">RETURNS VARCHAR(255)   -- 指明返回值类型</span><br><span class="line">RETURN  (SELECT name FROM t_student WHERE id &#x3D; stuId); &#x2F;&#x2F;  </span><br><span class="line">-- 指明SQL语句,并使用结束标记。注意分号位置</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+<br/>
+<p><font color = green size = 4>2. 使用存储函数</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT getStuNameById(1);</span><br></pre></td></tr></table></figure>
+<br/>
+<blockquote>
+<p><font color = red>总结：</font> <font color = green>从上述存储函数的写法上来看，存储函数有一定的缺点。首先与存储过程一样，只能返回一条结果记录。另外就是存储函数只能指明一列数据作为结果，而存储过程能够指明多列数据作为结果。</font></p>
+</blockquote>
+<br/>
+<hr>
+<h2 id="三、循环语句">三、循环语句</h2>
+<h3 id="1-while循环">1. while循环</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter &#x2F;&#x2F;                            #定义标识符为双斜杠</span><br><span class="line">drop procedure if exists test;          #如果存在test存储过程则删除</span><br><span class="line">create procedure test()                 #创建无参存储过程,名称为test</span><br><span class="line">begin</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line">    while i &lt; 10 do                     #结束循环的条件: 当i大于10时跳出while循环</span><br><span class="line">        insert into test values (i);    #往test表添加数据</span><br><span class="line">        set i &#x3D; i + 1;                  #循环一次,i加一</span><br><span class="line">    end while;                          #结束while循环</span><br><span class="line">    select * from test;                 #查看test表数据</span><br><span class="line">end</span><br><span class="line">&#x2F;&#x2F;                                      #结束定义语句</span><br><span class="line">call test();                            #调用存储过程</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="2-repeat循环">2.repeat循环</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter &#x2F;&#x2F;                            #定义标识符为双斜杠</span><br><span class="line">drop procedure if exists test;          #如果存在test存储过程则删除</span><br><span class="line">create procedure test()                 #创建无参存储过程,名称为test</span><br><span class="line">begin</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line">    repeat</span><br><span class="line">        insert into test values (i);    #往test表添加数据</span><br><span class="line">        set i &#x3D; i + 1;                  #循环一次,i加一</span><br><span class="line">    until i &gt; 10 end repeat;            #结束循环的条件: 当i大于10时跳出repeat循环</span><br><span class="line">    select * from test;                 #查看test表数据</span><br><span class="line">end</span><br><span class="line">&#x2F;&#x2F;                                      #结束定义语句</span><br><span class="line">call test();                            #调用存储过程</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="3-loop循环">3. loop循环</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">delimiter &#x2F;&#x2F;                            #定义标识符为双斜杠</span><br><span class="line">drop procedure if exists test;          #如果存在test存储过程则删除</span><br><span class="line">create procedure test()                 #创建无参存储过程,名称为test</span><br><span class="line">begin</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line">    lp : loop                           #lp为循环体名,可随意 loop为关键字</span><br><span class="line">        insert into test values (i);    #往test表添加数据</span><br><span class="line">        set i &#x3D; i + 1;                  #循环一次,i加一</span><br><span class="line">        if i &gt; 10 then                  #结束循环的条件: 当i大于10时跳出loop循环</span><br><span class="line">            leave lp;</span><br><span class="line">        end if; </span><br><span class="line">    end loop;</span><br><span class="line">    select * from test;                 #查看test表数据</span><br><span class="line">end</span><br><span class="line">&#x2F;&#x2F;                                      #结束定义语句</span><br><span class="line">call test();                            #调用存储过程</span><br></pre></td></tr></table></figure>
+<br/>
+<hr>
+<h2 id="四、Limit详解">四、Limit详解</h2>
+<h3 id="1-作用">1. 作用</h3>
+<p><font color = green>Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 初始记录行的偏移量是 0(而不是 1);</span><br><span class="line">SELECT * FROM table LIMIT 5,10; -- 检索记录行6-15</span><br><span class="line"></span><br><span class="line">-- 为了检索从某一个偏移量到记录集的结束所有的记录行，可以指定第二个参数为 -1;</span><br><span class="line">SELECT * FROM table LIMIT 95,-1; -- 检索记录行 96-last</span><br><span class="line"></span><br><span class="line">-- 如果只给定一个参数，它表示返回最大的记录行数目。换句话说，LIMIT n 等价于 LIMIT 0,n：</span><br><span class="line">SELECT * FROM table LIMIT 5;     -- 检索前 5 个记录行</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="2-Limit效率">2. Limit效率</h3>
+<p><font color = red size = 4>1. Limit高效率的原理是：</font><font color = green size = 4>避免全表扫描，提高查询效率。</font></p>
+<blockquote>
+<p>在一种情况下，使用limit效率低，那就是：只使用limit来查询语句，并且<font color = blue>偏移量特别大</font>的情况</p>
+<p>所以应当先使用where等查询语句，配合limit使用，效率才高</p>
+<p>PS：在sql语句中，limit关键字是最后才用到的。以下条件的出现顺序一般是：where-&gt;group by-&gt;having-order by-&gt;limit</p>
+</blockquote>
+<br/>
+<p><font color = green size = 4>2. 与OFFSET搭配</font></p>
+<p><font color = blue>比较下面两句SQL语句</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 从数据库中第三条开始查询，取一条数据，即第三条数据读取，一二条跳过</span><br><span class="line">select * from testtable limit 2,1;</span><br><span class="line"></span><br><span class="line">-- 从数据库中的第二条数据开始查询两条数据，即第二条和第三条。</span><br><span class="line">select * from testtable limit 2 offset 1;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><font color = red>注意：</font></p>
+<ol>
+<li>数据库数据计算是从0开始的</li>
+<li>Offset X是跳过X个数据，limit Y是选取Y个数据</li>
+<li>Limit  X,Y  中X表示跳过X个数据，读取Y个数据</li>
+</ol>
+</blockquote>
+<br/>
+<hr>
+<h2 id="五、生成自增序列">五、生成自增序列</h2>
+<h3 id="1-作用-v2">1. 作用</h3>
+<p><font color = green size = 4>对记录按照某种顺序进行排列后，通过序号来进行进一步筛选</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select (@i:&#x3D;@i+1) as rownum, surname, personal_name from student, (select @i:&#x3D;0) as init;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/xG1IugBQWj6H.png?imageslim" alt="mark"></p>
+<br/>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select (@i:&#x3D;@i+5) as rownum, surname, personal_name from student, (select @i:&#x3D;100) as init;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/NEyjruN4tjA9.png?imageslim" alt="mark"></p>
+<br/>
+<p><font color = blue> 如果是多表联查，跟上述sql类似，连查完后定义一个初始化序列号即可：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select (@i:&#x3D;@i+1) as rownum, A.surname, B.uname from student A</span><br><span class="line"></span><br><span class="line">left join user B on CONCAT(A.surname,A.personal_name) &#x3D; B.uname, (select @i:&#x3D;0) as init;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/6a6hYrVUqpOX.png?imageslim" alt="mark"></p>
+<br/>
+<h3 id="2-中位数运算">2. 中位数运算</h3>
+<ul>
+<li><font color = green size = 4>定义：</font>一串数字，按从小到大排列，当总数是奇数时，取最中间的数；当总数是偶数时，取最中间两个数的平均数。</li>
+</ul>
+<br/>
+<ul>
+<li><font color = green size = 4>解决思路：</font>按定义来，先排列，找出最中间的数，再取平均值。</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>准备表如下：</font></p>
+<p><font color = blue>学生表，含姓名和分数</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create table student (</span><br><span class="line">	id varchar(32) primary key,</span><br><span class="line">	value int</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line">insert into student (id,value) values (&#39;A&#39;,40);</span><br><span class="line">insert into student (id,value) values (&#39;B&#39;,50);</span><br><span class="line">insert into student (id,value) values (&#39;C&#39;,60);</span><br><span class="line">insert into student (id,value) values (&#39;D&#39;,70);</span><br><span class="line">insert into student (id,value) values (&#39;E&#39;,80);</span><br><span class="line">insert into student (id,value) values (&#39;F&#39;,90);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>最终sql如下：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(id) gcid, avg(value) avgv from ( #最外层开始</span><br><span class="line">	select id, value from ( #第二层开始</span><br><span class="line">		select id, @index:&#x3D;@index+1 as myindex, value from student, (select @index:&#x3D;0) AS initvar order by value #最内层</span><br><span class="line">	) as t where floor(@index&#x2F;2+1)&#x3D;myindex or ceil(@index&#x2F;2)&#x3D;myindex #第二层结束</span><br><span class="line">) as x  #最外层结束</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green size = 4>解释：</font></p>
+<ul>
+<li>
+<p>SQL分三层：最内层，第二层和最外层。</p>
+<p>最内层是对成绩排序，并标注出名次，只执行最内层时结果如下：</p>
+<p>对@变量不熟悉的同学自行百度，效果类似rownum。<font color = red>注意：执行完最内层时，@index的值就是总行数</font></p>
+</li>
+</ul>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/ijiuhW0KtKic.png?imageslim" alt="mark"></p>
+<ul>
+<li>
+<p>第二层取出最中间的两个值，</p>
+<p><font color = red>注意：floor和ceil的顺序：</font></p>
+<p><font color = green>当@index是奇数时，floor(@index/2+1)和ceil(@index/2)的值一样的，@index=7时，floor(4.5) = ceil(3.5) = 4</font></p>
+<p><font color = green>当@index是偶数时，floor(@index/2+1)和ceil(@index/2)的值不一样，@index=6时，floor(4) = 4，ceil(3) = 3</font></p>
+<p><font color = green>这就解决了中位数定义中如果总个数是奇数只取一位，总个数是偶数取中间两个的平均数的问题。</font></p>
+<br/>
+<p>第二层执行完的结果如下：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/d7Q25OfCYKax.png?imageslim" alt="mark"></p>
+<p><font color = red>注：如果总个数是奇数，第二层执行完只会出来一行记录</font></p>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p>最外层就简单了，取个平均数就行了。group_concat(id)只是用来看下中位数的学生是谁，可去掉。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">gcid</th>
+<th style="text-align:center">avgv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">C, D</td>
+<td style="text-align:center">65</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<ul>
+<li>
+<p><font color = blue>group_concat()：</font></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/UrcNY0cP6S4D.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>有没有更直观的方法，既让每个名字都只出现一次，又能够显示所有的名字相同的人的id呢？<font color = green>——使用group_concat()</font></p>
+</blockquote>
+<br/>
+<ul>
+<li><font color = blue>group_concat()用法：</font></li>
+</ul>
+<blockquote>
+<p>1、功能：将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</p>
+<p>2、语法：group_concat( [distinct] 要连接的字段 [order by 排序字段 asc/desc ] [separator ‘分隔符’] )</p>
+<p>说明：通过使用distinct可以排除重复值；如果希望对结果中的值进行排序，可以使用order by子句；separator是一个字符串值，缺省为一个逗号。</p>
+</blockquote>
+<br/>
+<ul>
+<li>
+<p><font color = blue>示例：</font>使用group_concat()和group by显示相同名字的人的id号：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200310/rFgh9TE088g7.png?imageslim" alt="mark"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+        <div class="reward-container">
+  <div>大爷，赏点？</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Rocky Zhou 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Rocky Zhou 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Rocky Zhou
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.zxkidea.top/posts/8343e966.html" title="MySQL语句技巧">https://blog.zxkidea.top/posts/8343e966.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 考研</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/7755ff13.html" rel="prev" title="DatabaseNotes-Ch10">
+      <i class="fa fa-chevron-left"></i> DatabaseNotes-Ch10
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+
+  
+  
+  
+
+
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、常用函数大全"><span class="nav-text">一、常用函数大全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数学函数"><span class="nav-text">1. 数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-聚合函数-常用于GROUP-BY从句的SELECT查询中"><span class="nav-text">2. 聚合函数(常用于GROUP BY从句的SELECT查询中)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-字符串函数"><span class="nav-text">3. 字符串函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-日期和时间函数"><span class="nav-text">4. 日期和时间函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-控制流函数"><span class="nav-text">5. 控制流函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-格式化函数"><span class="nav-text">6. 格式化函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、存储过程"><span class="nav-text">二、存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建存储过程"><span class="nav-text">1. 创建存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建存储函数"><span class="nav-text">2. 创建存储函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、循环语句"><span class="nav-text">三、循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-while循环"><span class="nav-text">1. while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-repeat循环"><span class="nav-text">2.repeat循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-loop循环"><span class="nav-text">3. loop循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Limit详解"><span class="nav-text">四、Limit详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-作用"><span class="nav-text">1. 作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Limit效率"><span class="nav-text">2. Limit效率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、生成自增序列"><span class="nav-text">五、生成自增序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-作用-v2"><span class="nav-text">1. 作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-中位数运算"><span class="nav-text">2. 中位数运算</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Rocky Zhou"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Rocky Zhou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="tidioChatApi.open();"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Joyrocky" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Joyrocky" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kevin009008@sina.cn" title="E-Mail → mailto:kevin009008@sina.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/2932742182/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2932742182&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100011389486139" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100011389486139" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备19021225号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rocky Zhou</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">103k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:34</span>
+</div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/wzwxqvlketmhjegc6hongvrouugosmo5.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'lovislz0MGuQcCOyeHoO0dsC-gzGzoHsz',
+      appKey: 'sGUVwBk9sdrntxYQJaP0gw6G',
+      placeholder: "Just go go",
+      avatar: 'mp',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":220,"height":325,"hOffset":-20,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>

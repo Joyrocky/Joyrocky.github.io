@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-03-09T01:38:44.156Z</updated>
+  <updated>2020-03-11T04:20:26.339Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL语句技巧</title>
+    <link href="https://blog.zxkidea.top/posts/8343e966.html"/>
+    <id>https://blog.zxkidea.top/posts/8343e966.html</id>
+    <published>2020-03-11T03:26:23.000Z</published>
+    <updated>2020-03-11T04:20:26.339Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一、常用函数大全&quot;&gt;一、常用函数大全&lt;/h2&gt;
+&lt;h3 id=&quot;1-数学函数&quot;&gt;1. 数学函数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ABS(x)&lt;/code&gt;  返回x的绝对值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BIN(x)&lt;/code&gt;  返回x的二进制（OCT返回八进制，HEX返回十六进制）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CEILING(x)&lt;/code&gt;  返回大于x的最小整数值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXP(x) &lt;/code&gt; 返回值e（自然对数的底）的x次方&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>DatabaseNotes-Ch10</title>
