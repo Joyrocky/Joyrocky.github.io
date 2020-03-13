@@ -64,18 +64,154 @@
 <ul>
 <li><code>CURDATE()</code>或<code>CURRENT_DATE() </code>返回当前的日期</li>
 <li><code>CURTIME()</code>或<code>CURRENT_TIME() </code>返回当前的时间</li>
-<li><code>DATE_ADD(date,INTERVAL int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>SELECTDATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
-<li><code>DATE_FORMAT(date,fmt) </code> 依照指定的fmt格式格式化日期date值</li>
-<li><code>DATE_SUB(date,INTERVAL int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>SELECTDATE_SUB(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
+<li><code>DATE_ADD(date,INTERVAL int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化), <span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">keyword可为任意时间间隔类型</span>；如：<code>SELECT DATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
+<li><code>DATE_FORMAT(date,fmt) </code> 依照指定的fmt格式格式化日期date值，fmt格式；常用：’%Y-%m-%d’ , 年-月-日</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%a</td>
+<td style="text-align:left">缩写星期名</td>
+</tr>
+<tr>
+<td style="text-align:left">%b</td>
+<td style="text-align:left">缩写月名</td>
+</tr>
+<tr>
+<td style="text-align:left">%c</td>
+<td style="text-align:left">月，数值</td>
+</tr>
+<tr>
+<td style="text-align:left">%D</td>
+<td style="text-align:left">带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td style="text-align:left">%e</td>
+<td style="text-align:left">月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td style="text-align:left">%f</td>
+<td style="text-align:left">微秒</td>
+</tr>
+<tr>
+<td style="text-align:left">%H</td>
+<td style="text-align:left">小时 (00-23)</td>
+</tr>
+<tr>
+<td style="text-align:left">%h</td>
+<td style="text-align:left">小时 (01-12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%I</td>
+<td style="text-align:left">小时 (01-12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%i</td>
+<td style="text-align:left">分钟，数值(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:left">%j</td>
+<td style="text-align:left">年的天 (001-366)</td>
+</tr>
+<tr>
+<td style="text-align:left">%k</td>
+<td style="text-align:left">小时 (0-23)</td>
+</tr>
+<tr>
+<td style="text-align:left">%l</td>
+<td style="text-align:left">小时 (1-12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%M</td>
+<td style="text-align:left">月名</td>
+</tr>
+<tr>
+<td style="text-align:left">%m</td>
+<td style="text-align:left">月，数值(00-12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%p</td>
+<td style="text-align:left">AM 或 PM</td>
+</tr>
+<tr>
+<td style="text-align:left">%r</td>
+<td style="text-align:left">时间，12-小时（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td style="text-align:left">%S</td>
+<td style="text-align:left">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:left">%T</td>
+<td style="text-align:left">时间, 24-小时 (hh:mm:ss)</td>
+</tr>
+<tr>
+<td style="text-align:left">%U</td>
+<td style="text-align:left">周 (00-53) 星期日是一周的第一天</td>
+</tr>
+<tr>
+<td style="text-align:left">%u</td>
+<td style="text-align:left">周 (00-53) 星期一是一周的第一天</td>
+</tr>
+<tr>
+<td style="text-align:left">%V</td>
+<td style="text-align:left">周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+</tr>
+<tr>
+<td style="text-align:left">%v</td>
+<td style="text-align:left">周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+</tr>
+<tr>
+<td style="text-align:left">%W</td>
+<td style="text-align:left">星期名</td>
+</tr>
+<tr>
+<td style="text-align:left">%w</td>
+<td style="text-align:left">周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td style="text-align:left">%X</td>
+<td style="text-align:left">年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td style="text-align:left">年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+</tr>
+<tr>
+<td style="text-align:left">%Y</td>
+<td style="text-align:left">年，4 位</td>
+</tr>
+<tr>
+<td style="text-align:left">%y</td>
+<td style="text-align:left">年，2 位</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>DATE_SUB(date,INTERVAL int keyword)</code>返回日期date减去间隔时间int的结果(int必须按照关键字进行格式化), <span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">keyword可为任意时间间隔类型</span>；如：<code>SELECT DATE_SUB(CURRENT_DATE,INTERVAL 6 MONTH);</code></li>
 <li><code>DAYOFWEEK(date)</code>  返回date所代表的一星期中的第几天(1~7)</li>
 <li><code>DAYOFMONTH(date) </code> 返回date是一个月的第几天(1~31)</li>
 <li><code>DAYOFYEAR(date)</code>  返回date是一年的第几天(1~366)</li>
-<li><code>DAYNAME(date)</code>  返回date的星期名，如：<code>SELECT DAYNAME(CURRENT_DATE);</code></li>
+<li><code>DAYNAME(date)</code>  返回date的<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">星期名</span>(Sun…)，如：<code>SELECT DAYNAME(CURRENT_DATE);</code></li>
 <li><code>FROM_UNIXTIME(ts,fmt) </code> 根据指定的fmt格式，格式化UNIX时间戳ts</li>
 <li><code>HOUR(time) </code> 返回time的小时值(0~23)</li>
 <li><code>MINUTE(time) </code> 返回time的分钟值(0~59)</li>
 <li><code>MONTH(date) </code> 返回date的月份值(1~12)</li>
-<li><code>MONTHNAME(date) </code> 返回date的月份名，如：<code>SELECT MONTHNAME(CURRENT_DATE);</code></li>
+<li><code>MONTHNAME(date) </code> 返回date的<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">月份名</span>(Jan…)，如：<code>SELECT MONTHNAME(CURRENT_DATE);</code></li>
 <li><code>NOW() </code>  返回当前的日期和时间</li>
 <li><code>QUARTER(date) </code> 返回date在一年中的季度(1~4)，如<code>SELECT QUARTER(CURRENT_DATE);</code></li>
 <li><code>WEEK(date) </code> 返回日期date为一年中第几周(0~53)</li>
@@ -85,6 +221,7 @@
 <li><code>period_diff(P1,P2)</code> 日期 P1-P2，返回 N 个月</li>
 <li><code>datediff(date1,date2)</code> 两个日期相减 date1 - date2，返回天数</li>
 <li><code>TIMEDIFF(time1,time2)</code> 两个日期相减 time1 - time2，返回 TIME 差值</li>
+<li><code>TIMESTAMPDIFF(DAY/MONTH/YEAR/WEEK/MINUTE,time1,time2)</code> 两个日期相减 time1 - time2，<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">返回相应日期类型</span>的差值</li>
 <li><code>TO_DAYS(date)</code> 给出一个日期 date，返回一个天数(从 0 年开始的天数)</li>
 <li><code>FROM_DAYS(N)</code> 给出一个天数 N，返回一个 DATE 值</li>
 </ul>
@@ -179,6 +316,13 @@
 </li>
 </ul>
 <br/>
+<ul>
+<li>
+<p><font color = green>5. 对变量的定义和赋值</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 定义</span><br><span class="line">select @变量名  或者 select @变量名:&#x3D; 字段名 from 表名 where 过滤语句;</span><br><span class="line">set @变量名;</span><br><span class="line"></span><br><span class="line">-- 赋值 @num为变量名，value为值</span><br><span class="line">set @num&#x3D;value;或select @num:&#x3D;value;</span><br><span class="line"></span><br><span class="line">-- 混合使用</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line"></span><br><span class="line">-- 局部变量（只在begin...end之间有效）</span><br><span class="line">declare var_name [, var_name]... data_type [ DEFAULT value ];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
 <blockquote>
 <p><font color = red>总结：</font></p>
 <ol>
@@ -212,7 +356,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT getStuNameById(1);</span><br></pre></td></tr></table></figure>
 <br/>
 <blockquote>
-<p><font color = red>总结：</font> <font color = green>从上述存储函数的写法上来看，存储函数有一定的缺点。首先与存储过程一样，只能返回一条结果记录。另外就是存储函数只能指明一列数据作为结果，而存储过程能够指明多列数据作为结果。</font></p>
+<p><font color = red>总结：</font> <font color = green>从上述存储函数的写法上来看，存储函数有一定的缺点。首先与存储过程一样，只能返回一条结果记录。另外就是存储函数只能指明<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">一列数据</span>作为结果，而存储过程能够指明<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">多列数据</span>作为结果。</font></p>
 </blockquote>
 <br/>
 <hr>
@@ -3590,6 +3734,8 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  orders (</span><br><span class="line">cid <span class="built_in">CHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">cname <span class="built_in">VARCHAR</span>(<span class="number">13</span>),</span><br><span class="line">city <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">discnt <span class="built_in">REAL</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span>(cid) );</span><br></pre></td></tr></table></figure>
 <br/>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  orders (</span><br><span class="line">ordno <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">month</span> <span class="built_in">CHAR</span>(<span class="number">3</span>),</span><br><span class="line">cid <span class="built_in">CHAR</span>(<span class="number">4</span>),</span><br><span class="line">aid <span class="built_in">CHAR</span>(<span class="number">3</span>),</span><br><span class="line">pid <span class="built_in">CHAR</span>(<span class="number">3</span>),</span><br><span class="line">qty <span class="built_in">INTEGER</span>,</span><br><span class="line">dollars <span class="keyword">DOUBLE</span> <span class="keyword">PRECISION</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span>(ordno) );</span><br></pre></td></tr></table></figure>
+<br/>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- MYSQL</span><br><span class="line">create table Student(</span><br><span class="line">    Sno int not null auto_increment primary key,</span><br><span class="line">    Sname varchar(10) not null,</span><br><span class="line">    Sex char(1) not null,</span><br><span class="line">    Sage tinyint(100) not null,</span><br><span class="line">    Sdept char(4) not null)comment &#x3D; &#39;学生表&#39;;</span><br></pre></td></tr></table></figure>
 <br/>
 <h5 id="2-Select-Statement">2) Select Statement</h5>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * | colname &#123; , colname ... &#125;</span><br><span class="line"><span class="keyword">FROM</span>  tablename &#123; , tablename ... &#125;</span><br><span class="line">[ <span class="keyword">WHERE</span> search_condition ]</span><br><span class="line">[ <span class="keyword">GROUP</span> <span class="keyword">BY</span> colname &#123; , colname ... &#125;</span><br><span class="line">[ <span class="keyword">HAVING</span> search_condition ] ]</span><br><span class="line">[ <span class="keyword">ORDER</span> <span class="keyword">BY</span> colname [ <span class="keyword">ASC</span> | <span class="keyword">DESC</span> ]</span><br><span class="line">&#123; , colname [ <span class="keyword">ASC</span> | <span class="keyword">DESC</span> ] ... &#125; ];</span><br></pre></td></tr></table></figure>
