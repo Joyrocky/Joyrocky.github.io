@@ -226,6 +226,10 @@
 <li><code>FROM_DAYS(N)</code> 给出一个天数 N，返回一个 DATE 值</li>
 </ul>
 <br/>
+<blockquote>
+<p>对于日期时间类型的数据也可以求其最大/最小值，其大小排列就是日期时间的早晚，越早认为其值越小；</p>
+</blockquote>
+<br/>
 <p><font color = green size = 4>一些示例：</font></p>
 <p><font color = blue>1. 返回两个日期值之间的差值(月数)：</font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT PERIOD_DIFF(200302,199802);</span><br></pre></td></tr></table></figure>
@@ -258,15 +262,64 @@
 <p>如：<code>SELECTIF(1&lt;10,2,3),IF(56&gt;100,'true','false');</code></p>
 <p><code>IF()</code>函数在只有两种可能结果时才适合使用。然而，在现实世界中，我们可能发现在条件测试中会需要多个分支。在这种情况下，MySQL提供了CASE函数，它和PHP及Perl语言的<code>switch-case</code>条件例程一样。</p>
 <br/>
+<p><font color = green size = 4>IFNULL(arg1, arg2)解决Mysql聚合函数count(1) sum(1)结果返回0和NULL</font></p>
+<ul>
+<li>
+<p><font color = blue>count(1)</font></p>
+<ul>
+<li>
+<p>返回为0</p>
+<blockquote>
+<p>如果所查询的表或者where条件筛选后得到的结果集为空，则 count(1)返回为 0<br>
+如：<br>
+select count(id) from test;<br>
+select count(id) from test where id &lt; 0;</p>
+</blockquote>
+</li>
+<li>
+<p>返回为NULL</p>
+<blockquote>
+<p>如果所查询的表或者where条件筛选后得到的结果集为空且当前层查询中使用了group by ，则 count(1)返回为 NULL<br>
+如：<br>
+select count(id) from test group by id;<br>
+select count(id) from test where id &lt; 0 group by id;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = blue>sum(1)</font></p>
+<ul>
+<li>
+<p>返回为NULL</p>
+<blockquote>
+<p>如果所查询的表或者where条件筛选后得到的结果集为空 ，则 sum(1)返回为 NULL<br>
+如：<br>
+select sum(id) from test;<br>
+select sum(id) from test where id &lt; 0;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<blockquote>
+<p><font color = red>注：</font></p>
+<p>如果想NULL转为0返回，可以使用<font color = dark>IFNULL（expression_1，expression_2）</font>；表示如果expression_1不为NULL，则IFNULL函数返回expression_1；否则返回expression_2的结果。<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">如IFNULL（sum（id），0）</span></p>
+</blockquote>
+<br/>
 <p><font color = green size = 4>CASE函数的格式有些复杂，通常如下所示：</font></p>
-<p><font color = blue>1. 类似于java中点switch语句，一般用于实现等值判断</font></p>
+<p><font color = blue>1. 类似于java中点switch语句，一般用于实现<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">等值判断</span></font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE [expression to be evaluated]</span><br><span class="line">WHEN [val 1] THEN [result 1]</span><br><span class="line">WHEN [val 2] THEN [result 2]</span><br><span class="line">WHEN [val 3] THEN [result 3]</span><br><span class="line">......</span><br><span class="line">WHEN [val n] THEN [result n]</span><br><span class="line">ELSE [default result]</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
 <br/>
-<p><font color = blue>2. 类似于java中的多重if语句，一般用于实现区间判断</font></p>
+<p><font color = blue>2. 类似于java中的多重if语句，一般用于实现<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">区间判断</span></font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line">WHEN [conditional test 1] THEN [result 1]</span><br><span class="line">WHEN [conditional test 2] THEN [result 2]</span><br><span class="line">ELSE [default result]</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
 <br/>
 <p><font color = blue>3. 例子</font></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 数值判断</span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE t.sex</span><br><span class="line">        WHEN 1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN 2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br><span class="line">    </span><br><span class="line">-- 条件判断    </span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE </span><br><span class="line">        WHEN t.sex&#x3D;1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN t.sex&#x3D;2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 等值判断</span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE t.sex</span><br><span class="line">        WHEN 1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN 2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br><span class="line">    </span><br><span class="line">-- 区间判断    </span><br><span class="line">SELECT</span><br><span class="line">    t.NAME,</span><br><span class="line">    (</span><br><span class="line">        CASE </span><br><span class="line">        WHEN t.sex&#x3D;1 THEN</span><br><span class="line">            &#39;男&#39;</span><br><span class="line">        WHEN t.sex&#x3D;2 THEN</span><br><span class="line">            &#39;女&#39;</span><br><span class="line">        ELSE</span><br><span class="line">            &#39;未知&#39;</span><br><span class="line">        END</span><br><span class="line">    ) 性别</span><br><span class="line">FROM</span><br><span class="line">    t_customer t</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- IF()函数</span><br><span class="line">select t.name,if(t.weight&lt;80,&#39;正常&#39;,&#39;肥胖&#39;) 体重 from t_customer t</span><br><span class="line"></span><br><span class="line">-- IFNULL(value1,value2)函数,这个函数一般用来替换NULL值的</span><br><span class="line">-- 把emp员工表的员工的提成给加100</span><br><span class="line">update emp set comm  &#x3D; IFNULL(comm,0)+100</span><br></pre></td></tr></table></figure>
 <br/>
 <h3 id="6-格式化函数">6. 格式化函数</h3>
@@ -319,7 +372,29 @@
 <ul>
 <li>
 <p><font color = green>5. 对变量的定义和赋值</font></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 定义</span><br><span class="line">select @变量名  或者 select @变量名:&#x3D; 字段名 from 表名 where 过滤语句;</span><br><span class="line">set @变量名;</span><br><span class="line"></span><br><span class="line">-- 赋值 @num为变量名，value为值</span><br><span class="line">set @num&#x3D;value;或select @num:&#x3D;value;</span><br><span class="line"></span><br><span class="line">-- 混合使用</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line"></span><br><span class="line">-- 局部变量（只在begin...end之间有效）</span><br><span class="line">declare var_name [, var_name]... data_type [ DEFAULT value ];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 定义</span><br><span class="line">select @变量名  或者 select @变量名:&#x3D; 字段名 from 表名 where 过滤语句;</span><br><span class="line">set @变量名;</span><br><span class="line"></span><br><span class="line">-- 赋值 @num为变量名，value为值</span><br><span class="line">set @num&#x3D;value;或select @num:&#x3D;value;</span><br><span class="line"></span><br><span class="line">-- 混合使用</span><br><span class="line">    declare i int;                      #申明变量</span><br><span class="line">    set i &#x3D; 0;                          #变量赋值</span><br><span class="line"></span><br><span class="line">-- 局部变量（只在begin...end之间有效）</span><br><span class="line">declare var_name [, var_name]... data_type [ DEFAULT value ];</span><br><span class="line"></span><br><span class="line">-- Select into进行赋值</span><br><span class="line">select col_name[,...] into var_name[,...] table_expr [where...];</span><br></pre></td></tr></table></figure>
+<br/>
+<ul>
+<li>
+<p><font color = green>在MySQL存储过程中使用SELECT …INTO语句为变量赋值：用来将查询返回的一行的各个列值保存到局部变量中。</font></p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">要求：查询的结果集中只能有1行。</span></p>
+<ul>
+<li>
+<p><font color = blue>1、单一变量赋值</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 创建过程，得到指定球员的所有罚款总额</span><br><span class="line">delimiter $$</span><br><span class="line">create procedure total_penalties_player(in p_playerno int,out total_penalties dec(8,2))</span><br><span class="line">begin</span><br><span class="line">select sum(amount)</span><br><span class="line">into total_penalties</span><br><span class="line">from PENALTIES</span><br><span class="line">where playerno&#x3D;p_playerno;</span><br><span class="line">end $$</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call total_penalties_player(27,@total);</span><br><span class="line">select @total;</span><br><span class="line">+--------+</span><br><span class="line">| @total |</span><br><span class="line">+--------+</span><br><span class="line">| 175.00 |</span><br><span class="line">+--------+</span><br></pre></td></tr></table></figure>
+<br/>
+</li>
+<li>
+<p><font color = blue>2、多变量赋值</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 创建过程，得到一个给定球员的地址</span><br><span class="line">DELIMITER $$</span><br><span class="line">CREATE  PROCEDURE get_address(IN p_playerno SMALLINT,OUT p_street VARCHAR(30),</span><br><span class="line">OUT p_houseno VARCHAR(4),OUT p_town VARCHAR(30),OUT p_postcode VARCHAR(6))  </span><br><span class="line">BEGIN    </span><br><span class="line">SELECT street, houseno, town, postcode</span><br><span class="line">INTO p_street, p_houseno, p_town, p_postcode</span><br><span class="line">FROM PLAYERS</span><br><span class="line">WHERE playerno &#x3D; p_playerno;           </span><br><span class="line">END $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">call get_address(27,@s,@h,@t,@p);</span><br><span class="line">select @s,@h,@t,@p;</span><br><span class="line">+------------+------+--------+--------+</span><br><span class="line">| @s         | @h   | @t     | @p     |</span><br><span class="line">+------------+------+--------+--------+</span><br><span class="line">| Long Drive | 804  | Eltham | 8457DK |</span><br><span class="line">+------------+------+--------+--------+</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><font color = red>注意：</font></p>
+<p>在使用SELECT …INTO语句时，变量名和数据表中的字段名不能相同，否则会出错。</p>
+</blockquote>
+</li>
+</ul>
 </li>
 </ul>
 <br/>
@@ -339,7 +414,7 @@
 <br/>
 <p><font color = green size = 4>2. 存储过程实践</font></p>
 <p><font color = blue>1. 定义一个根据ID查询学生记录的存储过程。</font></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DROP PROCEDURE IF EXISTS getStuById;</span><br><span class="line"> </span><br><span class="line">DELIMITER &#x2F;&#x2F;  -- 定义存储过程结束符号为&#x2F;&#x2F;</span><br><span class="line">-- IN表示输入参数的存储过程；OUT表示输出参数的存储过程（可用@变量的方式调用）</span><br><span class="line">CREATE PROCEDURE getStuById(IN stuId INT(11),OUT stuName VARCHAR(255),OUT stuAge INT(11)) </span><br><span class="line">-- 定义输入与输出参数</span><br><span class="line">BEGIN</span><br><span class="line">   SELECT name ,age INTO stuName , stuAge FROM t_student WHERE id &#x3D; stuId; -- 分号要加</span><br><span class="line">END &#x2F;&#x2F; -- 结束符要加</span><br><span class="line">DELIMITER ;  -- 重新定义存储过程结束符为分号</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DROP PROCEDURE IF EXISTS getStuById;</span><br><span class="line"> </span><br><span class="line">DELIMITER &#x2F;&#x2F;  -- 定义存储过程结束符号为&#x2F;&#x2F;</span><br><span class="line">-- IN表示输入参数的存储过程；OUT表示输出参数的存储过程（可用@变量的方式调用）</span><br><span class="line">CREATE PROCEDURE getStuById(IN stuId INT(11),OUT stuName VARCHAR(255),OUT stuAge INT(11)) </span><br><span class="line">-- 定义输入与输出参数</span><br><span class="line">BEGIN</span><br><span class="line">   -- 利用输出变量返回自定义的多列数据</span><br><span class="line">   SELECT name ,age INTO stuName , stuAge FROM t_student WHERE id &#x3D; stuId; -- 分号要加</span><br><span class="line">END &#x2F;&#x2F; -- 结束符要加</span><br><span class="line">DELIMITER ;  -- 重新定义存储过程结束符为分号</span><br></pre></td></tr></table></figure>
 <br/>
 <p><font color = blue>2. 查看刚才创建的存储过程。</font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHOW PROCEDURE STATUS LIKE &#39;g%&#39;;</span><br></pre></td></tr></table></figure>
@@ -707,6 +782,19 @@
 <p>S 锁和 S 锁是兼容的，X 锁和其它锁都不兼容，举个例子，事务 T1 获取了一个行 r1 的 S 锁，另外事务 T2 可以立即获得行 r1 的 S 锁，此时 T1 和 T2 共同获得行 r1 的 S 锁，此种情况称为锁兼容，但是另外一个事务 T2 此时如果想获得行 r1 的 X 锁，则必须等待 T1 对行 r 锁的释放，此种情况也成为锁冲突。</p>
 </blockquote>
 <br/>
+<ul>
+<li><font color = green>更新锁：</font>更新锁的初始化阶段用来锁定可能要被修改的资源，这可以避免使用共享锁造成的死锁现象。</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p><font color = green>意向锁：</font>设计目的是为了在一个事务中揭示下一步将要被请求的锁的类型，使得行锁和表锁共存。</p>
+<blockquote>
+<p>当一个事务在需要获取资源的锁定时，如果该资源已经被排他锁占用，则数据库会自动给该事务申请一个该表的意向锁。如果自己需要一个共享锁定，就申请一个意向共享锁。如果需要的是某行（或者某些行）的排他锁定，则申请一个意向排他锁。</p>
+</blockquote>
+</li>
+</ul>
+<br/>
 <h4 id="2-锁的优化">2. 锁的优化</h4>
 <p><font color = green size = 4>锁如果利用不好，会给业务造成大量的卡顿现象，在了解了锁相关的一些知识点后，我们可以有意识的去避免锁带来的一些问题。</font></p>
 <ul>
@@ -1019,7 +1107,7 @@ statement_list 代表一个或多个语句的列表，列表内的每条语句�
 <span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">DELIMITER new_delemiter：</span><br>
 new_delemiter 可以设为1个或多个长度的符号，默认的是分号（;），我们可以把它修改为其他符号，如：DELIMITER $(注意：我们修改了定界符使用完了，记得修改回来DELIMITER ；)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DELIMITER $</span><br><span class="line">create trigger tri_stuInsert after insert</span><br><span class="line">on student for each row</span><br><span class="line">begin</span><br><span class="line">declare c int;</span><br><span class="line">set c &#x3D; (select stucount from class where classID &#x3D; new. classID);</span><br><span class="line">update class set stucount &#x3D; c+1 where classID &#x3D; new. classID;</span><br><span class="line">end $</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DELIMITER $</span><br><span class="line">create trigger tri_stuInsert after insert</span><br><span class="line">on student for each row</span><br><span class="line">begin</span><br><span class="line">declare c int;</span><br><span class="line">set c &#x3D; (select stucount from class where classID &#x3D; new.classID);</span><br><span class="line">update class set stucount &#x3D; c+1 where classID &#x3D; new.classID;</span><br><span class="line">end $</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <br/>
@@ -1084,7 +1172,7 @@ end if；</p>
 <ul>
 <li>
 <p>简化了操作，把经常使用的数据定义为视图。</p>
-<p>我们在使用查询时，在很多时候我们要使用聚合函数，同时还要 显示其它字段的信息，可能还会需要关联到其它表，这时写的语句可能会很长，如果这个动作频繁发生的话，我们可以创建视图，这以后，我们只需要select * from view就可以啦，这样很方便。</p>
+<p>我们在使用查询时，<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">在很多时候我们要使用聚合函数，同时还要 显示其它字段的信息，可能还会需要关联到其它表，这时写的语句可能会很长，或如果这个动作频繁发生的话，我们可以创建视图</span>，这以后，我们只需要select * from view就可以啦，这样很方便。</p>
 </li>
 </ul>
 <br/>

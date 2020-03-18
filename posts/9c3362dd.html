@@ -68,7 +68,7 @@
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim">
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim">
 <meta property="article:published_time" content="2020-03-08T03:27:21.000Z">
-<meta property="article:modified_time" content="2020-03-08T03:40:36.654Z">
+<meta property="article:modified_time" content="2020-03-14T13:09:18.279Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="笔记">
@@ -149,6 +149,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <h1 class="site-subtitle" itemprop="description">Keep Looking , Don't Settle <br> Stay Hungry , Stay Foolish</h1>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -261,12 +263,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-08 11:27:21 / 修改时间：11:40:36" itemprop="dateCreated datePublished" datetime="2020-03-08T11:27:21+08:00">2020-03-08</time>
+              <time title="创建时间：2020-03-08 11:27:21" itemprop="dateCreated datePublished" datetime="2020-03-08T11:27:21+08:00">2020-03-08</time>
             </span>
 
           <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-14 21:09:18" itemprop="dateModified" datetime="2020-03-14T21:09:18+08:00">2020-03-14</time>
+              </span>
 
           <span class="post-meta-divider">|</span>
             <span class="post-meta-item">
@@ -624,7 +632,7 @@ statement_list 代表一个或多个语句的列表，列表内的每条语句�
 <span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">DELIMITER new_delemiter：</span><br>
 new_delemiter 可以设为1个或多个长度的符号，默认的是分号（;），我们可以把它修改为其他符号，如：DELIMITER $(注意：我们修改了定界符使用完了，记得修改回来DELIMITER ；)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $</span><br><span class="line">create trigger tri_stuInsert after insert</span><br><span class="line">on student for each row</span><br><span class="line">begin</span><br><span class="line">declare c int;</span><br><span class="line">set c &#x3D; (select stucount from class where classID &#x3D; new. classID);</span><br><span class="line">update class set stucount &#x3D; c+1 where classID &#x3D; new. classID;</span><br><span class="line">end $</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $</span><br><span class="line">create trigger tri_stuInsert after insert</span><br><span class="line">on student for each row</span><br><span class="line">begin</span><br><span class="line">declare c int;</span><br><span class="line">set c &#x3D; (select stucount from class where classID &#x3D; new.classID);</span><br><span class="line">update class set stucount &#x3D; c+1 where classID &#x3D; new.classID;</span><br><span class="line">end $</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <br/>
@@ -689,7 +697,7 @@ end if；</p>
 <ul>
 <li>
 <p>简化了操作，把经常使用的数据定义为视图。</p>
-<p>我们在使用查询时，在很多时候我们要使用聚合函数，同时还要 显示其它字段的信息，可能还会需要关联到其它表，这时写的语句可能会很长，如果这个动作频繁发生的话，我们可以创建视图，这以后，我们只需要select * from view就可以啦，这样很方便。</p>
+<p>我们在使用查询时，<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">在很多时候我们要使用聚合函数，同时还要 显示其它字段的信息，可能还会需要关联到其它表，这时写的语句可能会很长，或如果这个动作频繁发生的话，我们可以创建视图</span>，这以后，我们只需要select * from view就可以啦，这样很方便。</p>
 </li>
 </ul>
 <br/>
@@ -1165,13 +1173,13 @@ end if；</p>
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">104k</span>
+    <span title="站点总字数">106k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:36</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>
