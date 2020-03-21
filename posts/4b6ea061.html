@@ -53,12 +53,12 @@
 
 
 
-  <meta name="description" content="命令的基本格式  [root@localhost~] root为用户名 ～表示当前所在位置 localhost主机名 ‘#’超级用户 &#39;$&quot;  普通用户">
+  <meta name="description" content="命令的基本格式 [root@localhost~] root为用户名 ～表示当前所在位置 localhost主机名 ‘#’超级用户 ‘$”  普通用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基本命令">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/4b6ea061.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="命令的基本格式  [root@localhost~] root为用户名 ～表示当前所在位置 localhost主机名 ‘#’超级用户 &#39;$&quot;  普通用户">
+<meta property="og:description" content="命令的基本格式 [root@localhost~] root为用户名 ～表示当前所在位置 localhost主机名 ‘#’超级用户 ‘$”  普通用户">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-30T14:42:13.000Z">
 <meta property="article:modified_time" content="2020-01-12T14:53:52.609Z">
@@ -332,14 +332,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>命令的基本格式</h1>
-<blockquote>
+        <h1 id="命令的基本格式"><a href="#命令的基本格式" class="headerlink" title="命令的基本格式"></a>命令的基本格式</h1><blockquote>
 <p>[root@localhost~]</p>
 <p>root为用户名</p>
 <p>～表示当前所在位置</p>
 <p>localhost主机名</p>
 <p>‘#’超级用户</p>
-<p>'$&quot;  普通用户</p>
+<p>‘$”  普通用户</p>
 </blockquote>
 <a id="more"></a>
 <p>命令的基本格式：</p>
@@ -347,8 +346,7 @@
 <p>命令  [选项]  [参数]</p>
 </blockquote>
 <hr>
-<h1>查询目录的内容</h1>
-<p>命令格式：</p>
+<h1 id="查询目录的内容"><a href="#查询目录的内容" class="headerlink" title="查询目录的内容"></a>查询目录的内容</h1><p>命令格式：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项][文件或目录]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>选项：</p>
@@ -358,25 +356,21 @@
 <p>-h显示文件大小</p>
 </blockquote>
 <hr>
-<h1>文件处理命令</h1>
-<h2 id="1-建立目录">1.建立目录</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p [目录名]</span><br></pre></td></tr></table></figure>
+<h1 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h1><h2 id="1-建立目录"><a href="#1-建立目录" class="headerlink" title="1.建立目录"></a>1.建立目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p [目录名]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>-p表述递归建文件夹</p>
 </blockquote>
 <p>举例：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir japan</span><br><span class="line"></span><br><span class="line">mkdir -p japan/cangjk</span><br></pre></td></tr></table></figure>
-<h2 id="2-切换目录">2.切换目录</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [目录]</span><br></pre></td></tr></table></figure>
+<h2 id="2-切换目录"><a href="#2-切换目录" class="headerlink" title="2.切换目录"></a>2.切换目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [目录]</span><br></pre></td></tr></table></figure>
 <p>简化操作：</p>
 <blockquote>
 <p>cd~  进入当前用户目录</p>
 <p>cd- 上次目录</p>
-<p>cd… 进入上一级目录</p>
+<p>cd.. 进入上一级目录</p>
 <p>pwd查看当前目录所在位置</p>
 </blockquote>
-<h2 id="3-删除目录">3.删除目录</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [目录]</span><br></pre></td></tr></table></figure>
+<h2 id="3-删除目录"><a href="#3-删除目录" class="headerlink" title="3.删除目录"></a>3.删除目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [目录]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>删除所有文件</p>
 </blockquote>
@@ -384,18 +378,15 @@
 <blockquote>
 <p>删除目录所有文件</p>
 </blockquote>
-<h2 id="4-复制目录">4.复制目录</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp[选项][原文件目录][目标目录]</span><br></pre></td></tr></table></figure>
+<h2 id="4-复制目录"><a href="#4-复制目录" class="headerlink" title="4.复制目录"></a>4.复制目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp[选项][原文件目录][目标目录]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>选项：</p>
 <p>-r复制目录</p>
 <p>-p连文件属性一起复制</p>
 <p>-a 相当于-pdr</p>
 </blockquote>
-<h2 id="5-剪切、改名">5.剪切、改名</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv[原文件目录][目标文件目录]</span><br></pre></td></tr></table></figure>
-<h2 id="6-常见目录作用">6.常见目录作用</h2>
-<blockquote>
+<h2 id="5-剪切、改名"><a href="#5-剪切、改名" class="headerlink" title="5.剪切、改名"></a>5.剪切、改名</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv[原文件目录][目标文件目录]</span><br></pre></td></tr></table></figure>
+<h2 id="6-常见目录作用"><a href="#6-常见目录作用" class="headerlink" title="6.常见目录作用"></a>6.常见目录作用</h2><blockquote>
 <p>/ 根目录</p>
 <p>/bin 命令保存目录</p>
 <p>/boot  启动目录</p>
@@ -406,63 +397,44 @@
 <p>/mnt  系统挂载目录</p>
 </blockquote>
 <hr>
-<h1>文件搜索命令</h1>
-<h2 id="1-locate">1.locate</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate [文件名]</span><br></pre></td></tr></table></figure>
+<h1 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h1><h2 id="1-locate"><a href="#1-locate" class="headerlink" title="1.locate"></a>1.locate</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate [文件名]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在系统数据库中查找文件的</p>
-</blockquote>
-<blockquote>
 <p>新建的文件，要执行updatedb操作之后才能搜到</p>
 </blockquote>
-<h2 id="2-命令搜索">2.命令搜索</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">whereis [选项] [命令名]</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">which [选项][命令名]</span><br></pre></td></tr></table></figure>
+<h2 id="2-命令搜索"><a href="#2-命令搜索" class="headerlink" title="2.命令搜索"></a>2.命令搜索</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">whereis [选项] [命令名]</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">which [选项][命令名]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>选项：</p>
 <p>-b 只查找可执行文件</p>
 <p>-m 只查找帮助文件</p>
 </blockquote>
-<h2 id="3-文件搜索">3.文件搜索</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [搜索范围][选项][条件]</span><br></pre></td></tr></table></figure>
+<h2 id="3-文件搜索"><a href="#3-文件搜索" class="headerlink" title="3.文件搜索"></a>3.文件搜索</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [搜索范围][选项][条件]</span><br></pre></td></tr></table></figure>
 <p>直接举例子：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">find  /  -name install.log  </span><br><span class="line">在根目录下查找名为install.log文件</span><br><span class="line">find /root  -inname install.log</span><br><span class="line">忽略大小写查找文件</span><br><span class="line">find /var/log -mtime +10</span><br><span class="line"></span><br><span class="line">其中-mtime 文件修改时间</span><br><span class="line">-atime 文件访问时间</span><br><span class="line">-ctime 改变文件属性时间</span><br><span class="line"></span><br><span class="line">+10 10天前</span><br><span class="line">10  10天</span><br><span class="line">-10 10天内</span><br><span class="line">find /etc -size +20M</span><br><span class="line"></span><br><span class="line">查找文件大于20M的文件</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>压缩与解压缩命令</h1>
-<p>常见压缩格式：.zip  、 .gz 、 .bz2、<br>
-.tar.gz  、 .tar.bz2</p>
-<h2 id="1-zip格式">1.zip格式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//压缩文件</span><br><span class="line">zip [压缩文件名][原文件]</span><br><span class="line">//压缩目录</span><br><span class="line">zip -r  [压缩文件名][原文件]</span><br></pre></td></tr></table></figure>
+<h1 id="压缩与解压缩命令"><a href="#压缩与解压缩命令" class="headerlink" title="压缩与解压缩命令"></a>压缩与解压缩命令</h1><p>常见压缩格式：.zip  、 .gz 、 .bz2、<br> .tar.gz  、 .tar.bz2</p>
+<h2 id="1-zip格式"><a href="#1-zip格式" class="headerlink" title="1.zip格式"></a>1.zip格式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//压缩文件</span><br><span class="line">zip [压缩文件名][原文件]</span><br><span class="line">//压缩目录</span><br><span class="line">zip -r  [压缩文件名][原文件]</span><br></pre></td></tr></table></figure>
 <p>举例子：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">touch jp/cangls</span><br><span class="line"></span><br><span class="line">touch jp/longls</span><br><span class="line"></span><br><span class="line">zip -r jp.zip jp</span><br><span class="line"><span class="meta">#</span><span class="bash">解压：</span></span><br><span class="line">unzip [压缩文件名]</span><br></pre></td></tr></table></figure>
-<h2 id="2-gz格式">2.gz格式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 压缩为gz格式，原文件不保留</span></span><br><span class="line">gzip [原文件]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">压缩.gz格式，原文件保留</span></span><br><span class="line"></span><br><span class="line">gzip -c 原文件 &gt; 压缩文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> 压缩目录：</span></span><br><span class="line">gzip -r  目录</span><br></pre></td></tr></table></figure>
+<h2 id="2-gz格式"><a href="#2-gz格式" class="headerlink" title="2.gz格式"></a>2.gz格式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 压缩为gz格式，原文件不保留</span></span><br><span class="line">gzip [原文件]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">压缩.gz格式，原文件保留</span></span><br><span class="line"></span><br><span class="line">gzip -c 原文件 &gt; 压缩文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> 压缩目录：</span></span><br><span class="line">gzip -r  目录</span><br></pre></td></tr></table></figure>
 <p>解压：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">guzip [文件]</span><br><span class="line"></span><br><span class="line">guzip -r [目录]</span><br></pre></td></tr></table></figure>
-<h2 id="3-tar格式">3.tar格式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打包</span></span><br><span class="line">tar -cvf  打包文件名 原文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line"></span><br><span class="line">tar -xvf jp.tar</span><br></pre></td></tr></table></figure>
-<h2 id="4-tar-gz格式">4.tar.gz格式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">打包</span></span><br><span class="line">tar -zcvf 压缩包名.tar.gz  原文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解压</span></span><br><span class="line">tar -zxvf  压缩包名.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="3-tar格式"><a href="#3-tar格式" class="headerlink" title="3.tar格式"></a>3.tar格式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打包</span></span><br><span class="line">tar -cvf  打包文件名 原文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line"></span><br><span class="line">tar -xvf jp.tar</span><br></pre></td></tr></table></figure>
+<h2 id="4-tar-gz格式"><a href="#4-tar-gz格式" class="headerlink" title="4.tar.gz格式"></a>4.tar.gz格式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">打包</span></span><br><span class="line">tar -zcvf 压缩包名.tar.gz  原文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解压</span></span><br><span class="line">tar -zxvf  压缩包名.tar.gz</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>关机和重启</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">shutdown [选项][时间]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">选项：</span></span><br><span class="line">-c 取消前一个关机命令</span><br><span class="line">-h 关机</span><br><span class="line">-r 重启</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">init 6重启</span><br><span class="line"></span><br><span class="line">init 0关机</span><br><span class="line"></span><br><span class="line">logout退出登陆</span><br></pre></td></tr></table></figure>
+<h1 id="关机和重启"><a href="#关机和重启" class="headerlink" title="关机和重启"></a>关机和重启</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">shutdown [选项][时间]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">选项：</span></span><br><span class="line">-c 取消前一个关机命令</span><br><span class="line">-h 关机</span><br><span class="line">-r 重启</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">init 6重启</span><br><span class="line"></span><br><span class="line">init 0关机</span><br><span class="line"></span><br><span class="line">logout退出登陆</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>查看用户信息</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w</span><br><span class="line">who</span><br><span class="line">last</span><br><span class="line">lastlog</span><br></pre></td></tr></table></figure>
+<h1 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w</span><br><span class="line">who</span><br><span class="line">last</span><br><span class="line">lastlog</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>shell基础</h1>
-<h2 id="1-什么是shell">1.什么是shell</h2>
-<p>shell是命令行解释器。</p>
-<h2 id="2-echo-输出命令">2.echo 输出命令</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo[选项][输出内容]</span><br></pre></td></tr></table></figure>
+<h1 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h1><h2 id="1-什么是shell"><a href="#1-什么是shell" class="headerlink" title="1.什么是shell"></a>1.什么是shell</h2><p> shell是命令行解释器。</p>
+<h2 id="2-echo-输出命令"><a href="#2-echo-输出命令" class="headerlink" title="2.echo 输出命令"></a>2.echo 输出命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo[选项][输出内容]</span><br></pre></td></tr></table></figure>
 <p>选项：</p>
 <blockquote>
 <p>-e:支持转义</p>
 </blockquote>
-<h2 id="3-创建一个脚本">3.创建一个脚本</h2>
-<p>创建 <span>hello.sh</span></p>
+<h2 id="3-创建一个脚本"><a href="#3-创建一个脚本" class="headerlink" title="3.创建一个脚本"></a>3.创建一个脚本</h2><p>创建 <span>hello.sh</span></p>
 <blockquote>
-<p>vim <span>hello.sh</span><br>
-进入编辑：</p>
+<p>vim <span>hello.sh</span><br>进入编辑：</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the first program</span></span><br><span class="line"></span><br><span class="line">echo "hello world!"</span><br></pre></td></tr></table></figure>
 <p>执行：</p>
@@ -470,50 +442,31 @@
 <p>或者：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash hello.sh</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>历史命令</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">history 查看历史命令</span><br><span class="line">history [选项][历史保存文件]</span><br><span class="line">选项：</span><br><span class="line">-c清空历史</span><br><span class="line">-w把缓存中的历史写入历史命令保存文件</span><br></pre></td></tr></table></figure>
+<h1 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">history 查看历史命令</span><br><span class="line">history [选项][历史保存文件]</span><br><span class="line">选项：</span><br><span class="line">-c清空历史</span><br><span class="line">-w把缓存中的历史写入历史命令保存文件</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>输出重定向</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令&gt;文件   以覆盖的方式，把正确的命令输出到指定文件</span><br><span class="line">命令&gt;&gt;文件  以追加的方式，把正确的命令输出到指定文件、</span><br><span class="line">错误命令 2&gt; 文件  以覆盖的方式把错误的命令覆盖到指定文件</span><br><span class="line">错误命令 2&gt;&gt; 文件  以追击的方式把错误的命令覆盖到指定文件</span><br><span class="line"></span><br><span class="line"> 命令&gt;&gt;文件 2&gt;&amp;1  同时追加正确命令和错误命令到 指定文件</span><br><span class="line">命令 &gt;&gt;文件1 2&gt;&gt;文件2   把正确的命令输出到文件1错误的文件2</span><br></pre></td></tr></table></figure>
+<h1 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令&gt;文件   以覆盖的方式，把正确的命令输出到指定文件</span><br><span class="line">命令&gt;&gt;文件  以追加的方式，把正确的命令输出到指定文件、</span><br><span class="line">错误命令 2&gt; 文件  以覆盖的方式把错误的命令覆盖到指定文件</span><br><span class="line">错误命令 2&gt;&gt; 文件  以追击的方式把错误的命令覆盖到指定文件</span><br><span class="line"></span><br><span class="line"> 命令&gt;&gt;文件 2&gt;&amp;1  同时追加正确命令和错误命令到 指定文件</span><br><span class="line">命令 &gt;&gt;文件1 2&gt;&gt;文件2   把正确的命令输出到文件1错误的文件2</span><br></pre></td></tr></table></figure>
 <p>举个例子:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">/bin/bash</span></span><br><span class="line">while command</span><br><span class="line">do</span><br><span class="line">curl -d "userid=123343,action=getuserinfo" https://app.testasss.com.cn/ &gt;test.txt</span><br><span class="line">time=$(date)</span><br><span class="line">cat=$(cat test.txt |cut -d \: -f 3|cut -d \" -f 2)</span><br><span class="line">echo "$time $cat" &gt;&gt;test.log</span><br><span class="line">sleep 15s</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>网络相关</h1>
-<h2 id="1-ifconfig查看ip">1.ifconfig查看ip</h2>
-<p>举个例子：</p>
+<h1 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h1><h2 id="1-ifconfig查看ip"><a href="#1-ifconfig查看ip" class="headerlink" title="1.ifconfig查看ip"></a>1.ifconfig查看ip</h2><p>举个例子：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifconfig&gt;</span><span class="bash">&gt; ip.log</span></span><br><span class="line">cat ip.log</span><br></pre></td></tr></table></figure>
-<h2 id="2-查看网络状态">2.查看网络状态</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat [选项]</span><br></pre></td></tr></table></figure>
+<h2 id="2-查看网络状态"><a href="#2-查看网络状态" class="headerlink" title="2.查看网络状态"></a>2.查看网络状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat [选项]</span><br></pre></td></tr></table></figure>
 <p>选项：</p>
 <blockquote>
-<p>-t: 列出tcp 协议端口<br>
--u: 列出upd协议端口<br>
--n  ip地址个端口号<br>
--l 列出监听状态的<br>
--a 所有</p>
+<p>-t: 列出tcp 协议端口<br>-u: 列出upd协议端口<br>-n  ip地址个端口号<br>-l 列出监听状态的<br>-a 所有</p>
 </blockquote>
-<h2 id="3-查看路由列表">3.查看路由列表</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -rn</span><br><span class="line">或者</span><br><span class="line">route -n</span><br></pre></td></tr></table></figure>
-<h2 id="4-查看某域名与自己的电脑的网络状态">4.查看某域名与自己的电脑的网络状态</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baodu.com</span><br></pre></td></tr></table></figure>
+<h2 id="3-查看路由列表"><a href="#3-查看路由列表" class="headerlink" title="3.查看路由列表"></a>3.查看路由列表</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -rn</span><br><span class="line">或者</span><br><span class="line">route -n</span><br></pre></td></tr></table></figure>
+<h2 id="4-查看某域名与自己的电脑的网络状态"><a href="#4-查看某域名与自己的电脑的网络状态" class="headerlink" title="4.查看某域名与自己的电脑的网络状态"></a>4.查看某域名与自己的电脑的网络状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baodu.com</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>vi编辑器</h1>
-<p>vi的升级版是vim</p>
-<h2 id="1-vim的操作模式">1.vim的操作模式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commond mode  命令模式</span><br><span class="line">inser tmode  编辑模式</span><br><span class="line">lastline mode  底行模式</span><br></pre></td></tr></table></figure>
-<h2 id="2-模式切换">2.模式切换</h2>
-<p>i  进入编辑模式<br>
-esc  进入命令行模式</p>
-<h2 id="3-命令模式">3.命令模式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim [文件]         进入文件或者创建文件（文件不存在的情况下）</span><br><span class="line">vim + [文件名]   进入文件尾部</span><br><span class="line">vim +/[字符串] [文件名]  光标定位到文件第一次出现该字符串的位置</span><br></pre></td></tr></table></figure>
-<h2 id="4-底行模式">4.底行模式</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:w  保存</span><br><span class="line">:q 退出</span><br><span class="line">:! 强制</span><br><span class="line">:15  定位的第15行</span><br><span class="line">/[字符串]  光标位置向后搜索该字符串</span><br><span class="line">?[字符串]  光标位置向前搜索该字符串</span><br><span class="line">dd  删除光标所在行</span><br><span class="line"></span><br><span class="line">ctr+f   向下翻页</span><br><span class="line">ctr+b  向上翻页</span><br></pre></td></tr></table></figure>
+<h1 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h1><p>vi的升级版是vim</p>
+<h2 id="1-vim的操作模式"><a href="#1-vim的操作模式" class="headerlink" title="1.vim的操作模式"></a>1.vim的操作模式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commond mode  命令模式</span><br><span class="line">inser tmode  编辑模式</span><br><span class="line">lastline mode  底行模式</span><br></pre></td></tr></table></figure>
+<h2 id="2-模式切换"><a href="#2-模式切换" class="headerlink" title="2.模式切换"></a>2.模式切换</h2><p> i  进入编辑模式<br> esc  进入命令行模式</p>
+<h2 id="3-命令模式"><a href="#3-命令模式" class="headerlink" title="3.命令模式"></a>3.命令模式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim [文件]         进入文件或者创建文件（文件不存在的情况下）</span><br><span class="line">vim + [文件名]   进入文件尾部</span><br><span class="line">vim +/[字符串] [文件名]  光标定位到文件第一次出现该字符串的位置</span><br></pre></td></tr></table></figure>
+<h2 id="4-底行模式"><a href="#4-底行模式" class="headerlink" title="4.底行模式"></a>4.底行模式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:w  保存</span><br><span class="line">:q 退出</span><br><span class="line">:! 强制</span><br><span class="line">:15  定位的第15行</span><br><span class="line">/[字符串]  光标位置向后搜索该字符串</span><br><span class="line">?[字符串]  光标位置向前搜索该字符串</span><br><span class="line">dd  删除光标所在行</span><br><span class="line"></span><br><span class="line">ctr+f   向下翻页</span><br><span class="line">ctr+b  向上翻页</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>常用操作快捷键</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctr+c  终止当前命令</span><br><span class="line">ctr+l 清屏  相当于 clear</span><br><span class="line">ctr+a  光标移到行首</span><br><span class="line">ctr+e  光标移到行尾</span><br><span class="line">ctr+u  把光标所在位置删除到行首</span><br><span class="line">ctr+z  把命令放入后台</span><br><span class="line">ctr+r  在历史命令中搜索</span><br></pre></td></tr></table></figure>
+<h1 id="常用操作快捷键"><a href="#常用操作快捷键" class="headerlink" title="常用操作快捷键"></a>常用操作快捷键</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctr+c  终止当前命令</span><br><span class="line">ctr+l 清屏  相当于 clear</span><br><span class="line">ctr+a  光标移到行首</span><br><span class="line">ctr+e  光标移到行尾</span><br><span class="line">ctr+u  把光标所在位置删除到行首</span><br><span class="line">ctr+z  把命令放入后台</span><br><span class="line">ctr+r  在历史命令中搜索</span><br></pre></td></tr></table></figure>
 <hr>
-<h1>其他</h1>
-<p>常用工具：</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>常用工具：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vmware  虚拟机</span><br><span class="line">centos.iso   centos系统镜像 ,绝大多数服务器是这个系统</span><br><span class="line">SecureCRT  远程登陆工具</span><br><span class="line">Xshell 远程登陆工具</span><br><span class="line">winscp copy文件工具</span><br></pre></td></tr></table></figure>
 <p>原文链接：<a href="https://www.jianshu.com/p/0718b3abedcf" target="_blank" rel="noopener">https://www.jianshu.com/p/0718b3abedcf</a></p>
 
@@ -648,7 +601,7 @@ esc  进入命令行模式</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">命令的基本格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立目录"><span class="nav-text">1.建立目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切换目录"><span class="nav-text">2.切换目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-删除目录"><span class="nav-text">3.删除目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-复制目录"><span class="nav-text">4.复制目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-剪切、改名"><span class="nav-text">5.剪切、改名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常见目录作用"><span class="nav-text">6.常见目录作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">文件搜索命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-locate"><span class="nav-text">1.locate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令搜索"><span class="nav-text">2.命令搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文件搜索"><span class="nav-text">3.文件搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">压缩与解压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-zip格式"><span class="nav-text">1.zip格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-gz格式"><span class="nav-text">2.gz格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-tar格式"><span class="nav-text">3.tar格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-tar-gz格式"><span class="nav-text">4.tar.gz格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">关机和重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">shell基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是shell"><span class="nav-text">1.什么是shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-echo-输出命令"><span class="nav-text">2.echo 输出命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建一个脚本"><span class="nav-text">3.创建一个脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">网络相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ifconfig查看ip"><span class="nav-text">1.ifconfig查看ip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查看网络状态"><span class="nav-text">2.查看网络状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-查看路由列表"><span class="nav-text">3.查看路由列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查看某域名与自己的电脑的网络状态"><span class="nav-text">4.查看某域名与自己的电脑的网络状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">vi编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vim的操作模式"><span class="nav-text">1.vim的操作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-模式切换"><span class="nav-text">2.模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-命令模式"><span class="nav-text">3.命令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-底行模式"><span class="nav-text">4.底行模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">常用操作快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">其他</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命令的基本格式"><span class="nav-text">命令的基本格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询目录的内容"><span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件处理命令"><span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立目录"><span class="nav-text">1.建立目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切换目录"><span class="nav-text">2.切换目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-删除目录"><span class="nav-text">3.删除目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-复制目录"><span class="nav-text">4.复制目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-剪切、改名"><span class="nav-text">5.剪切、改名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常见目录作用"><span class="nav-text">6.常见目录作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件搜索命令"><span class="nav-text">文件搜索命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-locate"><span class="nav-text">1.locate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令搜索"><span class="nav-text">2.命令搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文件搜索"><span class="nav-text">3.文件搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#压缩与解压缩命令"><span class="nav-text">压缩与解压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-zip格式"><span class="nav-text">1.zip格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-gz格式"><span class="nav-text">2.gz格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-tar格式"><span class="nav-text">3.tar格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-tar-gz格式"><span class="nav-text">4.tar.gz格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关机和重启"><span class="nav-text">关机和重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看用户信息"><span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell基础"><span class="nav-text">shell基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是shell"><span class="nav-text">1.什么是shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-echo-输出命令"><span class="nav-text">2.echo 输出命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建一个脚本"><span class="nav-text">3.创建一个脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#历史命令"><span class="nav-text">历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出重定向"><span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络相关"><span class="nav-text">网络相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ifconfig查看ip"><span class="nav-text">1.ifconfig查看ip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查看网络状态"><span class="nav-text">2.查看网络状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-查看路由列表"><span class="nav-text">3.查看路由列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查看某域名与自己的电脑的网络状态"><span class="nav-text">4.查看某域名与自己的电脑的网络状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vi编辑器"><span class="nav-text">vi编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vim的操作模式"><span class="nav-text">1.vim的操作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-模式切换"><span class="nav-text">2.模式切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-命令模式"><span class="nav-text">3.命令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-底行模式"><span class="nav-text">4.底行模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用操作快捷键"><span class="nav-text">常用操作快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -692,7 +645,7 @@ esc  进入命令行模式</p>
         <a href="https://github.com/Joyrocky" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Joyrocky" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:kevin009008@sina.cn" title="E-Mail → mailto:kevin009008@sina.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:kevin009008@outlook.com" title="E-Mail → mailto:kevin009008@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://weibo.com/u/2932742182/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2932742182&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
@@ -743,13 +696,13 @@ esc  进入命令行模式</p>
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">106k</span>
+    <span title="站点总字数">105k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:36</span>
+    <span title="站点阅读时长">1:35</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>

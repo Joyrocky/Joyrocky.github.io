@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-03-15T02:25:37.179Z</updated>
+  <updated>2020-03-21T09:42:02.041Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -21,23 +21,21 @@
     <link href="https://blog.zxkidea.top/posts/8343e966.html"/>
     <id>https://blog.zxkidea.top/posts/8343e966.html</id>
     <published>2020-03-11T03:26:23.000Z</published>
-    <updated>2020-03-15T02:25:37.179Z</updated>
+    <updated>2020-03-21T09:42:02.041Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;一、常用函数大全&quot;&gt;一、常用函数大全&lt;/h2&gt;
-&lt;h3 id=&quot;1-数学函数&quot;&gt;1. 数学函数&lt;/h3&gt;
-&lt;ul&gt;
+      &lt;h2 id=&quot;一、常用函数大全&quot;&gt;&lt;a href=&quot;#一、常用函数大全&quot; class=&quot;headerlink&quot; title=&quot;一、常用函数大全&quot;&gt;&lt;/a&gt;一、常用函数大全&lt;/h2&gt;&lt;h3 id=&quot;1-数学函数&quot;&gt;&lt;a href=&quot;#1-数学函数&quot; class=&quot;headerlink&quot; title=&quot;1. 数学函数&quot;&gt;&lt;/a&gt;1. 数学函数&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;ABS(x)&lt;/code&gt;  返回x的绝对值&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;BIN(x)&lt;/code&gt;  返回x的二进制（OCT返回八进制，HEX返回十六进制）&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;CEILING(x)&lt;/code&gt;  返回大于x的最小整数值&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;EXP(x) &lt;/code&gt; 返回值e（自然对数的底）的x次方&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXP(x)&lt;/code&gt; 返回值e（自然对数的底）的x次方&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -53,20 +51,20 @@
     <link href="https://blog.zxkidea.top/posts/7755ff13.html"/>
     <id>https://blog.zxkidea.top/posts/7755ff13.html</id>
     <published>2020-03-09T01:35:13.000Z</published>
-    <updated>2020-03-14T01:33:43.723Z</updated>
+    <updated>2020-03-21T09:41:48.125Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Ch10-Update-Transaction&quot;&gt;Ch10.  Update Transaction&lt;/h2&gt;
-&lt;h3 id=&quot;1-事务及其特性：&quot;&gt;1. 事务及其特性：&lt;/h3&gt;
-&lt;p&gt;&lt;font color = green size = 4&gt;事务：&lt;/font&gt;是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。&lt;/p&gt;
+      &lt;h2 id=&quot;Ch10-Update-Transaction&quot;&gt;&lt;a href=&quot;#Ch10-Update-Transaction&quot; class=&quot;headerlink&quot; title=&quot;Ch10.  Update Transaction&quot;&gt;&lt;/a&gt;Ch10.  Update Transaction&lt;/h2&gt;&lt;h3 id=&quot;1-事务及其特性：&quot;&gt;&lt;a href=&quot;#1-事务及其特性：&quot; class=&quot;headerlink&quot; title=&quot;1. 事务及其特性：&quot;&gt;&lt;/a&gt;1. 事务及其特性：&lt;/h3&gt;&lt;font color = green size = 4&gt;事务：&lt;/font&gt;是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。
+
 &lt;br/&gt;
-&lt;p&gt;&lt;font color = green size = 4&gt;事务的四大特性：ACID&lt;/font&gt;&lt;/p&gt;
+
+&lt;font color = green size = 4&gt;事务的四大特性：ACID&lt;/font&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -82,22 +80,20 @@
     <link href="https://blog.zxkidea.top/posts/9c3362dd.html"/>
     <id>https://blog.zxkidea.top/posts/9c3362dd.html</id>
     <published>2020-03-08T03:27:21.000Z</published>
-    <updated>2020-03-14T13:09:18.279Z</updated>
+    <updated>2020-03-21T09:41:35.562Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Ch7-Database-Manage-数据库管理&quot;&gt;Ch7.  Database Manage(数据库管理)&lt;/h2&gt;
-&lt;h3 id=&quot;1-Integrity-Constraints-完整性约束&quot;&gt;1. Integrity Constraints (完整性约束)&lt;/h3&gt;
-&lt;ul&gt;
+      &lt;h2 id=&quot;Ch7-Database-Manage-数据库管理&quot;&gt;&lt;a href=&quot;#Ch7-Database-Manage-数据库管理&quot; class=&quot;headerlink&quot; title=&quot;Ch7.  Database Manage(数据库管理)&quot;&gt;&lt;/a&gt;Ch7.  Database Manage(数据库管理)&lt;/h2&gt;&lt;h3 id=&quot;1-Integrity-Constraints-完整性约束&quot;&gt;&lt;a href=&quot;#1-Integrity-Constraints-完整性约束&quot; class=&quot;headerlink&quot; title=&quot;1. Integrity Constraints (完整性约束)&quot;&gt;&lt;/a&gt;1. Integrity Constraints (完整性约束)&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;font color = green size = 4&gt;数据完整性：&lt;/font&gt;存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;br/&gt;
-&lt;h4 id=&quot;1）实体完整性&quot;&gt;1）实体完整性&lt;/h4&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1）实体完整性&quot;&gt;&lt;a href=&quot;#1）实体完整性&quot; class=&quot;headerlink&quot; title=&quot;1）实体完整性&quot;&gt;&lt;/a&gt;1）实体完整性&lt;/h4&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -113,21 +109,20 @@
     <link href="https://blog.zxkidea.top/posts/6244050a.html"/>
     <id>https://blog.zxkidea.top/posts/6244050a.html</id>
     <published>2020-03-08T01:42:02.000Z</published>
-    <updated>2020-03-08T02:24:08.008Z</updated>
+    <updated>2020-03-21T09:42:21.776Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/kungfupanda/p/12362163.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/kungfupanda/p/12362163.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。&quot;&gt;1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&lt;/h2&gt;
-&lt;p&gt;1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。&lt;/p&gt;
+&lt;h2 id=&quot;1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。&quot;&gt;&lt;a href=&quot;#1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。&quot; class=&quot;headerlink&quot; title=&quot;1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&quot;&gt;&lt;/a&gt;1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&lt;/h2&gt;&lt;p&gt;1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。&lt;/p&gt;
 &lt;p&gt;2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。&lt;/p&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -143,21 +138,19 @@
     <link href="https://blog.zxkidea.top/posts/780f9bb4.html"/>
     <id>https://blog.zxkidea.top/posts/780f9bb4.html</id>
     <published>2020-03-05T15:30:17.000Z</published>
-    <updated>2020-03-05T16:37:12.121Z</updated>
+    <updated>2020-03-21T09:41:13.675Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Ch5-Embedded-SQL-（嵌入式SQL）&quot;&gt;Ch5. Embedded SQL （嵌入式SQL）&lt;/h2&gt;
-&lt;h3 id=&quot;1-定义&quot;&gt;1. 定义&lt;/h3&gt;
-&lt;p&gt;&lt;font color = blue size = 4&gt;嵌入式SQL是将SQL嵌入到某一种高级语言之中，如C/C++,Java等 这种高级语言被称为宿主语言&lt;/font&gt;&lt;/p&gt;
-&lt;br/&gt;
-&lt;h3 id=&quot;2-特性&quot;&gt;2. 特性&lt;/h3&gt;
-&lt;p&gt;​	&lt;font color = blue size = 4&gt;1）继承了高级语言的过程控制性&lt;/font&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;Ch5-Embedded-SQL-（嵌入式SQL）&quot;&gt;&lt;a href=&quot;#Ch5-Embedded-SQL-（嵌入式SQL）&quot; class=&quot;headerlink&quot; title=&quot;Ch5. Embedded SQL （嵌入式SQL）&quot;&gt;&lt;/a&gt;Ch5. Embedded SQL （嵌入式SQL）&lt;/h2&gt;&lt;h3 id=&quot;1-定义&quot;&gt;&lt;a href=&quot;#1-定义&quot; class=&quot;headerlink&quot; title=&quot;1. 定义&quot;&gt;&lt;/a&gt;1. 定义&lt;/h3&gt;&lt;font color = blue size = 4&gt;嵌入式SQL是将SQL嵌入到某一种高级语言之中，如C/C++,Java等 这种高级语言被称为宿主语言&lt;/font&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-特性&quot;&gt;&lt;a href=&quot;#2-特性&quot; class=&quot;headerlink&quot; title=&quot;2. 特性&quot;&gt;&lt;/a&gt;2. 特性&lt;/h3&gt;&lt;p&gt;​    &lt;font color = blue size = 4&gt;1）继承了高级语言的过程控制性&lt;/font&gt;&lt;/p&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -173,21 +166,20 @@
     <link href="https://blog.zxkidea.top/posts/928c862a.html"/>
     <id>https://blog.zxkidea.top/posts/928c862a.html</id>
     <published>2020-02-29T04:24:34.000Z</published>
-    <updated>2020-03-13T14:06:08.336Z</updated>
+    <updated>2020-03-21T09:40:58.534Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Ch3-Basic-SQL-Query-Language&quot;&gt;Ch3:  Basic SQL Query Language&lt;/h2&gt;
-&lt;h3 id=&quot;一-Setting-up-the-Database&quot;&gt;一. Setting up the Database&lt;/h3&gt;
-&lt;h4 id=&quot;1-SQL-Datatype&quot;&gt;1. SQL  Datatype&lt;/h4&gt;
-&lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER(n), CHAR(n)：&lt;/font&gt; fixed-length character strings&lt;/p&gt;
-&lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER VARYING(n), CHAR VARYING(n)：&lt;/font&gt;variable-length character strings&lt;/p&gt;
-&lt;p&gt;&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;Ch3-Basic-SQL-Query-Language&quot;&gt;&lt;a href=&quot;#Ch3-Basic-SQL-Query-Language&quot; class=&quot;headerlink&quot; title=&quot;Ch3:  Basic SQL Query Language&quot;&gt;&lt;/a&gt;Ch3:  Basic SQL Query Language&lt;/h2&gt;&lt;h3 id=&quot;一-Setting-up-the-Database&quot;&gt;&lt;a href=&quot;#一-Setting-up-the-Database&quot; class=&quot;headerlink&quot; title=&quot;一. Setting up the Database&quot;&gt;&lt;/a&gt;一. Setting up the Database&lt;/h3&gt;&lt;h4 id=&quot;1-SQL-Datatype&quot;&gt;&lt;a href=&quot;#1-SQL-Datatype&quot; class=&quot;headerlink&quot; title=&quot;1. SQL  Datatype&quot;&gt;&lt;/a&gt;1. SQL  Datatype&lt;/h4&gt;&lt;font color = blue size = 4&gt;CHARACTER(n), CHAR(n)：&lt;/font&gt; fixed-length character strings
+
+&lt;font color = blue size = 4&gt;CHARACTER VARYING(n), CHAR VARYING(n)：&lt;/font&gt;variable-length character strings
+
+&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -203,20 +195,16 @@
     <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
     <id>https://blog.zxkidea.top/posts/786bf771.html</id>
     <published>2020-01-12T14:48:33.010Z</published>
-    <updated>2020-02-29T02:45:15.516Z</updated>
+    <updated>2020-03-21T09:40:38.298Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Ch1-Introduction&quot;&gt;Ch1:  Introduction&lt;/h2&gt;
-&lt;h2 id=&quot;Ch2-The-Rational-Model&quot;&gt;Ch2:  The Rational Model&lt;/h2&gt;
-&lt;h3 id=&quot;1-The-CAP-Database&quot;&gt;1.The CAP Database&lt;/h3&gt;
-&lt;h3 id=&quot;2-Naming-the-Parts-of-the-Database&quot;&gt;2.Naming the Parts of the Database&lt;/h3&gt;
-&lt;h3 id=&quot;3-Rational-Rules&quot;&gt;3.Rational Rules:&lt;/h3&gt;
+      &lt;h2 id=&quot;Ch1-Introduction&quot;&gt;&lt;a href=&quot;#Ch1-Introduction&quot; class=&quot;headerlink&quot; title=&quot;Ch1:  Introduction&quot;&gt;&lt;/a&gt;Ch1:  Introduction&lt;/h2&gt;&lt;h2 id=&quot;Ch2-The-Rational-Model&quot;&gt;&lt;a href=&quot;#Ch2-The-Rational-Model&quot; class=&quot;headerlink&quot; title=&quot;Ch2:  The Rational Model&quot;&gt;&lt;/a&gt;Ch2:  The Rational Model&lt;/h2&gt;&lt;h3 id=&quot;1-The-CAP-Database&quot;&gt;&lt;a href=&quot;#1-The-CAP-Database&quot; class=&quot;headerlink&quot; title=&quot;1.The CAP Database&quot;&gt;&lt;/a&gt;1.The CAP Database&lt;/h3&gt;&lt;h3 id=&quot;2-Naming-the-Parts-of-the-Database&quot;&gt;&lt;a href=&quot;#2-Naming-the-Parts-of-the-Database&quot; class=&quot;headerlink&quot; title=&quot;2.Naming the Parts of the Database&quot;&gt;&lt;/a&gt;2.Naming the Parts of the Database&lt;/h3&gt;&lt;h3 id=&quot;3-Rational-Rules&quot;&gt;&lt;a href=&quot;#3-Rational-Rules&quot; class=&quot;headerlink&quot; title=&quot;3.Rational Rules:&quot;&gt;&lt;/a&gt;3.Rational Rules:&lt;/h3&gt;
     
     </summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
       <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
@@ -236,10 +224,10 @@
     
     <summary type="html">
     
-      &lt;h1&gt;分治算法&lt;/h1&gt;
-&lt;p&gt;&lt;font size = 5&gt;1. 基本概念&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……&lt;/p&gt;
-&lt;p&gt;任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;
+      &lt;h1 id=&quot;分治算法&quot;&gt;&lt;a href=&quot;#分治算法&quot; class=&quot;headerlink&quot; title=&quot;分治算法&quot;&gt;&lt;/a&gt;分治算法&lt;/h1&gt;&lt;font size = 5&gt;1. 基本概念&lt;/font&gt;
+
+&lt;p&gt;　　在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……&lt;/p&gt;
+&lt;p&gt;　　 任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;
     
     </summary>
     
@@ -260,12 +248,8 @@
     
     <summary type="html">
     
-      &lt;h1&gt;任务管理&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br&gt;
-现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br&gt;
-基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br&gt;
-List是一层一层嵌套的，通过列表来组织任务，不断拆分，直到拆分到每一个具体的任务。列表用来确定一个东西的位置，而Tag用来表示一个任务的属性。标签在任务管理工具里可以横跨列表。Tag可以包括时间、优先级、人物，一个比较有趣的思路是用精力来做标签，我们可以把精力分为两档，“Focus”和“Brain Dead”。Filter是过滤，表示通过一定的条件，把我们需要的东西从一大堆信息中筛选出来。&lt;/p&gt;
+      &lt;h1 id=&quot;任务管理&quot;&gt;&lt;a href=&quot;#任务管理&quot; class=&quot;headerlink&quot; title=&quot;任务管理&quot;&gt;&lt;/a&gt;任务管理&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br&gt;现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br&gt;基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br&gt;List是一层一层嵌套的，通过列表来组织任务，不断拆分，直到拆分到每一个具体的任务。列表用来确定一个东西的位置，而Tag用来表示一个任务的属性。标签在任务管理工具里可以横跨列表。Tag可以包括时间、优先级、人物，一个比较有趣的思路是用精力来做标签，我们可以把精力分为两档，“Focus”和“Brain Dead”。Filter是过滤，表示通过一定的条件，把我们需要的东西从一大堆信息中筛选出来。&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -287,14 +271,13 @@ List是一层一层嵌套的，通过列表来组织任务，不断拆分，直�
     
     <summary type="html">
     
-      &lt;h1&gt;命令的基本格式&lt;/h1&gt;
-&lt;blockquote&gt;
+      &lt;h1 id=&quot;命令的基本格式&quot;&gt;&lt;a href=&quot;#命令的基本格式&quot; class=&quot;headerlink&quot; title=&quot;命令的基本格式&quot;&gt;&lt;/a&gt;命令的基本格式&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;[root@localhost~]&lt;/p&gt;
 &lt;p&gt;root为用户名&lt;/p&gt;
 &lt;p&gt;～表示当前所在位置&lt;/p&gt;
 &lt;p&gt;localhost主机名&lt;/p&gt;
 &lt;p&gt;‘#’超级用户&lt;/p&gt;
-&lt;p&gt;&#39;$&amp;quot;  普通用户&lt;/p&gt;
+&lt;p&gt;‘$”  普通用户&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
