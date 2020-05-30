@@ -53,12 +53,12 @@
 
 
 
-  <meta name="description" content="Ch1:  IntroductionCh2:  The Rational Model1.The CAP Database2.Naming the Parts of the Database3.Rational Rules:">
+  <meta name="description" content="Ch1:  Introduction Ch2:  The Rational Model 1.The CAP Database 2.Naming the Parts of the Database 3.Rational Rules:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DatabaseNotes-Ch1,2">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/786bf771.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="Ch1:  IntroductionCh2:  The Rational Model1.The CAP Database2.Naming the Parts of the Database3.Rational Rules:">
+<meta property="og:description" content="Ch1:  Introduction Ch2:  The Rational Model 1.The CAP Database 2.Naming the Parts of the Database 3.Rational Rules:">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://image.zxkidea.top/1547706516510.png">
 <meta property="og:image" content="http://image.zxkidea.top/1547706548705.png">
@@ -87,7 +87,7 @@
 <meta property="og:image" content="http://image.zxkidea.top/databasenote3.png">
 <meta property="og:image" content="http://image.zxkidea.top/databasenote4.png">
 <meta property="article:published_time" content="2020-01-12T14:48:33.010Z">
-<meta property="article:modified_time" content="2020-03-21T09:40:38.298Z">
+<meta property="article:modified_time" content="2020-05-30T02:27:43.612Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="笔记">
@@ -292,7 +292,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-21 17:40:38" itemprop="dateModified" datetime="2020-03-21T17:40:38+08:00">2020-03-21</time>
+                <time title="修改时间：2020-05-30 10:27:43" itemprop="dateModified" datetime="2020-05-30T10:27:43+08:00">2020-05-30</time>
               </span>
 
           <span class="post-meta-divider">|</span>
@@ -339,7 +339,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+              <span>5.9k</span>
             </span>
 
           <span class="post-meta-divider">|</span>
@@ -348,7 +348,7 @@
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -360,14 +360,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Ch1-Introduction"><a href="#Ch1-Introduction" class="headerlink" title="Ch1:  Introduction"></a>Ch1:  Introduction</h2><h2 id="Ch2-The-Rational-Model"><a href="#Ch2-The-Rational-Model" class="headerlink" title="Ch2:  The Rational Model"></a>Ch2:  The Rational Model</h2><h3 id="1-The-CAP-Database"><a href="#1-The-CAP-Database" class="headerlink" title="1.The CAP Database"></a>1.The CAP Database</h3><h3 id="2-Naming-the-Parts-of-the-Database"><a href="#2-Naming-the-Parts-of-the-Database" class="headerlink" title="2.Naming the Parts of the Database"></a>2.Naming the Parts of the Database</h3><h3 id="3-Rational-Rules"><a href="#3-Rational-Rules" class="headerlink" title="3.Rational Rules:"></a>3.Rational Rules:</h3><a id="more"></a>
+        <h2 id="Ch1-Introduction">Ch1:  Introduction</h2>
+<h2 id="Ch2-The-Rational-Model">Ch2:  The Rational Model</h2>
+<h3 id="1-The-CAP-Database">1.The CAP Database</h3>
+<h3 id="2-Naming-the-Parts-of-the-Database">2.Naming the Parts of the Database</h3>
+<h3 id="3-Rational-Rules">3.Rational Rules:</h3>
+<a id="more"></a>
 <ol>
 <li><strong>First Normal Form Rules</strong></li>
 <li><strong>Access Rows By Content Only Rule</strong></li>
 <li><strong>The Unique Row Rule</strong></li>
 <li><strong>Entity Integrity rule</strong></li>
 </ol>
-<h3 id="4-Keys-Superkeys-and-Null-values"><a href="#4-Keys-Superkeys-and-Null-values" class="headerlink" title="4.Keys, Superkeys and Null values"></a>4.Keys, Superkeys and Null values</h3><h3 id="5-Rational-Algebra-关系代数"><a href="#5-Rational-Algebra-关系代数" class="headerlink" title="5.Rational Algebra(关系代数)"></a>5.Rational Algebra(关系代数)</h3><div class="table-container">
+<h3 id="4-Keys-Superkeys-and-Null-values">4.Keys, Superkeys and Null values</h3>
+<h3 id="5-Rational-Algebra-关系代数">5.Rational Algebra(关系代数)</h3>
 <table>
 <thead>
 <tr>
@@ -404,8 +410,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -420,25 +424,25 @@
 <td>PROJECT   (投影)</td>
 <td>R   [  ]</td>
 <td>R   [  ]</td>
-<td>R[A~i1~,…,A~ik~]</td>
+<td>R[A<sub>i1</sub>,…,A<sub>ik</sub>]</td>
 </tr>
 <tr>
 <td></td>
 <td>$\Pi $</td>
 <td></td>
-<td>$\Pi$~Ai1,…,Aik~  (R)</td>
+<td>$\Pi$<sub>Ai1,…,Aik</sub>  ®</td>
 </tr>
 <tr>
 <td>SELECT   (选择)</td>
 <td>R   where C</td>
 <td>R   where C</td>
-<td>R   where A~1~=5</td>
+<td>R   where A<sub>1</sub>=5</td>
 </tr>
 <tr>
 <td></td>
 <td>$\sigma$</td>
-<td>$\sigma$~c~(R)</td>
-<td>$\sigma$~A1=5~(R)</td>
+<td>$\sigma$<sub>c</sub>®</td>
+<td>$\sigma$<sub>A1=5</sub>®</td>
 </tr>
 <tr>
 <td>JOIN   (联接)</td>
@@ -454,112 +458,108 @@
 </tr>
 </tbody>
 </table>
-</div>
-<font size = 4 color = purple>Compatible Tables (相容表)</font>
-
+<p><font size = 4 color = purple>Compatible Tables (相容表)</font></p>
 <p>表R和表S是相容表，当且仅当，</p>
 <p>表R和表S的表头相同，并且对应的列中的数据是相同的类型和相同的语义。</p>
-<font size = 4 color = purple>Assignment(赋值/取别名)</font>
-
+<p><font size = 4 color = purple>Assignment(赋值/取别名)</font></p>
 <ol>
-<li><p>符号：:= </p>
+<li>
+<p>符号：:=</p>
 </li>
-<li><p>将表格R的值赋给(取别名)S: S := R</p>
+<li>
+<p>将表格R的值赋给(取别名)S: S := R</p>
 </li>
-<li><p>举个栗子：</p>
-<script type="math/tex; mode=display">
-T1 := (R \cap S)\\  
-T2 := (R \cup S)\\ 
-T := T1 – T2</script></li>
+<li>
+<p>举个栗子：<br>
+$$<br>
+T1 := (R \cap S)\<br>
+T2 := (R \cup S)\<br>
+T := T1 – T2<br>
+$$</p>
+</li>
 </ol>
 <hr>
-<h4 id="1-Set-Theoretic-Operation"><a href="#1-Set-Theoretic-Operation" class="headerlink" title="1) Set-Theoretic Operation"></a>1) Set-Theoretic Operation</h4><p><div align="center"><font color = blue size = 4>Union,Intersection,Difference,Product</font></div></p>
-<ul>
-<li>Example:</li>
-</ul>
-<script type="math/tex; mode=display">
-R\cup S,\ R\cap S,\ R-S,\ R\times S</script><div class="table-container">
+<h4 id="1-Set-Theoretic-Operation">1) Set-Theoretic Operation</h4>
+<div align="center"><font color = blue size = 4>Union,Intersection,Difference,Product</font></div>
+- Example:
+<p>$$<br>
+R\cup S,\ R\cap S,\ R-S,\ R\times S<br>
+$$</p>
 <table>
 <thead>
 <tr>
-<th><img data-src="http://image.zxkidea.top/1547706516510.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547706548705.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547707597889.png" alt="img"></th>
+<th><img data-src="http://image.zxkidea.top/1547706516510.png" alt="zxk"></th>
+<th><img data-src="http://image.zxkidea.top/1547706548705.png" alt="zxk"></th>
+<th><img data-src="http://image.zxkidea.top/1547707597889.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img data-src="http://image.zxkidea.top/1547707646859.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547707694254.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547707712319.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547707646859.png" alt="zxk"></td>
+<td><img data-src="http://image.zxkidea.top/1547707694254.png" alt="zxk"></td>
+<td><img data-src="http://image.zxkidea.top/1547707712319.png" alt="zxk"></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img data-src="http://image.zxkidea.top/1547708058177.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547708130599.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547708187008.png" alt="img"></th>
+<th><img data-src="http://image.zxkidea.top/1547708058177.png" alt="zxk"></th>
+<th><img data-src="http://image.zxkidea.top/1547708130599.png" alt="zxk"></th>
+<th><img data-src="http://image.zxkidea.top/1547708187008.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
-<font size = 4 color = red>Tips:</font>
-
+<p><font size = 4 color = red>Tips:</font></p>
 <ul>
 <li>Product运算产生的新表列的个数为$C_S + C_R$，新表行的个数为$N_R \times N_S$</li>
 </ul>
 <hr>
-<h4 id="2-Native-Theoretic-Operation"><a href="#2-Native-Theoretic-Operation" class="headerlink" title="2) Native Theoretic Operation"></a>2) Native Theoretic Operation</h4><p><div align="center"><font color = blue size = 4>Project,Select,Join,Division</font></div></p>
-<ul>
-<li>Example:</li>
-</ul>
-<script type="math/tex; mode=display">
-R[A_{i1},...A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S</script><div class="table-container">
+<h4 id="2-Native-Theoretic-Operation">2) Native Theoretic Operation</h4>
+<div align="center"><font color = blue size = 4>Project,Select,Join,Division</font></div>
+- Example:
+<p>$$<br>
+R[A_{i1},…A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S<br>
+$$</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:center">(Projection)CN:= C[cname]</th>
-<th><img data-src="http://image.zxkidea.top/1547708591736.png" alt="img"></th>
-<th><img data-src="http://image.zxkidea.top/1547709820322.png" alt="img"></th>
+<th><img data-src="http://image.zxkidea.top/1547708591736.png" alt="zxk"></th>
+<th><img data-src="http://image.zxkidea.top/1547709820322.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><strong>(Selection)T :=CUSTOMERS where city = ‘Kyoto’</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547710588795.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547710757123.png" alt="img"></td>
+<td style="text-align:center"><strong>(Selection)T :=CUSTOMERS where city = 'Kyoto’</strong></td>
+<td><img data-src="http://image.zxkidea.top/1547710588795.png" alt="zxk"></td>
+<td><img data-src="http://image.zxkidea.top/1547710757123.png" alt="zxk"></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>(Selection)Pairs:=(L$\times$ M)  where L.city=M.city</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547711394006.png" alt="img"><img data-src="http://image.zxkidea.top/1547711561855.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547711610818.png" alt="img" style="zoom: 150%;" /></td>
+<td><img data-src="http://image.zxkidea.top/1547711394006.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547711561855.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547711610818.png" alt="zxk" style="zoom: 150%;" /></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>Join($R\infty S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547712009184.png" alt="img"><img data-src="http://image.zxkidea.top/1547712100317.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547712143439.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547712009184.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547712100317.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547712143439.png" alt="zxk"></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>Division($R\div S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547775339292.png" alt="img"><img data-src="http://image.zxkidea.top/1547775424573.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547775604826.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547775339292.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547775424573.png" alt="img"></td>
+<td><img data-src="http://image.zxkidea.top/1547775604826.png" alt="zxk"></td>
 </tr>
 </tbody>
 </table>
-</div>
-<font size = 4 color = red>关系代数运算的优先级：</font>
-
-<div class="table-container">
+<p><font size = 4 color = red>关系代数运算的优先级：</font></p>
 <table>
 <thead>
 <tr>
@@ -594,27 +594,24 @@ R[A_{i1},...A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S</script><div class="
 </tr>
 </tbody>
 </table>
-</div>
 <hr>
-<h4 id="3-Complex-Query"><a href="#3-Complex-Query" class="headerlink" title="3) Complex Query"></a>3) Complex Query</h4><p><img data-src="http://image.zxkidea.top/databasenote1.png" alt=""></p>
-<font size = 4 color = blue>1. Find cname and city of customers and aname of agents that the customer lives in the same city with agents.</font>
-
+<h4 id="3-Complex-Query">3) Complex Query</h4>
+<p><img data-src="http://image.zxkidea.top/databasenote1.png" alt="zxk"></p>
+<p><font size = 4 color = blue>1. Find cname and city of customers and aname of agents that the customer lives in the same city with agents.</font></p>
 <blockquote>
 <p>((C$\times$A) where C.city=A.city)[C.cname,C.city,A.aname]</p>
 <p>相当于</p>
 <p>(C$\infty$ A)[C.cname,C.city,A.aname]</p>
 </blockquote>
-<font size = 4 color = blue>2. Find pid, month and qty of order whose customer’s name is ‘Allied’.</font>
-
+<p><font size = 4 color = blue>2. Find pid, month and qty of order whose customer’s name is ‘Allied’.</font></p>
 <blockquote>
-<p>((C$\times$O) where C.cid=O.cid and C.cname=’Allied’)[O.pid,O.month,O.qty]</p>
+<p>((C$\times$O) where C.cid=O.cid and C.cname=‘Allied’)[O.pid,O.month,O.qty]</p>
 <p>or</p>
 <p>( ( ( (C where cname = ‘Allied’) [cid] ) x O ) where C.cid = O.cid ) [ O.pid, O.month, O.qty ]</p>
 <p>相当于</p>
 <p>((C$\infty$O)where C.cname=‘Allied’)[O.pid,O.month,O.qty]</p>
 </blockquote>
-<font size = 4 color = blue>3. Find ordno of orders for customer, agent and product combinations that are all in the same city.</font>
-
+<p><font size = 4 color = blue>3. Find ordno of orders for customer, agent and product combinations that are all in the same city.</font></p>
 <blockquote>
 <p>( (C [ cid, city ] x A [ aid, city ] x P [ pid, city ] x O)</p>
 <p>where C.city = A.city and P.city = A.city and</p>
@@ -623,340 +620,194 @@ R[A_{i1},...A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S</script><div class="
 <p>相当于</p>
 <p>(C$\infty$ O$\infty$ P$\infty$ A)[O.ordno]</p>
 </blockquote>
-<p><br/></p>
-<p><br/></p>
-<p><img data-src="http://image.zxkidea.top/databasenote2.png" alt=""></p>
-<font size = 4 color = blue>4. Find cid of customers who have a <font color = black size = 5>highest </font>discount in all customers.</font>
-
+<br/>
+<br/>
+<p><img data-src="http://image.zxkidea.top/databasenote2.png" alt="zxk"></p>
+<p><font size = 4 color = blue>4. Find cid of customers who have a <font color = black size = 5>highest </font>discount in all customers.</font></p>
 <blockquote>
-<font color=red size=6>Step 1:</font> Find all cids of customers
-
-<font color=red size=5>R1 := C[pid]</font>
-
-<font color=red size=6>Step 2:</font> Find cid of customers whose discount less than another customer. Let <font color = green size = 5>S := C</font>, then
-
-<font color=red size=5>R2: = ((CxS) where C.discnt<S.discnt)[C.cid]</font>
-
-<font color=red size =6>Step 3:</font>  calculate the result of this query by DIFFERENCE operation. 
-
-<font color=red size=5>T := R1 - R2</font>
-
-
-
+<p><font color=red size=6>Step 1:</font> Find all cids of customers</p>
+<p><font color=red size=5>R1 := C[pid]</font></p>
+<p><font color=red size=6>Step 2:</font> Find cid of customers whose discount less than another customer. Let <font color = green size = 5>S := C</font>, then</p>
+<p><font color=red size=5>R2: = ((CxS) where C.discnt&lt;S.discnt)[C.cid]</font></p>
+<p><font color=red size =6>Step 3:</font>  calculate the result of this query by DIFFERENCE operation.</p>
+<p><font color=red size=5>T := R1 - R2</font></p>
 </blockquote>
-<font color = blue size = 4>注意：除法法则：</font>
-
+<p><font color = blue size = 4>注意：除法法则：</font></p>
 <p><strong>if  R = T $ \times $ S, then</strong></p>
 <p><strong>T = R $\div$ S</strong></p>
 <p><strong>S = R $\div$ T</strong></p>
 <p><strong>if T = R $\div$ S，then</strong></p>
 <p><strong>T $\times$ S $\subseteq$ R</strong></p>
 <ul>
-<li><font color = green>举个栗子：</font>
-
-</li>
+<li><font color = green>举个栗子：</font></li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/databasenote3.png" alt=""></p>
+<p><img data-src="http://image.zxkidea.top/databasenote3.png" alt="zxk"></p>
 <hr>
-<h4 id="4-Native-Relational-Operation"><a href="#4-Native-Relational-Operation" class="headerlink" title="4) Native Relational Operation"></a>4) Native Relational Operation</h4><font color=green size=5>Questions:</font>
-
-<font color = blue size = 4>1. Get cids of customers who order  products  p01 ?</font>
-
+<h4 id="4-Native-Relational-Operation">4) Native Relational Operation</h4>
+<p><font color=green size=5>Questions:</font></p>
+<p><font color = blue size = 4>1. Get cids of customers who order  products  p01 ?</font></p>
 <blockquote>
-<font color=red size=5>(O  where pid='p01') [ cid ]</font>
-
-
-
+<p><font color=red size=5>(O  where pid=‘p01’) [ cid ]</font></p>
 </blockquote>
-<font color = blue size = 4>2. Get cids of customers who order  <font size = 5 color = black>products  p01 and p02 ?</font></font>
-
+<p><font color = blue size = 4>2. Get cids of customers who order  <font size = 5 color = black>products  p01 and p02 ?</font></font></p>
 <blockquote>
-<font color=red size=5>(O  where pid='p01')[cid] $\cap$ (O  where pid='p02')[cid]</font>
-
-
-
+<p><font color=red size=5>(O  where pid=‘p01’)[cid] $\cap$ (O  where pid=‘p02’)[cid]</font></p>
 </blockquote>
-<font color = blue size = 4>3. Get cnames of customers who order <font color = black size = 5>all products</font> ?</font>
-
+<p><font color = blue size = 4>3. Get cnames of customers who order <font color = black size = 5>all products</font> ?</font></p>
 <blockquote>
-<font color = green>//出现求ALL(所有一类属性)的记录时，需要使用除法运算</font>
-
-<font color=red size=5>First:</font>  get cids of customers who orders all products
-
-<font color=red size=5>T := ORDERS[cid , pid] $\div$ PRODUCTS[pid]</font>
-
-
-
-<font color = blue size = 4><font color=red>注意：</font>//使用除法运算时，Dividend(被除数)中的属性经过除法运算后剩余属性也需要是候选键性质</font>
-
-<font color=brown size = 5>1.Why must project PRODUCTS on pid ?</font>
-
+<p><font color = green>//出现求ALL(所有一类属性)的记录时，需要使用除法运算</font></p>
+<p><font color=red size=5>First:</font>  get cids of customers who orders all products</p>
+<p><font color=red size=5>T := ORDERS[cid , pid] $\div$ PRODUCTS[pid]</font></p>
+</blockquote>
+<blockquote>
+<p><font color = blue size = 4><font color=red>注意：</font>//使用除法运算时，Dividend(被除数)中的属性经过除法运算后剩余属性也需要是候选键性质</font></p>
+<p><font color=brown size = 5>1.Why must project PRODUCTS on pid ?</font></p>
 <ul>
-<li><font color = green size=5>columns of divisor must be subset of columns of dividend.</font>
-
-
-
-</li>
+<li><font color = green size=5>columns of divisor must be subset of columns of dividend.</font></li>
 </ul>
-<font color=brown size=5>Why must project ORDERS on cid,pid?</font>
-
+<p><font color=brown size=5>Why must project ORDERS on cid,pid?</font></p>
 <ul>
-<li><font color = green size = 5>We only try to find the value of the cid in ORDERS of the same for all cid.</font>
-
-
-
-</li>
+<li><font color = green size = 5>We only try to find the value of the cid in ORDERS of the same for all cid.</font></li>
 </ul>
-<font color=red size=5>Second:</font> get names of customers
-
-<font color = red size = 5>T1 := ( ( T ) $\infty$ C ) [cname]</font>
-
-
-
 </blockquote>
-<font color = blue size = 4>4. Get names of customers who order  all products ordered by customer ‘c006’ ?</font>
-
 <blockquote>
-<font color=red size=5>Step 1:</font>  find all products ordered by customer ‘c006’
-
-<font color=red size=5>R1 := (ORDERS where cid = ‘c006’)[pid]</font>
-
-
-
-<font color=red size = 5>Step 2:</font>  find cid of customers who order all products ordered by customer ‘c006’
-
-<font color=red size=5>R2 := ORDERS[cid,pid] $\div$R1</font>
-
-
-
-<font color=red size = 5>Step 3:</font>  find cnames of customers
-
-<font color=red size=5>R3 := ( R2 $\infty$ C ) [ cname ]</font>
-
-
-
+<p><font color=red size=5>Second:</font> get names of customers</p>
+<p><font color = red size = 5>T1 := ( ( T ) $\infty$ C ) [cname]</font></p>
 </blockquote>
-<font color = blue size = 4>5. Get pid of products ordered through all agents ?</font>
-
+<p><font color = blue size = 4>4. Get names of customers who order  all products ordered by customer ‘c006’ ?</font></p>
 <blockquote>
-<font color=red size=5>ORDERS [ aid, pid ] $\div$ AGENTS [ aid ]</font>
-
-
-
+<p><font color=red size=5>Step 1:</font>  find all products ordered by customer ‘c006’</p>
+<p><font color=red size=5>R1 := (ORDERS where cid = ‘c006’)[pid]</font></p>
+<p><font color=red size = 5>Step 2:</font>  find cid of customers who order all products ordered by customer ‘c006’</p>
+<p><font color=red size=5>R2 := ORDERS[cid,pid] $\div$R1</font></p>
+<p><font color=red size = 5>Step 3:</font>  find cnames of customers</p>
+<p><font color=red size=5>R3 := ( R2 $\infty$ C ) [ cname ]</font></p>
 </blockquote>
-<font color = blue size = 4>6. Get name of products ordered by all customers who live in Dallas ?</font>
-
+<p><font color = blue size = 4>5. Get pid of products ordered through all agents ?</font></p>
 <blockquote>
-<font color=red size=5>R1 := (CUSTOMERS where city=‘Dallas’)[cid]</font>
-
-<font color =red size=5>R2 := ORDERS [ cid, pid ] $\div$ R1</font>
-
-<font color = red size = 5>R3 := ( PRODUCTS $\infty$ R2 )[ pname ]</font>
-
-
-
+<p><font color=red size=5>ORDERS [ aid, pid ] $\div$ AGENTS [ aid ]</font></p>
 </blockquote>
-<font color = blue size = 4>7. Get cids of customers who order all products priced at $0.50.</font>
-
+<p><font color = blue size = 4>6. Get name of products ordered by all customers who live in Dallas ?</font></p>
 <blockquote>
-<font color = red size = 5>R1 := (PRODUCTS where price = 0.50) [pid]</font>
-
-<font color = red size = 5>R2 := ORDERS [ cid, pid ] $\div$ R1</font>
-
-
-
+<p><font color=red size=5>R1 := (CUSTOMERS where city=‘Dallas’)[cid]</font></p>
+<p><font color =red size=5>R2 := ORDERS [ cid, pid ] $\div$ R1</font></p>
+<p><font color = red size = 5>R3 := ( PRODUCTS $\infty$ R2 )[ pname ]</font></p>
 </blockquote>
-<font color = blue size = 4>8. Get cids of customers who order all products that <font color = black size = 5>anybody</font> orders.</font>
-
+<p><font color = blue size = 4>7. Get cids of customers who order all products priced at $0.50.</font></p>
 <blockquote>
-<font color = red size = 5>ORDERS [ cid, pid ] $\div$ ORDERS [ pid ]</font>
-
+<p><font color = red size = 5>R1 := (PRODUCTS where price = 0.50) [pid]</font></p>
+<p><font color = red size = 5>R2 := ORDERS [ cid, pid ] $\div$ R1</font></p>
 </blockquote>
-<p><br/></p>
-<p><br/></p>
+<p><font color = blue size = 4>8. Get cids of customers who order all products that <font color = black size = 5>anybody</font> orders.</font></p>
 <blockquote>
-<font color = green size = 5>条件：</font>
-
-<font color = green size = 5>Customers: C(cid, cname, city, discnt)</font>
-
-<font color = green size = 5>Agents: A(aid, aname, city, percent)</font>
-
-<font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font>
-
-<font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font>
-
+<p><font color = red size = 5>ORDERS [ cid, pid ] $\div$ ORDERS [ pid ]</font></p>
 </blockquote>
-<font color = blue size = 4>9. Get aids of agents who take orders on <font color = black size = 5>at least that set of products(相当于all the products)</font> ordered by c004.</font>
-
+<br/>
+<br/>
 <blockquote>
-<font color = red size = 5>O[aid, pid] ÷ (O where cid = 'c004')[pid]</font>
-
-
-
+<p><font color = green size = 5>条件：</font></p>
+<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
+<p><font color = green size = 5>Agents: A(aid, aname, city, percent)</font></p>
+<p><font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font></p>
+<p><font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
 </blockquote>
-<font color = blue size = 4>10. Get cids of customers who order p01 and p07.</font>
-
+<p><font color = blue size = 4>9. Get aids of agents who take orders on <font color = black size = 5>at least that set of products(相当于all the products)</font> ordered by c004.</font></p>
 <blockquote>
-<font color = red size = 5>(O where pid = 'p01')[cid] $\cap$ (O where pid = 'p07')[cid]</font><font color = red size = 5>(正确)</font>
-
-<font color = grey size = 5>(O where pid = 'p01' and pid = 'p07')[cid]</font><font color  = grey size = 5>(错误)</font>
-
-
-
+<p><font color = red size = 5>O[aid, pid] ÷ (O where cid = ‘c004’)[pid]</font></p>
 </blockquote>
-<font color = blue size = 4>11. Get cids of customers who order p01 or p07.</font>
-
+<p><font color = blue size = 4>10. Get cids of customers who order p01 and p07.</font></p>
 <blockquote>
-<font color = red size = 5>(O where pid='p01')[cid] $\cup$ (O where pid='p07')[cid]</font>
-
-<font color = green size = 4>或者</font>
-
-<font color = red size = 5>(O where pid = 'p01' or pid = 'p07')[cid]</font>
-
-
-
+<p><font color = red size = 5>(O where pid = ‘p01’)[cid] $\cap$ (O where pid = ‘p07’)[cid]</font><font color = red size = 5>(正确)</font></p>
+<p><font color = grey size = 5>(O where pid = ‘p01’ and pid = ‘p07’)[cid]</font><font color  = grey size = 5>(错误)</font></p>
 </blockquote>
-<font color = blue size = 4>12. List all cities inhabited by customers who order product p02 or agents who place an order for p02.</font>
-
+<p><font color = blue size = 4>11. Get cids of customers who order p01 or p07.</font></p>
 <blockquote>
-<font color = red size = 5>T1 := ((O where pid = 'p02') $\infty$ C)[city]</font>
-
-<font color = red size = 5>T2 := ((O where pid = 'p02') $\infty$  A)[city]</font>
-
-<font color = red size = 5>T := T1 $\cup$ T2</font>
-
-
-
+<p><font color = red size = 5>(O where pid=‘p01’)[cid] $\cup$ (O where pid=‘p07’)[cid]</font></p>
+<p><font color = green size = 4>或者</font></p>
+<p><font color = red size = 5>(O where pid = ‘p01’ or pid = ‘p07’)[cid]</font></p>
 </blockquote>
-<font color = blue size = 4>13. Get aids of agents who place an order for <font color = black size = 5>at least one customer</font> that uses product p01.</font>
-
+<p><font color = blue size = 4>12. List all cities inhabited by customers who order product p02 or agents who place an order for p02.</font></p>
 <blockquote>
-<font color = red size = 5>((O where pid = 'p01')[cid] $\infty$ O) [aid]</font>
-
-
-
+<p><font color = red size = 5>T1 := ((O where pid = ‘p02’) $\infty$ C)[city]</font></p>
+<p><font color = red size = 5>T2 := ((O where pid = ‘p02’) $\infty$  A)[city]</font></p>
+<p><font color = red size = 5>T := T1 $\cup$ T2</font></p>
 </blockquote>
-<font color = blue size = 4>14. Get aids of agents who place orders for <font color = black size = 5>all customers</font> that uses product p01.</font>
-
+<p><font color = blue size = 4>13. Get aids of agents who place an order for <font color = black size = 5>at least one customer</font> that uses product p01.</font></p>
 <blockquote>
-<font color = red size = 5>O[cid, aid] ÷ (O where pid =  'p01')[cid]</font>
-
-
-
+<p><font color = red size = 5>((O where pid = ‘p01’)[cid] $\infty$ O) [aid]</font></p>
 </blockquote>
-<font color = blue size = 4>15. Retrieve product ids for all products that are <font color = black size = 5>not ordered by</font> any customers living in a city <font color = black size = 5>beginning with the letter "D"</font>.</font>
-
+<p><font color = blue size = 4>14. Get aids of agents who place orders for <font color = black size = 5>all customers</font> that uses product p01.</font></p>
 <blockquote>
-<font color = red size = 5>T1  :=  C where <u>C.city >= 'D' and C.city < 'E'</u></font>
-
-<font color = red size = 5>T2  :=  P [ pid ] - ( O $\infty$ T1 ) [ pid ]</font>
-
+<p><font color = red size = 5>O[cid, aid] ÷ (O where pid =  ‘p01’)[cid]</font></p>
 </blockquote>
-<p><br/></p>
-<p><br/></p>
+<p><font color = blue size = 4>15. Retrieve product ids for all products that are <font color = black size = 5>not ordered by</font> any customers living in a city <font color = black size = 5>beginning with the letter “D”</font>.</font></p>
 <blockquote>
-<font color = green size = 5>条件：</font>
-
-<font color = green size = 5>Customers: C(cid, cname, city, discnt)</font>
-
+<p><font color = red size = 5>T1  :=  C where <u>C.city &gt;= ‘D’ and C.city &lt; ‘E’</u></font></p>
+<p><font color = red size = 5>T2  :=  P [ pid ] - ( O $\infty$ T1 ) [ pid ]</font></p>
 </blockquote>
-<font color = blue size = 4>16. Retrieve cids of customers with the <font color = black size = 5>largest</font> discounts.</font>
-
+<br/>
+<br/>
 <blockquote>
-<font color = green size = 5>Answer 1:</font>
-
-<font color = red size = 5>1)CY := C</font>
-
-<font color = red size = 5>2)T1:=((CY $\times$ C) where <u>CY.discnt > C.discnt</u>)[C.cid]</font>
-
-<font color = red size = 5>3)T2 := C[cid] - T1</font>
-
-
-
-<font color = green size  = 5>Answer 2:</font>
-
-<font color = red size = 5>1)CY := C</font>
-
-<font color = red size = 5>2)T1(cyid, cid) := ((CY $\times$ C) where <u>CY.discnt >= C.discnt</u>) [CY.cid, C.cid]</font>
-
-<font color = red size = 5>3)T2 := T1 ÷ C[cid]</font>
-
+<p><font color = green size = 5>条件：</font></p>
+<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
 </blockquote>
-<p><br/></p>
-<p><br/></p>
+<p><font color = blue size = 4>16. Retrieve cids of customers with the <font color = black size = 5>largest</font> discounts.</font></p>
 <blockquote>
-<font color = green size = 5>条件：</font>
-
-<font color = green size = 5>Customers: C(cid, cname, city, discnt)</font>
-<font color = green size = 5>Agents: A(aid, aname, city, percent)</font>
-<font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font>
-<font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font>
-
+<p><font color = green size = 5>Answer 1:</font></p>
+<p><font color = red size = 5>1)CY := C</font></p>
+<p><font color = red size = 5>2)T1:=((CY $\times$ C) where <u>CY.discnt &gt; C.discnt</u>)[C.cid]</font></p>
+<p><font color = red size = 5>3)T2 := C[cid] - T1</font></p>
 </blockquote>
-<font color = blue size = 4>17. Get aids of agents who <font color = black size = 5>do not supply</font> product p02. </font>
-
 <blockquote>
-<font color = red size = 5>A[aid]  —  (O where pid = 'p02')[aid]</font>
-
-
-
+<p><font color = green size  = 5>Answer 2:</font></p>
+<p><font color = red size = 5>1)CY := C</font></p>
+<p><font color = red size = 5>2)T1(cyid, cid) := ((CY $\times$ C) where <u>CY.discnt &gt;= C.discnt</u>) [CY.cid, C.cid]</font></p>
+<p><font color = red size = 5>3)T2 := T1 ÷ C[cid]</font></p>
 </blockquote>
-<font color = blue size = 4>18. Get aids of agents who <font color = black size = 5>supply only</font> product p02.</font>
-
+<br/>
+<br/>
 <blockquote>
-<font color = red size = 5>O[aid]  —  (O where pid <> 'p02')[aid]</font><font color = red size = 5>  (正确)</font>
-<font color = grey size = 5>A[aid]  —  (O where pid <> 'p02')[aid]</font><font color = grey size = 5>  (错误)</font>
-
-
-
+<p><font color = green size = 5>条件：</font></p>
+<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font><br>
+<font color = green size = 5>Agents: A(aid, aname, city, percent)</font><br>
+<font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font><br>
+<font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
+</blockquote>
+<p><font color = blue size = 4>17. Get aids of agents who <font color = black size = 5>do not supply</font> product p02. </font></p>
+<blockquote>
+<p><font color = red size = 5>A[aid]  —  (O where pid = ‘p02’)[aid]</font></p>
+</blockquote>
+<p><font color = blue size = 4>18. Get aids of agents who <font color = black size = 5>supply only</font> product p02.</font></p>
+<blockquote>
+<p><font color = red size = 5>O[aid]  —  (O where pid &lt;&gt; ‘p02’)[aid]</font><font color = red size = 5>  (正确)</font><br>
+<font color = grey size = 5>A[aid]  —  (O where pid &lt;&gt; ‘p02’)[aid]</font><font color = grey size = 5>  (错误)</font></p>
 </blockquote>
 <hr>
-<h4 id="5-Illustrative-Examples-示例"><a href="#5-Illustrative-Examples-示例" class="headerlink" title="5) Illustrative Examples(示例)"></a>5) Illustrative Examples(示例)</h4><blockquote>
-<font color = green size = 5>条件：</font>
-
-<font color = green size = 5>Customers: C(cid, cname, city, discnt)</font>
-
-<font color = green size = 5>Agents: A(aid, aname, city, percent)</font>
-
-<font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font>
-
-<font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font>
-
-
-
-</blockquote>
-<font color = blue size = 4>1.Get the names of customers who order <font color = black size = 5>at least one product</font> priced at $0.50.</font>
-
+<h4 id="5-Illustrative-Examples-示例">5) Illustrative Examples(示例)</h4>
 <blockquote>
-<font color = red size = 5>(((P where price=0.50)[pid] $\infty$ O) $\infty$ C) [cname]</font>
-
-
-
+<p><font color = green size = 5>条件：</font></p>
+<p><font color = green size = 5>Customers: C(cid, cname, city, discnt)</font></p>
+<p><font color = green size = 5>Agents: A(aid, aname, city, percent)</font></p>
+<p><font color = green size = 5>Products: P(pid, pname, city, quantity, price)</font></p>
+<p><font color = green size = 5>Orders: O(ordno, month, cid, aid, pid, qty, dollars)</font></p>
 </blockquote>
-<font color = blue size = 4>2.Find cids of all customers who <font color = black size = 5>don’t place</font> any order through agent a03.</font>
-
+<p><font color = blue size = 4>1.Get the names of customers who order <font color = black size = 5>at least one product</font> priced at $0.50.</font></p>
 <blockquote>
-<font color = red size = 5>C[cid] – (O where aid = ‘a03’) [cid]</font>
-
-<font color = green size = 5>而不是O[cid] – (O where aid = ‘a03’) [cid]</font>
-
-
-
+<p><font color = red size = 5>(((P where price=0.50)[pid] $\infty$ O) $\infty$ C) [cname]</font></p>
 </blockquote>
-<font color = blue size = 4>3.Retrieve customers who place orders <font color = black size = 5>only through</font> agent a03.</font>
-
+<p><font color = blue size = 4>2.Find cids of all customers who <font color = black size = 5>don’t place</font> any order through agent a03.</font></p>
 <blockquote>
-<font color = red size = 5>O[cid] – (O where aid $\neq$ ‘a03’) [cid]</font>
-
-<font color = green size = 5>而不是C[cid] – (O where aid $\neq$ ‘a03’) [cid]</font>
-
-
-
+<p><font color = red size = 5>C[cid] – (O where aid = ‘a03’) [cid]</font></p>
+<p><font color = green size = 5>而不是O[cid] – (O where aid = ‘a03’) [cid]</font></p>
 </blockquote>
-<font color = blue size = 4>4.More Complex One <font color = red><u>(Question And Steps)</u></font>:</font>
-
-<p><br/></p>
-<p><img data-src="http://image.zxkidea.top/databasenote4.png" alt=""></p>
+<p><font color = blue size = 4>3.Retrieve customers who place orders <font color = black size = 5>only through</font> agent a03.</font></p>
+<blockquote>
+<p><font color = red size = 5>O[cid] – (O where aid $\neq$ ‘a03’) [cid]</font></p>
+<p><font color = green size = 5>而不是C[cid] – (O where aid $\neq$ ‘a03’) [cid]</font></p>
+</blockquote>
+<p><font color = blue size = 4>4.More Complex One <font color = red><u>(Question And Steps)</u></font>:</font></p>
+<br/>
+<p><img data-src="http://image.zxkidea.top/databasenote4.png" alt="zxk"></p>
 
     </div>
 
@@ -1116,7 +967,7 @@ R[A_{i1},...A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S</script><div class="
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1188,13 +1039,13 @@ R[A_{i1},...A_{ik}],\ R\ where\ A_i=5,\ R\infty S,\ R\div S</script><div class="
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">107k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:37</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>

@@ -53,12 +53,12 @@
 
 
 
-  <meta name="description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于主">
+  <meta name="description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。 1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关系模式范式分解教程（3NF与BCNF口诀）">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/6244050a.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于主">
+<meta property="og:description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。 1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-08T01:42:02.000Z">
 <meta property="article:modified_time" content="2020-03-21T09:42:21.776Z">
@@ -312,7 +312,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>2.2k</span>
             </span>
 
           <span class="post-meta-divider">|</span>
@@ -336,85 +336,82 @@
         <p>转载自：<a href="https://www.cnblogs.com/kungfupanda/p/12362163.html" target="_blank" rel="noopener">https://www.cnblogs.com/kungfupanda/p/12362163.html</a></p>
 <p>【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂</p>
 <hr>
-<h2 id="1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。"><a href="#1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。" class="headerlink" title="1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。"></a>1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。</h2><p>1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。</p>
+<h2 id="1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。">1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。</h2>
+<p>1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。</p>
 <p>2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。</p>
 <a id="more"></a>
 <p>3NF要求每一个非主属性既不部分依赖于码也不传递依赖于码。</p>
 <p>BCNF消除了主属性对候选码的部分和传递函数依赖。</p>
-<p><br/></p>
+<br/>
 <blockquote>
-<font color = red size = 4>注：</font>
-
+<p><font color = red size = 4>注：</font></p>
 <ol>
-<li><p>相对于BCNF，3NF允许存在主属性对候选码的传递依赖和部分依赖。</p>
+<li>
+<p>相对于BCNF，3NF允许存在主属性对候选码的传递依赖和部分依赖。</p>
 </li>
-<li><p>BCNF比较抽象，略作解释：在学生信息表里，学号是一个候选码，学号可确定学生姓名；(班级,学生姓名）也是一组候选码，有(班级,学生姓名）-&gt; 学号，因此在主属性间形成了传递依赖。</p>
+<li>
+<p>BCNF比较抽象，略作解释：在学生信息表里，学号是一个候选码，学号可确定学生姓名；(班级,学生姓名）也是一组候选码，有(班级,学生姓名）-&gt; 学号，因此在主属性间形成了传递依赖。</p>
 </li>
-<li><p>若对概念不清晰，关于码、候选码、主属性、非主属性的解释可参看：</p>
+<li>
+<p>若对概念不清晰，关于码、候选码、主属性、非主属性的解释可参看：</p>
 <p><a href="https://blog.csdn.net/sumaliqinghua/article/details/85872446#commentBox" target="_blank" rel="noopener">https://blog.csdn.net/sumaliqinghua/article/details/85872446#commentBox</a></p>
 </li>
 </ol>
 </blockquote>
-<p><br/></p>
-<h2 id="2-我们的重点是讲解范式分解："><a href="#2-我们的重点是讲解范式分解：" class="headerlink" title="2. 我们的重点是讲解范式分解："></a>2. 我们的重点是讲解范式分解：</h2><h3 id="一、3NF分解"><a href="#一、3NF分解" class="headerlink" title="一、3NF分解"></a>一、3NF分解</h3><p>分为保持依赖和无损连接</p>
+<br/>
+<h2 id="2-我们的重点是讲解范式分解：">2. 我们的重点是讲解范式分解：</h2>
+<h3 id="一、3NF分解">一、3NF分解</h3>
+<p>分为保持依赖和无损连接</p>
 <p>为了说明求解保持依赖，我们先要会求最小依赖集</p>
-<h4 id="（1）最小依赖集求法："><a href="#（1）最小依赖集求法：" class="headerlink" title="（1）最小依赖集求法："></a>（1）最小依赖集求法：</h4><blockquote>
-<font color = red size = 4>口诀：</font>
-
-<font color = green>右侧先拆单，依赖依次删。</font>
-
-<font color = green>还原即可删，再拆左非单。</font>
-
+<h4 id="（1）最小依赖集求法：">（1）最小依赖集求法：</h4>
+<blockquote>
+<p><font color = red size = 4>口诀：</font></p>
+<p><font color = green>右侧先拆单，依赖依次删。</font></p>
+<p><font color = green>还原即可删，再拆左非单。</font></p>
 </blockquote>
 <p>通过求下面的最小依赖集对口诀进行解释。</p>
-<p> <br/></p>
-<h4 id="（2）3NF分解："><a href="#（2）3NF分解：" class="headerlink" title="（2）3NF分解："></a>（2）3NF分解：</h4><blockquote>
-<font color = red size = 4>口诀：</font>
-
-<font color = green>保函依赖分解题，先求最小依赖集。</font>
-
-<font color = green>依赖两侧未出现，分成子集放一边，剩余依赖变子集。</font>
-
-<font color = green>若要连接成无损，再添候选做子集。</font>
-
+ <br/>
+<h4 id="（2）3NF分解：">（2）3NF分解：</h4>
+<blockquote>
+<p><font color = red size = 4>口诀：</font></p>
+<p><font color = green>保函依赖分解题，先求最小依赖集。</font></p>
+<p><font color = green>依赖两侧未出现，分成子集放一边，剩余依赖变子集。</font></p>
+<p><font color = green>若要连接成无损，再添候选做子集。</font></p>
 </blockquote>
 <p><br/>下面通过几道例题讲解口诀：</p>
-<font color = blue>例1.已知R(ABCDE), F = {A ->D,E->D,D->B,BC->D,DC->A}，求保持函数依赖的3NF分解，和具有无损连接性及保持函数依赖的3NF分解</font>
-
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F~m~ = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
+<p><font color = blue>例1.已知R(ABCDE), F = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}，求保持函数依赖的3NF分解，和具有无损连接性及保持函数依赖的3NF分解</font></p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F<sub>m</sub> = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边。首先可以发现没有不出现在两侧的元素不用单独分出一个子集，“剩余依赖变子集”然后我们将各依赖分别划分为子集得到：{AD}，{ED}，{DB}，{BCD}，{DCA}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。</p>
 <p>(1) 候选码的求解：所谓候选码即能决定整个关系的，我们通过找未出现在依赖右边的和两侧均未出现的元素即可求得，</p>
 <p>(2) 可以发现CE未出现在右边，因此候选码为{CE}。故所求具有无损连接性及保持函数依赖的3NF分解为{AD}，{ED}，{DB}，{BCD}，{DCA}，{CE}</p>
-<p> <br/></p>
-<font color = blue>例2.关系模式R，有U={A,B,C,D,E,G}，F={B->G,CE->B,C->A,CE->G,B->D,C->D}，将关系模式分解为3NF且保持函数依赖</font>
-
+ <br/>
+<p><font color = blue>例2.关系模式R，有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为3NF且保持函数依赖</font></p>
 <p>将关系模式分解为3NF且保持函数依赖：</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，</p>
-<p>假设B-&gt;G冗余，则(B)^+^ = BD，没有G故不冗余。</p>
-<p>假设CE-&gt;B冗余，则(CE)^+^ = CEGDA，没有B故不冗余。</p>
-<p>假设C-&gt;A冗余，则( C )^+^ = CD，故不冗余。</p>
-<p>一次可以得到最小函数依赖集F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
+<p>假设B-&gt;G冗余，则(B)<sup>+</sup> = BD，没有G故不冗余。</p>
+<p>假设CE-&gt;B冗余，则(CE)<sup>+</sup> = CEGDA，没有B故不冗余。</p>
+<p>假设C-&gt;A冗余，则( C )<sup>+</sup> = CD，故不冗余。</p>
+<p>一次可以得到最小函数依赖集F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边，剩余依赖变子集。首先可以发现没有不出现在两侧的元素，然后我们将各依赖分别划分为子集得{BG}，{CEB}，{CA}，{BD}，{CD}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。找到R的一个候选码为{ACE}。故所求具有无损连接性及保持函数依赖的3NF分解为{BG}，{CEB}，{CA}，{BD}，{CD}，{ACE} (注：范式分解并不唯一，正确即可)</p>
-<p> <br/></p>
-<h3 id="二、BCNF分解："><a href="#二、BCNF分解：" class="headerlink" title="二、BCNF分解："></a>二、BCNF分解：</h3><p>将关系模式R<U,F>分解为一个BCNF的基本步骤是：</p>
+ <br/>
+<h3 id="二、BCNF分解：">二、BCNF分解：</h3>
+<p>将关系模式R&lt;U,F&gt;分解为一个BCNF的基本步骤是：</p>
 <blockquote>
-<font color = green>1）先求最小依赖集，候码非码成子集</font>
-
-<font color = green>2）余下左侧全候码，完成BCNF题。</font>
-
+<p><font color = green>1）先求最小依赖集，候码非码成子集</font></p>
+<p><font color = green>2）余下左侧全候码，完成BCNF题。</font></p>
 </blockquote>
-<p><br/></p>
-<font color = blue>例.关系模式R,有U={A,B,C,D,E,G}，F={B->G,CE->B,C->A,CE->G,B->D,C->D}，将关系模式分解为BCNF且保持函数依赖</font>
-
+<br/>
+<p><font color = blue>例.关系模式R,有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为BCNF且保持函数依赖</font></p>
 <p>将关系模式分解为BCNF且保持函数依赖：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：候码非码成子集。由于候选码为(CE)，因此将CE-&gt;B划分出子集（BCE），而B-&gt;G，B-&gt;D左侧均不含主属性C、E中的任何一个，故划分出(BG)，(BD）；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：此时剩余依赖F’ = {C-&gt;A，C-&gt;D}，剩余元素{A,C,D}，检查发现函数依赖左侧都是候选码（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">新的依赖F’的候选码</span>），即完成BCNF分解，如果不满足则继续分解余下的；</p>
 <p>于是BCNF分解的最后结果为{(BG)，(BD)，(ACD)，(BCE)}。</p>
-<p><br/></p>
-<h3 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h3><p>1.闭包</p>
+<br/>
+<h3 id="三、总结">三、总结</h3>
+<p>1.闭包</p>
 <p>2.候选码</p>
 <p>3.最小依赖集</p>
 <p>4.3NF分解</p>
@@ -578,7 +575,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -650,13 +647,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">107k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:37</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>

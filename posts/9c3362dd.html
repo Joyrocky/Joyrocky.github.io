@@ -53,12 +53,12 @@
 
 
 
-  <meta name="description" content="Ch7.  Database Manage(数据库管理)1. Integrity Constraints (完整性约束) 数据完整性：存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。   1）实体完整性">
+  <meta name="description" content="Ch7.  Database Manage(数据库管理) 1. Integrity Constraints (完整性约束)  数据完整性：存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。   1）实体完整性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DatabaseNotes-Ch7,8">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/9c3362dd.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="Ch7.  Database Manage(数据库管理)1. Integrity Constraints (完整性约束) 数据完整性：存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。   1）实体完整性">
+<meta property="og:description" content="Ch7.  Database Manage(数据库管理) 1. Integrity Constraints (完整性约束)  数据完整性：存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。   1）实体完整性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200308/inWK7fkl2nkt.png?imageslim">
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200308/ge38zfuXOaq9.png?imageslim">
@@ -68,7 +68,7 @@
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim">
 <meta property="og:image" content="http://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim">
 <meta property="article:published_time" content="2020-03-08T03:27:21.000Z">
-<meta property="article:modified_time" content="2020-03-21T09:41:35.562Z">
+<meta property="article:modified_time" content="2020-05-30T02:34:36.103Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="笔记">
@@ -273,7 +273,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-21 17:41:35" itemprop="dateModified" datetime="2020-03-21T17:41:35+08:00">2020-03-21</time>
+                <time title="修改时间：2020-05-30 10:34:36" itemprop="dateModified" datetime="2020-05-30T10:34:36+08:00">2020-05-30</time>
               </span>
 
           <span class="post-meta-divider">|</span>
@@ -341,97 +341,112 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Ch7-Database-Manage-数据库管理"><a href="#Ch7-Database-Manage-数据库管理" class="headerlink" title="Ch7.  Database Manage(数据库管理)"></a>Ch7.  Database Manage(数据库管理)</h2><h3 id="1-Integrity-Constraints-完整性约束"><a href="#1-Integrity-Constraints-完整性约束" class="headerlink" title="1. Integrity Constraints (完整性约束)"></a>1. Integrity Constraints (完整性约束)</h3><ul>
+        <h2 id="Ch7-Database-Manage-数据库管理">Ch7.  Database Manage(数据库管理)</h2>
+<h3 id="1-Integrity-Constraints-完整性约束">1. Integrity Constraints (完整性约束)</h3>
+<ul>
 <li><font color = green size = 4>数据完整性：</font>存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。</li>
 </ul>
-<p><br/></p>
-<h4 id="1）实体完整性"><a href="#1）实体完整性" class="headerlink" title="1）实体完整性"></a>1）实体完整性</h4><a id="more"></a>
-<ul>
-<li><font color = red>实体完整性是对关系中记录的唯一性，也就是主键的约束。</font>准确地说，实体完整性是指关系中的主属性值不能为Null且不能有相同值。定义表中的所有行唯一的标识，一般用主键，唯一索引unique关键字及identity属性；比如说我们的身份证号码，可以唯一标识一个人。
-
 <br/>
-
-- 将Student表中的Sno属性定义为码。
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">	(Sno CHAR(9) PRIMARY KEY,	&#x2F;*在列级定义主码*&#x2F;</span><br><span class="line">	 Sname CHAR(20) NOT NULL,</span><br><span class="line">	 Ssex CHAR(2),</span><br><span class="line">	 Sage SMALLINT,</span><br><span class="line">	 Sdept CHAR(20)</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
-
-  <font color = green>或者</font>
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">	(Sno CHAR(9),</span><br><span class="line">	 Sname CHAR(20) NOT NULL,	</span><br><span class="line">	 Ssex CHAR(2),</span><br><span class="line">	 Sage SMALLINT,</span><br><span class="line">	 Sdept CHAR(20),</span><br><span class="line">	 PRIMARY KEY(Sno)	&#x2F;*在表级定义主码*&#x2F;</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<h4 id="1）实体完整性">1）实体完整性</h4>
+<a id="more"></a>
 <ul>
-<li><p>将SC表中的Sno，Cno属性组定义为码。</p>
+<li>
+<p><font color = red>实体完整性是对关系中记录的唯一性，也就是主键的约束。</font>准确地说，实体完整性是指关系中的主属性值不能为Null且不能有相同值。定义表中的所有行唯一的标识，一般用主键，唯一索引unique关键字及identity属性；比如说我们的身份证号码，可以唯一标识一个人。</p>
+<br/>
+<ul>
+<li>
+<p>将Student表中的Sno属性定义为码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">	(Sno CHAR(9) PRIMARY KEY,	&#x2F;*在列级定义主码*&#x2F;</span><br><span class="line">	 Sname CHAR(20) NOT NULL,</span><br><span class="line">	 Ssex CHAR(2),</span><br><span class="line">	 Sage SMALLINT,</span><br><span class="line">	 Sdept CHAR(20)</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+<p><font color = green>或者</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">	(Sno CHAR(9),</span><br><span class="line">	 Sname CHAR(20) NOT NULL,	</span><br><span class="line">	 Ssex CHAR(2),</span><br><span class="line">	 Sage SMALLINT,</span><br><span class="line">	 Sdept CHAR(20),</span><br><span class="line">	 PRIMARY KEY(Sno)	&#x2F;*在表级定义主码*&#x2F;</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br/>
+<ul>
+<li>
+<p>将SC表中的Sno，Cno属性组定义为码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC</span><br><span class="line">	(Sno CHAR(9) NOT NULL,</span><br><span class="line">	 Cno CHAR(4) NOT NULL,</span><br><span class="line">	 Grade SMALLINT,</span><br><span class="line">	 PRIMARY KEY(Sno,Cno)	&#x2F;*只能在表级定义主码*&#x2F;</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = red>实体完整性检查和违约处理</font>
-
+<li>
+<p><font color = red>实体完整性检查和违约处理</font></p>
 <blockquote>
-<p>用PRIMARY KEY短语定义了关系的主码后，每当用户程序对基本表插入一条记录或者对主码列进行更新操作时，DBMS将按实体完整性规则自动进行检查。包括：<br><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">1.检查主码值是否唯一，如果不唯一则拒绝插入或修改。</span><br><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">2.检查主码的各个属性是否为空，只要有一个为空就拒绝插入或修改。</span></p>
+<p>用PRIMARY KEY短语定义了关系的主码后，每当用户程序对基本表插入一条记录或者对主码列进行更新操作时，DBMS将按实体完整性规则自动进行检查。包括：<br>
+<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">1.检查主码值是否唯一，如果不唯一则拒绝插入或修改。</span><br>
+<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">2.检查主码的各个属性是否为空，只要有一个为空就拒绝插入或修改。</span></p>
 <p>从而保证了实体完整性。</p>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
-<h4 id="2）参照完整性"><a href="#2）参照完整性" class="headerlink" title="2）参照完整性"></a>2）参照完整性</h4><ul>
-<li><p><font color = red>参照完整性是对关系数据库中建立关联关系的数据表间数据参照引用的约束，也就是对外键的约束。</font>准确地说，参照完整性是指关系中的外键必须是另一个关系的主键有效值，或者是NULL。参考完整性维护表间数据的有效性,完整性,通常通过建立外部键联系另一表的主键实现,还可以用触发器来维护参照完整性。</p>
-<p><br/></p>
+<br/>
+<h4 id="2）参照完整性">2）参照完整性</h4>
 <ul>
-<li><p>关系SC中一个元组表示一个学生选修的某门课程的成绩，（Sno,Cno）是主码。Sno,Cno分别参照引用Student表的主码和Course表的主码。定义SC中参照完整性。</p>
+<li>
+<p><font color = red>参照完整性是对关系数据库中建立关联关系的数据表间数据参照引用的约束，也就是对外键的约束。</font>准确地说，参照完整性是指关系中的外键必须是另一个关系的主键有效值，或者是NULL。参考完整性维护表间数据的有效性,完整性,通常通过建立外部键联系另一表的主键实现,还可以用触发器来维护参照完整性。</p>
+<br/>
+<ul>
+<li>
+<p>关系SC中一个元组表示一个学生选修的某门课程的成绩，（Sno,Cno）是主码。Sno,Cno分别参照引用Student表的主码和Course表的主码。定义SC中参照完整性。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC</span><br><span class="line">	(Sno CHAR(9) NOT NULL,</span><br><span class="line">	 Cno CHAR(4) NOT NULL,</span><br><span class="line">	 Grade SMALLINT ,</span><br><span class="line">	 PRIMARY KEY (Sno,Cno),				&#x2F;*在表级定义实体完整性*&#x2F;</span><br><span class="line">	 FOREIGN KEY(Sno) REFERENCES Student(Sno),	&#x2F;*在表级定义参照完整性*&#x2F;</span><br><span class="line">	 FOREIGN KEY(Cno) REFERENCES Course(Cno)	&#x2F;*在表级定义参照完整性*&#x2F;</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = red>参照完整性检查和违约处理</font>
-
+<li>
+<p><font color = red>参照完整性检查和违约处理</font></p>
 <p>一个参照完整性将两个表中的相应元组联系起来了。因此，对被参照表和参照表进行增删改操作时有可能破坏参照完整性，必须进行检查。</p>
 <p>例如，对表SC和Student有四种可能破坏参照完整性的情况，如下表：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/inWK7fkl2nkt.png?imageslim" alt="mark"></p>
-<p><br/></p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/inWK7fkl2nkt.png?imageslim" alt="zxk"></p>
+<br/>
 <blockquote>
-<font color = green>1.SC表中增加一个元组，该元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font>
-<font color = green>2.修改SC表中的一个元组，修改后该元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font>
-<font color = green>3.从Student表删除一个元组，造成SC表中某些元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font>
-
-<font color = green>4.修改Student表中一个元组的Sno属性，造成SC表中某些元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font>
-
+<p><font color = green>1.SC表中增加一个元组，该元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font><br>
+<font color = green>2.修改SC表中的一个元组，修改后该元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font><br>
+<font color = green>3.从Student表删除一个元组，造成SC表中某些元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font></p>
+<p><font color = green>4.修改Student表中一个元组的Sno属性，造成SC表中某些元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font></p>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = red>上述的不一致发生时，系统可以采用以下的策略加以处理。</font>
-
+<li>
+<p><font color = red>上述的不一致发生时，系统可以采用以下的策略加以处理。</font></p>
 <ul>
-<li><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">1.拒绝（NO ACTION）执行</span><ul>
+<li><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">1.拒绝（NO ACTION）执行</span>
+<ul>
 <li>不允许该操作执行。该策略一般设置为默认策略。</li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">2.级连（CASCADE)操作</span><ul>
-<li>当删除或修改被参照表（Student)的一个元组造成了与参照表（SC)的不一致，则删除或修改参照表中的所有造成不一致的元组。<br>例如，删除Student表中的元组，Sno值为14042401，则从要SC表中级连删除SC.Sno=‘14042401’的所元组。</li>
+<li><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">2.级连（CASCADE)操作</span>
+<ul>
+<li>当删除或修改被参照表（Student)的一个元组造成了与参照表（SC)的不一致，则删除或修改参照表中的所有造成不一致的元组。<br>
+例如，删除Student表中的元组，Sno值为14042401，则从要SC表中级连删除SC.Sno=‘14042401’的所元组。</li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">3.设置为空值</span></p>
+<li>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">3.设置为空值</span></p>
 <ul>
-<li><p>当删除或修改被参照表的一个元组时造成了不一致，则将参照表中的所有造成不一致的元组的对应属性设置为空值。</p>
+<li>
+<p>当删除或修改被参照表的一个元组时造成了不一致，则将参照表中的所有造成不一致的元组的对应属性设置为空值。</p>
 <ul>
-<li><font color = green>示例：</font>
-
+<li>
+<p><font color = green>示例：</font></p>
 <blockquote>
-<p>例如，有下面2个关系<br>学生（学号，姓名，性别，专业号，年龄）<br>专业（专业号，专业名）<br>学生关系的“专业号”是外码，因为专业号是专业关系的主码。</p>
+<p>例如，有下面2个关系<br>
+学生（学号，姓名，性别，专业号，年龄）<br>
+专业（专业号，专业名）<br>
+学生关系的“专业号”是外码，因为专业号是专业关系的主码。</p>
 <p>假设专业表中某个元组被删除，专业号为12，按照设置为空值的策略，就要把学生表中专业号=12的所有元组的专业号设置为空值。这对应了这样的语义：某个专业删除了，该专业的所有学生专业未定，等待重新分配专业。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC</span><br><span class="line">	      (Sno CHAR(9) NOT NULL,</span><br><span class="line">	       Cno CHAR(4) NOT NULL,</span><br><span class="line">	       Grade SMALLINT,</span><br><span class="line">           &#x2F;*在表级定义实体完整性*&#x2F;</span><br><span class="line">	       PRIMARY KEY(Sno,Cno),			 </span><br><span class="line">	       &#x2F;*在表级定义参照完整性*&#x2F;</span><br><span class="line">           FOREIGN KEY(Sno) REFERENCES Student(Sno)	 </span><br><span class="line">	       &#x2F;*当删除student表中的元组时，级连删除SC表中相应的元组*&#x2F;</span><br><span class="line">           ON DELETE CASCADE	</span><br><span class="line">           &#x2F;*当更新student表中的Sno时，级连更新SC表中相应的元组*&#x2F;</span><br><span class="line">	       ON UPDATE CASCADE,    </span><br><span class="line">           &#x2F;*在表级定义参照完整性*&#x2F;</span><br><span class="line">	       FOREIGN KEY(Cno) REFERENCES Course(Cno) </span><br><span class="line">	       &#x2F;*当删除course表中的元组造成了与SC表不一致时拒绝删除*&#x2F;</span><br><span class="line">           ON DELETE NO ACTION	</span><br><span class="line">	       &#x2F;*当更新course表中的cno时，级连更新SC表中相应的元组*&#x2F;</span><br><span class="line">           ON UPDATE CASCADE,    </span><br><span class="line">	       );</span><br></pre></td></tr></table></figure>
@@ -443,41 +458,41 @@
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = red>示例：</font>
-
+<li>
+<p><font color = red>示例：</font></p>
 <p>std3表结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table std3 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std3_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,   -- 表级约束</span><br><span class="line">     constraint std3_email_uk unique(email) ,</span><br><span class="line">     constraint std3_id_pk primary key(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>std3中数据如下： </p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/ge38zfuXOaq9.png?imageslim" alt="mark"></p>
-</li>
-</ul>
-<p>  std5表结构（外键级联删除）：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table std5 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std4_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) ,   -- 表级约束</span><br><span class="line">     constraint std5_email_uk unique(email) ,</span><br><span class="line">     constraint std5_id_pk primary key(id) ,</span><br><span class="line">     constraint std5_friend_id_fk foreign key(friend_id) references std3(id) on delete cascade</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>  <br/></p>
-<p>  std5中数据如下：</p>
-<p>  <img data-src="http://image.zxkidea.top/blog/20200308/OSr7Vl9hrWdO.png?imageslim" alt="mark"></p>
-<p>  <br/></p>
-<p>  std6表结构（外键级联删除制空）：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table std6 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std6_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) , -- 表级约束</span><br><span class="line">     constraint std6_email_uk unique(email) ,</span><br><span class="line">     constraint std6_id_pk primary key(id) ,</span><br><span class="line">     constraint std6_friend_id_fk foreign key(friend_id) references std3(id) on delete set null</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-<p>  std6中数据如下： </p>
-<p>  <img data-src="http://image.zxkidea.top/blog/20200308/TIy5Gr4FLKoa.png?imageslim" alt="mark"></p>
-<p>  <br/></p>
-  <font color = green size = 4>级联操作:</font>
-
+<p>std3中数据如下：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/ge38zfuXOaq9.png?imageslim" alt="zxk"></p>
+<p>std5表结构（外键级联删除）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table std5 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std4_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) ,   -- 表级约束</span><br><span class="line">     constraint std5_email_uk unique(email) ,</span><br><span class="line">     constraint std5_id_pk primary key(id) ,</span><br><span class="line">     constraint std5_friend_id_fk foreign key(friend_id) references std3(id) on delete cascade</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<br/>
+<p>std5中数据如下：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/OSr7Vl9hrWdO.png?imageslim" alt="zxk"></p>
+<br/>
+<p>std6表结构（外键级联删除制空）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table std6 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std6_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) , -- 表级约束</span><br><span class="line">     constraint std6_email_uk unique(email) ,</span><br><span class="line">     constraint std6_id_pk primary key(id) ,</span><br><span class="line">     constraint std6_friend_id_fk foreign key(friend_id) references std3(id) on delete set null</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+<p>std6中数据如下：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/TIy5Gr4FLKoa.png?imageslim" alt="zxk"></p>
+<br/>
+<p><font color = green size = 4>级联操作:</font></p>
 <ul>
-<li><p>此时删除std3中‘300001’号数据以后：</p>
-<p>std5表： </p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/M1SrQ6xtkTU4.png?imageslim" alt="mark"></p>
-<p>std6表： </p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim" alt="mark"></p>
+<li>
+<p>此时删除std3中‘300001’号数据以后：</p>
+<p>std5表：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/M1SrQ6xtkTU4.png?imageslim" alt="zxk"></p>
+<p>std6表：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim" alt="zxk"></p>
+<p><font color = green>注：级联删除会删除相关联子表中的数据，而级联制空会将子表中相关联的数据置空而不会删除</font></p>
 </li>
 </ul>
-<pre><code>&lt;font color = green&gt;注：级联删除会删除相关联子表中的数据，而级联制空会将子表中相关联的数据置空而不会删除&lt;/font&gt;
-</code></pre><p><br/></p>
-<h4 id="3）用户定义的完整性"><a href="#3）用户定义的完整性" class="headerlink" title="3）用户定义的完整性"></a>3）用户定义的完整性</h4><font color = green >1.属性上的约束条件的定义</font>
-
+</li>
+</ul>
+<br/>
+<h4 id="3）用户定义的完整性">3）用户定义的完整性</h4>
+<p><font color = green >1.属性上的约束条件的定义</font></p>
 <blockquote>
 <p>在CREATE TABLE 中定义属性的同时可以根据应用要求，定义属性上的约束条件，即属性值限制，包括：</p>
 <ol>
@@ -486,100 +501,105 @@
 <li><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">检查列值是否满足一个布尔表达式（CHECK语句）</span></li>
 </ol>
 </blockquote>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>不允许取空值</font>
-
+<li>
+<p><font color = blue>不允许取空值</font></p>
 <ul>
-<li><p>在定义SC表时，说明Sno、Cno、Grade属性不允许取空值。</p>
+<li>
+<p>在定义SC表时，说明Sno、Cno、Grade属性不允许取空值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC</span><br><span class="line">	(Sno CHAR(9) NOT NULL.	&#x2F;*Sno属性不允许取空值*&#x2F;</span><br><span class="line">	 Cno CHAR(4) NOT NULL,	&#x2F;*Cno属性不允许取空值*&#x2F;</span><br><span class="line">	 Grade SMALLINT NOT NULL, &#x2F;*Grade属性不允许取空值*&#x2F;</span><br><span class="line">&#x2F;*如果在表级定义实体完整性，隐含了Sno,Cno不允许取空值则在列级不允许取空值的定义就不必写了*&#x2F;</span><br><span class="line">     PRIMARY KEY(Sno,Cno), 	  </span><br><span class="line">	 ……			&#x2F;*其它语句省略*&#x2F;</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>列值唯一</font>
-
+<li>
+<p><font color = blue>列值唯一</font></p>
 <ul>
-<li><p>建立部门表DEPT,要求部门名称Dname列取值唯一，部门编号Deptno列为主码。</p>
+<li>
+<p>建立部门表DEPT,要求部门名称Dname列取值唯一，部门编号Deptno列为主码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE DEPT</span><br><span class="line">		(Deptno NUMERIC(2),</span><br><span class="line">		 Dname CHAR(9) UNIQUE,	&#x2F;*要求Dname列值唯一*&#x2F;</span><br><span class="line">		 Location CHAR(10),</span><br><span class="line">		 PRIMARY KEY(Deptno)</span><br><span class="line">		);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>用CHECK短语自定列值应该满足的条件</font>
-
+<li>
+<p><font color = blue>用CHECK短语自定列值应该满足的条件</font></p>
 <ul>
-<li><p>Student 表的Ssex只允许取“男”或“女”。</p>
+<li>
+<p>Student 表的Ssex只允许取“男”或“女”。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">		(Sno CHAR(9) PRIMARY KEY,		&#x2F;*在列级定义主码*&#x2F;</span><br><span class="line">		 Sname CHAR(8) NOT NULL,		&#x2F;*Sname属性不允许取空值*&#x2F;</span><br><span class="line">		 Ssex CHAR(2) CHECK(Ssex IN (&#39;男&#39;,&#39;女&#39;)),	&#x2F;*性别属性Ssex只允许取’男‘或’女‘*&#x2F;</span><br><span class="line"> 		 Sage SMALLINT,</span><br><span class="line">		 Sdept CHAR(20)</span><br><span class="line">		);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>SC表的Grade的值应该在0至100之间。</p>
+<li>
+<p>SC表的Grade的值应该在0至100之间。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE SC</span><br><span class="line">	     (Sno CHAR(9) NOT NULL,</span><br><span class="line"> 	      Cno CHAR(4) NOT NULL,</span><br><span class="line">	      Grade SMALLINT CHECK(Grade&gt;&#x3D;0 AND Grade&lt;&#x3D;100), 	</span><br><span class="line">          PRIMARY KEY (Sno,Cno),</span><br><span class="line">	      FOREIGN KEY(Sno) REFERENCES Student(Sno),</span><br><span class="line">	      FOREIGN KEY(Cno) REFERENCES Course(Cno)</span><br><span class="line"> 	     );</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>元组上的约束条件的定义：</font>
-
+<li>
+<p><font color = blue>元组上的约束条件的定义：</font></p>
 <blockquote>
 <p>与属性上约束条件的定义类似，在CREATE TABLE语句中可以用CHECK短语定义元组上的约束条件，即元组级的限制。同属性值限制相比，元组级的限制可以设置不同属性之间的取值的相互约束条件。</p>
 </blockquote>
 <ul>
-<li><p>当学生的性别是男时，其名字不能以Ms.打头。</p>
+<li>
+<p>当学生的性别是男时，其名字不能以Ms.打头。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">		   (Sno CHAR(9),</span><br><span class="line">		    Sname CHAR(8) NOT NULL,</span><br><span class="line">		    Ssex CHAR(2),</span><br><span class="line">		    Sage SMALLINT,</span><br><span class="line">		    Sdept CHAR(20),</span><br><span class="line">		    PRIMARY KEY(Sno),</span><br><span class="line">            &#x2F;*定义了元组中Sname和Ssex两个属性值之间的约束条件*&#x2F;</span><br><span class="line">		    CHECK(Ssex&#x3D;&#39;女&#39; OR Sname NOT LIKE &#39;Ms.%&#39;)	</span><br><span class="line">		   );</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
-<h4 id="4）完整性约束命名子句"><a href="#4）完整性约束命名子句" class="headerlink" title="4）完整性约束命名子句"></a>4）完整性约束命名子句</h4><ul>
+<br/>
+<h4 id="4）完整性约束命名子句">4）完整性约束命名子句</h4>
+<ul>
 <li><font color = green size = 4>定义：</font>以上讲解的完整性约束约束条件都在CHECK TABLE 语句中定义。SQL还在CHECK TABLE 语句中提供了完整性约束命名子句CONSTRAINT，用来对完整性约束条件命名。从而可以灵活地增加、删除一个完整性约束条件。</li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>完整性约束条件命名子句：</font>
-
+<li>
+<p><font color = green size = 4>完整性约束条件命名子句：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONSTRAINT &lt;完整性约束条件名&gt;[PRIMARY KEY 短语|FOREIGN KEY 短语|CHECK 短语]</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <blockquote>
-<p> 建立学生登记表Student，要求学号在90000-99999之间，姓名不能取空值，年龄小于30，性别只能是’男‘或’女‘。</p>
+<p>建立学生登记表Student，要求学号在90000-99999之间，姓名不能取空值，年龄小于30，性别只能是’男‘或’女‘。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student</span><br><span class="line">		(Sno NUMERIC(6),</span><br><span class="line">  		 CONSTRAINT C1 CHECK(Sno BETWEEN 90000 AND 99999),</span><br><span class="line">		 Sname CHAR(20),</span><br><span class="line">		 CONSTRAINT C2 CHECK(Sname NOT NULL),</span><br><span class="line">		 Sage NUMERIC(3),</span><br><span class="line">		 CONSTRAINT C3 CHECK(Sage&lt;30),</span><br><span class="line">		 Ssex CHAR(2),</span><br><span class="line">		 CONSTRAINT C4 CHECK(Ssex IN(&#39;男&#39; ,&#39;女&#39;)),</span><br><span class="line">		 CONSTRAINT StudentKey PRIMARY KEY(Sno)</span><br><span class="line">		);</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <blockquote>
 <p>建立教师表TEACHER,要求每个教师的应发工资不低于3000元；应发工资实际上就是实发工资列Sal与扣除项Deduct之和。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE TEACHER</span><br><span class="line">		(Eno NUMERIC(4) PRIMARY KEY,</span><br><span class="line">		 Ename CHAR(10),</span><br><span class="line">		 Job CHAR(8),</span><br><span class="line"> 		 Sal NUMERIC(7,2),</span><br><span class="line">		 Deduct NUMERIC(7,2),</span><br><span class="line">		 Deptno NUMERIC(2),</span><br><span class="line">		 CONSTRAINT EMPFKey FOREIGN KEY(Deptno) REFERENCES DEPT(Deptno),</span><br><span class="line">		 CONSTRAINT C1 CHECK (Sal+Deduct &gt;&#x3D; 3000)</span><br><span class="line">		);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>修改表中完整性限制：</font>
-
+<li>
+<p><font color = green size = 4>修改表中完整性限制：</font></p>
 <blockquote>
 <p>可以使用ALTER TABLE语句修改表中的完整性限制；去掉Student表中对性别的限制。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Student</span><br><span class="line">DROP CONSTRAINT C4;</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <blockquote>
 <p>修改表Student中的约束条件，要求学号改为900000-999999之间，年龄由小于30改为小于40.（<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">可以先删除原来的约束条件，再增加新的约束条件</span>）</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Student</span><br><span class="line">DROP CONSTRAINT C1;</span><br><span class="line">ALTER TABLE Student</span><br><span class="line">ADD CONSTRAINT C1 CHECK (Sno BETWEEN 900000 AND 999999),</span><br><span class="line">ALTER TABLE Student</span><br><span class="line">DROP CONSTRAINT C3;</span><br><span class="line">ALTER TABLE Student</span><br><span class="line">ADD CONSTRAINT C3 CHECK(Sage&lt;40);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br/></p>
-<h4 id="5）触发器"><a href="#5）触发器" class="headerlink" title="5）触发器"></a>5）触发器</h4><ul>
-<li><font color = green size = 4>定义：</font>trigger，是指事先为某张表绑定一段代码，当表中的某些内容发生改变（增、删、改）的时候，系统会自动触发代码并执行。
-
 <br/>
-
-<font color = green>触发器包含三个要素，分别为：</font>
-
+<h4 id="5）触发器">5）触发器</h4>
+<ul>
+<li>
+<p><font color = green size = 4>定义：</font>trigger，是指事先为某张表绑定一段代码，当表中的某些内容发生改变（增、删、改）的时候，系统会自动触发代码并执行。</p>
+<br/>
+<p><font color = green>触发器包含三个要素，分别为：</font></p>
 <blockquote>
 <p>事件类型：增删改，即insert、delete和update；</p>
 <p>触发时间：事件类型前和后，即before和after；</p>
@@ -588,326 +608,336 @@
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>创建触发器：</font>
-
+<li>
+<p><font color = green size = 4>创建触发器：</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建触发器基本语法</span></span><br><span class="line">delimiter $  <span class="comment">-- 自定义符号;临时修改语句结束符，在后续语句中只有遇到自定义符号才会结束语句</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> + 触发器名称 + 触发器时间 + 事件类型 <span class="keyword">on</span> 表名 <span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">begin</span> <span class="comment">-- 代表触发器内容开始</span></span><br><span class="line"><span class="comment">-- 触发器内容主体，每行用分号结尾</span></span><br><span class="line"><span class="keyword">end</span> <span class="comment">-- 代表触发器内容结束</span></span><br><span class="line">$  <span class="comment">-- 自定义符号;用于结束语句</span></span><br><span class="line">delimiter ; <span class="comment">-- 恢复语句结束符</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>trigger_name : 触发器名称，用户自行指定<br>trigger_time： 触发时机，取值BEFORE（之前）、AFTER（之后）<br>trigger_event : 出发事件，INSERT、UPDATE、DELETE。（插入、更新、删除）<br>tbl_name : 需要建立触发器的表名。<br>trigger_stmt : 触发程序体，可以是一条SQL语句或是BEGIN和END包含的索条语句</p>
+<p>trigger_name : 触发器名称，用户自行指定<br>
+trigger_time： 触发时机，取值BEFORE（之前）、AFTER（之后）<br>
+trigger_event : 出发事件，INSERT、UPDATE、DELETE。（插入、更新、删除）<br>
+tbl_name : 需要建立触发器的表名。<br>
+trigger_stmt : 触发程序体，可以是一条SQL语句或是BEGIN和END包含的索条语句</p>
 </blockquote>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>BEGIN...END详解：</font>
-
+<li>
+<p><font color = blue>BEGIN…END详解：</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">[statement_list]</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">statement_list 使用方法：</span><br>statement_list 代表一个或多个语句的列表，列表内的每条语句都必须用分号（;）来结尾(默认值)<br>我们可以使用DELIMITERE指定自定义的定界符。<br><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">DELIMITER new_delemiter：</span><br>new_delemiter 可以设为1个或多个长度的符号，默认的是分号（;），我们可以把它修改为其他符号，如：DELIMITER $(注意：我们修改了定界符使用完了，记得修改回来DELIMITER ；)</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">statement_list 使用方法：</span><br>
+statement_list 代表一个或多个语句的列表，列表内的每条语句都必须用分号（;）来结尾(默认值)<br>
+我们可以使用DELIMITERE指定自定义的定界符。<br>
+<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">DELIMITER new_delemiter：</span><br>
+new_delemiter 可以设为1个或多个长度的符号，默认的是分号（;），我们可以把它修改为其他符号，如：DELIMITER $(注意：我们修改了定界符使用完了，记得修改回来DELIMITER ；)</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $</span><br><span class="line">create trigger tri_stuInsert after insert</span><br><span class="line">on student for each row</span><br><span class="line">begin</span><br><span class="line">declare c int;</span><br><span class="line">set c &#x3D; (select stucount from class where classID &#x3D; new.classID);</span><br><span class="line">update class set stucount &#x3D; c+1 where classID &#x3D; new.classID;</span><br><span class="line">end $</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>NEW与OLD关键字：</font>
-
+<li>
+<p><font color = blue>NEW与OLD关键字：</font></p>
 <p>该关键字，表示触发了触发器的那一行数据。</p>
 <blockquote>
-<p>INSERT触发器中,NEW用来表示将要(BEFORE)或已经(AFTER)插入的新数据。<br>UPDATE触发器中，OLD用来表示将要或已经被修改的原数据，NEW用来表示将要或已经修改为的新数据。<br>DELETE触发器中，OLD用来表示将要或已经被删除的原数据。</p>
-<font color = dark>使用方法：</font>
-
-<p>NEW.columnName（columnName为相应数据表某一列名）<br>另外，OLD是只读的，而NEW则可以在触发器中使用SET赋值，这样不会再次触发触发器，造成循环调用（如每插入一个学生前，都在其学号前加”2013”）。</p>
+<p>INSERT触发器中,NEW用来表示将要(BEFORE)或已经(AFTER)插入的新数据。<br>
+UPDATE触发器中，OLD用来表示将要或已经被修改的原数据，NEW用来表示将要或已经修改为的新数据。<br>
+DELETE触发器中，OLD用来表示将要或已经被删除的原数据。</p>
+</blockquote>
+<blockquote>
+<p><font color = dark>使用方法：</font></p>
+<p>NEW.columnName（columnName为相应数据表某一列名）<br>
+另外，OLD是只读的，而NEW则可以在触发器中使用SET赋值，这样不会再次触发触发器，造成循环调用（如每插入一个学生前，都在其学号前加&quot;2013&quot;）。</p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>具体示例：</font>
-
-<font color = blue>1. 当在删除test表的数据时，会在对应的member对应的id中添加name字段值为world。</font>
-
+<li>
+<p><font color = green size = 4>具体示例：</font></p>
+<p><font color = blue>1. 当在删除test表的数据时，会在对应的member对应的id中添加name字段值为world。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> test_tt <span class="keyword">AFTER</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> <span class="string">`test`</span>  <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> s <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">SET</span> s = <span class="string">'world'</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="string">`member`</span> <span class="keyword">SET</span> <span class="string">`name`</span> = s <span class="keyword">WHERE</span> <span class="keyword">id</span> = OLD.id;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-<p><br/></p>
-<font color = blue>2. 在删除test表中的一行数据时，能够把删除之前的name数据写入member表中去。</font>
-
+<br/>
+<p><font color = blue>2. 在删除test表中的一行数据时，能够把删除之前的name数据写入member表中去。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> test_tt <span class="keyword">AFTER</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> <span class="string">`test`</span>  <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="string">`member`</span> <span class="keyword">SET</span> <span class="string">`name`</span> = old.name <span class="keyword">WHERE</span> <span class="keyword">id</span> = OLD.id;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>判断值后调用触发器：</font>
-
-<font color = blue>当插入时间小时为20时，对数据进行插入</font>
-
+<li>
+<p><font color = green size = 4>判断值后调用触发器：</font></p>
+<p><font color = blue>当插入时间小时为20时，对数据进行插入</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`ins_info`</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> ins_info</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span> <span class="keyword">on</span> nhfxelect <span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span> </span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">HOUR</span>(new.RecordTime)=<span class="string">'20'</span> <span class="keyword">then</span>  </span><br><span class="line">	<span class="keyword">insert</span> <span class="keyword">into</span> nhfxbyhour (UnitDepName, UnitDepCode, ElectCost, TimeJG, RecordTime)</span><br><span class="line">		<span class="keyword">values</span>( <span class="string">'数统学院'</span>, <span class="string">'1'</span>, new.USERKWH, <span class="string">'20'</span>, new.RecordTime);</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>再如更新触发器，如果设置的值为某个范围，才进行操作或性别为”男”或”女”才进行操作。</p>
-<font color = red>基本语法：</font>
-
-<p>if 判断条件 then</p>
-<pre><code>  sql语句;
-end if；
-</code></pre></blockquote>
+<p>再如更新触发器，如果设置的值为某个范围，才进行操作或性别为&quot;男&quot;或&quot;女&quot;才进行操作。</p>
+<p><font color = red>基本语法：</font></p>
+<p>if 判断条件 then<br>
+sql语句;<br>
+end if；</p>
+</blockquote>
 </li>
 </ul>
-<p><br/></p>
-<h3 id="2-Create-Views-创建视图"><a href="#2-Create-Views-创建视图" class="headerlink" title="2. Create Views(创建视图)"></a>2. Create Views(创建视图)</h3><h4 id="1）视图功能"><a href="#1）视图功能" class="headerlink" title="1）视图功能"></a>1）视图功能</h4><ul>
+<br/>
+<h3 id="2-Create-Views-创建视图">2. Create Views(创建视图)</h3>
+<h4 id="1）视图功能">1）视图功能</h4>
+<ul>
 <li><font color = green>视图（子查询）：</font>是从一个或多个表导出的虚拟的表，其内容由查询定义。具有普通表的结构，但是不实现数据存储。</li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
 <li><font color = green>对视图的修改：</font>单表视图一般用于查询和修改，会改变基本表的数据，多表视图一般用于查询，不会改变基本表的数据。</li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green>优点：</font>
-
+<li>
+<p><font color = green>优点：</font></p>
 <ul>
-<li><p>简化了操作，把经常使用的数据定义为视图。</p>
+<li>
+<p>简化了操作，把经常使用的数据定义为视图。</p>
 <p>我们在使用查询时，<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">在很多时候我们要使用聚合函数，同时还要 显示其它字段的信息，可能还会需要关联到其它表，这时写的语句可能会很长，或如果这个动作频繁发生的话，我们可以创建视图</span>，这以后，我们只需要select * from view就可以啦，这样很方便。</p>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><p>安全性，用户只能查询和修改能看到的数据。</p>
-<p>因为视图是虚拟的，物理上是不存在的，只是存储了数据的集合，我们可以将基表中重要的字段信息，可以不通过视图给用户，视图是动态的数据的集合，数据是随着基表的更新而更新。同时，用户对视图不可以随意的更改和删除，可以保证数据的安全性。 </p>
+<li>
+<p>安全性，用户只能查询和修改能看到的数据。</p>
+<p>因为视图是虚拟的，物理上是不存在的，只是存储了数据的集合，我们可以将基表中重要的字段信息，可以不通过视图给用户，视图是动态的数据的集合，数据是随着基表的更新而更新。同时，用户对视图不可以随意的更改和删除，可以保证数据的安全性。</p>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><p>逻辑上的独立性，屏蔽了真实表的结构带来的影响。</p>
-<font color = blue>视图可以使应用程序和数据库表在一定程度上独立。如果没有视图，应用一定是建立在表上的。有了视图之后，程序可以建立在视图之上，从而程序与数据库表被视图分割开来。</font>
-
+<li>
+<p>逻辑上的独立性，屏蔽了真实表的结构带来的影响。</p>
+<p><font color = blue>视图可以使应用程序和数据库表在一定程度上独立。如果没有视图，应用一定是建立在表上的。有了视图之后，程序可以建立在视图之上，从而程序与数据库表被视图分割开来。</font></p>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green>缺点: </font>
-
+<li>
+<p><font color = green>缺点: </font></p>
 <ul>
-<li><p>性能差</p>
-<p>数据库必须把视图查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，即使是视图的一个简单查询，数据库也要把它变成一个复杂的结合体，需要花费一定的时间。 </p>
+<li>
+<p>性能差</p>
+<p>数据库必须把视图查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，即使是视图的一个简单查询，数据库也要把它变成一个复杂的结合体，需要花费一定的时间。</p>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><p>修改限制</p>
+<li>
+<p>修改限制</p>
 <p>当用户试图修改视图的某些信息时，数据库必须把它转化为对基本表的某些信息的修改，对于简单的视图来说，这是很方便的，<font color = green>但是，对于比较复杂的视图，可能是不可修改的。</font></p>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
-<h4 id="2）创建视图"><a href="#2）创建视图" class="headerlink" title="2）创建视图"></a>2）创建视图</h4><ul>
-<li><font color = green size = 4>创建(或修改)视图：</font>
-
+<br/>
+<h4 id="2）创建视图">2）创建视图</h4>
+<ul>
+<li>
+<p><font color = green size = 4>创建(或修改)视图：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW 视图名(列1，列2...)</span><br><span class="line"> AS SELECT (列1，列2...)</span><br><span class="line"> FROM ...</span><br><span class="line"> [With Check Option];</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE VIEW 视图名 </span><br><span class="line">AS SELECT [...] FROM [...];</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW Student（Sno，Sname，Ssex，Sage，Sdept）</span><br><span class="line">AS</span><br><span class="line">SELECT SX.Sno，SX.Sname，SY.Ssex，SX.Sage，SY.Sdept</span><br><span class="line">FROM SX，SY</span><br><span class="line">WHERE SX.Sno&#x3D;SY.Sno；</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 查看10号部门所有的员工信息,选择所有列则无需在view名后添加列名</span><br><span class="line">Create or replace view v_emp as select * from emp where deptno&#x3D;10;</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <ul>
 <li><font color = dark>参数：</font>[with check  option]可选项，防止用户对数据插入、删除、更新时操作了视图范围外的基本表的数据。</li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = blue>组成视图的属性列名或者全部省略或者全部指定，没有第三种选择。如果省略了视图的各个属性列名，则隐含该视图由子查询中SELECT子句目标列中的诸字段组成。但在下列三种情况下必须明确指定组成视图的所有列名：</font>
-
+<li>
+<p><font color = blue>组成视图的属性列名或者全部省略或者全部指定，没有第三种选择。如果省略了视图的各个属性列名，则隐含该视图由子查询中SELECT子句目标列中的诸字段组成。但在下列三种情况下必须明确指定组成视图的所有列名：</font></p>
 <blockquote>
-<p>（1）某个目标列不是单纯的属性名，而是聚集函数或列表达式；<br>（2）多表连接时选出了几个同名列作为视图的字段；<br>（3）需要在视图中为某个列启用新的更合适的名字。</p>
+<p>（1）某个目标列不是单纯的属性名，而是聚集函数或列表达式；<br>
+（2）多表连接时选出了几个同名列作为视图的字段；<br>
+（3）需要在视图中为某个列启用新的更合适的名字。</p>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>示例：</font>
-
-<font color = blue>1. 建立信息系选修了1号课程的学生的视图（包括学号、姓名、成绩）。</font>
-
+<li>
+<p><font color = green size = 4>示例：</font></p>
+<p><font color = blue>1. 建立信息系选修了1号课程的学生的视图（包括学号、姓名、成绩）。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> IS_SI（Sno, Sname, Grade）</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Student.Sno, Sname，Grade </span><br><span class="line"><span class="keyword">FROM</span> Student, SC</span><br><span class="line"><span class="keyword">WHERE</span> Sdept=<span class="string">'IS'</span><span class="keyword">AND</span></span><br><span class="line">Student.Sno=SC.Sno <span class="keyword">AND</span></span><br><span class="line">SC.Cno= <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<font color = red size = 4>注意：</font>
-
-<font color = green >由于视图IS_S1的属性列中包含了Student表与SC表的同名列Sno，所以必须在视图名后面明确说明视图的各个属性列名。</font>
-
+<p><font color = red size = 4>注意：</font></p>
+<p><font color = green >由于视图IS_S1的属性列中包含了Student表与SC表的同名列Sno，所以必须在视图名后面明确说明视图的各个属性列名。</font></p>
 </blockquote>
-<p><br/></p>
-<font color = blue>2. 定义一个反映学生出生年份的视图。</font>
-
+<br/>
+<p><font color = blue>2. 定义一个反映学生出生年份的视图。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> BT_S(Sno,Sname,Sbirth)</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> Sno,Sname,<span class="number">2014</span>-Sage </span><br><span class="line"><span class="keyword">FROM</span> Student;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<font color = red size = 4>注意：</font>
-
-<font color = green >这里视图BTS是一个带表达式的视图。视图中的出生年份值是通过计算得到的。</font>
-
+<p><font color = red size = 4>注意：</font></p>
+<p><font color = green >这里视图BTS是一个带表达式的视图。视图中的出生年份值是通过计算得到的。</font></p>
 </blockquote>
-<p><br/></p>
-<font color = blue>3. 将学生的学号及平均成绩定义为一个视图。</font>
-
+<br/>
+<p><font color = blue>3. 将学生的学号及平均成绩定义为一个视图。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> S_G（Sno, Gavg）</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno, <span class="keyword">AVG</span>（Grade）</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<font color = red size = 4>注意：</font>
-
-<font color = green>由于AS子句中SELECT语句的目标列平均成绩是通过作用聚集函数得到的，所以CREATE VIEW中必须明确定义组成S_G视图的各个属性列名。SG是一个分组视图。</font>
-
+<p><font color = red size = 4>注意：</font></p>
+<p><font color = green>由于AS子句中SELECT语句的目标列平均成绩是通过作用聚集函数得到的，所以CREATE VIEW中必须明确定义组成S_G视图的各个属性列名。SG是一个分组视图。</font></p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>视图运用(查询)：</font>
-
-<font color = blue size= 4>1. 使用视图和使用表完全一样，只需要把视图当成一张表就OK了；视图是一张虚拟表。</font>
-
+<li>
+<p><font color = green size = 4>视图运用(查询)：</font></p>
+<p><font color = blue size= 4>1. 使用视图和使用表完全一样，只需要把视图当成一张表就OK了；视图是一张虚拟表。</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 从视图中检索数据</span><br><span class="line">select * from v_student;</span><br></pre></td></tr></table></figure>
-<p><br/></p>
-<font color = blue size= 4>2. 从数据字典中取出视图的定义，把定义中的子查询和用户的查询结合起来，转换成等价的对基本表的查询，然后再执行修正了的查询。这一转换过程称为视图消解（view resolution）。</font>
-
+<br/>
+<p><font color = blue size= 4>2. 从数据字典中取出视图的定义，把定义中的子查询和用户的查询结合起来，转换成等价的对基本表的查询，然后再执行修正了的查询。这一转换过程称为视图消解（view resolution）。</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 消解过程：</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno,Sage</span><br><span class="line"><span class="keyword">FROM</span> IS_Student</span><br><span class="line"><span class="keyword">WHERE</span> Sage&lt;<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 相当于</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno,Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept=<span class="string">'IS'</span> <span class="keyword">AND</span> Sage&lt;<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-<p><br/></p>
-<font color = blue size= 4>3. 在一般情况下，视图查询的转换是直截了当的。但有些情况下，这种转换不能直接进行，查询时就会出现问题。</font>
-
+<br/>
+<p><font color = blue size= 4>3. 在一般情况下，视图查询的转换是直截了当的。但有些情况下，这种转换不能直接进行，查询时就会出现问题。</font></p>
 <ul>
-<li><font color = green>在SG视图中查询平均成绩在90分以上的学生
-学号和平均成绩，语句为</font>
-
+<li>
+<p><font color = green>在SG视图中查询平均成绩在90分以上的学生<br>
+学号和平均成绩，语句为</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>*</span><br><span class="line"><span class="keyword">FROM</span> S_G</span><br><span class="line"><span class="keyword">WHERE</span> Gavg&gt;=<span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><font color = green>定义SG视图的子查询为</font>
-
+<li>
+<p><font color = green>定义SG视图的子查询为</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno,<span class="keyword">AVG</span>(Grade)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno;</span><br></pre></td></tr></table></figure>
 </li>
-<li><font color = green>将本例中的查询语句与定义SG视图的子查询结合，形成下列查询语句：</font>
-
+<li>
+<p><font color = green>将本例中的查询语句与定义SG视图的子查询结合，形成下列查询语句：</font></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno,<span class="keyword">AVG</span>(Grade)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">AVG</span>(Grade)&gt;=<span class="number">90</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<font color = red size = 4>注意：</font>
-
-<font color = green>因为WHERE子句中是不能用聚集函数作为条件表达式的，因此执行此修正后的查询将会出现语法错误。正确转换的查询语句应该是：</font>
-
+<p><font color = red size = 4>注意：</font></p>
+<p><font color = green>因为WHERE子句中是不能用聚集函数作为条件表达式的，因此执行此修正后的查询将会出现语法错误。正确转换的查询语句应该是：</font></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno,<span class="keyword">AVG</span>(Grade)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">AVG</span>(Grade)&gt;=<span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
-<h4 id="3）修改视图"><a href="#3）修改视图" class="headerlink" title="3）修改视图"></a>3）修改视图</h4><ul>
-<li><font color = green size = 4>视图与数据变更：</font>
-
+<br/>
+<h4 id="3）修改视图">3）修改视图</h4>
+<ul>
+<li>
+<p><font color = green size = 4>视图与数据变更：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO v_order(pid,pname,price) VALUES(&#39;p010&#39;,&#39;柴油&#39;,&#39;34&#39;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*将基表的ename字段修改了*&#x2F;</span><br><span class="line">update v_emp set ename&#x3D;&#39;kitty&#39; where empno&#x3D;7839;</span><br><span class="line"></span><br><span class="line">&#x2F;*将视图包含的deptno均修改为20，在基表中修改*&#x2F;</span><br><span class="line">update v_emp set deptno &#x3D; 20;</span><br><span class="line"></span><br><span class="line">&#x2F;*结果集为空，基表中不存在10号部门了*&#x2F;</span><br><span class="line">select * from v_emp where deptno &#x3D; 10;</span><br><span class="line"></span><br><span class="line">&#x2F;*with check option保证视图查询条件不被修改，但其他字段可以修改*&#x2F;</span><br><span class="line">create view v_emp as select * from emp where deptno &#x3D; 10 with check option;</span><br></pre></td></tr></table></figure>
-<p><br/></p>
+<br/>
 <blockquote>
-<font color = dark size = 4>With check option作用：</font>
-
+<p><font color = dark size = 4>With check option作用：</font></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> sno,sname,sage</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept=<span class="string">'IS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>;   </span><br><span class="line"></span><br><span class="line"><span class="comment">--- 加上了with check option;后，不能执行以下插入操作：</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> is_student</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'95100'</span>,<span class="string">'李娜'</span>,<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
-<p><br/></p>
-<font color = green>什么原因？不加上with check option则可以！</font>
-
+<br/>
+<p><font color = green>什么原因？不加上with check option则可以！</font></p>
 <blockquote>
 <p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);">with check option可以这么解释：</span></p>
 <p>通过视图进行的修改，必须也能通过该视图看到修改后的结果。比如你insert，那么加的这条记录在刷新视图后必须可以看到；如果修改，修改完的结果也必须能通过该视图看到；如果删除，当然只能删除视图里有显示的记录。</p>
 </blockquote>
-<font color = green>而你只是查询出sdept='is'的纪录，你插入的根本不符合sdept='is'呀，所以就不行</font>
-
-<p><br/></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim" alt="mark"></p>
-<p><br/></p>
-<font color = dark size = 4>可更新视图条件：</font>
-
+<p><font color = green>而你只是查询出sdept='is’的纪录，你插入的根本不符合sdept='is’呀，所以就不行</font></p>
+<br/>
+<p><img data-src="http://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim" alt="zxk"></p>
+<br/>
+<p><font color = dark size = 4>可更新视图条件：</font></p>
 <blockquote>
-<p>（1）若视图是由两个以上基本表导出的，则此视图不允许更新。<br>（2）若视图的字段来自字段表达式或常数，则不允许对此视图执行INSERT和UPDATE操作，但允许执行            DELETE操作。<br>（3）若视图的字段来自聚集函数，则此视图不允许更新。<br>（4）若视图定义中含有GROUP BY子句，则此视图不允许更新。<br>（5）若视图定义中含有DISTINCT短语，则此视图不允许更新。<br>（6）若视图定义中有嵌套查询，并且内层查询的FROM子句中涉及的表也是导出该视图的基本表，则此视            图不允许更新。</p>
+<p>（1）若视图是由两个以上基本表导出的，则此视图不允许更新。<br>
+（2）若视图的字段来自字段表达式或常数，则不允许对此视图执行INSERT和UPDATE操作，但允许执行			DELETE操作。<br>
+（3）若视图的字段来自聚集函数，则此视图不允许更新。<br>
+（4）若视图定义中含有GROUP BY子句，则此视图不允许更新。<br>
+（5）若视图定义中含有DISTINCT短语，则此视图不允许更新。<br>
+（6）若视图定义中有嵌套查询，并且内层查询的FROM子句中涉及的表也是导出该视图的基本表，则此视			图不允许更新。</p>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>删除视图：</font>
-
+<li>
+<p><font color = green size = 4>删除视图：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop view v_emp; -- 删除视图（DDL操作）</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = red size = 4>注意事项：</font>
-
+<li>
+<p><font color = red size = 4>注意事项：</font></p>
 <ul>
-<li><p>通过视图可以修改基表数据，但视图一般只做查询。</p>
+<li>
+<p>通过视图可以修改基表数据，但视图一般只做查询。</p>
 </li>
-<li><p><font color = dark>with check option</font>关键词用于保证视图的查询条件不被修改，但其他字段可以修改。</p>
+<li>
+<p><font color = dark>with check option</font>关键词用于保证视图的查询条件不被修改，但其他字段可以修改。</p>
 </li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
-<h2 id="Ch8-Indexing-索引"><a href="#Ch8-Indexing-索引" class="headerlink" title="Ch8. Indexing(索引)"></a>Ch8. Indexing(索引)</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><font color = green size = 4>系统根据某种算法，将已有的数据（未来可能新增的数据），单独建立一个文件，这个文件能够实现快速匹配数据，并且能够快速的找到对应的记录，几乎所有的索引都是建立在字段之上的。</font>
-
-<p><br/></p>
+<br/>
+<h2 id="Ch8-Indexing-索引">Ch8. Indexing(索引)</h2>
+<h3 id="1-定义">1. 定义</h3>
+<p><font color = green size = 4>系统根据某种算法，将已有的数据（未来可能新增的数据），单独建立一个文件，这个文件能够实现快速匹配数据，并且能够快速的找到对应的记录，几乎所有的索引都是建立在字段之上的。</font></p>
+<br/>
 <ul>
-<li><font color = green size = 4>数据库索引有多种类型，常见索引包括顺序文件上的索引、B+树索引、散列（hash）索引、位图索引等</font>
-
+<li>
+<p><font color = green size = 4>数据库索引有多种类型，常见索引包括顺序文件上的索引、B+树索引、散列（hash）索引、位图索引等</font></p>
 <blockquote>
 <ol>
-<li><p>顺序文件上的索引是针对按指定属性值升序或降序存储的关系，在该属性上建立一个顺序索引文件，索引文件由属性值和相应的元组指针组成。</p>
+<li>
+<p>顺序文件上的索引是针对按指定属性值升序或降序存储的关系，在该属性上建立一个顺序索引文件，索引文件由属性值和相应的元组指针组成。</p>
 </li>
-<li><p>B+树索引是将索引属性组织成B+树形式，B+树的叶结点为属性值和相应的元组指针。B+树索引具有动态平衡的优点。</p>
+<li>
+<p>B+树索引是将索引属性组织成B+树形式，B+树的叶结点为属性值和相应的元组指针。B+树索引具有动态平衡的优点。</p>
 </li>
-<li><p>散列索引是建立若干个桶，将索引属性按照其散列函数值映射到相应桶中，桶中存放索引属性值和相应的元组指针。散列索引具有查找速度快的特点。位图索引是用位向量记录索引属性中可能出现的值，每个位向量对应一个可能值。</p>
+<li>
+<p>散列索引是建立若干个桶，将索引属性按照其散列函数值映射到相应桶中，桶中存放索引属性值和相应的元组指针。散列索引具有查找速度快的特点。位图索引是用位向量记录索引属性中可能出现的值，每个位向量对应一个可能值。</p>
 </li>
 </ol>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
+<br/>
 <ul>
-<li><font color = green size = 4>常用的索引类型：普通索引
-、唯一索引
-、组合索引</font>
-
+<li>
+<p><font color = green size = 4>常用的索引类型：普通索引<br>
+、唯一索引<br>
+、组合索引</font></p>
 <blockquote>
 <p>普通索引和唯一索引的创建方式有三种，分别是直接创建、修改表结构创建、创建表时同时创建，注意组合索引的组合规则是最左前缀索引</p>
 </blockquote>
 </li>
 </ul>
-<p><br/></p>
-<h3 id="2-索引的意义："><a href="#2-索引的意义：" class="headerlink" title="2. 索引的意义："></a>2. 索引的意义：</h3><blockquote>
+<br/>
+<h3 id="2-索引的意义：">2. 索引的意义：</h3>
+<blockquote>
 <p>提升查询数据的效率；</p>
 <p>约束数据的有效性。</p>
 </blockquote>
-<p><br/></p>
+<br/>
 <ul>
 <li><font color = green size = 4>但是增加索引是有前提条件的，这是因为索引本身会产生索引文件（有的时候可能会比数据本身都大），因此非常耗费磁盘空间。</font></li>
 <li><font color = green size = 4>如果某个字段需要作为查询的条件经常使用，可以使用索引；</font></li>
-<li><font color = green size = 4>如果某个字段需要进行数据的有效性约束，也可以使用索引（主键或唯一键）。</font>
-
-</li>
+<li><font color = green size = 4>如果某个字段需要进行数据的有效性约束，也可以使用索引（主键或唯一键）。</font></li>
 </ul>
-<p><br/></p>
-<h3 id="3-索引的类型"><a href="#3-索引的类型" class="headerlink" title="3. 索引的类型"></a>3. 索引的类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 直接创建索引</span><br><span class="line">CREATE INDEX index_name ON table(column(length))</span><br><span class="line"></span><br><span class="line">-- 创建唯一索引</span><br><span class="line">CREATE UNIQUE INDEX index_name ON table(column(length)) </span><br><span class="line"></span><br><span class="line">-- 组合索引</span><br><span class="line">ALTER TABLE article ADD INDEX index_titme_time (title(50),time(10))</span><br><span class="line"></span><br><span class="line">-- 建立这样的组合索引，其实是相当于分别建立了下面两组组合索引：</span><br><span class="line">–title,time</span><br><span class="line"></span><br><span class="line">–title</span><br><span class="line"></span><br><span class="line">-- 删除索引</span><br><span class="line">DROP INDEX index_name ON table</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="3-索引的类型">3. 索引的类型</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 直接创建索引</span><br><span class="line">CREATE INDEX index_name ON table(column(length))</span><br><span class="line"></span><br><span class="line">-- 创建唯一索引</span><br><span class="line">CREATE UNIQUE INDEX index_name ON table(column(length)) </span><br><span class="line"></span><br><span class="line">-- 组合索引</span><br><span class="line">ALTER TABLE article ADD INDEX index_titme_time (title(50),time(10))</span><br><span class="line"></span><br><span class="line">-- 建立这样的组合索引，其实是相当于分别建立了下面两组组合索引：</span><br><span class="line">–title,time</span><br><span class="line"></span><br><span class="line">–title</span><br><span class="line"></span><br><span class="line">-- 删除索引</span><br><span class="line">DROP INDEX index_name ON table</span><br></pre></td></tr></table></figure>
 <blockquote>
-<font color = red>注意：</font>
-
-<p>为什么没有time这样的组合索引呢？这是因为MySQL组合索引“最左前缀”的结果。<br>简单的理解就是只从最左面的开始组合。并不是只要包含这两列的查询都会用到该组合索引</p>
+<p><font color = red>注意：</font></p>
+<p>为什么没有time这样的组合索引呢？这是因为MySQL组合索引“最左前缀”的结果。<br>
+简单的理解就是只从最左面的开始组合。并不是只要包含这两列的查询都会用到该组合索引</p>
 </blockquote>
-<p><br/></p>
-<h3 id="4-索引的优化"><a href="#4-索引的优化" class="headerlink" title="4. 索引的优化"></a>4. 索引的优化</h3><ul>
+<br/>
+<h3 id="4-索引的优化">4. 索引的优化</h3>
+<ul>
 <li><font color = green size = 4>何时使用聚集索引或非聚集索引？</font></li>
 <li><font color = green size = 4>索引不会包含有NULL值的列</font></li>
 <li><font color = green size = 4>使用短索引</font></li>
 <li><font color = green size = 4>索引列排序</font></li>
 <li><font color = green size = 4>like语句操作</font></li>
-<li><font color = green size = 4>不要在列上进行运算</font>
-
-</li>
+<li><font color = green size = 4>不要在列上进行运算</font></li>
 </ul>
 <blockquote>
 <p><font color = red>总结：</font>MySQL只对以下操作符才使用索引：&lt;,&lt;=,=,&gt;,&gt;=,between,in,以及某些时候的like(不以通配符%或_开头的情形)。</p>
@@ -1071,7 +1101,7 @@ end if；
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1143,13 +1173,13 @@ end if；
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">107k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:37</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>
