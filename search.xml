@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CentOS7安装使用VNC远程桌面</title>
+    <url>/posts/64145778.html</url>
+    <content><![CDATA[<h1>CentOS7安装使用VNC远程桌面</h1>
+<h2 id="1-在Linux服务器上安装配置VNC-server">1.在Linux服务器上安装配置VNC-server</h2>
+<h3 id="1-1-配置vnc-server">1.1 配置vnc-server</h3>
+<h4 id="1-1-1-安装VNC服务端并设置VNC连接密码">1.1.1 安装VNC服务端并设置VNC连接密码</h4>
+<p>首先安装vnc的server（若没有安装的话）；需要root权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">yum install tigervnc tigervnc-server</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>登录非root用户，如admin；设置vncpassword</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vncpasswd </span><br><span class="line"><span class="comment">#Password:!d0802</span></span><br><span class="line"><span class="comment">#Verify:!d0802</span></span><br><span class="line"><span class="comment"># 注意：would you like to enter a viwer-only password(y/n)? y</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-2-拷贝并修改配置文件">1.1.2 拷贝并修改配置文件</h4>
+<p>安装完成后开始配置, 将模板配置文件拷贝至配置文件目录下<code>/etc/systemmd/system/</code>, 如果是多用户，则每个用户拷贝一份，其中<code>@:1.service</code>中的数字<code>1</code>对应VNC服务端口<code>5901</code>，数字<code>2</code>对应端口<code>5902</code>根据自己的需求设置即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 复制配置模板文件</span></span><br><span class="line"><span class="comment"># 需要root权限</span></span><br><span class="line">su</span><br><span class="line">cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service</span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line">vi /etc/systemd/system/vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<p>进入service文件，按下面图片的方式更改：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim" alt="zxk"></p>
+<h4 id="1-1-3-重新加载配置文件">1.1.3 重新加载配置文件</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 重新加载systemctl文件</span></span><br><span class="line">systemctl deamon-reload</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-4-启动VNC并设置开机启动">1.1.4 启动VNC并设置开机启动</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启动VNC服务</span></span><br><span class="line">systemctl start vncserver@:1.service</span><br><span class="line"><span class="comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-5-添加防火墙例外">1.1.5 添加防火墙例外</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加 VNC 服务例外</span></span><br><span class="line">firewall-cmd --permanent --add-service vnc-server</span><br><span class="line"><span class="comment"># 添加 5901 端口例外</span></span><br><span class="line">firewall-cmd --permanent --add-port=5901/tcp</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-6-创建VNC-service">1.1.6 创建VNC service</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定1920x1080分辨率的窗口</span></span><br><span class="line">vncserver -geometry 1920x1080</span><br><span class="line"><span class="comment"># 查看vnc-server的状态</span></span><br><span class="line">vncserver -list</span><br></pre></td></tr></table></figure>
+<h2 id="2-在Windows下安装配置VNC服务">2. 在Windows下安装配置VNC服务</h2>
+<p>在https://www.realvnc.com/en/connect/download/viewer/windows/下下载Windows的客户端，然后按照指示完成安装：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim" alt="zxk"></p>
+<h2 id="3-在Windows下远程连接服务器">3. 在Windows下远程连接服务器</h2>
+<ol>
+<li>
+<p>打开VNC-Viewer，Files——&gt;New Connection，输入VNC Server的IP地址，一个服务器上可以开启多个VNC服务，使用数字来标识，我们要连接第一个那就要输入例如：10.10.65.1:1，加密方式默认就可以了，Name的名字随意取即可。</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim" alt="zxk"></p>
+</li>
+<li>
+<p>双击小电脑即可进行连接，弹出对话框，输入之前vncpasswd设置的密码即可；点击连接，就可以远程连接CentOS桌面，再输入系统密码进入，如下图所示：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim" alt="zxk"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>CentOS配置</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>资料整理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL语句技巧</title>
     <url>/posts/8343e966.html</url>
     <content><![CDATA[<h2 id="一、常用函数大全">一、常用函数大全</h2>

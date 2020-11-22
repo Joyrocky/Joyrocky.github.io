@@ -53,21 +53,26 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="遇见时光">
-<meta property="og:url" content="https://blog.zxkidea.top/tags/Linux/index.html">
+  <meta name="description" content="CentOS7安装使用VNC远程桌面 1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安装使用VNC远程桌面">
+<meta property="og:url" content="https://blog.zxkidea.top/posts/64145778.html">
 <meta property="og:site_name" content="遇见时光">
+<meta property="og:description" content="CentOS7安装使用VNC远程桌面 1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim">
+<meta property="og:image" content="http://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim">
+<meta property="article:published_time" content="2020-11-22T12:49:31.000Z">
+<meta property="article:modified_time" content="2020-11-22T13:03:04.885Z">
 <meta property="article:author" content="Rocky Zhou">
-<meta property="article:tag" content="Java开发">
-<meta property="article:tag" content="Devops">
-<meta property="article:tag" content="Flutter">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="FL Studio">
+<meta property="article:tag" content="CentOS配置">
+<meta property="article:tag" content="VNC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim">
 
-<link rel="canonical" href="https://blog.zxkidea.top/tags/Linux/">
+<link rel="canonical" href="https://blog.zxkidea.top/posts/64145778.html">
 
 
 <script id="page-configurations">
@@ -75,11 +80,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签: Linux | 遇见时光</title>
+  <title>CentOS7安装使用VNC远程桌面 | 遇见时光</title>
   
 
 
@@ -228,77 +233,227 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Linux
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/64145778.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Rocky Zhou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="遇见时光">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          CentOS7安装使用VNC远程桌面
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-22 20:49:31 / 修改时间：21:03:04" itemprop="dateCreated datePublished" datetime="2020-11-22T20:49:31+08:00">2020-11-22</time>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CentOS%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">CentOS配置</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/64145778.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/64145778.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+          <span class="post-meta-divider">|</span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2020</h2>
+        <h1>CentOS7安装使用VNC远程桌面</h1>
+<h2 id="1-在Linux服务器上安装配置VNC-server">1.在Linux服务器上安装配置VNC-server</h2>
+<h3 id="1-1-配置vnc-server">1.1 配置vnc-server</h3>
+<h4 id="1-1-1-安装VNC服务端并设置VNC连接密码">1.1.1 安装VNC服务端并设置VNC连接密码</h4>
+<p>首先安装vnc的server（若没有安装的话）；需要root权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">yum install tigervnc tigervnc-server</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>登录非root用户，如admin；设置vncpassword</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd </span><br><span class="line"><span class="comment">#Password:!d0802</span></span><br><span class="line"><span class="comment">#Verify:!d0802</span></span><br><span class="line"><span class="comment"># 注意：would you like to enter a viwer-only password(y/n)? y</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-2-拷贝并修改配置文件">1.1.2 拷贝并修改配置文件</h4>
+<p>安装完成后开始配置, 将模板配置文件拷贝至配置文件目录下<code>/etc/systemmd/system/</code>, 如果是多用户，则每个用户拷贝一份，其中<code>@:1.service</code>中的数字<code>1</code>对应VNC服务端口<code>5901</code>，数字<code>2</code>对应端口<code>5902</code>根据自己的需求设置即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制配置模板文件</span></span><br><span class="line"><span class="comment"># 需要root权限</span></span><br><span class="line">su</span><br><span class="line">cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service</span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line">vi /etc/systemd/system/vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<p>进入service文件，按下面图片的方式更改：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim" alt="zxk"></p>
+<h4 id="1-1-3-重新加载配置文件">1.1.3 重新加载配置文件</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新加载systemctl文件</span></span><br><span class="line">systemctl deamon-reload</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-4-启动VNC并设置开机启动">1.1.4 启动VNC并设置开机启动</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动VNC服务</span></span><br><span class="line">systemctl start vncserver@:1.service</span><br><span class="line"><span class="comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-5-添加防火墙例外">1.1.5 添加防火墙例外</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加 VNC 服务例外</span></span><br><span class="line">firewall-cmd --permanent --add-service vnc-server</span><br><span class="line"><span class="comment"># 添加 5901 端口例外</span></span><br><span class="line">firewall-cmd --permanent --add-port=5901/tcp</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-6-创建VNC-service">1.1.6 创建VNC service</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定1920x1080分辨率的窗口</span></span><br><span class="line">vncserver -geometry 1920x1080</span><br><span class="line"><span class="comment"># 查看vnc-server的状态</span></span><br><span class="line">vncserver -list</span><br></pre></td></tr></table></figure>
+<h2 id="2-在Windows下安装配置VNC服务">2. 在Windows下安装配置VNC服务</h2>
+<p>在https://www.realvnc.com/en/connect/download/viewer/windows/下下载Windows的客户端，然后按照指示完成安装：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim" alt="zxk"></p>
+<h2 id="3-在Windows下远程连接服务器">3. 在Windows下远程连接服务器</h2>
+<ol>
+<li>
+<p>打开VNC-Viewer，Files——&gt;New Connection，输入VNC Server的IP地址，一个服务器上可以开启多个VNC服务，使用数字来标识，我们要连接第一个那就要输入例如：10.10.65.1:1，加密方式默认就可以了，Name的名字随意取即可。</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim" alt="zxk"></p>
+</li>
+<li>
+<p>双击小电脑即可进行连接，弹出对话框，输入之前vncpasswd设置的密码即可；点击连接，就可以远程连接CentOS桌面，再输入系统密码进入，如下图所示：</p>
+<p><img data-src="http://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim" alt="zxk"></p>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-22T20:49:31+08:00"
-              content="2020-11-22">
-          11-22
-        </time>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+        <div class="reward-container">
+  <div>大爷，赏点？</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Rocky Zhou 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Rocky Zhou 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/64145778.html" itemprop="url">
-            <span itemprop="name">CentOS7安装使用VNC远程桌面</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-04-30T22:42:13+08:00"
-              content="2019-04-30">
-          04-30
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/4b6ea061.html" itemprop="url">
-            <span itemprop="name">Linux基本命令</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-    </div>
   </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Rocky Zhou
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.zxkidea.top/posts/64145778.html" title="CentOS7安装使用VNC远程桌面">https://blog.zxkidea.top/posts/64145778.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 资料整理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/8343e966.html" rel="prev" title="MySQL语句技巧">
+      <i class="fa fa-chevron-left"></i> MySQL语句技巧
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+
   
   
   
 
-  
 
+
+  </div>
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -345,6 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">CentOS7安装使用VNC远程桌面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在Linux服务器上安装配置VNC-server"><span class="nav-text">1.在Linux服务器上安装配置VNC-server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-配置vnc-server"><span class="nav-text">1.1 配置vnc-server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-安装VNC服务端并设置VNC连接密码"><span class="nav-text">1.1.1 安装VNC服务端并设置VNC连接密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-拷贝并修改配置文件"><span class="nav-text">1.1.2 拷贝并修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-重新加载配置文件"><span class="nav-text">1.1.3 重新加载配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-启动VNC并设置开机启动"><span class="nav-text">1.1.4 启动VNC并设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-5-添加防火墙例外"><span class="nav-text">1.1.5 添加防火墙例外</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-6-创建VNC-service"><span class="nav-text">1.1.6 创建VNC service</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在Windows下安装配置VNC服务"><span class="nav-text">2. 在Windows下安装配置VNC服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在Windows下远程连接服务器"><span class="nav-text">3. 在Windows下远程连接服务器</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2020-05-30T02:37:02.734Z</updated>
+  <updated>2020-11-22T13:03:04.885Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS7安装使用VNC远程桌面</title>
+    <link href="https://blog.zxkidea.top/posts/64145778.html"/>
+    <id>https://blog.zxkidea.top/posts/64145778.html</id>
+    <published>2020-11-22T12:49:31.000Z</published>
+    <updated>2020-11-22T13:03:04.885Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1&gt;CentOS7安装使用VNC远程桌面&lt;/h1&gt;
+&lt;h2 id=&quot;1-在Linux服务器上安装配置VNC-server&quot;&gt;1.在Linux服务器上安装配置VNC-server&lt;/h2&gt;
+&lt;h3 id=&quot;1-1-配置vnc-server&quot;&gt;1.1 配置vnc-server&lt;/h3&gt;
+&lt;h4 id=&quot;1-1-1-安装VNC服务端并设置VNC连接密码&quot;&gt;1.1.1 安装VNC服务端并设置VNC连接密码&lt;/h4&gt;
+&lt;p&gt;首先安装vnc的server（若没有安装的话）；需要root权限&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;su&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install tigervnc tigervnc-server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL语句技巧</title>
