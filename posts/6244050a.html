@@ -380,7 +380,7 @@
 </blockquote>
 <p><br/>下面通过几道例题讲解口诀：</p>
 <p><font color = blue>例1.已知R(ABCDE), F = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}，求保持函数依赖的3NF分解，和具有无损连接性及保持函数依赖的3NF分解</font></p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F<sub>m</sub> = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F~m~ = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边。首先可以发现没有不出现在两侧的元素不用单独分出一个子集，“剩余依赖变子集”然后我们将各依赖分别划分为子集得到：{AD}，{ED}，{DB}，{BCD}，{DCA}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。</p>
 <p>(1) 候选码的求解：所谓候选码即能决定整个关系的，我们通过找未出现在依赖右边的和两侧均未出现的元素即可求得，</p>
@@ -389,10 +389,10 @@
 <p><font color = blue>例2.关系模式R，有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为3NF且保持函数依赖</font></p>
 <p>将关系模式分解为3NF且保持函数依赖：</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，</p>
-<p>假设B-&gt;G冗余，则(B)<sup>+</sup> = BD，没有G故不冗余。</p>
-<p>假设CE-&gt;B冗余，则(CE)<sup>+</sup> = CEGDA，没有B故不冗余。</p>
-<p>假设C-&gt;A冗余，则( C )<sup>+</sup> = CD，故不冗余。</p>
-<p>一次可以得到最小函数依赖集F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
+<p>假设B-&gt;G冗余，则(B)^+^ = BD，没有G故不冗余。</p>
+<p>假设CE-&gt;B冗余，则(CE)^+^ = CEGDA，没有B故不冗余。</p>
+<p>假设C-&gt;A冗余，则( C )^+^ = CD，故不冗余。</p>
+<p>一次可以得到最小函数依赖集F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边，剩余依赖变子集。首先可以发现没有不出现在两侧的元素，然后我们将各依赖分别划分为子集得{BG}，{CEB}，{CA}，{BD}，{CD}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。找到R的一个候选码为{ACE}。故所求具有无损连接性及保持函数依赖的3NF分解为{BG}，{CEB}，{CA}，{BD}，{CD}，{ACE} (注：范式分解并不唯一，正确即可)</p>
  <br/>
@@ -405,7 +405,7 @@
 <br/>
 <p><font color = blue>例.关系模式R,有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为BCNF且保持函数依赖</font></p>
 <p>将关系模式分解为BCNF且保持函数依赖：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：候码非码成子集。由于候选码为(CE)，因此将CE-&gt;B划分出子集（BCE），而B-&gt;G，B-&gt;D左侧均不含主属性C、E中的任何一个，故划分出(BG)，(BD）；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：此时剩余依赖F’ = {C-&gt;A，C-&gt;D}，剩余元素{A,C,D}，检查发现函数依赖左侧都是候选码（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">新的依赖F’的候选码</span>），即完成BCNF分解，如果不满足则继续分解余下的；</p>
 <p>于是BCNF分解的最后结果为{(BG)，(BD)，(ACD)，(BCE)}。</p>
@@ -637,7 +637,7 @@
 <div class="copyright">
   
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -647,13 +647,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">108k</span>
+    <span title="站点总字数">110k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:40</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>

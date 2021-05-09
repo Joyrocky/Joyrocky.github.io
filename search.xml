@@ -16,7 +16,7 @@
 <p>安装完成后开始配置, 将模板配置文件拷贝至配置文件目录下<code>/etc/systemmd/system/</code>, 如果是多用户，则每个用户拷贝一份，其中<code>@:1.service</code>中的数字<code>1</code>对应VNC服务端口<code>5901</code>，数字<code>2</code>对应端口<code>5902</code>根据自己的需求设置即可。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 复制配置模板文件</span></span><br><span class="line"><span class="comment"># 需要root权限</span></span><br><span class="line">su</span><br><span class="line">cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service</span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line">vi /etc/systemd/system/vncserver@:1.service</span><br></pre></td></tr></table></figure>
 <p>进入service文件，按下面图片的方式更改：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim" alt="zxk"></p>
 <h4 id="1-1-3-重新加载配置文件">1.1.3 重新加载配置文件</h4>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 重新加载systemctl文件</span></span><br><span class="line">systemctl deamon-reload</span><br></pre></td></tr></table></figure>
 <h4 id="1-1-4-启动VNC并设置开机启动">1.1.4 启动VNC并设置开机启动</h4>
@@ -27,18 +27,37 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定1920x1080分辨率的窗口</span></span><br><span class="line">vncserver -geometry 1920x1080</span><br><span class="line"><span class="comment"># 查看vnc-server的状态</span></span><br><span class="line">vncserver -list</span><br></pre></td></tr></table></figure>
 <h2 id="2-在Windows下安装配置VNC服务">2. 在Windows下安装配置VNC服务</h2>
 <p>在https://www.realvnc.com/en/connect/download/viewer/windows/下下载Windows的客户端，然后按照指示完成安装：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim" alt="zxk"></p>
 <h2 id="3-在Windows下远程连接服务器">3. 在Windows下远程连接服务器</h2>
 <ol>
 <li>
 <p>打开VNC-Viewer，Files——&gt;New Connection，输入VNC Server的IP地址，一个服务器上可以开启多个VNC服务，使用数字来标识，我们要连接第一个那就要输入例如：10.10.65.1:1，加密方式默认就可以了，Name的名字随意取即可。</p>
-<p><img data-src="http://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim" alt="zxk"></p>
 </li>
 <li>
 <p>双击小电脑即可进行连接，弹出对话框，输入之前vncpasswd设置的密码即可；点击连接，就可以远程连接CentOS桌面，再输入系统密码进入，如下图所示：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim" alt="zxk"></p>
+</li>
+<li>
+<p>若远程桌面模糊，在Properties中设置Picture quality为Medium即可，此时需要较为稳定的网速，不然容易出现卡顿！</p>
 </li>
 </ol>
+<h2 id="4-VNC与Anaconda冲突问题">4. VNC与Anaconda冲突问题</h2>
+<p><font color = red>问题：</font>Could not make bus activated clients aware of XDG_CURRENT_DESKTOP=GNOME environment variable: Could not connect: Connection refused</p>
+<blockquote>
+<p>查看用户services启动的错误日志：如，cat /root/.vnc/kevin:1.log</p>
+<p>** (process:31798): WARNING **: 21:56:03.861: Could not make bus activated clients aware of XDG_CURRENT_DESKTOP=GNOME environment variable:<br>
+Could not connect: Connection refused</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">原因：dbus-daemon存在冲突。</span><br><span class="line">因为root系统环境中装有anaconda，它的bin目录中的dbus-daemon会与系统自带的dbus-daemon冲突。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@kevin ~]<span class="comment"># find / -name "dbus-daemon"</span></span><br><span class="line">/usr/bin/dbus-daemon</span><br><span class="line">/data/anaconda3/bin/dbus-daemon</span><br><span class="line">/data/anaconda3/pkgs/dbus-1.13.6-h746ee38_0/bin/dbus-daemon</span><br></pre></td></tr></table></figure>
+<p><font color=red>解决办法：</font>vnc和anaconda冲突解决方法：could not make bus activated clients aware of XDG_CURRENT_DESKTOP=GNOME envi；</p>
+<p>1、注释掉~/.bashrc中anaconda相关的环境变量设置；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span></span><br><span class="line"><span class="comment"># !! Contents within this block are managed by 'conda init' !!</span></span><br><span class="line">__conda_setup=<span class="string">"<span class="variable">$('/usr/local/anaconda3/bin/conda' 'shell.bash' 'hook' 2&gt; /dev/null)</span>"</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">eval</span> <span class="string">"<span class="variable">$__conda_setup</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="string">"/usr/local/anaconda3/etc/profile.d/conda.sh"</span> ]; <span class="keyword">then</span></span><br><span class="line">        . <span class="string">"/usr/local/anaconda3/etc/profile.d/conda.sh"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">export</span> PATH=<span class="string">"/usr/local/anaconda3/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">unset</span> __conda_setup</span><br><span class="line"><span class="comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span></span><br></pre></td></tr></table></figure>
+<p>2.执行source ~/.bashrc</p>
+<p>3.重启一个xshell连接，启动VNC</p>
+<p>4.还原~/.bashrc中的注释掉的anaconda相关的环境变量</p>
+<p>5.再次执行source ~/.bashrc</p>
 ]]></content>
       <categories>
         <category>CentOS配置</category>
@@ -466,7 +485,7 @@ select sum(id) from test where id &lt; 0;</p>
 <br/>
 <p><font color = blue>3. 下面是调用存储过程。对于存储过程提供的临时变量而言，MySQL规定要加上@开头。</font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># study是当前数据库名称</span><br><span class="line"> </span><br><span class="line">CALL study.getStuById(1,@name,@age);</span><br><span class="line"> </span><br><span class="line">SELECT @name AS stuName,@age AS stuAge;</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/HYGfjyJT6mQF.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/HYGfjyJT6mQF.png?imageslim" alt="zxk"></p>
 <br/>
 <h3 id="2-创建存储函数">2. 创建存储函数</h3>
 <p><font color = green size = 4>1. 创建存储函数</font></p>
@@ -520,23 +539,23 @@ select sum(id) from test where id &lt; 0;</p>
 <blockquote>
 <p>orderby多个字段时，用逗号分隔每一个字段，如果字段不指明排序方式，默认是增序。排序的方法是先按第一个字段排序，如果有相同的再按后续的字段依次排序。</p>
 </blockquote>
-<img data-src="http://image.zxkidea.top/blog/20200325/BCiqjNz10RXL.png?imageslim" alt="zxk" style="zoom:72%;" />
+<img data-src="https://image.zxkidea.top/blog/20200325/BCiqjNz10RXL.png?imageslim" alt="zxk" style="zoom:72%;" />
 <img data-src="http://image.zxkidea.top/blog/20200325/3WTkJinFFu78.png?imageslim" alt="mark" style="zoom:60%;" />
 <img data-src="http://image.zxkidea.top/blog/20200325/BVGxUxNmOxCB.png?imageslim" alt="mark" style="zoom:67%;" />
 <br/>
 <hr>
 <h2 id="五、生成自增序列">五、生成自增序列</h2>
-<h3 id="1-作用-v2">1. 作用</h3>
+<h3 id="1-作用-2">1. 作用</h3>
 <p><font color = green size = 4>对记录按照某种顺序进行排列后，通过序号来进行进一步筛选</font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select (@i:&#x3D;@i+1) as rownum, surname, personal_name from student, (select @i:&#x3D;0) as init;</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/xG1IugBQWj6H.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/xG1IugBQWj6H.png?imageslim" alt="zxk"></p>
 <br/>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select (@i:&#x3D;@i+5) as rownum, surname, personal_name from student, (select @i:&#x3D;100) as init;</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/NEyjruN4tjA9.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/NEyjruN4tjA9.png?imageslim" alt="zxk"></p>
 <br/>
 <p><font color = blue> 如果是多表联查，跟上述sql类似，连查完后定义一个初始化序列号即可：</font></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select (@i:&#x3D;@i+1) as rownum, A.surname, B.uname from student A</span><br><span class="line"></span><br><span class="line">left join user B on CONCAT(A.surname,A.personal_name) &#x3D; B.uname, (select @i:&#x3D;0) as init;</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/6a6hYrVUqpOX.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/6a6hYrVUqpOX.png?imageslim" alt="zxk"></p>
 <br/>
 <h3 id="2-中位数运算">2. 中位数运算</h3>
 <ul>
@@ -572,7 +591,7 @@ select sum(id) from test where id &lt; 0;</p>
 <p>对@变量不熟悉的同学自行百度，效果类似rownum。<font color = red>注意：执行完最内层时，@index的值就是总行数</font></p>
 </li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/ijiuhW0KtKic.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/ijiuhW0KtKic.png?imageslim" alt="zxk"></p>
 <ul>
 <li>
 <p>第二层取出最中间的两个值，</p>
@@ -582,7 +601,7 @@ select sum(id) from test where id &lt; 0;</p>
 <p><font color = green>这就解决了中位数定义中如果总个数是奇数只取一位，总个数是偶数取中间两个的平均数的问题。</font></p>
 <br/>
 <p>第二层执行完的结果如下：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/d7Q25OfCYKax.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/d7Q25OfCYKax.png?imageslim" alt="zxk"></p>
 <p><font color = red>注：如果总个数是奇数，第二层执行完只会出来一行记录</font></p>
 </li>
 </ul>
@@ -608,7 +627,7 @@ select sum(id) from test where id &lt; 0;</p>
 <ul>
 <li>
 <p><font color = blue>group_concat()：</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/UrcNY0cP6S4D.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/UrcNY0cP6S4D.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>有没有更直观的方法，既让每个名字都只出现一次，又能够显示所有的名字相同的人的id呢？<font color = green>——使用group_concat()</font></p>
 </blockquote>
@@ -625,7 +644,7 @@ select sum(id) from test where id &lt; 0;</p>
 <ul>
 <li>
 <p><font color = blue>示例：</font>使用group_concat()和group by显示相同名字的人的id号：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200310/rFgh9TE088g7.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200310/rFgh9TE088g7.png?imageslim" alt="zxk"></p>
 </li>
 </ul>
 </li>
@@ -725,13 +744,13 @@ select sum(id) from test where id &lt; 0;</p>
 </blockquote>
 </li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/EjXsxnPSPXiV.png?imageslim" alt="zxk"></p>
 <br/>
 <h4 id="2-redo-log（重做日志）">2. redo log（重做日志）</h4>
 <ul>
 <li>
 <p><font color = green size = 4>更新流程</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/Py2TYgYapShW.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/Py2TYgYapShW.png?imageslim" alt="zxk"></p>
 <ul>
 <li>执行update操作。</li>
 <li>先将原始数据从磁盘读取到内存，修改内存中的数据。</li>
@@ -758,32 +777,32 @@ select sum(id) from test where id &lt; 0;</p>
 </ul>
 <br/>
 <h3 id="4-事务的隔离级别">4. 事务的隔离级别</h3>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/EK19I1B5Ynqm.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/EK19I1B5Ynqm.png?imageslim" alt="zxk"></p>
 <br/>
 <h4 id="1-READ-UNCOMMITTED">1. READ-UNCOMMITTED</h4>
 <p><font color = green>READ-UNCOMMITTED 中文叫未提交读，即一个事务读到了另一个未提交事务修改过的数据，整个过程如下图:</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/Y48xImrVT3X2.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/Y48xImrVT3X2.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>如上图，SessionA和SessionB分别开启一个事务，SessionB中的事务先将id为1的记录的name列更新为’lisi’，然后SessionA中的事务再去查询这条id为1的记录，那么在未提交读的隔离级别下，查询结果由’zhangsan’变成了’lisi’，也就是说某个事务读到了另一个未提交事务修改过的记录。但是如果SessionB中的事务稍后进行了回滚，那么SessionA中的事务相当于读到了一个不存在的数据，这种现象也称为<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">脏读</span>。</p>
 </blockquote>
 <br/>
 <h4 id="2-READ-COMMITTED">2. READ COMMITTED</h4>
 <p><font color = green>READ COMMITTED 中文叫已提交读，或者叫不可重复读。即一个事务能读到另一个已经提交事务修改后的数据，如果其他事务均对该数据进行修改并提交，该事务也能查询到最新值。如下图:</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/PMYGTQlwvl1b.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/PMYGTQlwvl1b.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>在SessionA中先后两次读取同一个数据，两次读取的结果不一样；在第4步 SessionB 修改后，如果未提交，SessionA是读不到，但SessionB一旦提交后，SessionA即可读到SessionB修改的内容。</p>
 </blockquote>
 <br/>
 <h4 id="3-REPEATABLE-READ">3. REPEATABLE READ</h4>
 <p><font color = green>REPEATABLE READ 中文叫可重复读，即事务能读到另一个已经提交的事务修改过的数据，但是第一次读过某条记录后，即使后面其他事务修改了该记录的值并且提交，该事务之后再读该条记录时，读到的仍是第一次读到的值，而不是每次都读到不同的数据。如下图:</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/qPMDkMLIGmDm.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/qPMDkMLIGmDm.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>InnoDB<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">默认</span>是这种隔离级别，SessionB无论怎么修改id=1的值，SessionA读到依然是自己开启事务第一次读到的内容；但是可能会出现<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">幻读现象</span>。</p>
 </blockquote>
 <br/>
 <h4 id="4-SERIALIZABLE">4. SERIALIZABLE</h4>
 <p><font color = green>SERIALIZABLE 叫串行化， 上面三种隔离级别可以进行 读-读 或者 读-写、写-读三种并发操作，而SERIALIZABLE不允许读-写，写-读的并发操作。 如下图:</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/rpRJ6Pp9pWcL.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/rpRJ6Pp9pWcL.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>SessionB 对 id=1 进行修改的时候，SessionA 读取id=1则需要等待 SessionB 提交事务。可以理解SessionB在更新的时候加了X锁。</p>
 </blockquote>
@@ -792,12 +811,12 @@ select sum(id) from test where id &lt; 0;</p>
 <li>
 <p><font color = red size = 4>幻读：</font></p>
 <p><font color = green>在事务A中按照某个条件先后两次查询数据库，两次查询结果的条数不同，这种现象称为幻读。不可重复读与幻读的区别可以通俗的理解为：前者是数据变了，后者是数据的行数变了。</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/O6gfdeqVrpXI.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/O6gfdeqVrpXI.png?imageslim" alt="zxk"></p>
 </li>
 </ul>
 <br/>
 <h4 id="5-隔离级别与读问题的关系">5. 隔离级别与读问题的关系</h4>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/ExlJ4uV9oYI2.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/ExlJ4uV9oYI2.png?imageslim" alt="zxk"></p>
 <blockquote>
 <p>在实际应用中，读未提交在并发时会导致很多问题，而性能相对于其他隔离级别提高却很有限，因此使用较少。可串行化强制事务串行，并发效率很低，只有当对数据一致性要求极高且可以接受没有并发时使用，因此使用也较少。因此在大多数数据库系统中，默认的隔离级别是读已提交(如Oracle)或可重复读。</p>
 </blockquote>
@@ -828,7 +847,7 @@ select sum(id) from test where id &lt; 0;</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 手动加 X 锁</span><br><span class="line">select * from tableName where … for update;</span><br></pre></td></tr></table></figure>
 <br/>
-<img data-src="http://image.zxkidea.top/blog/20200309/lUJVMrtKqSft.png?imageslim" alt="zxk" style="zoom:50%;" />
+<img data-src="https://image.zxkidea.top/blog/20200309/lUJVMrtKqSft.png?imageslim" alt="zxk" style="zoom:50%;" />
 </li>
 </ul>
 <blockquote>
@@ -930,7 +949,7 @@ select sum(id) from test where id &lt; 0;</p>
 <p><font color = red>参照完整性检查和违约处理</font></p>
 <p>一个参照完整性将两个表中的相应元组联系起来了。因此，对被参照表和参照表进行增删改操作时有可能破坏参照完整性，必须进行检查。</p>
 <p>例如，对表SC和Student有四种可能破坏参照完整性的情况，如下表：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/inWK7fkl2nkt.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/inWK7fkl2nkt.png?imageslim" alt="zxk"></p>
 <br/>
 <blockquote>
 <p><font color = green>1.SC表中增加一个元组，该元组的Sno属性的值在表Student中找不到一个元组，其Sno属性的值与之相等。</font><br>
@@ -993,26 +1012,26 @@ select sum(id) from test where id &lt; 0;</p>
 <p>std3表结构：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table std3 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std3_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,   -- 表级约束</span><br><span class="line">     constraint std3_email_uk unique(email) ,</span><br><span class="line">     constraint std3_id_pk primary key(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>std3中数据如下：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/ge38zfuXOaq9.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/ge38zfuXOaq9.png?imageslim" alt="zxk"></p>
 <p>std5表结构（外键级联删除）：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table std5 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std4_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) ,   -- 表级约束</span><br><span class="line">     constraint std5_email_uk unique(email) ,</span><br><span class="line">     constraint std5_id_pk primary key(id) ,</span><br><span class="line">     constraint std5_friend_id_fk foreign key(friend_id) references std3(id) on delete cascade</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <br/>
 <p>std5中数据如下：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/OSr7Vl9hrWdO.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/OSr7Vl9hrWdO.png?imageslim" alt="zxk"></p>
 <br/>
 <p>std6表结构（外键级联删除制空）：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table std6 (</span><br><span class="line">     id number(6) ,</span><br><span class="line">     name varchar(200) constraint std6_name_nn not null,</span><br><span class="line">     score number(10,2) ,</span><br><span class="line">     email varchar(20) ,</span><br><span class="line">     friend_id number(6) , -- 表级约束</span><br><span class="line">     constraint std6_email_uk unique(email) ,</span><br><span class="line">     constraint std6_id_pk primary key(id) ,</span><br><span class="line">     constraint std6_friend_id_fk foreign key(friend_id) references std3(id) on delete set null</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
 <p>std6中数据如下：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/TIy5Gr4FLKoa.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/TIy5Gr4FLKoa.png?imageslim" alt="zxk"></p>
 <br/>
 <p><font color = green size = 4>级联操作:</font></p>
 <ul>
 <li>
 <p>此时删除std3中‘300001’号数据以后：</p>
 <p>std5表：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/M1SrQ6xtkTU4.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/M1SrQ6xtkTU4.png?imageslim" alt="zxk"></p>
 <p>std6表：</p>
-<p><img data-src="http://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200308/hQvzuhtFAqHa.png?imageslim" alt="zxk"></p>
 <p><font color = green>注：级联删除会删除相关联子表中的数据，而级联制空会将子表中相关联的数据置空而不会删除</font></p>
 </li>
 </ul>
@@ -1369,7 +1388,7 @@ end if；</p>
 </blockquote>
 <p><font color = green>而你只是查询出sdept='is’的纪录，你插入的根本不符合sdept='is’呀，所以就不行</font></p>
 <br/>
-<p><img data-src="http://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200306/W2uyh5b4rgFC.png?imageslim" alt="zxk"></p>
 <br/>
 <p><font color = dark size = 4>可更新视图条件：</font></p>
 <blockquote>
@@ -1530,7 +1549,7 @@ end if；</p>
 </blockquote>
 <p><br/>下面通过几道例题讲解口诀：</p>
 <p><font color = blue>例1.已知R(ABCDE), F = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}，求保持函数依赖的3NF分解，和具有无损连接性及保持函数依赖的3NF分解</font></p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F<sub>m</sub> = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F~m~ = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边。首先可以发现没有不出现在两侧的元素不用单独分出一个子集，“剩余依赖变子集”然后我们将各依赖分别划分为子集得到：{AD}，{ED}，{DB}，{BCD}，{DCA}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。</p>
 <p>(1) 候选码的求解：所谓候选码即能决定整个关系的，我们通过找未出现在依赖右边的和两侧均未出现的元素即可求得，</p>
@@ -1539,10 +1558,10 @@ end if；</p>
 <p><font color = blue>例2.关系模式R，有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为3NF且保持函数依赖</font></p>
 <p>将关系模式分解为3NF且保持函数依赖：</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，</p>
-<p>假设B-&gt;G冗余，则(B)<sup>+</sup> = BD，没有G故不冗余。</p>
-<p>假设CE-&gt;B冗余，则(CE)<sup>+</sup> = CEGDA，没有B故不冗余。</p>
-<p>假设C-&gt;A冗余，则( C )<sup>+</sup> = CD，故不冗余。</p>
-<p>一次可以得到最小函数依赖集F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
+<p>假设B-&gt;G冗余，则(B)^+^ = BD，没有G故不冗余。</p>
+<p>假设CE-&gt;B冗余，则(CE)^+^ = CEGDA，没有B故不冗余。</p>
+<p>假设C-&gt;A冗余，则( C )^+^ = CD，故不冗余。</p>
+<p>一次可以得到最小函数依赖集F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边，剩余依赖变子集。首先可以发现没有不出现在两侧的元素，然后我们将各依赖分别划分为子集得{BG}，{CEB}，{CA}，{BD}，{CD}，即为所求保持函数依赖的3NF分解</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。找到R的一个候选码为{ACE}。故所求具有无损连接性及保持函数依赖的3NF分解为{BG}，{CEB}，{CA}，{BD}，{CD}，{ACE} (注：范式分解并不唯一，正确即可)</p>
  <br/>
@@ -1555,7 +1574,7 @@ end if；</p>
 <br/>
 <p><font color = blue>例.关系模式R,有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为BCNF且保持函数依赖</font></p>
 <p>将关系模式分解为BCNF且保持函数依赖：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F<sub>m</sub> = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：候码非码成子集。由于候选码为(CE)，因此将CE-&gt;B划分出子集（BCE），而B-&gt;G，B-&gt;D左侧均不含主属性C、E中的任何一个，故划分出(BG)，(BD）；</p>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：此时剩余依赖F’ = {C-&gt;A，C-&gt;D}，剩余元素{A,C,D}，检查发现函数依赖左侧都是候选码（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">新的依赖F’的候选码</span>），即完成BCNF分解，如果不满足则继续分解余下的；</p>
 <p>于是BCNF分解的最后结果为{(BG)，(BD)，(ACD)，(BCE)}。</p>
@@ -1865,27 +1884,27 @@ end if；</p>
 </li>
 <li><font color = green size = 4>图例: </font></li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/1550801364139.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550801364139.png" alt="zxk"></p>
 <br/>
 <h4 id="font-color-blue-size-4-3-E-R图像关系模型的转换：-font"><font color = blue size = 4>3) E-R图像关系模型的转换：</font></h4>
 <ul>
 <li>
 <p><font color = green size = 4>一个1：1联系可以转换成一个独立的关系模式，也可以与任意一端对应的关系模式合并。</font></p>
-<p><img data-src="http://image.zxkidea.top/1550819223540.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550819223540.png" alt="zxk"></p>
 </li>
 </ul>
 <br/>
 <ul>
 <li>
 <p><font color = green size = 4>一个1：n联系可以转换为一个独立的关系模式，也可以与n端对应的关系模式合并。</font></p>
-<p><img data-src="http://image.zxkidea.top/1550819281705.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550819281705.png" alt="zxk"></p>
 </li>
 </ul>
 <br/>
 <ul>
 <li>
 <p><font color = green size = 4>一个m：n联系转换为一个关系模式</font></p>
-<p><img data-src="http://image.zxkidea.top/1550819339152.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550819339152.png" alt="zxk"></p>
 </li>
 </ul>
 <br/>
@@ -1895,7 +1914,7 @@ end if；</p>
 </ul>
 <br/>
 <h4 id="font-color-blue-4）关联基数-font"><font color = blue >4）关联基数</font></h4>
-<p><img data-src="http://image.zxkidea.top/blog/20200305/hIbetOLmvo1p.png?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200305/hIbetOLmvo1p.png?imageslim" alt="zxk"></p>
 <br/>
 <blockquote>
 <p><font color = red size = 4>基数表示的含义：</font></p>
@@ -1941,7 +1960,7 @@ end if；</p>
 </ol>
 </blockquote>
   <br/>
-<p><img data-src="http://image.zxkidea.top/blog/20200305/yObnKWDQl3Pw.jpg?imageslim" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200305/yObnKWDQl3Pw.jpg?imageslim" alt="zxk"></p>
 <br/>
 <ul>
 <li><font color = green size = 4>用例2</font></li>
@@ -1977,26 +1996,26 @@ end if；</p>
 <table>
 <thead>
 <tr>
-<th><img data-src="http://image.zxkidea.top/1550972584581.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1550972612189.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1550972829882.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1550972584581.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1550972612189.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1550972829882.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img data-src="http://image.zxkidea.top/1550972896178.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973002005.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973163185.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550972896178.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973002005.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973163185.png" alt="zxk"></td>
 </tr>
 <tr>
-<td><img data-src="http://image.zxkidea.top/1550973274552.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973308600.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973358353.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973274552.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973308600.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973358353.png" alt="zxk"></td>
 </tr>
 <tr>
-<td><img data-src="http://image.zxkidea.top/1550973397877.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973473571.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1550973533008.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973397877.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973473571.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1550973533008.png" alt="zxk"></td>
 </tr>
 </tbody>
 </table>
@@ -2021,8 +2040,8 @@ end if；</p>
 </ol>
 </blockquote>
 <br/>
-<p><img data-src="http://image.zxkidea.top/1551058200955.png" alt="zxk"></p>
-<p><img data-src="http://image.zxkidea.top/1551058364790.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551058200955.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551058364790.png" alt="zxk"></p>
 <br/>
 <h4 id="font-color-blue-size-4-2）完全函数依赖和部分函数依赖-font"><font color = blue size = 4>2）完全函数依赖和部分函数依赖</font></h4>
 <ul>
@@ -2191,9 +2210,9 @@ end if；</p>
 <p>例如，设F={ A→B，B→C }，则函数依赖A→C被F逻辑蕴含，记作：F |= A→C。即函数依赖集 F 逻辑蕴含函数依赖A→C。</p>
 </blockquote>
 <br/>
-<h4 id="font-color-blue-size-4-2-F的闭包F-font"><font color = blue size = 4>2) F的闭包F<sup>+</sup> </font></h4>
+<h4 id="font-color-blue-size-4-2-F的闭包F-font"><font color = blue size = 4>2) F的闭包F^+^ </font></h4>
 <p><font color = green size = 4>对于一个关系模式，如何由已知的函数依赖集合F，找出F逻辑蕴涵的所有函数依赖集合呢？这就是我们下面要讨论的问题。</font></p>
-<p><font color = red size = 4>F的闭包F<sup>+</sup>：设F为一个函数依赖集，F的闭包是指F逻辑蕴涵的所有函数依赖集合。 F的闭包记作F<sup>+</sup>。</font></p>
+<p><font color = red size = 4>F的闭包F^+^：设F为一个函数依赖集，F的闭包是指F逻辑蕴涵的所有函数依赖集合。 F的闭包记作F^+^。</font></p>
 <br/>
 <p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = green size = 4>示例：</font></span></p>
 <blockquote>
@@ -2206,7 +2225,7 @@ end if；</p>
 </blockquote>
 <br/>
 <blockquote>
-<p><font color = red size = 4><em>注意：</em></font><font color = green size = 4>当F很大时，计算的过程会很长。为了从已知的函数依赖推导出其它函数依赖，Armstrong 提出了一套推理规则，称为Armstrong 公理 ，通过反复使用这些规则，可以找出给定F的闭包F<sup>+</sup>。</font></p>
+<p><font color = red size = 4><em>注意：</em></font><font color = green size = 4>当F很大时，计算的过程会很长。为了从已知的函数依赖推导出其它函数依赖，Armstrong 提出了一套推理规则，称为Armstrong 公理 ，通过反复使用这些规则，可以找出给定F的闭包F^+^。</font></p>
 </blockquote>
 <br/>
 <h4 id="font-color-blue-size-4-3-Armstrong-公理-font"><font color = blue size = 4>3) Armstrong 公理</font></h4>
@@ -2225,7 +2244,7 @@ end if；</p>
 <br/>
 </li>
 <li>
-<p><font color = red size = 4>增广律：</font>如果 X → Y 在 R(U)  成立，且 Z$\subseteq$ U，则 XZ <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>→ YZ成立</p>
+<p><font color = red size = 4>增广律：</font>如果 X → Y 在 R(U)  成立，且 Z$\subseteq$ U，则 XZ [^1]→ YZ成立</p>
 <blockquote>
 <p>证明：</p>
 <p>设 t1$\in$R, t2$\in$R, 如果 t1[XZ] = t2[XZ], 则：<br>
@@ -2236,6 +2255,7 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 </blockquote>
 </li>
 </ul>
+<p>[^1]: <font color = green size= 4>XZ表示X $\cup$ Z, YZ表示Y $\cup$ Z</font></p>
 <br/>
 <ul>
 <li>
@@ -2262,14 +2282,14 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <ul>
 <li>
 <p><font color = green size = 4>Armstrong公理系统的有效性指的是：</font></p>
-<p>由F出发根据Armstrong公理系统推导出来的每一个函数依赖一定在F<sup>+</sup>中。</p>
+<p>由F出发根据Armstrong公理系统推导出来的每一个函数依赖一定在F^+^中。</p>
 </li>
 </ul>
 <br/>
 <ul>
 <li>
 <p><font color = green size = 4>Armstrong公理系统的完备性指的是：</font></p>
-<p>对于F<sup>+</sup>所逻辑蕴含的每一函数依赖，必定可以由F出发根据Armstrong公理系统推导出来。</p>
+<p>对于F^+^所逻辑蕴含的每一函数依赖，必定可以由F出发根据Armstrong公理系统推导出来。</p>
 </li>
 </ul>
 <br/>
@@ -2280,28 +2300,28 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <ul>
 <li>
 <p><font color = green size = 4>定义：</font></p>
-<p>设F为属性集U上的函数依赖集，X∈U，即X为U的一个子集。在函数依赖集F下被X函数决定的所有属性为F<sup>+</sup>下属性集X的闭包，记作X<sup>+</sup>。即X<sup>+</sup>＝{ A| X→A } 。</p>
+<p>设F为属性集U上的函数依赖集，X∈U，即X为U的一个子集。在函数依赖集F下被X函数决定的所有属性为F^+^下属性集X的闭包，记作X^+^。即X^+^＝{ A| X→A } 。</p>
 </li>
 </ul>
 <br/>
 <ul>
 <li>
-<p><font color = green size = 4>计算属性集闭包X<sup>+</sup>的算法如下：</font></p>
+<p><font color = green size = 4>计算属性集闭包X^+^的算法如下：</font></p>
 <p>输入：X，F<br>
-输出： X<sup>+</sup></p>
+输出： X^+^</p>
 <br/>
 <p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = green size = 4>迭代算法的步骤：</font></span></p>
 <blockquote>
 <ol>
 <li>
-<p>选取X<sup>+</sup>的初始值为X ，即X<sup>+</sup>＝{X}；</p>
+<p>选取X^+^的初始值为X ，即X^+^＝{X}；</p>
 </li>
 <li>
-<p>计算X<sup>+</sup>， X<sup>+</sup>＝{X, Z} ，其中Z要满足如下条件：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">Y是X<sup>+</sup>的真子集，且F中存在一函数依赖Y→Z。</span>实际上就是以X<sup>+</sup>中的属性子集作为函数依赖的决定因素，在F中搜索函数依赖集，找到函数依赖的被决定属性Z放到X<sup>+</sup>中。</p>
+<p>计算X^+^， X^+^＝{X, Z} ，其中Z要满足如下条件：</p>
+<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">Y是X^+^的真子集，且F中存在一函数依赖Y→Z。</span>实际上就是以X^+^中的属性子集作为函数依赖的决定因素，在F中搜索函数依赖集，找到函数依赖的被决定属性Z放到X^+^中。</p>
 </li>
 <li>
-<p>判断：如果X<sup>+</sup>没有变化？或X<sup>+</sup>等于U？则X<sup>+</sup>就是所求的结果，算法终止。否则转②。</p>
+<p>判断：如果X^+^没有变化？或X^+^等于U？则X^+^就是所求的结果，算法终止。否则转②。</p>
 </li>
 <li>
 <p>因为U是有穷的，所以上述迭代过程经过有限步骤之后就会终止。</p>
@@ -2312,7 +2332,7 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 </li>
 <li>
 <p><font color = red size = 4>示例：</font></p>
-<p><img data-src="http://image.zxkidea.top/1551150366580.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551150366580.png" alt="zxk"></p>
 </li>
 </ul>
 <br/>
@@ -2363,16 +2383,16 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <p><font color = blue size = 4>AB→C:</font></p>
 <blockquote>
 <ol>
-<li>去掉A, B<sup>+</sup> = B, 不包含C,A不为冗余属性，所以A不能去掉</li>
-<li>去掉B, A<sup>+</sup> = A, 不包含C,B不为冗余属性，所以B不能去掉</li>
+<li>去掉A, B^+^ = B, 不包含C,A不为冗余属性，所以A不能去掉</li>
+<li>去掉B, A^+^ = A, 不包含C,B不为冗余属性，所以B不能去掉</li>
 </ol>
 </blockquote>
   <br/>
 <p><font color = blue size = 4>BE→C:</font></p>
 <blockquote>
 <ol>
-<li>去掉B, E<sup>+</sup> = E, 不包含C,B不为冗余属性，所以B不能去掉</li>
-<li>去掉E, B<sup>+</sup> = B, 不包含C,E不为冗余属性，所以E不能去掉</li>
+<li>去掉B, E^+^ = E, 不包含C,B不为冗余属性，所以B不能去掉</li>
+<li>去掉E, B^+^ = B, 不包含C,E不为冗余属性，所以E不能去掉</li>
 </ol>
 </blockquote>
 <br/>
@@ -2380,10 +2400,10 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <blockquote>
 <ol>
 <li>
-<p>去掉B, C<sup>+</sup> = {A,C}, 不包含D, B不为冗余属性，所以B不能去掉</p>
+<p>去掉B, C^+^ = {A,C}, 不包含D, B不为冗余属性，所以B不能去掉</p>
 </li>
 <li>
-<p>去掉C, B<sup>+</sup> = B, 不包含D, C不为冗余属性，所以C不能去掉</p>
+<p>去掉C, B^+^ = B, 不包含D, C不为冗余属性，所以C不能去掉</p>
 </li>
 </ol>
 </blockquote>
@@ -2392,10 +2412,10 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <blockquote>
 <ol>
 <li>
-<p>去掉C, G<sup>+</sup> = G, 不包含B, C不为冗余属性，所以C不能去掉</p>
+<p>去掉C, G^+^ = G, 不包含B, C不为冗余属性，所以C不能去掉</p>
 </li>
 <li>
-<p>去掉G, C<sup>+</sup> = {A,C}, 不包含B, G不为冗余属性，所以G不能去掉</p>
+<p>去掉G, C^+^ = {A,C}, 不包含B, G不为冗余属性，所以G不能去掉</p>
 </li>
 </ol>
 </blockquote>
@@ -2404,13 +2424,13 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <blockquote>
 <ol>
 <li>
-<p>去掉A, (CD)<sup>+</sup> = {A, B, C, D, E, G}, 包含B, A为冗余属性，所以把A去掉,则为<font color = red size = 4>CD→B</font></p>
+<p>去掉A, (CD)^+^ = {A, B, C, D, E, G}, 包含B, A为冗余属性，所以把A去掉,则为<font color = red size = 4>CD→B</font></p>
 </li>
 <li>
-<p>去掉C, D<sup>+</sup> = {D, E, G}, 不包含B, C不为冗余属性，所以C不能去掉</p>
+<p>去掉C, D^+^ = {D, E, G}, 不包含B, C不为冗余属性，所以C不能去掉</p>
 </li>
 <li>
-<p>去掉D, C<sup>+</sup> = {A, C}, 不包含B, D不为冗余属性，所以D不能去掉</p>
+<p>去掉D, C^+^ = {A, C}, 不包含B, D不为冗余属性，所以D不能去掉</p>
 </li>
 </ol>
 </blockquote>
@@ -2419,10 +2439,10 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <blockquote>
 <ol>
 <li>
-<p>去掉C, E<sup>+</sup> = E, 不包含A, C不为冗余属性，所以C不能去掉</p>
+<p>去掉C, E^+^ = E, 不包含A, C不为冗余属性，所以C不能去掉</p>
 </li>
 <li>
-<p>去掉E, C<sup>+</sup> = {A, C}, 包含A, E不为冗余属性，所以把E去掉,则为<font color = red size = 4>C→A</font></p>
+<p>去掉E, C^+^ = {A, C}, 包含A, E不为冗余属性，所以把E去掉,则为<font color = red size = 4>C→A</font></p>
 </li>
 <li>
 <p>与存在依赖重复，故舍去</p>
@@ -2434,10 +2454,10 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <blockquote>
 <ol>
 <li>
-<p>去掉C, E<sup>+</sup> = E, 不包含G, C不为冗余属性，所以C不能去掉</p>
+<p>去掉C, E^+^ = E, 不包含G, C不为冗余属性，所以C不能去掉</p>
 </li>
 <li>
-<p>去掉E, C<sup>+</sup> = {A, C}, 不包含G, E不为冗余属性，所以E不能去掉</p>
+<p>去掉E, C^+^ = {A, C}, 不包含G, E不为冗余属性，所以E不能去掉</p>
 </li>
 </ol>
 </blockquote>
@@ -2446,37 +2466,37 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <p><font color = green size = 4>3. 去掉F中所有冗余依赖关系(逐个求，在去掉某个函数依赖的F中求闭包，如果包含右边属性，则表示这个函数依赖要去掉)</font></p>
 <p><font color = blue size = 4>AB→C:</font></p>
 <blockquote>
-<p>(AB)<sup>+</sup> = {A, B}, 不包含C, 则不用去掉</p>
+<p>(AB)^+^ = {A, B}, 不包含C, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>D→E:</font></p>
 <blockquote>
-<p>D<sup>+</sup> = {D, G}, 不包含E, 则不用去掉</p>
+<p>D^+^ = {D, G}, 不包含E, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>D→G:</font></p>
 <blockquote>
-<p>D<sup>+</sup> = {D, E}, 不包含G, 则不用去掉</p>
+<p>D^+^ = {D, E}, 不包含G, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>C→A:</font></p>
 <blockquote>
-<p>C<sup>+</sup> = C, 不包含A, 则不用去掉</p>
+<p>C^+^ = C, 不包含A, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>BE→C:</font></p>
 <blockquote>
-<p>(BE)<sup>+</sup> = {B, E}, 不包含C, 则不用去掉</p>
+<p>(BE)^+^ = {B, E}, 不包含C, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>BC→D:</font></p>
 <blockquote>
-<p>(BC)<sup>+</sup> = {A, B, C}, 不包含D, 则不用去掉</p>
+<p>(BC)^+^ = {A, B, C}, 不包含D, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>CG→B:</font></p>
 <blockquote>
-<p>(CG)<sup>+</sup> = {A, B, C, D, E, G}, 包含B, 则<b>去掉</b></p>
+<p>(CG)^+^ = {A, B, C, D, E, G}, 包含B, 则<b>去掉</b></p>
 </blockquote>
 <br/>
 <blockquote>
@@ -2484,20 +2504,20 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 </blockquote>
 <p><font color = blue size = 4>CG→D:</font></p>
 <blockquote>
-<p>(CG)<sup>+</sup> = {A, C, G}, 不包含D, 则不用去掉</p>
+<p>(CG)^+^ = {A, C, G}, 不包含D, 则不用去掉</p>
 </blockquote>
 <br/>
 <p><font color = blue size = 4>CD→B:</font></p>
 <blockquote>
-<p>(CD)<sup>+</sup> = {A, C, D, E, G}, 不包含B, 则不用去掉</p>
+<p>(CD)^+^ = {A, C, D, E, G}, 不包含B, 则不用去掉</p>
 </blockquote>
   <br/>
 <p><font color = blue size = 4>CE→G:</font></p>
 <blockquote>
-<p>(CE)<sup>+</sup> = {A, C, E}, 不包含G, 则不用去掉</p>
+<p>(CE)^+^ = {A, C, E}, 不包含G, 则不用去掉</p>
 </blockquote>
 <br/>
-<p><font color = red size = 4>故最小依赖集为：F<sub>m</sub>= {AB→C, D→E, D→G, C→A, BE→C, BC→D, CG→D, CD→B, CE→G}</font></p>
+<p><font color = red size = 4>故最小依赖集为：F~m~= {AB→C, D→E, D→G, C→A, BE→C, BC→D, CG→D, CD→B, CE→G}</font></p>
 </li>
 </ul>
 <br/>
@@ -2592,13 +2612,13 @@ t1[Z] = t2[Z] …………………………(2)；</p>
   <br/>
 <blockquote>
 <p><font color = red>定理1：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类属性，则X必为R的<font color = blue>任一候选码的成员。</font></p>
-<p><font color = red>推论1：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类属性，且X<sup>+</sup>包含了R的全部属性；则X必为R的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = blue>唯一候选码。</font></span></p>
+<p><font color = red>推论1：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类属性，且X^+^包含了R的全部属性；则X必为R的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = blue>唯一候选码。</font></span></p>
 </blockquote>
 <br/>
 <blockquote>
 <p><font color = red>定理2：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是R类属性，则X<font color = blue>不在任何候选码中。</font></p>
 <p><font color = red>定理3：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是N类属性，则X<font color = blue>必包含在R的任一候选码中。</font></p>
-<p><font color = red>推论2：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类和N类组成的属性集，且X<sup>+</sup>包含了<font color = blue>R的全部属性</font>；则X是R的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = blue>唯一候选码。</font></span></p>
+<p><font color = red>推论2：</font>对于给定的关系模式R及其函数依赖集F，若X（X∈R）是L类和N类组成的属性集，且X^+^包含了<font color = blue>R的全部属性</font>；则X是R的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = blue>唯一候选码。</font></span></p>
 </blockquote>
 </li>
 </ul>
@@ -2611,10 +2631,10 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <p>将R 的所有属性分为L、R、LR 和N 四类，并令X 代表L、N 类，Y 代表LR 类。</p>
 </li>
 <li>
-<p>求X<sup>+</sup>。若X<sup>+</sup>包含了R 的全部属性，则即为R 的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">唯一候选码</span>，转（5）；否则，转（3）。</p>
+<p>求X^+^。若X^+^包含了R 的全部属性，则即为R 的<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">唯一候选码</span>，转（5）；否则，转（3）。</p>
 </li>
 <li>
-<p>在Y 中取一属性A，求(XA)<sup>+</sup> ，若它包含了R 的全部属性，则是<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">候选码</span>，转（4）；否则，调换一属性反复进行这一过程，直到试完所有Y 中的属性。</p>
+<p>在Y 中取一属性A，求(XA)^+^ ，若它包含了R 的全部属性，则是<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">候选码</span>，转（4）；否则，调换一属性反复进行这一过程，直到试完所有Y 中的属性。</p>
 </li>
 <li>
 <p>如果已找出所有候选码，则转（5）；否则在Y 中依次取2 个、3 个、…，求它们的属性闭包，若其闭包包含R 的全部属性，则是<span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">候选码</span>。</p>
@@ -2634,7 +2654,7 @@ t1[Z] = t2[Z] …………………………(2)；</p>
 <p><font color = brown size = 4>求解方法：</font></p>
 <p><font color = green size = 4>根据函数依赖可得：</font></p>
 <blockquote>
-<p>属性<font color = red>B 、D</font> 为L 类，<font color = red>E</font> 为N 类，因此属性<font color = red>B 、D 、E</font> 必为候选码的成员， 且此三个属性的闭包： <font color = blue>B<sup>+</sup>=ABC, (BD)<sup>+</sup>=ABCD, (BDE)<sup>+</sup>=ABCDE</font>, 根据推论2 可得BDE 是R 的唯一候选码。所以R 的候选码为BDE 。</p>
+<p>属性<font color = red>B 、D</font> 为L 类，<font color = red>E</font> 为N 类，因此属性<font color = red>B 、D 、E</font> 必为候选码的成员， 且此三个属性的闭包： <font color = blue>B^+^=ABC, (BD)^+^=ABCD, (BDE)^+^=ABCDE</font>, 根据推论2 可得BDE 是R 的唯一候选码。所以R 的候选码为BDE 。</p>
 </blockquote>
 <blockquote>
 <p><font color = red>变式：</font>如果把例题中关系模式<font color = blue>R(U) 中的属性E</font> 去掉，那么再求R 的候选码的话可以根据推论1得出<br>
@@ -2649,7 +2669,7 @@ BD 为R 的唯—候选码。</p>
 <p><font color = brown size = 4>求解方法：</font></p>
 <p><font color = green size = 4>根据函数依赖可得：</font></p>
 <blockquote>
-<p>属性<font color = red>C、D</font> 为L 类，因此属性<font color = red>C、D </font> 必为候选码的成员， 且此两个属性的闭包： <font color = blue>C<sup>+</sup>=C, (CD) <sup>+</sup>=ABCDE</font>, 根据推论1可得CD 是R 的唯一候选码。所以R 的候选码为CD 。</p>
+<p>属性<font color = red>C、D</font> 为L 类，因此属性<font color = red>C、D </font> 必为候选码的成员， 且此两个属性的闭包： <font color = blue>C^+^=C, (CD) ^+^=ABCDE</font>, 根据推论1可得CD 是R 的唯一候选码。所以R 的候选码为CD 。</p>
 </blockquote>
 <br/>
 <blockquote>
@@ -2659,7 +2679,7 @@ BD 为R 的唯—候选码。</p>
 <p>快速求解方法适用于判断有属性是属于L 类、N 类或其中一种的情况下求解。如果有L 类和N类的属性， 则求解候选码速度非常快。</p>
 </li>
 <li>
-<p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);">简而言之：</span> L、R、N、LR 类。根据定理， L、N 类必为侯选码之一，如果L<sup>+</sup>包含全部R, 则L为唯一侯选。R 类不在任何侯选码中。L+N 类且(L+N)<sup>+</sup>包含所有R, 则L+N 为唯一侯选。(适于有L、N 类至少一种的情况。)</p>
+<p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);">简而言之：</span> L、R、N、LR 类。根据定理， L、N 类必为侯选码之一，如果L^+^包含全部R, 则L为唯一侯选。R 类不在任何侯选码中。L+N 类且(L+N)^+^包含所有R, 则L+N 为唯一侯选。(适于有L、N 类至少一种的情况。)</p>
 </li>
 </ul>
 </blockquote>
@@ -2704,7 +2724,7 @@ BD 为R 的唯—候选码。</p>
 <ol>
 <li>
 <p>建立一张k行n列的表来检验连接是否失真(第i行对应于Ri，第j列对应于属性Aj)；</p>
-<p><img data-src="http://image.zxkidea.top/1551253082653.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551253082653.png" alt="zxk"></p>
 </li>
 <li>
 <p>填表：若A属于Ri，则将第i行第j列填为aj否则填入bij；</p>
@@ -2722,7 +2742,7 @@ BD 为R 的唯—候选码。</p>
 <ul>
 <li>
 <p><font color = green size = 4>具体示例：</font></p>
-<p><font color = blue size = 4>设R=ABCDE, R1=AD, R2=BC, R3=BE, R4=CDE, R5=AE（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">省略F<sub>i</sub>，若给出U<sub>i</sub>，则表示求R<sub>i</sub>（U<sub>i</sub>，F<sub>i</sub>）</span>）, 设函数依赖：A-&gt;C, B-&gt;C, C-&gt;D, DE-&gt;C, CE-&gt;A. 判断R分解成 ρ={R1,  R2,  R3,  R4,  R5}是否无损联接分解？</font></p>
+<p><font color = blue size = 4>设R=ABCDE, R1=AD, R2=BC, R3=BE, R4=CDE, R5=AE（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">省略F~i~，若给出U~i~，则表示求R~i~（U~i~，F~i~）</span>）, 设函数依赖：A-&gt;C, B-&gt;C, C-&gt;D, DE-&gt;C, CE-&gt;A. 判断R分解成 ρ={R1,  R2,  R3,  R4,  R5}是否无损联接分解？</font></p>
 <br/>
 <p><font color = dark size = 4>1. 建表:</font></p>
 <table>
@@ -3271,7 +3291,7 @@ B. {R1(AB), R3(BC)}</p>
 <blockquote>
 <p><font color = red size = 4>快速判断无损分解的方法就是:</font></p>
 <p><font color = green size = 4>1. 对两个集合先求集合的∩，然后求集合的差(2个集合有两个差的结果)<br>
-如果集合的∩–&gt;集合的差（得到差结果的任意一个）$\subseteq$ F<sup>+</sup> 成立，那么就是无损分解</font></p>
+如果集合的∩–&gt;集合的差（得到差结果的任意一个）$\subseteq$ F^+^ 成立，那么就是无损分解</font></p>
 <p><font color = green size = 4>2. 如果R1∩R2是R1或R2的超码，则R上的分解（R1，R2）是无损分解。这是一个<font color = red>充分条件</font>，当所有的约束都是函数依赖时它才是必要条件（例如多值依赖就是一种非函数依赖的约束），不过这已经足够了。</font></p>
 </blockquote>
   <br/>
@@ -3286,7 +3306,7 @@ B. {R1(AB), R3(BC)}</p>
 </blockquote>
 <br/>
 <blockquote>
-<p>设F是关系模式R的函数依赖集，ρ={R1&lt;U1,F1&gt;, R2&lt;U2,F2&gt;,…, Rk&lt;Uk,Fk&gt;}为R的一个分解，如果Fi=π<sub>Ri</sub>(F)<font color = red >(Fi为函数依赖集F在Ri上的投影)</font>的并集(F1∪F2∪…∪Fk) ≡ F（i=1,2,…,k）,则称分解ρ具有函数依赖保持性。</p>
+<p>设F是关系模式R的函数依赖集，ρ={R1&lt;U1,F1&gt;, R2&lt;U2,F2&gt;,…, Rk&lt;Uk,Fk&gt;}为R的一个分解，如果Fi=π~Ri~(F)<font color = red >(Fi为函数依赖集F在Ri上的投影)</font>的并集(F1∪F2∪…∪Fk) ≡ F（i=1,2,…,k）,则称分解ρ具有函数依赖保持性。</p>
 </blockquote>
 </li>
 </ul>
@@ -3301,7 +3321,7 @@ B. {R1(AB), R3(BC)}</p>
 <p><font color = dark size = 4>result:=α;</font><br>
 <font color = dark size = 4>while(result发生变化)do</font><br>
 <font color = dark size = 4> 	for each 分解后的Ri</font><br>
-<font color = dark size = 4>t=(result∩Ri)<sup>+</sup>∩Ri</font><br>
+<font color = dark size = 4>t=(result∩Ri)^+^∩Ri</font><br>
 <font color = dark size = 4>result=result∪t</font></p>
 </blockquote>
 </li>
@@ -3314,9 +3334,9 @@ B. {R1(AB), R3(BC)}</p>
 <blockquote>
 <p><font color = red>函数依赖保持判断方法：</font></p>
 <ol>
-<li><font color = green>先找到要分解的目标R<sub>i</sub>（U<sub>i</sub>），然后求出U<sub>i</sub><sup>+</sup>；</font></li>
-<li><font color = green>接着在F中找到所有包含U<sub>i</sub><sup>+</sup>属性的关系 ；</font></li>
-<li><font color = green>挑选或推导出仅含有R<sub>i</sub>（U<sub>i</sub>）中属性的关系，组成即为F<sub>i</sub> ；</font></li>
+<li><font color = green>先找到要分解的目标R~i~（U~i~），然后求出U~i~^+^；</font></li>
+<li><font color = green>接着在F中找到所有包含U~i~^+^属性的关系 ；</font></li>
+<li><font color = green>挑选或推导出仅含有R~i~（U~i~）中属性的关系，组成即为F~i~ ；</font></li>
 </ol>
 </blockquote>
 </li>
@@ -3325,13 +3345,13 @@ B. {R1(AB), R3(BC)}</p>
 <ul>
 <li>
 <p><font color = green size = 4>示例：</font></p>
-<p><font color = blue size = 4>1. 将R = (ABCD，{A→B，B→C，B→D，C→A})分解为关于U1=AB，U2=ACD两个关系（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">给出U<sub>i</sub>，则表示求R<sub>i</sub>（U<sub>i</sub>，F<sub>i</sub>）</span>），求R1、R2，<br>
+<p><font color = blue size = 4>1. 将R = (ABCD，{A→B，B→C，B→D，C→A})分解为关于U1=AB，U2=ACD两个关系（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">给出U~i~，则表示求R~i~（U~i~，F~i~）</span>），求R1、R2，<br>
 并检验分解的无损联接性和分解的函数依赖保持性。</font></p>
 <p><font color = brown size = 4>求解方法：</font></p>
 <p><font color = blue>1. 无损分解：</font></p>
 <blockquote>
-<p>F1 = π<sub>R1</sub>(F) = {A→B, B→A},<br>
-F2 = π<sub>R2</sub>(F) = {A→C, C→A, A→D}</p>
+<p>F1 = π~R1~(F) = {A→B, B→A},<br>
+F2 = π~R2~(F) = {A→C, C→A, A→D}</p>
 <blockquote>
 <p><font color = red>注意：</font><font color = green>Fi为仅含有Ui中元素，且在F上的所有关系（包含推导关系）</font></p>
 </blockquote>
@@ -3349,13 +3369,13 @@ R2 = (ACD, {A→C, C→A, A→D})</p>
 <p><font color = blue>所以ρ具有函数依赖保持性。</font></p>
 </blockquote>
 <br/>
-<p><font color = blue size = 4 >2. 关系模式R(A, B, C ,D，{F}) 中函数依赖集F = {A→B, C→D}, ρ = {R1(AB，{F<sub>1</sub>})，R2(CD，{F<sub>2</sub>})}，求R1, R2 并检验分解的无损联接性和分解的函数依赖保持性。</font></p>
+<p><font color = blue size = 4 >2. 关系模式R(A, B, C ,D，{F}) 中函数依赖集F = {A→B, C→D}, ρ = {R1(AB，{F~1~})，R2(CD，{F~2~})}，求R1, R2 并检验分解的无损联接性和分解的函数依赖保持性。</font></p>
 <br/>
 <p><font color = brown size = 4>求解方法：</font></p>
 <p><font color = blue>1. 无损分解：</font></p>
 <blockquote>
-<p>F1 = π<sub>R1</sub>(F) = {A→B},<br>
-F2 = π<sub>R2</sub>(F) = {C→D}<br>
+<p>F1 = π~R1~(F) = {A→B},<br>
+F2 = π~R2~(F) = {C→D}<br>
 R1(AB, {A→B}),<br>
 R2(CD, {C→D})<br>
 <font color = red>U1∩U2 = AB∩CD = Φ,</font><br>
@@ -3372,13 +3392,13 @@ R2(CD, {C→D})<br>
 <p><font color = blue>所以ρ具有函数依赖保持性。</font></p>
 </blockquote>
 <br/>
-<p><font color = blue size = 4 >3. 已知关系模式R(CITY, ST, ZIP), F = {(CITY, ST)→ZIP, ZIP→CITY}，以及R上的一个分解ρ = {R1(U<sub>1</sub>，F<sub>1</sub>), R2(U<sub>2</sub>，F<sub>2</sub>)}, R1 = {ST, ZIP}, R2 = {CITY, ZIP}，求R1, R2 ,并检验分解的无损联接性和分解的函数依赖保持性。</font></p>
+<p><font color = blue size = 4 >3. 已知关系模式R(CITY, ST, ZIP), F = {(CITY, ST)→ZIP, ZIP→CITY}，以及R上的一个分解ρ = {R1(U~1~，F~1~), R2(U~2~，F~2~)}, R1 = {ST, ZIP}, R2 = {CITY, ZIP}，求R1, R2 ,并检验分解的无损联接性和分解的函数依赖保持性。</font></p>
   <br/>
 <p><font color = brown size = 4>求解方法：</font></p>
 <p><font color = blue>1. 无损分解：</font></p>
 <blockquote>
-<p>F1= π<sub>R1</sub>(F) = {Φ},<br>
-F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
+<p>F1= π~R1~(F) = {Φ},<br>
+F2 = π~R2~(F) = {ZIP→CITY}</p>
 <p>R1 = ({ST, ZIP}, {Φ})，</p>
 <p>R2 = (CITY, ZIP, {ZIP→CITY})</p>
 <p><font color = red>U1∩U2 = {ST, ZIP}∩{CITY, ZIP} = ZIP,</font></p>
@@ -3397,8 +3417,8 @@ F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
 <blockquote>
 <p><font color = red size = 4>总结：</font></p>
 <ol>
-<li><font color = green size = 4>无损分解：R  $\underrightarrow{F(F_i)}$   R<sub>i</sub> </font></li>
-<li><font color = green size = 4>函数依赖：F  $\underrightarrow{R(U_i)}$   F<sub>i</sub>  </font></li>
+<li><font color = green size = 4>无损分解：R  $\underrightarrow{F(F_i)}$   R~i~ </font></li>
+<li><font color = green size = 4>函数依赖：F  $\underrightarrow{R(U_i)}$   F~i~  </font></li>
 <li><font color = green size = 4>函数依赖和无损分解间没有必然的联系</font></li>
 </ol>
 </blockquote>
@@ -3415,7 +3435,7 @@ F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
 </blockquote>
 <p>从范式所允许的函数依赖方面进行比较，四种范式之间的关联如下图所示。</p>
 <br/>
-<p><img data-src="http://image.zxkidea.top/blog/20200304/FnyH4i7YiPew.gif" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200304/FnyH4i7YiPew.gif" alt="zxk"></p>
 <br/>
 <h4 id="font-color-green-size-4-2）各类范式及其说明-font"><font color = green size = 4>2）各类范式及其说明</font></h4>
 <ul>
@@ -3429,7 +3449,7 @@ F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
 <p>第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，本来直接将“地址”属性设计成一个数据库表的字段就行。<font color = brown>但是如果系统经常会访问“地址”属性中的“城市”部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。</font>这样设计才算满足了数据库的第一范式，如下表所示：</p>
 </blockquote>
 <br/>
-<p><img data-src="http://image.zxkidea.top/1551266870484.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551266870484.png" alt="zxk"></p>
 </li>
 </ul>
 <br/>
@@ -3449,7 +3469,7 @@ F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
 <ul>
 <li>
 <p><font color = brown>函数依赖图：</font></p>
-<p><img data-src="http://image.zxkidea.top/blog/20200304/KywgHGFgPUdl.gif" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20200304/KywgHGFgPUdl.gif" alt="zxk"></p>
 </li>
 <li>
 <p><font color = brown>阿氏推理规则:</font></p>
@@ -3472,7 +3492,7 @@ F2 = π<sub>R2</sub>(F) = {ZIP→CITY}</p>
 <li>
 <p><font color = orange>具体步骤：</font></p>
 <ul>
-<li>找出R中所有的候选码(X…Y)，即(X…Y)<sup>+</sup> = F；</li>
+<li>找出R中所有的候选码(X…Y)，即(X…Y)^+^ = F；</li>
 <li>得到非主属性，并根据2NF定义判断是否满足2NF；</li>
 </ul>
 </li>
@@ -3666,7 +3686,7 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 </ul>
 <br/>
 <p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);"><font color = green size = 4>总结：</font></span></p>
-<p><img data-src="http://image.zxkidea.top/1551857237283.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1551857237283.png" alt="zxk"></p>
 <br/>
 <blockquote>
 <p><span style="background: linear-gradient(to right, #f2994a, #f2c94c);"><font color = green size = 4>化简为BCNF：</font></span></p>
@@ -3694,17 +3714,17 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 <li>按求候选码规则求得候选码为AG</li>
 </ul>
 <br/>
-<p><font color = brown>2. 再求出最小依赖集F<sub>m</sub>：</font></p>
+<p><font color = brown>2. 再求出最小依赖集F~m~：</font></p>
 <ul>
 <li>将F中的所有依赖右边化为单一元素</li>
 <li>去掉F各函数依赖左边的冗余属性</li>
 <li>去掉F中所有冗余依赖关系</li>
-<li>求得F<sub>m</sub> = {B-&gt;E，DG-&gt;C，AG-&gt;B，B-&gt;D}</li>
+<li>求得F~m~ = {B-&gt;E，DG-&gt;C，AG-&gt;B，B-&gt;D}</li>
 </ul>
 <br/>
 <p><font color = brown>3. 左部相同原则分组：</font></p>
 <ul>
-<li>对F<sub>m</sub>按具有相同左部的原则分组，然后<font color = green>左部∪右部。</font></li>
+<li>对F~m~按具有相同左部的原则分组，然后<font color = green>左部∪右部。</font></li>
 <li>U1 = B∪DE = BDE  ;  U2 = DGC ;  U3 = AGB</li>
 </ul>
 <br/>
@@ -3735,17 +3755,17 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 <li>按求候选码规则求得候选码为AD</li>
 </ul>
 <br/>
-<p><font color = brown>2. 再求出最小依赖集F<sub>m</sub>：</font></p>
+<p><font color = brown>2. 再求出最小依赖集F~m~：</font></p>
 <ul>
 <li>将F中的所有依赖右边化为单一元素</li>
 <li>去掉F各函数依赖左边的冗余属性</li>
 <li>去掉F中所有冗余依赖关系</li>
-<li>求得F<sub>m</sub> = {AB-&gt;C，C-&gt;B，D-&gt;E，D-&gt;C}</li>
+<li>求得F~m~ = {AB-&gt;C，C-&gt;B，D-&gt;E，D-&gt;C}</li>
 </ul>
 <br/>
 <p><font color = brown>3. 左部相同原则分组：</font></p>
 <ul>
-<li>对F<sub>m</sub>按具有相同左部的原则分组，然后<font color = green>左部∪右部。</font></li>
+<li>对F~m~按具有相同左部的原则分组，然后<font color = green>左部∪右部。</font></li>
 <li>U1 = ABC  ;   U2 = BC  ; U3 = DCE</li>
 </ul>
 <br/>
@@ -3787,9 +3807,9 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 </li>
 </ul>
 <br/>
-<p><font color = brown>2. 再求出最小依赖集F<sub>m</sub>：</font></p>
+<p><font color = brown>2. 再求出最小依赖集F~m~：</font></p>
 <ul>
-<li>F<sub>m</sub> = {B-&gt;G, CE-&gt;B, C-&gt;A, B-&gt;D, C-&gt;D}。</li>
+<li>F~m~ = {B-&gt;G, CE-&gt;B, C-&gt;A, B-&gt;D, C-&gt;D}。</li>
 </ul>
 <br/>
 <p><font color = brown>3. 循环分解函数依赖集：</font></p>
@@ -3818,13 +3838,6 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 </ul>
 </li>
 </ul>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><font color = green size= 4>XZ表示X $\cup$ Z, YZ表示Y $\cup$ Z</font> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
 ]]></content>
       <categories>
         <category>数据库基础</category>
@@ -4004,16 +4017,16 @@ d.同一种型号的配件可以分放在几个仓库中。</p>
 <br/>
 <p><font color = blue size = 4>5. Get cids of customers who place an order through at least one agent who places an order for product p03</font></p>
 <blockquote>
-<p><font color = green size = 4>T<sub>1</sub> := (O where pid = ‘p03’) [aid]</font></p>
-<p><font color = green size = 4>T<sub>2</sub> := (T<sub>1</sub> $\infty $ O) [cid]</font></p>
+<p><font color = green size = 4>T~1~ := (O where pid = ‘p03’) [aid]</font></p>
+<p><font color = green size = 4>T~2~ := (T~1~ $\infty $ O) [cid]</font></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> o2.cid <span class="keyword">from</span> orders o1, orders o2</span><br><span class="line"><span class="keyword">where</span> o1.pid = <span class="string">'p03'</span> <span class="keyword">and</span> o1.aid = o2.pid;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> o2.cid <span class="keyword">from</span> orders o2 <span class="keyword">where</span> o2.aid <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">select</span> o1.aid <span class="keyword">from</span> orders o1 <span class="keyword">where</span> o1.pid = <span class="string">'p03'</span>);</span><br></pre></td></tr></table></figure>
 <br/>
 <p><font color = blue size = 4>6. Get cids of all customers who <span style="background: linear-gradient(to right, #f2994a, #f2c94c);">have the same discount</span> as any customer in Dallas or Boston.</font></p>
 <blockquote>
-<p><font color = green size = 4>T<sub>1</sub> := (C where city = ‘Dallas’ or city = ‘Boston’) [discnt]</font></p>
-<p><font color = green size = 4>T<sub>2</sub> := (T<sub>1</sub> $\infty $ C) [cid]</font></p>
+<p><font color = green size = 4>T~1~ := (C where city = ‘Dallas’ or city = ‘Boston’) [discnt]</font></p>
+<p><font color = green size = 4>T~2~ := (T~1~ $\infty $ C) [cid]</font></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> c2.cid <span class="keyword">from</span> customers c1, customers c2</span><br><span class="line"><span class="keyword">where</span> (c1.city = <span class="string">'Dallas'</span> <span class="keyword">or</span> c1.city = <span class="string">'Boston'</span>) <span class="keyword">and</span> c1.discnt = c2.discnt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> c2.cid <span class="keyword">from</span> customers c2 <span class="keyword">where</span> c2.discnt <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">select</span> c1.discnt <span class="keyword">from</span> customers c1 <span class="keyword">where</span> c1.city = <span class="string">'Dallas'</span> <span class="keyword">or</span> c1.city = <span class="string">'Boston'</span>);</span><br></pre></td></tr></table></figure>
@@ -4301,7 +4314,7 @@ not exists：如果主查询表中记录少，子查询表中记录多，并有�
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  c.cid</span><br><span class="line"><span class="keyword">FROM</span>    customers  c</span><br><span class="line"><span class="keyword">WHERE</span>  	<span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">    	<span class="keyword">SELECT</span>  *</span><br><span class="line">		<span class="keyword">FROM</span>  agents  a</span><br><span class="line">		<span class="keyword">WHERE</span>  a.city = ‘<span class="keyword">New</span> York’  <span class="keyword">and</span>  <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">		<span class="keyword">SELECT</span>  *</span><br><span class="line">		<span class="keyword">FROM</span>  orders  o</span><br><span class="line">		<span class="keyword">WHERE</span>  o.cid = c.cid  <span class="keyword">and</span>  o.aid = a.aid ) );</span><br></pre></td></tr></table></figure>
 <br/>
-<p><img data-src="http://image.zxkidea.top/1550381521441.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550381521441.png" alt="zxk"></p>
 <br/>
 <p><font color = blue size = 4>2. Get the aid values of agents in New York or Duluth who place orders for <span style="background: linear-gradient(to right, #f2994a, #f2c94c);">all products</span> costing more than a dollar.</font></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  aid</span><br><span class="line"><span class="keyword">FROM</span>    agents  a</span><br><span class="line"><span class="keyword">WHERE</span>  (city=‘<span class="keyword">New</span> York’ <span class="keyword">or</span> city=‘Duluth’) <span class="keyword">and</span></span><br><span class="line"><span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">	<span class="keyword">SELECT</span>  *</span><br><span class="line">	<span class="keyword">FROM</span>  products  p</span><br><span class="line">	<span class="keyword">WHERE</span>  p.price &gt; <span class="number">1</span>  <span class="keyword">and</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">	<span class="keyword">SELECT</span>  *</span><br><span class="line">	<span class="keyword">FROM</span>  orders  o</span><br><span class="line">	<span class="keyword">WHERE</span>  o.aid=a.aid <span class="keyword">and</span> o.pid=p.pid  ) );</span><br></pre></td></tr></table></figure>
@@ -4337,7 +4350,7 @@ not exists：如果主查询表中记录少，子查询表中记录多，并有�
 </blockquote>
 <br/>
 <h4 id="3-Set-Functions-in-SQL-聚合函数">3.  Set Functions in SQL(聚合函数)</h4>
-<p><img data-src="http://image.zxkidea.top/1550405574789.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/1550405574789.png" alt="zxk"></p>
 <br/>
 <p><font color = blue size = 4>1. Get the total dollar amount of all orders.</font></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span>  <span class="keyword">sum</span> ( dollars )  <span class="keyword">as</span>  totaldollars</span><br><span class="line"><span class="keyword">from</span>  orders;</span><br></pre></td></tr></table></figure>
@@ -4940,25 +4953,25 @@ PL/SQL 块创建 VRRAY类型的基本语法：</font></li>
 <td>PROJECT   (投影)</td>
 <td>R   [  ]</td>
 <td>R   [  ]</td>
-<td>R[A<sub>i1</sub>,…,A<sub>ik</sub>]</td>
+<td>R[A~i1~,…,A~ik~]</td>
 </tr>
 <tr>
 <td></td>
 <td>$\Pi $</td>
 <td></td>
-<td>$\Pi$<sub>Ai1,…,Aik</sub>  ®</td>
+<td>$\Pi$~Ai1,…,Aik~  ®</td>
 </tr>
 <tr>
 <td>SELECT   (选择)</td>
 <td>R   where C</td>
 <td>R   where C</td>
-<td>R   where A<sub>1</sub>=5</td>
+<td>R   where A~1~=5</td>
 </tr>
 <tr>
 <td></td>
 <td>$\sigma$</td>
-<td>$\sigma$<sub>c</sub>®</td>
-<td>$\sigma$<sub>A1=5</sub>®</td>
+<td>$\sigma$~c~®</td>
+<td>$\sigma$~A1=5~®</td>
 </tr>
 <tr>
 <td>JOIN   (联接)</td>
@@ -5004,25 +5017,25 @@ $$</p>
 <table>
 <thead>
 <tr>
-<th><img data-src="http://image.zxkidea.top/1547706516510.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1547706548705.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1547707597889.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547706516510.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547706548705.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547707597889.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img data-src="http://image.zxkidea.top/1547707646859.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1547707694254.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1547707712319.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547707646859.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547707694254.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547707712319.png" alt="zxk"></td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th><img data-src="http://image.zxkidea.top/1547708058177.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1547708130599.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1547708187008.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547708058177.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547708130599.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547708187008.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
@@ -5048,30 +5061,30 @@ $$</p>
 <thead>
 <tr>
 <th style="text-align:center">(Projection)CN:= C[cname]</th>
-<th><img data-src="http://image.zxkidea.top/1547708591736.png" alt="zxk"></th>
-<th><img data-src="http://image.zxkidea.top/1547709820322.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547708591736.png" alt="zxk"></th>
+<th><img data-src="https://image.zxkidea.top/1547709820322.png" alt="zxk"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center"><strong>(Selection)T :=CUSTOMERS where city = 'Kyoto’</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547710588795.png" alt="zxk"></td>
-<td><img data-src="http://image.zxkidea.top/1547710757123.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547710588795.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547710757123.png" alt="zxk"></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>(Selection)Pairs:=(L$\times$ M)  where L.city=M.city</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547711394006.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547711561855.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547711610818.png" alt="zxk" style="zoom: 150%;" /></td>
+<td><img data-src="https://image.zxkidea.top/1547711394006.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547711610818.png" alt="zxk" style="zoom: 150%;" /></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>Join($R\infty S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547712009184.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547712100317.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547712143439.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547712009184.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547712143439.png" alt="zxk"></td>
 </tr>
 <tr>
 <td style="text-align:center"><strong>Division($R\div S$)</strong></td>
-<td><img data-src="http://image.zxkidea.top/1547775339292.png" alt="zxk"><img data-src="http://image.zxkidea.top/1547775424573.png" alt="img"></td>
-<td><img data-src="http://image.zxkidea.top/1547775604826.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547775339292.png" alt="zxk"></td>
+<td><img data-src="https://image.zxkidea.top/1547775604826.png" alt="zxk"></td>
 </tr>
 </tbody>
 </table>
@@ -5112,7 +5125,7 @@ $$</p>
 </table>
 <hr>
 <h4 id="3-Complex-Query">3) Complex Query</h4>
-<p><img data-src="http://image.zxkidea.top/databasenote1.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/databasenote1.png" alt="zxk"></p>
 <p><font size = 4 color = blue>1. Find cname and city of customers and aname of agents that the customer lives in the same city with agents.</font></p>
 <blockquote>
 <p>((C$\times$A) where C.city=A.city)[C.cname,C.city,A.aname]</p>
@@ -5138,7 +5151,7 @@ $$</p>
 </blockquote>
 <br/>
 <br/>
-<p><img data-src="http://image.zxkidea.top/databasenote2.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/databasenote2.png" alt="zxk"></p>
 <p><font size = 4 color = blue>4. Find cid of customers who have a <font color = black size = 5>highest </font>discount in all customers.</font></p>
 <blockquote>
 <p><font color=red size=6>Step 1:</font> Find all cids of customers</p>
@@ -5157,7 +5170,7 @@ $$</p>
 <ul>
 <li><font color = green>举个栗子：</font></li>
 </ul>
-<p><img data-src="http://image.zxkidea.top/databasenote3.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/databasenote3.png" alt="zxk"></p>
 <hr>
 <h4 id="4-Native-Relational-Operation">4) Native Relational Operation</h4>
 <p><font color=green size=5>Questions:</font></p>
@@ -5323,7 +5336,7 @@ $$</p>
 </blockquote>
 <p><font color = blue size = 4>4.More Complex One <font color = red><u>(Question And Steps)</u></font>:</font></p>
 <br/>
-<p><img data-src="http://image.zxkidea.top/databasenote4.png" alt="zxk"></p>
+<p><img data-src="https://image.zxkidea.top/databasenote4.png" alt="zxk"></p>
 ]]></content>
       <categories>
         <category>数据库基础</category>
