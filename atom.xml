@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2021-05-09T08:32:09.621Z</updated>
+  <updated>2022-03-14T08:54:15.689Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos管理笔记</title>
+    <link href="https://blog.zxkidea.top/posts/6be227cb.html"/>
+    <id>https://blog.zxkidea.top/posts/6be227cb.html</id>
+    <published>2022-03-14T06:12:31.000Z</published>
+    <updated>2022-03-14T08:54:15.689Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1&gt;创建用户&lt;/h1&gt;
+&lt;h2 id=&quot;1-创建新用户&quot;&gt;1. 创建新用户&lt;/h2&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建用户名为common_usr1的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# adduser common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 为新用户设置密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# passwd common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 永久性删除用户账号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# groupdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 强制删除该用户的主目录和主目录下的所有文件和子目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel -rf username&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看系统中有哪些用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cut -d : -f 1 /etc/passwd&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看可以登录系统的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cat /etc/passwd | grep -v /sbin/nologin | cut -d : -f 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="CentOS管理" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/CentOS%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS7安装使用VNC远程桌面</title>
