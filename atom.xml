@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-06-03T15:03:30.485Z</updated>
+  <updated>2022-06-03T16:39:08.983Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.zxkidea.top/posts/f6844a3f.html"/>
     <id>https://blog.zxkidea.top/posts/f6844a3f.html</id>
     <published>2022-06-03T14:30:46.000Z</published>
-    <updated>2022-06-03T15:03:30.485Z</updated>
+    <updated>2022-06-03T16:39:08.983Z</updated>
     
     <summary type="html">
     
@@ -42,7 +42,7 @@
 &lt;li&gt;&lt;strong&gt;通过配置文件传入参数&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;下载[配置文件](&lt;a href=&quot;http://file.zxkidea.top/index.php%7C&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://file.zxkidea.top/index.php|&lt;/a&gt; &lt;a href=&quot;http://file.zxkidea.top/user.ini&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://file.zxkidea.top/user.ini&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;下载&lt;a href=&quot;https://file.zxkidea.top/index.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;配置文件1&lt;/a&gt;和&lt;a href=&quot;https://file.zxkidea.top/user.ini&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;配置文件2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;修改&lt;/li&gt;
 &lt;li&gt;通过以下的命令进行挂载并运行&lt;/li&gt;
 &lt;/ul&gt;
@@ -95,7 +95,7 @@
     <link href="https://blog.zxkidea.top/posts/af163b37.html"/>
     <id>https://blog.zxkidea.top/posts/af163b37.html</id>
     <published>2022-06-03T12:44:08.000Z</published>
-    <updated>2022-06-03T15:16:42.098Z</updated>
+    <updated>2022-06-03T16:40:50.749Z</updated>
     
     <summary type="html">
     

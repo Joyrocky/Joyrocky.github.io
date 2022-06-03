@@ -53,20 +53,20 @@
 
 
 
-  <meta name="description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。    安装docker    使用命令拉取镜像   1sudo docker pull lkeme&#x2F;bilihelper-personal   通过配置文件传入参数   下载[配置文件](http:&#x2F;&#x2F;file.zxkidea.top&#x2F;index.php| http:&#x2F;&#x2F;file.zxkidea.top&#x2F;use">
+  <meta name="description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。    安装docker    使用命令拉取镜像   1sudo docker pull lkeme&#x2F;bilihelper-personal   通过配置文件传入参数   下载配置文件1和配置文件2 修改 通过以下的命令进行挂载并运行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BiliHelper-personal脚本部署">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/f6844a3f.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。    安装docker    使用命令拉取镜像   1sudo docker pull lkeme&#x2F;bilihelper-personal   通过配置文件传入参数   下载[配置文件](http:&#x2F;&#x2F;file.zxkidea.top&#x2F;index.php| http:&#x2F;&#x2F;file.zxkidea.top&#x2F;use">
+<meta property="og:description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。    安装docker    使用命令拉取镜像   1sudo docker pull lkeme&#x2F;bilihelper-personal   通过配置文件传入参数   下载配置文件1和配置文件2 修改 通过以下的命令进行挂载并运行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim">
 <meta property="article:published_time" content="2022-06-03T14:30:46.000Z">
-<meta property="article:modified_time" content="2022-06-03T15:03:30.485Z">
+<meta property="article:modified_time" content="2022-06-03T16:39:08.983Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="部署教程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim">
+<meta name="twitter:image" content="https://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim">
 
 <link rel="canonical" href="https://blog.zxkidea.top/posts/f6844a3f.html">
 
@@ -256,12 +256,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-06-03 22:30:46 / 修改时间：23:03:30" itemprop="dateCreated datePublished" datetime="2022-06-03T22:30:46+08:00">2022-06-03</time>
+              <time title="创建时间：2022-06-03 22:30:46" itemprop="dateCreated datePublished" datetime="2022-06-03T22:30:46+08:00">2022-06-03</time>
             </span>
 
           <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-04 00:39:08" itemprop="dateModified" datetime="2022-06-04T00:39:08+08:00">2022-06-04</time>
+              </span>
 
           <span class="post-meta-divider">|</span>
             <span class="post-meta-item">
@@ -307,7 +313,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+              <span>2.3k</span>
             </span>
 
           <span class="post-meta-divider">|</span>
@@ -345,7 +351,7 @@
 <li><strong>通过配置文件传入参数</strong></li>
 </ol>
 <ul>
-<li>下载[配置文件](<a href="http://file.zxkidea.top/index.php%7C" target="_blank" rel="noopener">http://file.zxkidea.top/index.php|</a> <a href="http://file.zxkidea.top/user.ini" target="_blank" rel="noopener">http://file.zxkidea.top/user.ini</a>)</li>
+<li>下载<a href="https://file.zxkidea.top/index.php" target="_blank" rel="noopener">配置文件1</a>和<a href="https://file.zxkidea.top/user.ini" target="_blank" rel="noopener">配置文件2</a></li>
 <li>修改</li>
 <li>通过以下的命令进行挂载并运行</li>
 </ul>
@@ -368,12 +374,15 @@
 <p>注：若运行正常，此时CRTL-c会直接停止容器，此时可以使用CTRL-p，CTRL-q键序列从容器中分离并保持其运行</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若不想影响原容器工作，可以使用--no-stdin参数：</span></span><br><span class="line">sudo docker attach --no-stdin BiliHelper</span><br><span class="line"><span class="comment"># 这样不附加 stdin ，也就不会有输入影响容器的运行，这个终端需要推出时，ctrl + c 即可。</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="http://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim" alt="mark"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220603/l0uc1L9CuaDv.png?imageslim" alt="rocky"></p>
 <br/>
 <ol start="4">
-<li><strong>监控脚本配置</strong></li>
-</ol>
+<li>
+<p><strong>监控脚本配置</strong></p>
 <p>如果你将 BiliHelper-personal 部署到线上服务器时，则需要配置一个进程监控器来监测 <code>php index.php</code> 命令，在它意外退出时自动重启。</p>
+</li>
+</ol>
+<br/>
 <ul>
 <li>首先执行php -v是否安装php，否则：<code>sudo apt install php7.4-cli</code></li>
 </ul>
@@ -384,9 +393,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/lib/systemd/system/bilibili.service</span></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=BiliHelper Manager</span><br><span class="line">Documentation=https://github.com/lkeme/BiliHelper-personal</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/bin/php /path/to/your/BiliHelper-personal/index.php</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 <br/>
 <ul>
-<li>查找 Docker 容器内文件系统在宿主机上的位置</li>
-</ul>
+<li>
+<p>查找 Docker 容器内文件系统在宿主机上的位置</p>
 <p>Docker 文件系统是在宿主机上完成 Merge 后，再挂载到容器内的，我们可以通过 docker inspect 命令快速定位容器文件系统在宿主机上对应的目录：</p>
+</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker inspect --format=<span class="string">'&#123;&#123;.GraphDriver.Data.MergedDir&#125;&#125;'</span> 23b72a9479eb</span><br><span class="line"></span><br><span class="line">/var/lib/docker/overlay2/72191c356b1ca3af7e8b77682fa0014ad439aecd1273f1b1c3b7c399b1ebf5c7/merged</span><br></pre></td></tr></table></figure>
 <p><code>/var/lib/docker/overlay2/72191c356b1ca3af7e8b77682fa0014ad439aecd1273f1b1c3b7c399b1ebf5c7/merged</code>文件夹，即为容器的文件系统。</p>
 <br/>
