@@ -53,19 +53,19 @@
 
 
 
-  <meta name="description" content="CentOS7安装使用VNC远程桌面 1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
+  <meta name="description" content="1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7安装使用VNC远程桌面">
 <meta property="og:url" content="https://blog.zxkidea.top/posts/64145778.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="CentOS7安装使用VNC远程桌面 1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
+<meta property="og:description" content="1.在Linux服务器上安装配置VNC-server 1.1 配置vnc-server 1.1.1 安装VNC服务端并设置VNC连接密码 首先安装vnc的server（若没有安装的话）；需要root权限 12suyum install tigervnc tigervnc-server">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.zxkidea.top/blog/20201122/r7GNK8BpVt5H.png?imageslim">
 <meta property="og:image" content="https://image.zxkidea.top/blog/20201122/8Hh59fFehsCx.png?imageslim">
 <meta property="og:image" content="https://image.zxkidea.top/blog/20201122/eLysVDsuNfsT.png?imageslim">
 <meta property="og:image" content="https://image.zxkidea.top/blog/20201122/5ItrB5WfdnSE.png?imageslim">
 <meta property="article:published_time" content="2020-11-22T12:49:31.000Z">
-<meta property="article:modified_time" content="2021-05-09T08:32:09.621Z">
+<meta property="article:modified_time" content="2022-06-03T14:40:23.285Z">
 <meta property="article:author" content="Rocky Zhou">
 <meta property="article:tag" content="CentOS配置">
 <meta property="article:tag" content="VNC">
@@ -270,7 +270,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-09 16:32:09" itemprop="dateModified" datetime="2021-05-09T16:32:09+08:00">2021-05-09</time>
+                <time title="修改时间：2022-06-03 22:40:23" itemprop="dateModified" datetime="2022-06-03T22:40:23+08:00">2022-06-03</time>
               </span>
 
           <span class="post-meta-divider">|</span>
@@ -282,6 +282,12 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/CentOS%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index">
                     <span itemprop="name">CentOS配置</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CentOS%E9%85%8D%E7%BD%AE/Linux%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
                   </a>
                 </span>
             </span>
@@ -338,8 +344,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>CentOS7安装使用VNC远程桌面</h1>
-<h2 id="1-在Linux服务器上安装配置VNC-server">1.在Linux服务器上安装配置VNC-server</h2>
+        <h2 id="1-在Linux服务器上安装配置VNC-server">1.在Linux服务器上安装配置VNC-server</h2>
 <h3 id="1-1-配置vnc-server">1.1 配置vnc-server</h3>
 <h4 id="1-1-1-安装VNC服务端并设置VNC连接密码">1.1.1 安装VNC服务端并设置VNC连接密码</h4>
 <p>首先安装vnc的server（若没有安装的话）；需要root权限</p>
@@ -528,7 +533,7 @@ Could not connect: Connection refused</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">CentOS7安装使用VNC远程桌面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在Linux服务器上安装配置VNC-server"><span class="nav-text">1.在Linux服务器上安装配置VNC-server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-配置vnc-server"><span class="nav-text">1.1 配置vnc-server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-安装VNC服务端并设置VNC连接密码"><span class="nav-text">1.1.1 安装VNC服务端并设置VNC连接密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-拷贝并修改配置文件"><span class="nav-text">1.1.2 拷贝并修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-重新加载配置文件"><span class="nav-text">1.1.3 重新加载配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-启动VNC并设置开机启动"><span class="nav-text">1.1.4 启动VNC并设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-5-添加防火墙例外"><span class="nav-text">1.1.5 添加防火墙例外</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-6-创建VNC-service"><span class="nav-text">1.1.6 创建VNC service</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在Windows下安装配置VNC服务"><span class="nav-text">2. 在Windows下安装配置VNC服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在Windows下远程连接服务器"><span class="nav-text">3. 在Windows下远程连接服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-VNC与Anaconda冲突问题"><span class="nav-text">4. VNC与Anaconda冲突问题</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在Linux服务器上安装配置VNC-server"><span class="nav-text">1.在Linux服务器上安装配置VNC-server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-配置vnc-server"><span class="nav-text">1.1 配置vnc-server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-安装VNC服务端并设置VNC连接密码"><span class="nav-text">1.1.1 安装VNC服务端并设置VNC连接密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-拷贝并修改配置文件"><span class="nav-text">1.1.2 拷贝并修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-重新加载配置文件"><span class="nav-text">1.1.3 重新加载配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-启动VNC并设置开机启动"><span class="nav-text">1.1.4 启动VNC并设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-5-添加防火墙例外"><span class="nav-text">1.1.5 添加防火墙例外</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-6-创建VNC-service"><span class="nav-text">1.1.6 创建VNC service</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在Windows下安装配置VNC服务"><span class="nav-text">2. 在Windows下安装配置VNC服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在Windows下远程连接服务器"><span class="nav-text">3. 在Windows下远程连接服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-VNC与Anaconda冲突问题"><span class="nav-text">4. VNC与Anaconda冲突问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -544,14 +549,14 @@ Could not connect: Connection refused</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -623,13 +628,13 @@ Could not connect: Connection refused</p>
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">132k</span>
+    <span title="站点总字数">139k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:06</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e19b902cd7cfa55" async="async"></script>

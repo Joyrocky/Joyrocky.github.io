@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-03-14T08:54:15.689Z</updated>
+  <updated>2022-06-03T15:03:30.485Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,110 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BiliHelper-personal脚本部署</title>
+    <link href="https://blog.zxkidea.top/posts/f6844a3f.html"/>
+    <id>https://blog.zxkidea.top/posts/f6844a3f.html</id>
+    <published>2022-06-03T14:30:46.000Z</published>
+    <updated>2022-06-03T15:03:30.485Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;安装docker&lt;/strong&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;使用命令拉取镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo docker pull lkeme/bilihelper-personal&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;br/&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;&lt;strong&gt;通过配置文件传入参数&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;下载[配置文件](&lt;a href=&quot;http://file.zxkidea.top/index.php%7C&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://file.zxkidea.top/index.php|&lt;/a&gt; &lt;a href=&quot;http://file.zxkidea.top/user.ini&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://file.zxkidea.top/user.ini&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;修改&lt;/li&gt;
+&lt;li&gt;通过以下的命令进行挂载并运行&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="脚本系列" scheme="https://blog.zxkidea.top/categories/%E8%84%9A%E6%9C%AC%E7%B3%BB%E5%88%97/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker设置二级域名转发nginx</title>
+    <link href="https://blog.zxkidea.top/posts/89d4b6e.html"/>
+    <id>https://blog.zxkidea.top/posts/89d4b6e.html</id>
+    <published>2022-06-03T14:20:33.000Z</published>
+    <updated>2022-06-03T15:04:41.108Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;首先随便启动一个nginx容器&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo docker run --name nginx -p 80:80 -d nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;br/&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;strong&gt;进入目标文件夹创建代理服务器的文件夹&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir html conf &lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青龙面板搭建实践——腾讯云+docker</title>
+    <link href="https://blog.zxkidea.top/posts/af163b37.html"/>
+    <id>https://blog.zxkidea.top/posts/af163b37.html</id>
+    <published>2022-06-03T12:44:08.000Z</published>
+    <updated>2022-06-03T15:16:42.098Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;安装青龙面板&quot;&gt;安装青龙面板&lt;/h2&gt;
+&lt;p&gt;docker安装&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;br/&gt;
+&lt;p&gt;启动docker(第一行)，并设置docker开机自启(第二行)&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start docker&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="脚本系列" scheme="https://blog.zxkidea.top/categories/%E8%84%9A%E6%9C%AC%E7%B3%BB%E5%88%97/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Centos管理笔记</title>
@@ -48,12 +152,11 @@
     <link href="https://blog.zxkidea.top/posts/64145778.html"/>
     <id>https://blog.zxkidea.top/posts/64145778.html</id>
     <published>2020-11-22T12:49:31.000Z</published>
-    <updated>2021-05-09T08:32:09.621Z</updated>
+    <updated>2022-06-03T14:40:23.285Z</updated>
     
     <summary type="html">
     
-      &lt;h1&gt;CentOS7安装使用VNC远程桌面&lt;/h1&gt;
-&lt;h2 id=&quot;1-在Linux服务器上安装配置VNC-server&quot;&gt;1.在Linux服务器上安装配置VNC-server&lt;/h2&gt;
+      &lt;h2 id=&quot;1-在Linux服务器上安装配置VNC-server&quot;&gt;1.在Linux服务器上安装配置VNC-server&lt;/h2&gt;
 &lt;h3 id=&quot;1-1-配置vnc-server&quot;&gt;1.1 配置vnc-server&lt;/h3&gt;
 &lt;h4 id=&quot;1-1-1-安装VNC服务端并设置VNC连接密码&quot;&gt;1.1.1 安装VNC服务端并设置VNC连接密码&lt;/h4&gt;
 &lt;p&gt;首先安装vnc的server（若没有安装的话）；需要root权限&lt;/p&gt;
@@ -63,6 +166,8 @@
     
     
       <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/Linux%E8%BF%90%E7%BB%B4/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
