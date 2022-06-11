@@ -1,6 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WSL + oh-my-zsh终端方案</title>
+    <url>/posts/97d7db00.html</url>
+    <content><![CDATA[<p><em>本方案是在Win10 1903版本、WSL 1.13及Ubuntu 20.04上实现的</em></p>
+<hr>
+<h2 id="安装和配置WSL">安装和配置WSL</h2>
+<p>Windows本地需要先在微软应用商店安装WSL，然后可以看<a href="https://sspai.com/post/59380" target="_blank" rel="noopener">此处的教程</a>进行配置</p>
+<br />
+<h2 id="安装和配置oh-my-zsh">安装和配置oh-my-zsh</h2>
+<ol>
+<li>
+<p><strong>安装zsh</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-install zsh</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<br />
+</li>
+<li>
+<p><strong>查看当前系统可使用的shell</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure>
+<br />
+</li>
+<li>
+<p><strong>查看当前系统默认的shell</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+<br />
+</li>
+<li>
+<p><strong>将默认的bash改成zsh，然后保存</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/passwd</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一行的<code>/bin/bash</code>换成<code>/bin/zsh</code>,这个是root用户</li>
+<li>本系统中你的用户账号下那一行将<code>/home/account:/bin/bash</code>也换成<code>/home/account:/bin/zsh</code></li>
+</ul>
+<br />
+</li>
+<li>
+<p><strong>安装oh-my-zsh</strong></p>
+<p>使用 curl 下载安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<br />
+</li>
+<li>
+<p><strong>修改oh-my-zsh默认主题</strong></p>
+<ul>
+<li>配置主题可以通过修改<code> ~/.zshrc</code> 中的环境变量<code>ZSH_THEME</code>来完成</li>
+</ul>
+<p><img data-src="https://image.zxkidea.top/blog/20220610/EcnQP4o9Hrzv.png?imageslim" alt="rocky"></p>
+<p>使用<code>source ~/.zsh</code>使配置文件生效。</p>
+<blockquote>
+<p>注意此时终端可能会出现乱码，使用以下方式解决</p>
+</blockquote>
+<br />
+<ul>
+<li>
+<p>打开本地的Git bash终端下载字体</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># windos 下需先安装 git</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git --depth=1</span><br></pre></td></tr></table></figure>
+<p>克隆下来的文件里有个使用Power Shell打开的文件，使用右击Power Shell打开就会自动安装字体。</p>
+<br />
+</li>
+<li>
+<p>安装完成后在WSL中进行配置</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220610/DEMgXlgJgO5f.png?imageslim" alt="rocky"></p>
+</li>
+</ul>
+<p><img data-src="https://image.zxkidea.top/blog/20220610/t7fLBBsudXGk.png?imageslim" alt="rocky"></p>
+<p>重新打开WSL就可以看到字体显示正常了。</p>
+<br />
+</li>
+<li>
+<p><strong>安装oh-my-zsh插件</strong></p>
+<ul>
+<li>
+<p>安装自动提示插件zsh-autosuggestions</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<p>使用方法：输入命令时观察指令，若出现淡色提示则可以使用<code>-&gt;</code>进行所有补全，使用<code>CTRL + -&gt;</code>进行单词补全。</p>
+<br />
+</li>
+<li>
+<p>安装语法高亮插件zsh-syntax-highlighting</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<br />
+</li>
+<li>
+<p>安装The fuck插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3-dev python3-pip python3-setuptools</span><br><span class="line">sudo pip3 install thefuck</span><br></pre></td></tr></table></figure>
+<p>然后将<code>eval $(thefuck --alias)</code>添加到<code>~/.zshrc</code>，此时就配置完成了。</p>
+<blockquote>
+<p>使用方法：输入<code>ppthon</code>，得到错误停止，然后再输入<code>fuck</code>进行修正。</p>
+</blockquote>
+</li>
+</ul>
+<br />
+<ul>
+<li>
+<p>安装completions插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-completions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-completions</span><br></pre></td></tr></table></figure>
+<p>通过在<code>source &quot;$ZSH/oh-my-zsh.sh&quot;</code>之前添加以下行，将其添加到<code>.zshrc</code>中的<code>fpath</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fpath+=<span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-completions/src</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：每次Zsh调用时重新构建两次完成缓存</p>
+</blockquote>
+</li>
+</ul>
+<br />
+<ul>
+<li>
+<p>安装autojump插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install autojump</span><br></pre></td></tr></table></figure>
+<p>除了在还要在<code>~/.zshrc</code>中配置plugins，还要将下面这句写到文件中：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 放在source "$ZSH/oh-my-zsh.sh"之前</span></span><br><span class="line">[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</span><br></pre></td></tr></table></figure>
+<p><code>autojump</code>的使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:center">example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td style="text-align:center">在终端输入d，可以显示刚刚走过的路径，然后按数字选择进入哪一个目录</td>
+</tr>
+<tr>
+<td>j libs</td>
+<td style="text-align:center">可以匹配到之前访问的地址</td>
+</tr>
+<tr>
+<td>j     {foo}</td>
+<td style="text-align:center">跳转到一个包含foo字符串的目录</td>
+</tr>
+<tr>
+<td>jc {foo}</td>
+<td style="text-align:center">跳转到一个包含foo字符串目录的子目录</td>
+</tr>
+<tr>
+<td>jo {foo}</td>
+<td style="text-align:center">在终端直接打开包含foo字符串目录的文件管理器(必须安装有Linux桌面环境，如GNOME，通过XShell/SecureCRT远程连的服务器那么这个不可用)</td>
+</tr>
+<tr>
+<td>jco {foo}</td>
+<td style="text-align:center">在终端直接打开包含foo字符串目录的子目录的的文件管理器</td>
+</tr>
+<tr>
+<td>j {w} {foo}</td>
+<td style="text-align:center">那么<code>j bar</code>会跳转到权重最大的目录，<br/>你也可以通过<code>j w bar</code>跳转到权重相对较小的目录</td>
+</tr>
+<tr>
+<td>j --purge</td>
+<td style="text-align:center">清除不再需要的目录</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：只有打开过的目录 autojump 才会记录，所以使用时间越长，autojump 才会越智能；可以使用 <code>autojump</code> 命令，或者使用短命令 <code>j</code>.</p>
+</blockquote>
+<br />
+</li>
+<li>
+<p>当我们输入命令需要管理员身份时，不必让光标回到开始打一个<code>sudo</code>，可以直接按两次<code>ESC</code>，就会自动帮你加上<code>sudo</code>。</p>
+<blockquote>
+<p>注意：Thefuck 也绑定了快捷键<code>Esc-Esc</code>，我们需要使用<code>bindkey</code>命令进行更改。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 模板指令</span></span><br><span class="line"><span class="built_in">bindkey</span> -M emacs <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br><span class="line"><span class="built_in">bindkey</span> -M vicmd <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br><span class="line"><span class="built_in">bindkey</span> -M viins <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br></pre></td></tr></table></figure>
+<p>使用<code>cat</code>指令，接着敲击<code>Esc-Esc</code>来查看其编码，将<code>^[^[</code>更改到模板中，即为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> -M emacs <span class="string">'^[^['</span> sudo-command-line</span><br></pre></td></tr></table></figure>
+<br />
+<ul>
+<li>
+<p>最后我们打开文件<code>.zshrc</code>配置插件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://image.zxkidea.top/blog/20220611/0uoK1S9Ue5Ke.png?imageslim" alt="rocky"></p>
+</li>
+</ul>
+<p>然后使用<code>source ~/.zshrc </code>使配置生效。</p>
+<br />
+</li>
+<li>
+<p><strong>在zsh中配置命令的别名</strong></p>
+<p>打开配置文件<code>vim ~/.zshrc</code>,将别名配置到后面：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> gcm=<span class="string">"git commit</span></span><br><span class="line"><span class="string">alias gck="</span>git checkout<span class="string">"</span></span><br><span class="line"><span class="string">alias gbr="</span>git branch</span><br><span class="line"><span class="built_in">alias</span> gss=<span class="string">"git status</span></span><br><span class="line"><span class="string">alias gmg="</span>git merge<span class="string">"</span></span><br><span class="line"><span class="string">alias gpullo="</span>git pull origin<span class="string">"</span></span><br><span class="line"><span class="string">alias gpusho="</span>git push origin<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<p>重新执行文件<code>source ~/.zshrc</code>；</p>
+<p>到git仓库下看看，使用<code>gck master</code>验证成功，可以节省很多开发时间。</p>
+<br />
+</li>
+<li>
+<p><strong>卸载oh-my-zsh</strong></p>
+<ul>
+<li>
+<p>卸载</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/uninstall.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将/bin/bash变成/bin/zsh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/passwd   //打开将第一行和最后变成/bin/zsh</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BiliHelper-personal脚本部署</title>
     <url>/posts/f6844a3f.html</url>
     <content><![CDATA[<p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。</em></p>
