@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-06-11T08:31:02.792Z</updated>
+  <updated>2022-06-13T03:59:47.506Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决Kindle电子书&quot;暂无图片&quot;问题及RSS订阅推送</title>
+    <link href="https://blog.zxkidea.top/posts/e1208bda.html"/>
+    <id>https://blog.zxkidea.top/posts/e1208bda.html</id>
+    <published>2022-06-13T03:17:11.000Z</published>
+    <updated>2022-06-13T03:59:47.506Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img data-src=&quot;https://image.zxkidea.top/blog/20220613/qhzXBfoA2z7E.png?imageslim&quot; alt=&quot;rocky&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最近，亚马逊为 Kindle 添加了一个给大家添堵的功能，那就是，把通过 USB 拷贝到 Kindle 的电子书封面/缩略图显示成了带有“暂无图片”字样的图片占位符。&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;以往仅显示电子书标题的图片占位符，虽然没有真正的封面那样美观，但至少能让人分辨是哪一本书，而新图片占位符则是无法分辨到底想要看哪一本书，要找一本想看的书就像开盲盒一样。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
+    
+    
+      <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
+    
+      <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kindle 退出中国后如何继续购买电子书及使用推送服务</title>
+    <link href="https://blog.zxkidea.top/posts/aa509077.html"/>
+    <id>https://blog.zxkidea.top/posts/aa509077.html</id>
+    <published>2022-06-13T03:10:41.000Z</published>
+    <updated>2022-06-13T03:24:43.703Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;亚马逊中国将在 2023 年 6 月 30 日之后停止运营 Kindle 电子书店，自此用户将无法再通过亚马逊中国账户继续购买电子书，一年后，即 2024 年 6 月 30 日之后，用户将无法使用“发送至 Kindle”功能，也就是无法再通过邮箱将电子书文件推送到 Kindle 个人文档服务。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;切换其他区域的亚马逊账户&quot;&gt;切换其他区域的亚马逊账户&lt;/h2&gt;
+&lt;p&gt;如果你的 Kindle 设备想要在亚马逊的 Kindle 业务退出中国后继续购买电子书和个人文档服务，就需要换用其它区域的亚马逊账号，比如美国亚马逊、日本亚马逊、英国亚马逊等。&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;因为Kindle 相关的内容服务只能设定到一个区域，你可以在“Manage Your Content and Devices”（管理你的内容和设备）的“Preferences”（偏好设置）中的“Country/Region Settings”（区域设置）进行更改。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
+    
+    
+      <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
+    
+      <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
+    
+  </entry>
   
   <entry>
     <title>WSL + oh-my-zsh终端方案</title>

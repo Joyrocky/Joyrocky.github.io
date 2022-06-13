@@ -1,6 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>解决Kindle电子书&quot;暂无图片&quot;问题及RSS订阅推送</title>
+    <url>/posts/e1208bda.html</url>
+    <content><![CDATA[<p><img data-src="https://image.zxkidea.top/blog/20220613/qhzXBfoA2z7E.png?imageslim" alt="rocky"></p>
+<p>最近，亚马逊为 Kindle 添加了一个给大家添堵的功能，那就是，把通过 USB 拷贝到 Kindle 的电子书封面/缩略图显示成了带有“暂无图片”字样的图片占位符。</p>
+<br />
+<p>以往仅显示电子书标题的图片占位符，虽然没有真正的封面那样美观，但至少能让人分辨是哪一本书，而新图片占位符则是无法分辨到底想要看哪一本书，要找一本想看的书就像开盲盒一样。</p>
+<a id="more"></a>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/XI5XTk2MHuDU.png?imageslim" alt="rocky"></p>
+<br/>
+<h2 id="问题分析">问题分析</h2>
+<p>Kindle 电子书有多种类型，它们被标记在电子书文件的 <code>EXTH</code> 信息头[<a href="https://bookfere.com/post/986.html#footnote-1" target="_blank" rel="noopener">1]</a>中，即类型为 <code>501</code> 名为 CDE Type 的记录。该记录常见的值有 <code>PDOC</code>（代表个人文档）、<code>EBOK</code>（代表电子书）及 <code>EBSP</code>（代表电子书样章）。</p>
+<br/>
+<p>通常，我们通过 <a href="https://bookfere.com/post/92.html" target="_blank" rel="noopener">KindleGen</a> 转换成 MOBI 格式的电子书文件，以及邮箱推送到 Kindle 个人文档服务的文件会被标记为 <code>PDOC</code>，从 Kindle 电子书商店购买的电子书、或通过 Calibre 转换的 AZW3 电子书格式会被标记为 <code>EBOK</code>，而向 Kindle 发送的电子书样章会被标记为 <code>EBSP</code>。</p>
+<br/>
+<p>对于不同的电子书类型，Kindle 可能会采用不同的处理机制，比如本文讨论的封面被替换成“暂无图片”图片占位符的问题，就是针对标记为 <code>EBOK</code> 的电子书文件的。当这种类型的电子书放入 Kindle 设备中，一旦联网，Kindle 在确认是 <code>EBOK</code> 类型的电子书文件后，就会尝试读取另一个类型为 <code>113</code>（或 <code>504</code>）名为<code> ASIN</code>[<a href="https://bookfere.com/post/986.html#footnote-2" target="_blank" rel="noopener">2]</a> 的记录，一旦发现该记录的值与亚马逊商品的唯一识别码不匹配，该电子书的封面就会被替换成带有“暂无图片”字样的图片占位符。</p>
+<br/>
+<h2 id="解决方法">解决方法</h2>
+<p>我这里使用的方法是，可以直接删掉电子书的 <code>EBOK</code> 记录，让 Kindle 忽略封面检查，使其显示带标题的图片占位符；也可以将 <code>ASIN</code> 更改成任一真实存在于 Kindle 商店的<code> ASIN</code>，以达到欺骗 Kindle 使其抓取与该 <code>ASIN</code> 相对应电子书的封面图片的目的。</p>
+<br/>
+<h3 id="1-为电子书文件指定真实的ASIN">1. 为电子书文件指定真实的ASIN</h3>
+<p>主要是通过修改电子书文件 <code>EXTH</code> 信息头中 <code>501</code>、<code>113</code>、<code>504</code> 这三个记录类型来实现。</p>
+<p>这里我们需要使用到名为 Mobi Metadata Editor 的小工具，Mobi Metadata Editor 是单文件程序，无需安装，下载下面的压缩包解压即可用：</p>
+<p>下载地址：<a href="https://pan.baidu.com/s/1pU9jrbWa7Jw89J0Hdt1Etw?pwd=15ks" target="_blank" rel="noopener">百度网盘</a>〈提取码 : 15ks〉</p>
+<br/>
+<p>注意！运行 Mobi Metadata Editor 需要确保你的操作系统安装了 JRE（Java Runtime Environment）或 JDK（Java Development Kit）。如已安装可略过此步，如未安装，可以在下面提供的链接中，任选其一下载安装。如果不是以 Java 开发为目的，推荐安装体积更小的 JRE。</p>
+<ul>
+<li><strong>JRE</strong>：<a href="https://www.java.com/en/download/" target="_blank" rel="noopener">官方下载页面</a> ｜ <a href="https://java.com/en/download/manual.jsp" target="_blank" rel="noopener">手动选择适用操作系统的版本</a></li>
+<li><strong>JDK</strong>（Standard Edition）：<a href="http://oracle.com/java/technologies/downloads/" target="_blank" rel="noopener">官方下载页面</a></li>
+<li><strong>OpenJDK</strong>：<a href="http://jdk.java.net/" target="_blank" rel="noopener">官方下载页面</a></li>
+</ul>
+<br/>
+<p>双击 <strong>MobiMetaEditorV0.16.jar</strong> 启动程序，我选择一个封面失效的<code>.azw3</code>文件为例：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/Wv5FrHAW58IQ.png?imageslim" alt="rocky"></p>
+<p>此时我们发现文件的元数据中只有<code>113</code>和<code>501</code>类型的记录，<code>113</code>对应的是亚马逊 Kindle 电子书商店的电子书的 <code>ASIN</code>。我们保持 <code>501</code> 类型记录的值为 <code>EBOK</code> 不变，仅更改电子书文件的 <code>ASIN</code> 记录，这里直接修改为<strong>美亚 Kindle 电子书商店</strong>的对应电子书的<code>ASIN</code>(测试中发现中亚的部分书籍<code>ASIN</code>也不好使)，这样 Kindle 就会将商店中电子书的封面拉取下来给本地的电子书使用。</p>
+<ul>
+<li><strong>中亚 Kindle 电子书商店</strong>：<a href="https://www.amazon.cn/kindlestore" target="_blank" rel="noopener">https://www.amazon.cn/kindlestore</a></li>
+<li><strong>美亚 Kindle 电子书商店</strong>：<a href="https://www.amazon.com/kindlestore" target="_blank" rel="noopener">https://www.amazon.com/kindlestore</a></li>
+</ul>
+<blockquote>
+<p>若是发现修改<code>113</code>类型记录的值无效，则点击<code>+</code>可以添加<code>504</code>记录类型，然后将电子书商店对应电子书的<code>ASIN</code>的值添加。</p>
+</blockquote>
+<blockquote>
+<p>注意：电子书文件的 <code>ASIN</code> 记录可能同时存在于 <code>113</code> 和 <code>504</code> 这两个记录类型中，两者至少保留一个才能生效，如果对两者同时存在，Kindle 会优先使用 <code>504</code> 的值。</p>
+</blockquote>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/FzSJELsPL8j0.png?imageslim" alt="rocky"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/M7no8A4Jt4t9.png?imageslim" alt="rocky"></p>
+<p>我这里是修改<code>113</code>记录的值无效，所以添加对应<code>504</code>记录的值，然后将修改的文件放到Kindle中，发现封面显示正常。</p>
+<br/>
+<h3 id="2-禁止Kindle检查电子书封面">2. 禁止Kindle检查电子书封面</h3>
+<p>如果你不在意电子书是否显示封面图片，可以接受仅带图书标题的图片占位符，则可以直接删掉 <code>501</code> 记录类型。这做法都可以禁止让 Kindle 为该电子书检查封面图片。</p>
+<br/>
+<h3 id="3-让-Kindle-从电子书读取封面">3. 让 Kindle 从电子书读取封面</h3>
+<p>对于标记为个人文档的 MOBI 格式电子书，Kindle 会直接从电子书中读取封面，而不会去亚马逊服务器上对比 <code>ASIN</code>。因此可以先将电子书文件的扩展名从<code> .azw3</code> 更改为 <code>.mobi</code>（如果原来不是此格式的话），然后将电子书的 <code>501</code> 记录类型值从 <code>EBOK</code> 改为 <code>PDOC</code>。</p>
+<br/>
+<h2 id="RSS订阅推送">RSS订阅推送</h2>
+<p>原来我使用的是Google App Engine（GAE）的方案搭建KindleEar的方式推送RSS订阅到Kindle，设置大约每周推送一次。但是，自 2019 年 11 月 30 日起，必须向 Google Cloud 的结算账户添加支持美元支付的信用卡（如 Visa、MastCard 等）才能正常使用 GAE。奈何自己没有美元结算的信用卡(╯‵□′)╯︵┻━┻，所以此推送服务就一直处于停滞中，等到工作后办一张有美元结算的信用卡在填坑把~(￣▽￣)~*。</p>
+<br/>
+<p>现在我使用<a href="https://wheremylife.cn/" target="_blank" rel="noopener">WhereMyLife</a>进行RSS订阅推送，是完全免费的，站长用爱发电啊(○｀ 3′○)，希望能一直坚持下去。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/YvOUuSIbc4st.png?imageslim" alt="rocky"></p>
+<br/>
+<p>我们简单进行注册之后，既可以进行推送设置了：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/WcOIF7QBy1uF.png?imageslim" alt="rocky"></p>
+<br/>
+<p>绑定Kindle之后，我们需要添加你想要推送的RSS订阅源，网站提供了一些精选的RSS订阅源，你也可以根据自己的兴趣进行选择。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/FnfYLE8vKXhR.png?imageslim" alt="rocky"></p>
+<p>添加订阅源之后可以在我的订阅里进行查看：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/pHkoRuwGGefk.png?imageslim" alt="rocky"></p>
+<br/>
+<p>点击“立即推送”可以推送近期文章，大约5~6分钟后在Kindle上点击同步就可以接受到推送的文章了，点开后大约是这个样子：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/uOA7rTmLh8Q8.png?imageslim" alt="rocky"></p>
+<br />
+<p>这里，我也分享一些优秀的订阅源网站，感兴趣的也可以自建 RSSHub 服务：</p>
+<ul>
+<li>
+<p><a href="https://docs.rsshub.app/" target="_blank" rel="noopener">RSSHub</a></p>
+</li>
+<li>
+<p><a href="https://feedx.net/" target="_blank" rel="noopener">FeedX</a></p>
+</li>
+<li>
+<p><a href="https://sebsauvage.net/rss-bridge/" target="_blank" rel="noopener">RSS-bridge</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Kindle</category>
+      </categories>
+      <tags>
+        <tag>Kindle</tag>
+        <tag>RSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kindle 退出中国后如何继续购买电子书及使用推送服务</title>
+    <url>/posts/aa509077.html</url>
+    <content><![CDATA[<p><em>亚马逊中国将在 2023 年 6 月 30 日之后停止运营 Kindle 电子书店，自此用户将无法再通过亚马逊中国账户继续购买电子书，一年后，即 2024 年 6 月 30 日之后，用户将无法使用“发送至 Kindle”功能，也就是无法再通过邮箱将电子书文件推送到 Kindle 个人文档服务。</em></p>
+<hr>
+<h2 id="切换其他区域的亚马逊账户">切换其他区域的亚马逊账户</h2>
+<p>如果你的 Kindle 设备想要在亚马逊的 Kindle 业务退出中国后继续购买电子书和个人文档服务，就需要换用其它区域的亚马逊账号，比如美国亚马逊、日本亚马逊、英国亚马逊等。</p>
+<br/>
+<p>因为Kindle 相关的内容服务只能设定到一个区域，你可以在“Manage Your Content and Devices”（管理你的内容和设备）的“Preferences”（偏好设置）中的“Country/Region Settings”（区域设置）进行更改。</p>
+<a id="more"></a>
+<br/>
+<p>你可以根据自己的需要通过下表提供的链接注册特定区域的亚马逊账户。注意，如果你注册账户时使用的邮箱与亚马逊中国账户相同，务必更换一下密码，以避免 Kindle 优先登录中亚账户。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">国家/区域</th>
+<th style="text-align:left">站点链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">美国</td>
+<td style="text-align:left"><a href="https://www.amazon.com/" target="_blank" rel="noopener">https://www.amazon.com</a> * 推荐</td>
+</tr>
+<tr>
+<td style="text-align:left">英国</td>
+<td style="text-align:left"><a href="https://www.amazon.co.uk/" target="_blank" rel="noopener">https://www.amazon.co.uk</a></td>
+</tr>
+<tr>
+<td style="text-align:left">法国</td>
+<td style="text-align:left"><a href="https://www.amazon.fr/" target="_blank" rel="noopener">https://www.amazon.fr</a></td>
+</tr>
+<tr>
+<td style="text-align:left">德国</td>
+<td style="text-align:left"><a href="https://www.amazon.de/" target="_blank" rel="noopener">https://www.amazon.de</a></td>
+</tr>
+<tr>
+<td style="text-align:left">意大利</td>
+<td style="text-align:left"><a href="https://www.amazon.it/" target="_blank" rel="noopener">https://www.amazon.it</a></td>
+</tr>
+<tr>
+<td style="text-align:left">日本</td>
+<td style="text-align:left"><a href="https://www.amazon.co.jp/" target="_blank" rel="noopener">https://www.amazon.co.jp</a></td>
+</tr>
+<tr>
+<td style="text-align:left">加拿大</td>
+<td style="text-align:left"><a href="https://www.amazon.ca/" target="_blank" rel="noopener">https://www.amazon.ca</a></td>
+</tr>
+<tr>
+<td style="text-align:left">荷兰</td>
+<td style="text-align:left"><a href="https://www.amazon.nl/" target="_blank" rel="noopener">https://www.amazon.nl</a></td>
+</tr>
+<tr>
+<td style="text-align:left">波兰</td>
+<td style="text-align:left"><a href="https://www.amazon.pl/" target="_blank" rel="noopener">https://www.amazon.pl</a></td>
+</tr>
+<tr>
+<td style="text-align:left">西班牙</td>
+<td style="text-align:left"><a href="https://www.amazon.es/" target="_blank" rel="noopener">https://www.amazon.es</a></td>
+</tr>
+<tr>
+<td style="text-align:left">新加坡</td>
+<td style="text-align:left"><a href="https://www.amazon.sg/" target="_blank" rel="noopener">https://www.amazon.sg</a></td>
+</tr>
+<tr>
+<td style="text-align:left">澳大利亚</td>
+<td style="text-align:left"><a href="https://www.amazon.com.au/" target="_blank" rel="noopener">https://www.amazon.com.au</a></td>
+</tr>
+<tr>
+<td style="text-align:left">巴西</td>
+<td style="text-align:left"><a href="https://www.amazon.com.br/" target="_blank" rel="noopener">https://www.amazon.com.br</a></td>
+</tr>
+<tr>
+<td style="text-align:left">印度</td>
+<td style="text-align:left"><a href="https://www.amazon.in/" target="_blank" rel="noopener">https://www.amazon.in</a></td>
+</tr>
+<tr>
+<td style="text-align:left">墨西哥</td>
+<td style="text-align:left"><a href="https://www.amazon.com.mx/" target="_blank" rel="noopener">https://www.amazon.com.mx</a></td>
+</tr>
+<tr>
+<td style="text-align:left">土耳其</td>
+<td style="text-align:left"><a href="https://www.amazon.com.tr/" target="_blank" rel="noopener">https://www.amazon.com.tr</a></td>
+</tr>
+<tr>
+<td style="text-align:left">阿拉伯联合酋长国</td>
+<td style="text-align:left"><a href="https://www.amazon.ae/" target="_blank" rel="noopener">https://www.amazon.ae</a></td>
+</tr>
+</tbody>
+</table>
+<p>亚马逊账户注册完成后，你就可以在 Kindle 设备上先注销当前绑定的中亚账户，再绑定新注册的亚马逊账户，以继续使用相应区域亚马逊站点提供的与 Kindle 相关的内容服务。</p>
+<p>另外，如果你的 Kindle 已经越狱，切换账户后可能需要重新安装一遍插件。</p>
+<br/>
+<h2 id="如何继续使用个人文档服务">如何继续使用个人文档服务</h2>
+<p>在你的 Kindle 设备绑定好新注册的亚马逊账户后，会得到一个新的“发送至 Kindle”（Send to Kindle）电子邮箱地址，该邮箱地址可在亚马逊“Devices”（设备）页和 Kindle 设备设置中的“Your Account”（你的账户）界面看到，该邮箱的域名部分为 <strong>@kindle.com</strong>（如果发现显示仍然是 @kindle.cn，将亚马逊站点的语言切换到英文即可）。在“Preference”（偏好设置）中设置好信任邮箱后，就可以像往常一样向这个新的 Kindle 邮箱推送电子书或文档了。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/er3bdzX9dPYf.png?imageslim" alt="rocky"></p>
+<br/>
+<p>对于已经推送到中亚个人文档的内容，在切换到其它区域亚马逊账号后，不会自动迁移，原因如前所述，中国亚马逊站点与其它区域亚马逊站点的 Kindle 内容服务是完全独立的。由于亚马逊没有像电子书那样为个人文档提供从页面下载的功能，想要迁移个人文档的内容，只能使用 Kindle 逐个下载下来再重新推送到美亚个人文档服务中。通过 Kindle 下载的个人文档通常是 <code>AZW</code> 和 <code>AZW3</code> 格式。前者可以直接推送，后者需要转换成 <code>MOBI</code> 或 <code>EPUB</code> 格式才能推送。</p>
+<br/>
+<h2 id="如何继续购买Kindle电子书">如何继续购买Kindle电子书</h2>
+<p>要在其它区域亚马逊站点购买电子书，首先要解决的是支付问题。美国亚马逊支持多种支付方式，其中包括借记卡和信用卡，也就是说只要你手上的银行卡带有 UnionPay（银联）、Visa（维萨）、MasterCard（万事达）、American Express（美国运通）、JCB（吉士美）等标志，就可以在上面购物。当然，除了需要付费购买的电子书，美亚也提供了<a href="https://www.amazon.com/free-ebooks-Kindle-Store/s?k=free+ebooks&amp;rh=n%3A133140011" target="_blank" rel="noopener">大量的免费电子书</a>。</p>
+<br/>
+<p>虽然中文电子书数量较少，但是美亚为 Kindle 电子书提供了中亚未曾上线的很多功能，比如在线图书馆、在线阅读电子书、在线管理标注笔记，方便你随时随地阅读、管理电子书。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220613/CnL86QUXqo4R.png?imageslim" alt="rocky"></p>
+]]></content>
+      <categories>
+        <category>Kindle</category>
+      </categories>
+      <tags>
+        <tag>Kindle</tag>
+        <tag>RSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL + oh-my-zsh终端方案</title>
     <url>/posts/97d7db00.html</url>
     <content><![CDATA[<p><em>本方案是在Win10 1903版本、WSL 1.13及Ubuntu 20.04上实现的</em></p>
