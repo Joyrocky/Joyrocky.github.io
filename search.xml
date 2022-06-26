@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Alist - 网盘列表部署</title>
+    <url>/posts/65e45135.html</url>
+    <content><![CDATA[<p><em>详细部署细节见官方文档https://alist-doc.nn.ci/docs/；</em></p>
+<p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的</em></p>
+<h2 id="使用Docker部署">使用Docker部署</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker部署Alist容器</span></span><br><span class="line">sudo docker run -d --restart=always -v /home/superman/alist:/opt/alist/data -p 5244:5244 --name=<span class="string">"alist"</span> xhofe/alist:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志找到初始密码</span></span><br><span class="line">docker logs alist</span><br></pre></td></tr></table></figure>
+<br />
+<a id="more"></a>
+<h2 id="后端设置">后端设置</h2>
+<p>修改登录密码和<code>WebDAV</code>的密码：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/6FgMwSHRrfUQ.png?imageslim" alt="rocky"></p>
+<br />
+<h2 id="添加账号">添加账号</h2>
+<p>此处的官方文档非常详细，所以这里就不进行赘述了，直接按照文档或者视频来进行就没有什么太大问题；若是你对于其他的网盘也感兴趣，按照官方的文档进行部署即可。</p>
+<ul>
+<li><a href="https://alist-doc.nn.ci/docs/driver/aliyundrive" target="_blank" rel="noopener">阿里云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/baidu" target="_blank" rel="noopener">百度云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/onedrive" target="_blank" rel="noopener">Onedrive</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/thunder" target="_blank" rel="noopener">迅雷云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/189" target="_blank" rel="noopener">天翼云盘</a></li>
+</ul>
+<br />
+<p>最后的效果应该如下类似：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/l4KhEXlKHcJr.png?imageslim" alt="rocky"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/rGJjErN4JHxP.png?imageslim" alt="rocky"></p>
+<br />
+<h2 id="WebDAV配置">WebDAV配置</h2>
+<p>最后我们进行<code>WebDAV</code>配置，这里搬运官方的配置参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>链接</td>
+<td>http[s]://domain:port/dav/</td>
+</tr>
+<tr>
+<td>主机</td>
+<td>domain:port</td>
+</tr>
+<tr>
+<td>路径</td>
+<td>dav</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>http/https</td>
+</tr>
+<tr>
+<td>端口</td>
+<td>同 web 端口</td>
+</tr>
+<tr>
+<td>账号</td>
+<td>见后台</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>见后台</td>
+</tr>
+</tbody>
+</table>
+<p>对于<code>Android</code>手机，我在Google商店下载的<code>CX文件管理器</code>，这款软件小巧简单，仅有5.6M大小，功能强大，可以实现<code>WebDAV</code>的功能，对比其他竞品，文件的预览功能和视频在线播放功能也毫不逊色，最关键的是这个软件没有广告，非常良心，强烈安利。</p>
+<br/>
+<p>没有Google商店或者不能下载的小伙伴们可以在下面的地址进行下载：</p>
+<p><code>CX文件管理器</code>：<a href="https://www.apkmirror.com/?post_type=app_release&amp;searchtype=apk&amp;s=%09+Cx+File+Explorer" target="_blank" rel="noopener">下载地址</a></p>
+<p>进入<code>CX文件管理器</code>之后，我们选择<code>网络</code>的<code>Tab</code>，点击<code>新位置</code>，选择<code>远程存储</code>中的<code>WebDAV</code>，按照以下方法进行配置并得到网盘列表：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/EWMD9UFvPH7e.png?imageslim" alt="rocky"></p>
+]]></content>
+      <categories>
+        <category>容器部署</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决Kindle电子书&quot;暂无图片&quot;问题及RSS订阅推送</title>
     <url>/posts/e1208bda.html</url>
     <content><![CDATA[<p><img data-src="https://image.zxkidea.top/blog/20220613/qhzXBfoA2z7E.png?imageslim" alt="rocky"></p>
@@ -365,20 +447,18 @@
 <br />
 </li>
 <li>
-<p>当我们输入命令需要管理员身份时，不必让光标回到开始打一个<code>sudo</code>，可以直接按两次<code>ESC</code>，就会自动帮你加上<code>sudo</code>。</p>
+<p>当我们输入命令需要管理员身份时，不必让光标回到开始打一个<code>sudo</code>，可以直接按两次<code>Esc</code>，就会自动帮你加上<code>sudo</code>。</p>
 <blockquote>
 <p>注意：Thefuck 也绑定了快捷键<code>Esc-Esc</code>，我们需要使用<code>bindkey</code>命令进行更改。</p>
 </blockquote>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 模板指令</span></span><br><span class="line"><span class="built_in">bindkey</span> -M emacs <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br><span class="line"><span class="built_in">bindkey</span> -M vicmd <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br><span class="line"><span class="built_in">bindkey</span> -M viins <span class="string">'&lt;seq&gt;'</span> sudo-command-line</span><br></pre></td></tr></table></figure>
-<p>使用<code>cat</code>指令，接着敲击<code>Esc-Esc</code>来查看其编码，将<code>^[^[</code>更改到模板中，即为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> -M emacs <span class="string">'^[^['</span> sudo-command-line</span><br></pre></td></tr></table></figure>
+<p>使用<code>cat</code>指令，接着敲击<code>Esc-Esc</code>来查看其编码，将<code>^[^[</code>更改到模板中，并将如下命令添加到<code>.zshrc</code>的最后：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># bindkey</span></span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">'^[^['</span> sudo-command-line</span><br></pre></td></tr></table></figure>
 <br />
 <ul>
 <li>
 <p>最后我们打开文件<code>.zshrc</code>配置插件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://image.zxkidea.top/blog/20220611/0uoK1S9Ue5Ke.png?imageslim" alt="rocky"></p>
 </li>
 </ul>
@@ -494,11 +574,11 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /usr/lib/systemd/system/bilibili.service</span></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=BiliHelper Manager</span><br><span class="line">Documentation=https://github.com/lkeme/BiliHelper-personal</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/usr/bin/php /var/lib/docker/overlay2/72191c356b1ca3af7e8b77682fa0014ad439aecd1273f1b1c3b7c399b1ebf5c7/merged/app/index.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>脚本系列</category>
+        <category>容器部署</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>资料整理</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -531,11 +611,11 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;         <span class="comment">#监听的端口</span></span><br><span class="line">    server_name  qinglong.zxkidea.top;    <span class="comment">#监听的URL</span></span><br><span class="line">    location / &#123;</span><br><span class="line">       proxy_redirect off;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_pass http://43.142.73.172:5700; <span class="comment"># qinglong面板</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;         <span class="comment">#监听的端口</span></span><br><span class="line">    server_name  paper.zxkidea.top;    <span class="comment">#监听的URL</span></span><br><span class="line">    location / &#123;</span><br><span class="line">       proxy_redirect off;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_pass http://43.142.73.172:8010; <span class="comment"># paperless</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Linux运维</category>
+        <category>容器部署</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>资料整理</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -657,11 +737,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>脚本系列</category>
+        <category>容器部署</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>资料整理</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -994,7 +1074,6 @@ cuda为10.2 ,选择下载linux-x64-v7.6.5</p>
 ]]></content>
       <categories>
         <category>CentOS配置</category>
-        <category>CentOS管理</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1061,7 +1140,6 @@ Could not connect: Connection refused</p>
 ]]></content>
       <categories>
         <category>CentOS配置</category>
-        <category>Linux运维</category>
       </categories>
       <tags>
         <tag>Linux</tag>

@@ -53,21 +53,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="遇见时光">
-<meta property="og:url" content="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/CentOS%E7%AE%A1%E7%90%86/index.html">
+  <meta name="description" content="详细部署细节见官方文档https:&#x2F;&#x2F;alist-doc.nn.ci&#x2F;docs&#x2F;； 本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的 使用Docker部署 12345# docker部署Alist容器sudo docker run -d --restart&#x3D;always -v &#x2F;home&#x2F;superman&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 524">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alist - 网盘列表部署">
+<meta property="og:url" content="https://blog.zxkidea.top/posts/65e45135.html">
 <meta property="og:site_name" content="遇见时光">
+<meta property="og:description" content="详细部署细节见官方文档https:&#x2F;&#x2F;alist-doc.nn.ci&#x2F;docs&#x2F;； 本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的 使用Docker部署 12345# docker部署Alist容器sudo docker run -d --restart&#x3D;always -v &#x2F;home&#x2F;superman&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 524">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220627/6FgMwSHRrfUQ.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220627/l4KhEXlKHcJr.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220627/rGJjErN4JHxP.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220627/EWMD9UFvPH7e.png?imageslim">
+<meta property="article:published_time" content="2022-06-26T16:42:15.000Z">
+<meta property="article:modified_time" content="2022-06-26T17:16:16.096Z">
 <meta property="article:author" content="Rocky Zhou">
-<meta property="article:tag" content="Java开发">
-<meta property="article:tag" content="Devops">
-<meta property="article:tag" content="Flutter">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="FL Studio">
+<meta property="article:tag" content="部署教程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.zxkidea.top/blog/20220627/6FgMwSHRrfUQ.png?imageslim">
 
-<link rel="canonical" href="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/CentOS%E7%AE%A1%E7%90%86/">
+<link rel="canonical" href="https://blog.zxkidea.top/posts/65e45135.html">
 
 
 <script id="page-configurations">
@@ -75,11 +79,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>分类: CentOS管理 | 遇见时光</title>
+  <title>Alist - 网盘列表部署 | 遇见时光</title>
   
 
 
@@ -228,54 +232,261 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">CentOS管理
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/65e45135.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Rocky Zhou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="遇见时光">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Alist - 网盘列表部署
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-27 00:42:15 / 修改时间：01:16:16" itemprop="dateCreated datePublished" datetime="2022-06-27T00:42:15+08:00">2022-06-27</time>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">容器部署</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/65e45135.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/65e45135.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+          <span class="post-meta-divider">|</span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>733</span>
+            </span>
+
+          <span class="post-meta-divider">|</span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2022</h2>
+        <p><em>详细部署细节见官方文档https://alist-doc.nn.ci/docs/；</em></p>
+<p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的</em></p>
+<h2 id="使用Docker部署">使用Docker部署</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker部署Alist容器</span></span><br><span class="line">sudo docker run -d --restart=always -v /home/superman/alist:/opt/alist/data -p 5244:5244 --name=<span class="string">"alist"</span> xhofe/alist:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志找到初始密码</span></span><br><span class="line">docker logs alist</span><br></pre></td></tr></table></figure>
+<br />
+<a id="more"></a>
+<h2 id="后端设置">后端设置</h2>
+<p>修改登录密码和<code>WebDAV</code>的密码：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/6FgMwSHRrfUQ.png?imageslim" alt="rocky"></p>
+<br />
+<h2 id="添加账号">添加账号</h2>
+<p>此处的官方文档非常详细，所以这里就不进行赘述了，直接按照文档或者视频来进行就没有什么太大问题；若是你对于其他的网盘也感兴趣，按照官方的文档进行部署即可。</p>
+<ul>
+<li><a href="https://alist-doc.nn.ci/docs/driver/aliyundrive" target="_blank" rel="noopener">阿里云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/baidu" target="_blank" rel="noopener">百度云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/onedrive" target="_blank" rel="noopener">Onedrive</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/thunder" target="_blank" rel="noopener">迅雷云盘</a></li>
+<li><a href="https://alist-doc.nn.ci/docs/driver/189" target="_blank" rel="noopener">天翼云盘</a></li>
+</ul>
+<br />
+<p>最后的效果应该如下类似：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/l4KhEXlKHcJr.png?imageslim" alt="rocky"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/rGJjErN4JHxP.png?imageslim" alt="rocky"></p>
+<br />
+<h2 id="WebDAV配置">WebDAV配置</h2>
+<p>最后我们进行<code>WebDAV</code>配置，这里搬运官方的配置参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>链接</td>
+<td>http[s]://domain:port/dav/</td>
+</tr>
+<tr>
+<td>主机</td>
+<td>domain:port</td>
+</tr>
+<tr>
+<td>路径</td>
+<td>dav</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>http/https</td>
+</tr>
+<tr>
+<td>端口</td>
+<td>同 web 端口</td>
+</tr>
+<tr>
+<td>账号</td>
+<td>见后台</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>见后台</td>
+</tr>
+</tbody>
+</table>
+<p>对于<code>Android</code>手机，我在Google商店下载的<code>CX文件管理器</code>，这款软件小巧简单，仅有5.6M大小，功能强大，可以实现<code>WebDAV</code>的功能，对比其他竞品，文件的预览功能和视频在线播放功能也毫不逊色，最关键的是这个软件没有广告，非常良心，强烈安利。</p>
+<br/>
+<p>没有Google商店或者不能下载的小伙伴们可以在下面的地址进行下载：</p>
+<p><code>CX文件管理器</code>：<a href="https://www.apkmirror.com/?post_type=app_release&amp;searchtype=apk&amp;s=%09+Cx+File+Explorer" target="_blank" rel="noopener">下载地址</a></p>
+<p>进入<code>CX文件管理器</code>之后，我们选择<code>网络</code>的<code>Tab</code>，点击<code>新位置</code>，选择<code>远程存储</code>中的<code>WebDAV</code>，按照以下方法进行配置并得到网盘列表：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220627/EWMD9UFvPH7e.png?imageslim" alt="rocky"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-03-14T14:12:31+08:00"
-              content="2022-03-14">
-          03-14
-        </time>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+        <div class="reward-container">
+  <div>大爷，赏点？</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Rocky Zhou 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Rocky Zhou 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/6be227cb.html" itemprop="url">
-            <span itemprop="name">Centos管理笔记</span>
-          </a>
-      </h3>
+  </div>
+</div>
 
-    </header>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Rocky Zhou
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.zxkidea.top/posts/65e45135.html" title="Alist - 网盘列表部署">https://blog.zxkidea.top/posts/65e45135.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/e1208bda.html" rel="prev" title="解决Kindle电子书"暂无图片"问题及RSS订阅推送">
+      <i class="fa fa-chevron-left"></i> 解决Kindle电子书"暂无图片"问题及RSS订阅推送
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
 
-    </div>
+  
+  
+  
+
+
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -322,6 +533,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Docker部署"><span class="nav-text">使用Docker部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端设置"><span class="nav-text">后端设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加账号"><span class="nav-text">添加账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebDAV配置"><span class="nav-text">WebDAV配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -337,20 +549,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

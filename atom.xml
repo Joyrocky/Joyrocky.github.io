@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-06-13T03:59:47.506Z</updated>
+  <updated>2022-06-26T17:16:16.096Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Alist - 网盘列表部署</title>
+    <link href="https://blog.zxkidea.top/posts/65e45135.html"/>
+    <id>https://blog.zxkidea.top/posts/65e45135.html</id>
+    <published>2022-06-26T16:42:15.000Z</published>
+    <updated>2022-06-26T17:16:16.096Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;详细部署细节见官方文档https://alist-doc.nn.ci/docs/；&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;使用Docker部署&quot;&gt;使用Docker部署&lt;/h2&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# docker部署Alist容器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo docker run -d --restart=always -v /home/superman/alist:/opt/alist/data -p 5244:5244 --name=&lt;span class=&quot;string&quot;&gt;&quot;alist&quot;&lt;/span&gt; xhofe/alist:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看日志找到初始密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker logs alist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;br /&gt;
+    
+    </summary>
+    
+    
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>解决Kindle电子书&quot;暂无图片&quot;问题及RSS订阅推送</title>
@@ -47,7 +74,7 @@
     <link href="https://blog.zxkidea.top/posts/aa509077.html"/>
     <id>https://blog.zxkidea.top/posts/aa509077.html</id>
     <published>2022-06-13T03:10:41.000Z</published>
-    <updated>2022-06-13T03:24:43.703Z</updated>
+    <updated>2022-06-26T17:12:20.216Z</updated>
     
     <summary type="html">
     
@@ -75,7 +102,7 @@
     <link href="https://blog.zxkidea.top/posts/97d7db00.html"/>
     <id>https://blog.zxkidea.top/posts/97d7db00.html</id>
     <published>2022-06-11T07:22:46.000Z</published>
-    <updated>2022-06-11T08:31:02.792Z</updated>
+    <updated>2022-06-21T03:29:10.026Z</updated>
     
     <summary type="html">
     
@@ -105,7 +132,7 @@
     <link href="https://blog.zxkidea.top/posts/f6844a3f.html"/>
     <id>https://blog.zxkidea.top/posts/f6844a3f.html</id>
     <published>2022-06-03T14:30:46.000Z</published>
-    <updated>2022-06-03T16:39:08.983Z</updated>
+    <updated>2022-06-26T17:12:09.411Z</updated>
     
     <summary type="html">
     
@@ -134,12 +161,12 @@
     </summary>
     
     
-      <category term="脚本系列" scheme="https://blog.zxkidea.top/categories/%E8%84%9A%E6%9C%AC%E7%B3%BB%E5%88%97/"/>
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -148,7 +175,7 @@
     <link href="https://blog.zxkidea.top/posts/89d4b6e.html"/>
     <id>https://blog.zxkidea.top/posts/89d4b6e.html</id>
     <published>2022-06-03T14:20:33.000Z</published>
-    <updated>2022-06-03T15:04:41.108Z</updated>
+    <updated>2022-06-26T17:13:04.107Z</updated>
     
     <summary type="html">
     
@@ -165,12 +192,12 @@
     </summary>
     
     
-      <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -179,7 +206,7 @@
     <link href="https://blog.zxkidea.top/posts/af163b37.html"/>
     <id>https://blog.zxkidea.top/posts/af163b37.html</id>
     <published>2022-06-03T12:44:08.000Z</published>
-    <updated>2022-06-03T16:40:50.749Z</updated>
+    <updated>2022-06-26T17:14:02.019Z</updated>
     
     <summary type="html">
     
@@ -195,12 +222,12 @@
     </summary>
     
     
-      <category term="脚本系列" scheme="https://blog.zxkidea.top/categories/%E8%84%9A%E6%9C%AC%E7%B3%BB%E5%88%97/"/>
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -209,7 +236,7 @@
     <link href="https://blog.zxkidea.top/posts/6be227cb.html"/>
     <id>https://blog.zxkidea.top/posts/6be227cb.html</id>
     <published>2022-03-14T06:12:31.000Z</published>
-    <updated>2022-03-14T08:54:15.689Z</updated>
+    <updated>2022-06-26T17:03:17.764Z</updated>
     
     <summary type="html">
     
@@ -221,8 +248,6 @@
     
     
       <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="CentOS管理" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/CentOS%E7%AE%A1%E7%90%86/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
@@ -236,7 +261,7 @@
     <link href="https://blog.zxkidea.top/posts/64145778.html"/>
     <id>https://blog.zxkidea.top/posts/64145778.html</id>
     <published>2020-11-22T12:49:31.000Z</published>
-    <updated>2022-06-03T14:40:23.285Z</updated>
+    <updated>2022-06-26T17:03:30.722Z</updated>
     
     <summary type="html">
     
@@ -250,8 +275,6 @@
     
     
       <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/Linux%E8%BF%90%E7%BB%B4/"/>
     
     
       <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
