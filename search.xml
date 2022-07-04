@@ -1,6 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>部署NginxProxyManager实现反向代理管理</title>
+    <url>/posts/6774414c.html</url>
+    <content><![CDATA[<p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。</em></p>
+<hr>
+<h2 id="Docker-部署NginxProxyManager">Docker 部署NginxProxyManager</h2>
+<p>首先在用户目录下创建<code>NginxProxyManager</code>文件夹及<code>docker-compose.yml</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir NginxProxyManager</span><br><span class="line"><span class="built_in">cd</span> NginxProxyManager</span><br><span class="line">touch docker-compose.yml</span><br><span class="line">mkdir data</span><br><span class="line">mkdir letsencrypt</span><br></pre></td></tr></table></figure>
+<p>将一下内容复制到<code>docker-compose.yml</code>文件中：</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">version: <span class="string">'3'</span></span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: <span class="string">'jc21/nginx-proxy-manager:latest'</span></span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'80:80'</span></span><br><span class="line">      - <span class="string">'81:81'</span></span><br><span class="line">      - <span class="string">'443:443'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
+<p>启动<code>docker</code>应用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker-compose.yml</span><br></pre></td></tr></table></figure>
+<br/>
+<h2 id="登录NginxProxyManager面板进行反代配置">登录NginxProxyManager面板进行反代配置</h2>
+<p>访问<code>yourIP:8181</code>地址登录，默认账号密码如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Email:    admin@example.com</span><br><span class="line">Password: changeme</span><br></pre></td></tr></table></figure>
+<p>登录后通过<code>Let's Encrypt</code>申请<code>泛域名</code>证书，比如我的域名是<code>abc.mydomain.com</code>，若我想要所有的二级域名都能绑定<code>SSL</code>证书，则申请证书可以使用<code>*.mydomain.com</code>，这样后续任何子域名https访问都是没问题的了；对于原域名，同时申请<code>mydomain.com</code>即可：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/SMK86s16XU2V.png?imageslim" alt="rocky"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/XBv1ko1KhwHJ.png?imageslim" alt="rocky"></p>
+<blockquote>
+<p>这里我使用的是Aliyun的DNS解析，所以需要去阿里云获取<code>API_ID</code>和<code>API_Secret</code></p>
+</blockquote>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/qIrXUCYpNfJA.png?imageslim" alt="rocky"></p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/61BmNVqPEfzx.png?imageslim" alt="rocky"></p>
+<p>取到<code>AccessKey ID</code>和<code>AccessKey Secret</code>输入到上面的<code>Credentials File Content</code>中。</p>
+<br/>
+<p>接着配置子域名的解析，在阿里云的域名解析界面，将需要反代的子域名都配置<code>CNAME</code>到根域名，比如<code>abc.yourdomian.com</code>到<code>yourdomain.com</code>；最后对子域名进行反代配置：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/0GQujObJIiW0.png?imageslim" alt="rocky"></p>
+]]></content>
+      <categories>
+        <category>容器部署</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Code-Server容器部署VScode Online并配置语言环境</title>
+    <url>/posts/fbae2d13.html</url>
+    <content><![CDATA[<p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。</em></p>
+<hr>
+<h2 id="Docker-部署-Code-Server">Docker 部署 Code-Server</h2>
+<p>首先需要在你的用户下新建<code>~/.config</code>配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.config</span><br></pre></td></tr></table></figure>
+<p><code>Docker</code>部署<code>Code-Server</code>应用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># This will start a code-server container and expose it at http://127.0.0.1:8888.</span></span><br><span class="line"><span class="comment"># It will also mount your current directory into the container as `/home/coder/project`</span></span><br><span class="line"><span class="comment"># and forward your UID/GID so that all file system operations occur as your user outside</span></span><br><span class="line"><span class="comment"># the container.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Your $HOME/.config is mounted at $HOME/.config within the container to ensure you can</span></span><br><span class="line"><span class="comment"># easily access/modify your code-server config in $HOME/.config/code-server/config.json</span></span><br><span class="line"><span class="comment"># outside the container.</span></span><br><span class="line"><span class="comment"># set the password with ********</span></span><br><span class="line">docker run -it --name code-server -p 127.0.0.1:8888:8080 \</span><br><span class="line">  -v <span class="string">"<span class="variable">$HOME</span>/.config:/home/coder/.config"</span> \</span><br><span class="line">  -v <span class="string">"<span class="variable">$PWD</span>:/home/coder/project"</span> \</span><br><span class="line">  -u <span class="string">"<span class="variable">$(id -u)</span>:<span class="variable">$(id -g)</span>"</span> \</span><br><span class="line">  -e <span class="string">"DOCKER_USER=<span class="variable">$USER</span>"</span> \</span><br><span class="line">  -e PASSWORD=******** \</span><br><span class="line">  codercom/code-server:latest</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<br/>
+<p>通过我们之前部署的Nginx Proxy Manager进行反向代理，同时不要忘记去腾讯云开放防火墙端口，使用coder.mydomain.com进行访问，输入密码登录：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/KKUCowL6C82O.png?imageslim" alt="rocky"></p>
+<p>安装合适的插件，比如简体中文的语言包扩展、主题扩展和语言扩展等：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/gv1jXLI7jnJ1.png?imageslim" alt="rocky"></p>
+<br/>
+<h2 id="配置-Code-Server-语言环境">配置 Code-Server 语言环境</h2>
+<p>首先我们使用命令进入环境：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：此时的code-server应用内部是一个独立的Debian环境</p>
+</blockquote>
+<p>我们需要先更新<code>apt-get</code>并安装<code>vim</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+<br/>
+<p>因为个人需要，所以Code-Server部署了Python、Java和Go的语言环境，所以以下对部署的细节进行说明：</p>
+<ul>
+<li><strong>Python 环境配置：</strong></li>
+</ul>
+<p>安装 Python3：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install python3</span><br></pre></td></tr></table></figure>
+<p>如果输入<code>python</code>命令出现<code>bash: python: command not found</code>，则需创建软链接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 我的版本是python3.9</span></span><br><span class="line">ln -s /usr/bin/python3.9 /usr/bin/python</span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">python</span><br></pre></td></tr></table></figure>
+<p>安装插件：</p>
+<p>在<code>扩展商店</code>里选择名为<code>Python</code>的插件进行安装即可。</p>
+<br />
+<ul>
+<li><strong>Java 环境配置</strong></li>
+</ul>
+<p>首先我们选择安装插件：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/fJV67q3PN3vE.png?imageslim" alt="rocky"></p>
+<p>接着会提示我们没有<code>jdk</code>环境，我们选择<code>Install new JDK</code>，然后选择<code>JDK-11</code>进行下载，则此时浏览器会将安装包下载到本地，即得到<code>OpenJDK11U-jdk_x64_linux_hotspot_11.0.15_10.tar</code>，我们将压缩包上传到服务器的用户目录下，然后进行解压：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir java</span><br><span class="line"><span class="built_in">cd</span> java</span><br><span class="line">tar -zxvf OpenJDK11U-jdk_x64_linux_hotspot_11.0.15_10.tar</span><br></pre></td></tr></table></figure>
+<p>将<code>java</code>文件夹复制到<code>code-server</code>容器中：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">sudo docker cp java $容器id:/usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+<p>进行<code>Docker</code>容器查看复制情况，并修改<code>Docker</code>内的<code>Java</code>环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span> &amp;&amp; ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改/etc/profile配置文件</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后将以下内容写入文件的最后</span></span><br><span class="line"><span class="comment">## Java ENV</span></span><br><span class="line">JAVA_HOME=/usr/<span class="built_in">local</span>/java/jdk-11.0.15+10</span><br><span class="line">CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib/</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH JAVA_HOME CLASSPATH</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑后保存配置，并进行检查</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>最后在插件的界面选择<code>Install from Existing JDK</code>，然后选择<code>/usr/local/java/jdk-11.0.15+10</code>目录即可，此时就可以编译<code>java</code>文件了：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* project/demo.java */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开下面的终端进入<code>cd project</code>，然后执行<code>java demo.java</code>就可以得到输出了。</p>
+<br/>
+<ul>
+<li><strong>Go 环境配置</strong></li>
+</ul>
+<p>首先在宿主机上安装<code>Go</code>环境，从<a href="https://golang.org/dl" target="_blank" rel="noopener">这里</a>下载最新的安装包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将安装包上传的用户的目录</span></span><br><span class="line"><span class="comment"># 下载的压缩包解压到/usr/local</span></span><br><span class="line">sudo tar -C /usr/<span class="built_in">local</span> -xzf go1.18.3.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>不同于<code>bash</code>，使用<code>zsh</code>则需要另外配置到<code>~/.zshrc</code>文件中：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑/etc/profile</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"><span class="comment"># 将下面内容增加到最后一行中</span></span><br><span class="line"><span class="comment">## Go ENV</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存配置并生效</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置到~/.zshrc中</span></span><br><span class="line">sudo vi ~/.zshrc</span><br><span class="line"><span class="comment"># 进行如下图配置并保存</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时可以查看Go的环境</span></span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/DTnFCf56knEv.png?imageslim" alt="rocky"></p>
+<br/>
+<p>对<code>Code-Server</code>容器配置<code>Go</code>环境：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将Go的文件夹复制到code-server容器中</span></span><br><span class="line">sudo docker cp /usr/<span class="built_in">local</span>/go $容器id:/usr/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br><span class="line"><span class="comment"># 修改/etc/profile配置文件</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后将以下内容写入文件的最后</span></span><br><span class="line"><span class="comment">## Go ENV</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑后保存配置，并进行检查</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+<br/>
+<p>最后我们在安装<code>Go</code>的插件，在扩展商店搜索<code>Go</code>，找到第一个进行安装，然后编写<code>Go</code>文件：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"hello world"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后右下角会提示安装<code>Go</code>其他相关的插件，点击<code>Install all</code>，由于代理的原因，一般会安装失败，此时我们需要修改代理：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开终端输入</span></span><br><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://proxy.golang.com.cn,direct</span><br></pre></td></tr></table></figure>
+<p>关闭<code>vscode</code>重新打开，再次点击<code>install all</code>则可以成功安装插件；打开终端进入<code>cd project</code>，然后执行<code>go run demo.go</code>就可以得到输出了。</p>
+<br />
+<ul>
+<li><strong>Code Runner安装</strong></li>
+</ul>
+<p>最后安装<code>Code Runner</code>，选择扩展设置中的<code>Executor Map</code>在<code>settings.json</code>中进行编辑，然后对于一个文件，可以直接右击<code>Run Code</code>或者使用快捷键<code>Ctrl+Alt+N</code>可以直接运行对应文件。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/EoTiz7b0bCsD.png?imageslim" alt="rocky"></p>
+]]></content>
+      <categories>
+        <category>容器部署</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Alist - 网盘列表部署</title>
     <url>/posts/65e45135.html</url>
     <content><![CDATA[<p><em>详细部署细节见官方文档https://alist-doc.nn.ci/docs/；</em></p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-06-26T17:16:16.096Z</updated>
+  <updated>2022-07-04T07:24:30.198Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>部署NginxProxyManager实现反向代理管理</title>
+    <link href="https://blog.zxkidea.top/posts/6774414c.html"/>
+    <id>https://blog.zxkidea.top/posts/6774414c.html</id>
+    <published>2022-07-04T06:09:50.000Z</published>
+    <updated>2022-07-04T07:24:30.198Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Docker-部署NginxProxyManager&quot;&gt;Docker 部署NginxProxyManager&lt;/h2&gt;
+&lt;p&gt;首先在用户目录下创建&lt;code&gt;NginxProxyManager&lt;/code&gt;文件夹及&lt;code&gt;docker-compose.yml&lt;/code&gt;文件：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;touch docker-compose.yml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir letsencrypt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将一下内容复制到&lt;code&gt;docker-compose.yml&lt;/code&gt;文件中：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Code-Server容器部署VScode Online并配置语言环境</title>
+    <link href="https://blog.zxkidea.top/posts/fbae2d13.html"/>
+    <id>https://blog.zxkidea.top/posts/fbae2d13.html</id>
+    <published>2022-07-04T06:03:05.000Z</published>
+    <updated>2022-07-04T07:35:28.536Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Docker-部署-Code-Server&quot;&gt;Docker 部署 Code-Server&lt;/h2&gt;
+&lt;p&gt;首先需要在你的用户下新建&lt;code&gt;~/.config&lt;/code&gt;配置文件：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir -p ~/.config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;部署&lt;code&gt;Code-Server&lt;/code&gt;应用：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# This will start a code-server container and expose it at http://127.0.0.1:8888.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# It will also mount your current directory into the container as `/home/coder/project`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# and forward your UID/GID so that all file system operations occur as your user outside&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Your $HOME/.config is mounted at $HOME/.config within the container to ensure you can&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# easily access/modify your code-server config in $HOME/.config/code-server/config.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# outside the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# set the password with ********&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -it --name code-server -p 127.0.0.1:8888:8080 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$HOME&lt;/span&gt;/.config:/home/coder/.config&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$PWD&lt;/span&gt;:/home/coder/project&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -u &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$(id -u)&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;$(id -g)&lt;/span&gt;&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e &lt;span class=&quot;string&quot;&gt;&quot;DOCKER_USER=&lt;span class=&quot;variable&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e PASSWORD=******** \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  codercom/code-server:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Alist - 网盘列表部署</title>
@@ -544,37 +601,6 @@ List是一层一层嵌套的，通过列表来组织任务，不断拆分，直�
     
     
       <category term="职场" scheme="https://blog.zxkidea.top/tags/%E8%81%8C%E5%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux基本命令</title>
-    <link href="https://blog.zxkidea.top/posts/4b6ea061.html"/>
-    <id>https://blog.zxkidea.top/posts/4b6ea061.html</id>
-    <published>2019-04-30T14:42:13.000Z</published>
-    <updated>2020-01-12T14:53:52.609Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;命令的基本格式&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[root@localhost~]&lt;/p&gt;
-&lt;p&gt;root为用户名&lt;/p&gt;
-&lt;p&gt;～表示当前所在位置&lt;/p&gt;
-&lt;p&gt;localhost主机名&lt;/p&gt;
-&lt;p&gt;‘#’超级用户&lt;/p&gt;
-&lt;p&gt;&#39;$&amp;quot;  普通用户&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux指令" scheme="https://blog.zxkidea.top/categories/Linux%E6%8C%87%E4%BB%A4/"/>
-    
-    
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
-    
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
     
   </entry>
   

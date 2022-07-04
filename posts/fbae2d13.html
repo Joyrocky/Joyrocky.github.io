@@ -53,21 +53,26 @@
 
 
 
-  <meta name="description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。 1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于">
+  <meta name="description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。  Docker 部署 Code-Server 首先需要在你的用户下新建~&#x2F;.config配置文件： 1mkdir -p ~&#x2F;.config Docker部署Code-Server应用： 12345678910111213141516# This will start a code-server containe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关系模式范式分解教程（3NF与BCNF口诀）">
-<meta property="og:url" content="https://blog.zxkidea.top/posts/6244050a.html">
+<meta property="og:title" content="Code-Server容器部署VScode Online并配置语言环境">
+<meta property="og:url" content="https://blog.zxkidea.top/posts/fbae2d13.html">
 <meta property="og:site_name" content="遇见时光">
-<meta property="og:description" content="转载自：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kungfupanda&#x2F;p&#x2F;12362163.html 【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂  1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。 1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF要求属性完全依赖于">
+<meta property="og:description" content="本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。  Docker 部署 Code-Server 首先需要在你的用户下新建~&#x2F;.config配置文件： 1mkdir -p ~&#x2F;.config Docker部署Code-Server应用： 12345678910111213141516# This will start a code-server containe">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-08T01:42:02.000Z">
-<meta property="article:modified_time" content="2020-03-21T09:42:21.776Z">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220704/KKUCowL6C82O.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220704/gv1jXLI7jnJ1.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220704/fJV67q3PN3vE.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220704/DTnFCf56knEv.png?imageslim">
+<meta property="og:image" content="https://image.zxkidea.top/blog/20220704/EoTiz7b0bCsD.png?imageslim">
+<meta property="article:published_time" content="2022-07-04T06:03:05.000Z">
+<meta property="article:modified_time" content="2022-07-04T07:35:28.536Z">
 <meta property="article:author" content="Rocky Zhou">
-<meta property="article:tag" content="数据库">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="部署教程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.zxkidea.top/blog/20220704/KKUCowL6C82O.png?imageslim">
 
-<link rel="canonical" href="https://blog.zxkidea.top/posts/6244050a.html">
+<link rel="canonical" href="https://blog.zxkidea.top/posts/fbae2d13.html">
 
 
 <script id="page-configurations">
@@ -79,7 +84,7 @@
   };
 </script>
 
-  <title>关系模式范式分解教程（3NF与BCNF口诀） | 遇见时光</title>
+  <title>Code-Server容器部署VScode Online并配置语言环境 | 遇见时光</title>
   
 
 
@@ -233,7 +238,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/6244050a.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.zxkidea.top/posts/fbae2d13.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -246,7 +251,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          关系模式范式分解教程（3NF与BCNF口诀）
+          Code-Server容器部署VScode Online并配置语言环境
         </h2>
 
         <div class="post-meta">
@@ -255,18 +260,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-08 09:42:02" itemprop="dateCreated datePublished" datetime="2020-03-08T09:42:02+08:00">2020-03-08</time>
+              <time title="创建时间：2022-07-04 14:03:05 / 修改时间：15:35:28" itemprop="dateCreated datePublished" datetime="2022-07-04T14:03:05+08:00">2022-07-04</time>
             </span>
 
           <span class="post-meta-divider">|</span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-21 17:42:21" itemprop="dateModified" datetime="2020-03-21T17:42:21+08:00">2020-03-21</time>
-              </span>
 
           <span class="post-meta-divider">|</span>
             <span class="post-meta-item">
@@ -275,8 +274,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库基础</span>
+                  <a href="/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">容器部署</span>
                   </a>
                 </span>
             </span>
@@ -299,8 +298,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/posts/6244050a.html#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/posts/6244050a.html" itemprop="commentCount"></span>
+    <a title="valine" href="/posts/fbae2d13.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/fbae2d13.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -312,7 +311,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>3.3k</span>
             </span>
 
           <span class="post-meta-divider">|</span>
@@ -321,7 +320,7 @@
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -333,89 +332,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>转载自：<a href="https://www.cnblogs.com/kungfupanda/p/12362163.html" target="_blank" rel="noopener">https://www.cnblogs.com/kungfupanda/p/12362163.html</a></p>
-<p>【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂</p>
+        <p><em>本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。</em></p>
 <hr>
-<h2 id="1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。">1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。</h2>
-<p>1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。</p>
-<p>2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。</p>
+<h2 id="Docker-部署-Code-Server">Docker 部署 Code-Server</h2>
+<p>首先需要在你的用户下新建<code>~/.config</code>配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config</span><br></pre></td></tr></table></figure>
+<p><code>Docker</code>部署<code>Code-Server</code>应用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This will start a code-server container and expose it at http://127.0.0.1:8888.</span></span><br><span class="line"><span class="comment"># It will also mount your current directory into the container as `/home/coder/project`</span></span><br><span class="line"><span class="comment"># and forward your UID/GID so that all file system operations occur as your user outside</span></span><br><span class="line"><span class="comment"># the container.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Your $HOME/.config is mounted at $HOME/.config within the container to ensure you can</span></span><br><span class="line"><span class="comment"># easily access/modify your code-server config in $HOME/.config/code-server/config.json</span></span><br><span class="line"><span class="comment"># outside the container.</span></span><br><span class="line"><span class="comment"># set the password with ********</span></span><br><span class="line">docker run -it --name code-server -p 127.0.0.1:8888:8080 \</span><br><span class="line">  -v <span class="string">"<span class="variable">$HOME</span>/.config:/home/coder/.config"</span> \</span><br><span class="line">  -v <span class="string">"<span class="variable">$PWD</span>:/home/coder/project"</span> \</span><br><span class="line">  -u <span class="string">"<span class="variable">$(id -u)</span>:<span class="variable">$(id -g)</span>"</span> \</span><br><span class="line">  -e <span class="string">"DOCKER_USER=<span class="variable">$USER</span>"</span> \</span><br><span class="line">  -e PASSWORD=******** \</span><br><span class="line">  codercom/code-server:latest</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>3NF要求每一个非主属性既不部分依赖于码也不传递依赖于码。</p>
-<p>BCNF消除了主属性对候选码的部分和传递函数依赖。</p>
 <br/>
-<blockquote>
-<p><font color = red size = 4>注：</font></p>
-<ol>
-<li>
-<p>相对于BCNF，3NF允许存在主属性对候选码的传递依赖和部分依赖。</p>
-</li>
-<li>
-<p>BCNF比较抽象，略作解释：在学生信息表里，学号是一个候选码，学号可确定学生姓名；(班级,学生姓名）也是一组候选码，有(班级,学生姓名）-&gt; 学号，因此在主属性间形成了传递依赖。</p>
-</li>
-<li>
-<p>若对概念不清晰，关于码、候选码、主属性、非主属性的解释可参看：</p>
-<p><a href="https://blog.csdn.net/sumaliqinghua/article/details/85872446#commentBox" target="_blank" rel="noopener">https://blog.csdn.net/sumaliqinghua/article/details/85872446#commentBox</a></p>
-</li>
-</ol>
-</blockquote>
+<p>通过我们之前部署的Nginx Proxy Manager进行反向代理，同时不要忘记去腾讯云开放防火墙端口，使用coder.mydomain.com进行访问，输入密码登录：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/KKUCowL6C82O.png?imageslim" alt="rocky"></p>
+<p>安装合适的插件，比如简体中文的语言包扩展、主题扩展和语言扩展等：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/gv1jXLI7jnJ1.png?imageslim" alt="rocky"></p>
 <br/>
-<h2 id="2-我们的重点是讲解范式分解：">2. 我们的重点是讲解范式分解：</h2>
-<h3 id="一、3NF分解">一、3NF分解</h3>
-<p>分为保持依赖和无损连接</p>
-<p>为了说明求解保持依赖，我们先要会求最小依赖集</p>
-<h4 id="（1）最小依赖集求法：">（1）最小依赖集求法：</h4>
+<h2 id="配置-Code-Server-语言环境">配置 Code-Server 语言环境</h2>
+<p>首先我们使用命令进入环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><font color = red size = 4>口诀：</font></p>
-<p><font color = green>右侧先拆单，依赖依次删。</font></p>
-<p><font color = green>还原即可删，再拆左非单。</font></p>
+<p>注意：此时的code-server应用内部是一个独立的Debian环境</p>
 </blockquote>
-<p>通过求下面的最小依赖集对口诀进行解释。</p>
- <br/>
-<h4 id="（2）3NF分解：">（2）3NF分解：</h4>
-<blockquote>
-<p><font color = red size = 4>口诀：</font></p>
-<p><font color = green>保函依赖分解题，先求最小依赖集。</font></p>
-<p><font color = green>依赖两侧未出现，分成子集放一边，剩余依赖变子集。</font></p>
-<p><font color = green>若要连接成无损，再添候选做子集。</font></p>
-</blockquote>
-<p><br/>下面通过几道例题讲解口诀：</p>
-<p><font color = blue>例1.已知R(ABCDE), F = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}，求保持函数依赖的3NF分解，和具有无损连接性及保持函数依赖的3NF分解</font></p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，可得F~m~ = {A -&gt;D,E-&gt;D,D-&gt;B,BC-&gt;D,DC-&gt;A}</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边。首先可以发现没有不出现在两侧的元素不用单独分出一个子集，“剩余依赖变子集”然后我们将各依赖分别划分为子集得到：{AD}，{ED}，{DB}，{BCD}，{DCA}，即为所求保持函数依赖的3NF分解</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。</p>
-<p>(1) 候选码的求解：所谓候选码即能决定整个关系的，我们通过找未出现在依赖右边的和两侧均未出现的元素即可求得，</p>
-<p>(2) 可以发现CE未出现在右边，因此候选码为{CE}。故所求具有无损连接性及保持函数依赖的3NF分解为{AD}，{ED}，{DB}，{BCD}，{DCA}，{CE}</p>
- <br/>
-<p><font color = blue>例2.关系模式R，有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为3NF且保持函数依赖</font></p>
-<p>将关系模式分解为3NF且保持函数依赖：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：保函依赖分解题，先求最小依赖集。先求出R的最小依赖集，</p>
-<p>假设B-&gt;G冗余，则(B)^+^ = BD，没有G故不冗余。</p>
-<p>假设CE-&gt;B冗余，则(CE)^+^ = CEGDA，没有B故不冗余。</p>
-<p>假设C-&gt;A冗余，则( C )^+^ = CD，故不冗余。</p>
-<p>一次可以得到最小函数依赖集F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：依赖两侧未出现，分成子集放一边，剩余依赖变子集。首先可以发现没有不出现在两侧的元素，然后我们将各依赖分别划分为子集得{BG}，{CEB}，{CA}，{BD}，{CD}，即为所求保持函数依赖的3NF分解</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：若要连接成无损，再添候选做子集。找到R的一个候选码为{ACE}。故所求具有无损连接性及保持函数依赖的3NF分解为{BG}，{CEB}，{CA}，{BD}，{CD}，{ACE} (注：范式分解并不唯一，正确即可)</p>
- <br/>
-<h3 id="二、BCNF分解：">二、BCNF分解：</h3>
-<p>将关系模式R&lt;U,F&gt;分解为一个BCNF的基本步骤是：</p>
-<blockquote>
-<p><font color = green>1）先求最小依赖集，候码非码成子集</font></p>
-<p><font color = green>2）余下左侧全候码，完成BCNF题。</font></p>
-</blockquote>
+<p>我们需要先更新<code>apt-get</code>并安装<code>vim</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
 <br/>
-<p><font color = blue>例.关系模式R,有U={A,B,C,D,E,G}，F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}，将关系模式分解为BCNF且保持函数依赖</font></p>
-<p>将关系模式分解为BCNF且保持函数依赖：</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第一步</span>：先求最小依赖集。可以发现CE-&gt;G多余，因此最小依赖集为F~m~ = {B-&gt;G,CE-&gt;B,C-&gt;A,B-&gt;D,C-&gt;D}；</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第二步</span>：候码非码成子集。由于候选码为(CE)，因此将CE-&gt;B划分出子集（BCE），而B-&gt;G，B-&gt;D左侧均不含主属性C、E中的任何一个，故划分出(BG)，(BD）；</p>
-<p><span style="background: linear-gradient(to right, #74ebd5, #acb6e5);">第三步</span>：此时剩余依赖F’ = {C-&gt;A，C-&gt;D}，剩余元素{A,C,D}，检查发现函数依赖左侧都是候选码（<span style="background: linear-gradient(to right, #f2994a, #f2c94c);">新的依赖F’的候选码</span>），即完成BCNF分解，如果不满足则继续分解余下的；</p>
-<p>于是BCNF分解的最后结果为{(BG)，(BD)，(ACD)，(BCE)}。</p>
+<p>因为个人需要，所以Code-Server部署了Python、Java和Go的语言环境，所以以下对部署的细节进行说明：</p>
+<ul>
+<li><strong>Python 环境配置：</strong></li>
+</ul>
+<p>安装 Python3：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python3</span><br></pre></td></tr></table></figure>
+<p>如果输入<code>python</code>命令出现<code>bash: python: command not found</code>，则需创建软链接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我的版本是python3.9</span></span><br><span class="line">ln -s /usr/bin/python3.9 /usr/bin/python</span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">python</span><br></pre></td></tr></table></figure>
+<p>安装插件：</p>
+<p>在<code>扩展商店</code>里选择名为<code>Python</code>的插件进行安装即可。</p>
+<br />
+<ul>
+<li><strong>Java 环境配置</strong></li>
+</ul>
+<p>首先我们选择安装插件：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/fJV67q3PN3vE.png?imageslim" alt="rocky"></p>
+<p>接着会提示我们没有<code>jdk</code>环境，我们选择<code>Install new JDK</code>，然后选择<code>JDK-11</code>进行下载，则此时浏览器会将安装包下载到本地，即得到<code>OpenJDK11U-jdk_x64_linux_hotspot_11.0.15_10.tar</code>，我们将压缩包上传到服务器的用户目录下，然后进行解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir java</span><br><span class="line"><span class="built_in">cd</span> java</span><br><span class="line">tar -zxvf OpenJDK11U-jdk_x64_linux_hotspot_11.0.15_10.tar</span><br></pre></td></tr></table></figure>
+<p>将<code>java</code>文件夹复制到<code>code-server</code>容器中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">sudo docker cp java $容器id:/usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+<p>进行<code>Docker</code>容器查看复制情况，并修改<code>Docker</code>内的<code>Java</code>环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span> &amp;&amp; ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改/etc/profile配置文件</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后将以下内容写入文件的最后</span></span><br><span class="line"><span class="comment">## Java ENV</span></span><br><span class="line">JAVA_HOME=/usr/<span class="built_in">local</span>/java/jdk-11.0.15+10</span><br><span class="line">CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib/</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH JAVA_HOME CLASSPATH</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑后保存配置，并进行检查</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>最后在插件的界面选择<code>Install from Existing JDK</code>，然后选择<code>/usr/local/java/jdk-11.0.15+10</code>目录即可，此时就可以编译<code>java</code>文件了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* project/demo.java */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开下面的终端进入<code>cd project</code>，然后执行<code>java demo.java</code>就可以得到输出了。</p>
 <br/>
-<h3 id="三、总结">三、总结</h3>
-<p>1.闭包</p>
-<p>2.候选码</p>
-<p>3.最小依赖集</p>
-<p>4.3NF分解</p>
-<p>5.BCNF分解</p>
+<ul>
+<li><strong>Go 环境配置</strong></li>
+</ul>
+<p>首先在宿主机上安装<code>Go</code>环境，从<a href="https://golang.org/dl" target="_blank" rel="noopener">这里</a>下载最新的安装包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将安装包上传的用户的目录</span></span><br><span class="line"><span class="comment"># 下载的压缩包解压到/usr/local</span></span><br><span class="line">sudo tar -C /usr/<span class="built_in">local</span> -xzf go1.18.3.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>不同于<code>bash</code>，使用<code>zsh</code>则需要另外配置到<code>~/.zshrc</code>文件中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑/etc/profile</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"><span class="comment"># 将下面内容增加到最后一行中</span></span><br><span class="line"><span class="comment">## Go ENV</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存配置并生效</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置到~/.zshrc中</span></span><br><span class="line">sudo vi ~/.zshrc</span><br><span class="line"><span class="comment"># 进行如下图配置并保存</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时可以查看Go的环境</span></span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/DTnFCf56knEv.png?imageslim" alt="rocky"></p>
+<br/>
+<p>对<code>Code-Server</code>容器配置<code>Go</code>环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将Go的文件夹复制到code-server容器中</span></span><br><span class="line">sudo docker cp /usr/<span class="built_in">local</span>/go $容器id:/usr/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">sudo docker <span class="built_in">exec</span> -it code-server bash</span><br><span class="line"><span class="comment"># 修改/etc/profile配置文件</span></span><br><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后将以下内容写入文件的最后</span></span><br><span class="line"><span class="comment">## Go ENV</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑后保存配置，并进行检查</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+<br/>
+<p>最后我们在安装<code>Go</code>的插件，在扩展商店搜索<code>Go</code>，找到第一个进行安装，然后编写<code>Go</code>文件：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"hello world"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后右下角会提示安装<code>Go</code>其他相关的插件，点击<code>Install all</code>，由于代理的原因，一般会安装失败，此时我们需要修改代理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开终端输入</span></span><br><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://proxy.golang.com.cn,direct</span><br></pre></td></tr></table></figure>
+<p>关闭<code>vscode</code>重新打开，再次点击<code>install all</code>则可以成功安装插件；打开终端进入<code>cd project</code>，然后执行<code>go run demo.go</code>就可以得到输出了。</p>
+<br />
+<ul>
+<li><strong>Code Runner安装</strong></li>
+</ul>
+<p>最后安装<code>Code Runner</code>，选择扩展设置中的<code>Executor Map</code>在<code>settings.json</code>中进行编辑，然后对于一个文件，可以直接右击<code>Run Code</code>或者使用快捷键<code>Ctrl+Alt+N</code>可以直接运行对应文件。</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220704/EoTiz7b0bCsD.png?imageslim" alt="rocky"></p>
 
     </div>
 
@@ -459,7 +447,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.zxkidea.top/posts/6244050a.html" title="关系模式范式分解教程（3NF与BCNF口诀）">https://blog.zxkidea.top/posts/6244050a.html</a>
+    <a href="https://blog.zxkidea.top/posts/fbae2d13.html" title="Code-Server容器部署VScode Online并配置语言环境">https://blog.zxkidea.top/posts/fbae2d13.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -471,9 +459,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
-              <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 考研</a>
-              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
           </div>
 
         
@@ -482,12 +469,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/780f9bb4.html" rel="prev" title="DatabaseNotes-Ch5,6">
-      <i class="fa fa-chevron-left"></i> DatabaseNotes-Ch5,6
+    <a href="/posts/65e45135.html" rel="prev" title="Alist - 网盘列表部署">
+      <i class="fa fa-chevron-left"></i> Alist - 网盘列表部署
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/9c3362dd.html" rel="next" title="DatabaseNotes-Ch7,8">
-      DatabaseNotes-Ch7,8 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/6774414c.html" rel="next" title="部署NginxProxyManager实现反向代理管理">
+      部署NginxProxyManager实现反向代理管理 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -552,7 +539,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。"><span class="nav-text">1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-我们的重点是讲解范式分解："><span class="nav-text">2. 我们的重点是讲解范式分解：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、3NF分解"><span class="nav-text">一、3NF分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）最小依赖集求法："><span class="nav-text">（1）最小依赖集求法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）3NF分解："><span class="nav-text">（2）3NF分解：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、BCNF分解："><span class="nav-text">二、BCNF分解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、总结"><span class="nav-text">三、总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-部署-Code-Server"><span class="nav-text">Docker 部署 Code-Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Code-Server-语言环境"><span class="nav-text">配置 Code-Server 语言环境</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -799,56 +786,6 @@ window.addEventListener('pjax:success', () => {
   
 
   
-      
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
