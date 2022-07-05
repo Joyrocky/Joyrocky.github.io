@@ -189,12 +189,44 @@
 </tr>
 </tbody>
 </table>
+<br/>
+<ul>
+<li><strong>设置移动端</strong></li>
+</ul>
 <p>对于<code>Android</code>手机，我在Google商店下载的<code>CX文件管理器</code>，这款软件小巧简单，仅有5.6M大小，功能强大，可以实现<code>WebDAV</code>的功能，对比其他竞品，文件的预览功能和视频在线播放功能也毫不逊色，最关键的是这个软件没有广告，非常良心，强烈安利。</p>
 <br/>
 <p>没有Google商店或者不能下载的小伙伴们可以在下面的地址进行下载：</p>
 <p><code>CX文件管理器</code>：<a href="https://www.apkmirror.com/?post_type=app_release&amp;searchtype=apk&amp;s=%09+Cx+File+Explorer" target="_blank" rel="noopener">下载地址</a></p>
 <p>进入<code>CX文件管理器</code>之后，我们选择<code>网络</code>的<code>Tab</code>，点击<code>新位置</code>，选择<code>远程存储</code>中的<code>WebDAV</code>，按照以下方法进行配置并得到网盘列表：</p>
 <p><img data-src="https://image.zxkidea.top/blog/20220627/EWMD9UFvPH7e.png?imageslim" alt="rocky"></p>
+<br/>
+<ul>
+<li>
+<p><strong>设置PC端</strong></p>
+<p>添加一个网络位置</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/vylPGlI3hTyp.png?imageslim" alt="rocky"></p>
+<p>一直选择下一步，直到出现远程连接的提示，然后输入你<code>Alist</code>网站后台的<code>WebDAV</code>账号和密码，最后为你本地的网络位置命名为<code>我的云盘</code>就可以看到在本地挂载成功了：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/A8mU5G1eqYw6.png?imageslim" alt="rocky"></p>
+<blockquote>
+<p><font color = red size = 4>注意：</font>在添加的网络位置创建文件，对应网盘也会立刻创建，删除也会同步；但是在<code>我的云盘</code>预览文件则没有响应，若是有查看文件的需求，则移步网页版点击文件进行查看；若是有更改并同步的需求，则可以将<code>我的云盘</code>中的文件复制到本地进行打开，并进行更改，然后再复制回原来的位置覆盖即可。</p>
+</blockquote>
+<br/>
+</li>
+</ul>
+<h2 id="加密">加密</h2>
+<p>对访问的网盘路径进行加密：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/dYLP9qmaJIkd.png?imageslim" alt="rocky"></p>
+<p>设置密码：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/nWrBrenIgILQ.png?imageslim" alt="rocky"></p>
+<p>注销，因为管理员权限不受影响；设置成功后只有该路径是需要密码的：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/hCWvNtetU9Db.png?imageslim" alt="rocky"></p>
+<br/>
+<h2 id="修改样式">修改样式</h2>
+<p>可以参考<a href="https://alist-doc.nn.ci/docs/style/" target="_blank" rel="noopener">这里</a>，我采用的是<code>随机二次元背景图样式</code>，前端好的同学也可以自定义样式：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 这里添加到自定义<span class="selector-tag">head</span>处</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-class">.chakra-ui-light</span>&#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"https://www.dmoe.cc/random.php"</span>) <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>:no-repeat;<span class="attribute">background-size</span>:cover;<span class="attribute">background-attachment</span>:fixed;<span class="attribute">background-position-x</span>:center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.main-box</span> &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">15px</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.chakra-ui-light</span> <span class="selector-class">.main-box</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ffffff70</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.chakra-ui-light</span> <span class="selector-class">.readme-box</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: white <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.readme-box</span> &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">15px</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"># 这里添加到自定义<span class="selector-tag">body</span>处</span><br><span class="line"># 我修改了一下<span class="selector-tag">live2d</span>的位置和大小</span><br><span class="line">&lt;script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">script</span>&gt;</span><br><span class="line">    <span class="selector-tag">L2Dwidget</span><span class="selector-class">.init</span>(&#123;</span><br><span class="line">        "model": &#123;</span><br><span class="line">            jsonPath: "https://blog.imlete.cn/live2d/assets/weier.model.json",&lt;!--这里改模型，前面后面都要改--&gt;</span><br><span class="line">            "<span class="selector-tag">scale</span>": 0<span class="selector-class">.8</span></span><br><span class="line">        &#125;,</span><br><span class="line">        "<span class="selector-tag">display</span>": &#123;</span><br><span class="line">            "position": "right",&lt;!--设置看板娘的上下左右位置--&gt;</span><br><span class="line">            "<span class="selector-tag">width</span>": 80,</span><br><span class="line">            "<span class="selector-tag">height</span>": 160,</span><br><span class="line">            "<span class="selector-tag">hOffset</span>": 50,</span><br><span class="line">            "<span class="selector-tag">vOffset</span>": <span class="selector-tag">-10</span></span><br><span class="line">        &#125;,</span><br><span class="line">        "<span class="selector-tag">mobile</span>": &#123;</span><br><span class="line">            "show": true,</span><br><span class="line">            "<span class="selector-tag">scale</span>": 0<span class="selector-class">.5</span></span><br><span class="line">        &#125;,</span><br><span class="line">        "<span class="selector-tag">react</span>": &#123;</span><br><span class="line">            "opacityDefault": 1,&lt;!--设置透明度--&gt;</span><br><span class="line">            "<span class="selector-tag">opacityOnHover</span>": 0<span class="selector-class">.2</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/MrcGNRHWGsCh.png?imageslim" alt="rocky"></p>
+<p>返回主页查看效果大致是这样的，就大功告成了§(<em>￣▽￣</em>)§：</p>
+<p><img data-src="https://image.zxkidea.top/blog/20220705/hbNuiaoVdltY.png?imageslim" alt="rocky"></p>
 ]]></content>
       <categories>
         <category>容器部署</category>
