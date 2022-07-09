@@ -3,10 +3,10 @@
   <title>遇见时光</title>
   
   <subtitle>Keep Looking , Don&#39;t Settle &lt;br&gt; Stay Hungry , Stay Foolish</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="https://blog.zxkidea.top/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-07-04T07:24:30.198Z</updated>
+  <updated>2022-07-04T06:09:50.000Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -21,26 +21,24 @@
     <link href="https://blog.zxkidea.top/posts/6774414c.html"/>
     <id>https://blog.zxkidea.top/posts/6774414c.html</id>
     <published>2022-07-04T06:09:50.000Z</published>
-    <updated>2022-07-04T07:24:30.198Z</updated>
+    <updated>2022-07-04T06:09:50.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Docker-部署NginxProxyManager&quot;&gt;Docker 部署NginxProxyManager&lt;/h2&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;docker-部署nginxproxymanager&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#docker-部署nginxproxymanager&quot;&gt;&lt;/a&gt; Docker 部署NginxProxyManager&lt;/h2&gt;
 &lt;p&gt;首先在用户目录下创建&lt;code&gt;NginxProxyManager&lt;/code&gt;文件夹及&lt;code&gt;docker-compose.yml&lt;/code&gt;文件：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;touch docker-compose.yml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir letsencrypt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;将一下内容复制到&lt;code&gt;docker-compose.yml&lt;/code&gt;文件中：&lt;/p&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; NginxProxyManager&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;touch&lt;/span&gt; docker-compose.yml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; letsencrypt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将一下内容复制到&lt;code&gt;docker-compose.yml&lt;/code&gt;文件中：&lt;/p&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -49,27 +47,25 @@
     <link href="https://blog.zxkidea.top/posts/fbae2d13.html"/>
     <id>https://blog.zxkidea.top/posts/fbae2d13.html</id>
     <published>2022-07-04T06:03:05.000Z</published>
-    <updated>2022-07-04T07:35:28.536Z</updated>
+    <updated>2022-07-04T06:03:05.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Docker-部署-Code-Server&quot;&gt;Docker 部署 Code-Server&lt;/h2&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;docker-部署-code-server&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#docker-部署-code-server&quot;&gt;&lt;/a&gt; Docker 部署 Code-Server&lt;/h2&gt;
 &lt;p&gt;首先需要在你的用户下新建&lt;code&gt;~/.config&lt;/code&gt;配置文件：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir -p ~/.config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; -p ~/.config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;部署&lt;code&gt;Code-Server&lt;/code&gt;应用：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# This will start a code-server container and expose it at http://127.0.0.1:8888.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# It will also mount your current directory into the container as `/home/coder/project`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# and forward your UID/GID so that all file system operations occur as your user outside&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Your $HOME/.config is mounted at $HOME/.config within the container to ensure you can&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# easily access/modify your code-server config in $HOME/.config/code-server/config.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# outside the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# set the password with ********&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -it --name code-server -p 127.0.0.1:8888:8080 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$HOME&lt;/span&gt;/.config:/home/coder/.config&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$PWD&lt;/span&gt;:/home/coder/project&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -u &lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$(id -u)&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;$(id -g)&lt;/span&gt;&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e &lt;span class=&quot;string&quot;&gt;&quot;DOCKER_USER=&lt;span class=&quot;variable&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e PASSWORD=******** \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  codercom/code-server:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# This will start a code-server container and expose it at http://127.0.0.1:8888.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# It will also mount your current directory into the container as `/home/coder/project`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# and forward your UID/GID so that all file system operations occur as your user outside&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# Your $HOME/.config is mounted at $HOME/.config within the container to ensure you can&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# easily access/modify your code-server config in $HOME/.config/code-server/config.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# outside the container.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# set the password with ********&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -it --name code-server -p 127.0.0.1:8888:8080 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&amp;quot;&lt;span class=&quot;variable&quot;&gt;$HOME&lt;/span&gt;/.config:/home/coder/.config&amp;quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v &lt;span class=&quot;string&quot;&gt;&amp;quot;&lt;span class=&quot;variable&quot;&gt;$PWD&lt;/span&gt;:/home/coder/project&amp;quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -u &lt;span class=&quot;string&quot;&gt;&amp;quot;&lt;span class=&quot;subst&quot;&gt;$(id -u)&lt;/span&gt;:&lt;span class=&quot;subst&quot;&gt;$(id -g)&lt;/span&gt;&amp;quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e &lt;span class=&quot;string&quot;&gt;&amp;quot;DOCKER_USER=&lt;span class=&quot;variable&quot;&gt;$USER&lt;/span&gt;&amp;quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -e PASSWORD=******** \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  codercom/code-server:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -78,25 +74,23 @@
     <link href="https://blog.zxkidea.top/posts/65e45135.html"/>
     <id>https://blog.zxkidea.top/posts/65e45135.html</id>
     <published>2022-06-26T16:42:15.000Z</published>
-    <updated>2022-07-05T00:54:12.807Z</updated>
+    <updated>2022-06-26T16:42:15.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;详细部署细节见官方文档https://alist-doc.nn.ci/docs/；&lt;/em&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;详细部署细节见官方文档&lt;a href=&quot;https://alist-doc.nn.ci/docs/%EF%BC%9B&quot;&gt;https://alist-doc.nn.ci/docs/；&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&quot;使用Docker部署&quot;&gt;使用Docker部署&lt;/h2&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# docker部署Alist容器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo docker run -d --restart=always -v /home/superman/alist:/opt/alist/data -p 5244:5244 --name=&lt;span class=&quot;string&quot;&gt;&quot;alist&quot;&lt;/span&gt; xhofe/alist:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看日志找到初始密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker logs alist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;br /&gt;
-    
-    </summary>
+&lt;h2 id=&quot;使用docker部署&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#使用docker部署&quot;&gt;&lt;/a&gt; 使用Docker部署&lt;/h2&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# docker部署Alist容器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo docker run -d --restart=always -v /home/superman/alist:/opt/alist/data -p 5244:5244 --name=&lt;span class=&quot;string&quot;&gt;&amp;quot;alist&amp;quot;&lt;/span&gt; xhofe/alist:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看日志找到初始密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker logs alist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;br /&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -105,24 +99,22 @@
     <link href="https://blog.zxkidea.top/posts/e1208bda.html"/>
     <id>https://blog.zxkidea.top/posts/e1208bda.html</id>
     <published>2022-06-13T03:17:11.000Z</published>
-    <updated>2022-06-13T03:59:47.506Z</updated>
+    <updated>2022-06-13T03:17:11.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;img data-src=&quot;https://image.zxkidea.top/blog/20220613/qhzXBfoA2z7E.png?imageslim&quot; alt=&quot;rocky&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://image.zxkidea.top/blog/20220613/qhzXBfoA2z7E.png?imageslim&quot; alt=&quot;rocky&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;最近，亚马逊为 Kindle 添加了一个给大家添堵的功能，那就是，把通过 USB 拷贝到 Kindle 的电子书封面/缩略图显示成了带有“暂无图片”字样的图片占位符。&lt;/p&gt;
 &lt;br /&gt;
-&lt;p&gt;以往仅显示电子书标题的图片占位符，虽然没有真正的封面那样美观，但至少能让人分辨是哪一本书，而新图片占位符则是无法分辨到底想要看哪一本书，要找一本想看的书就像开盲盒一样。&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;以往仅显示电子书标题的图片占位符，虽然没有真正的封面那样美观，但至少能让人分辨是哪一本书，而新图片占位符则是无法分辨到底想要看哪一本书，要找一本想看的书就像开盲盒一样。&lt;/p&gt;</summary>
     
     
-      <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
+    
+    <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
     
     
-      <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
+    <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
     
-      <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
+    <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
     
   </entry>
   
@@ -131,26 +123,24 @@
     <link href="https://blog.zxkidea.top/posts/aa509077.html"/>
     <id>https://blog.zxkidea.top/posts/aa509077.html</id>
     <published>2022-06-13T03:10:41.000Z</published>
-    <updated>2022-06-26T17:12:20.216Z</updated>
+    <updated>2022-06-13T03:10:41.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;亚马逊中国将在 2023 年 6 月 30 日之后停止运营 Kindle 电子书店，自此用户将无法再通过亚马逊中国账户继续购买电子书，一年后，即 2024 年 6 月 30 日之后，用户将无法使用“发送至 Kindle”功能，也就是无法再通过邮箱将电子书文件推送到 Kindle 个人文档服务。&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;切换其他区域的亚马逊账户&quot;&gt;切换其他区域的亚马逊账户&lt;/h2&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;亚马逊中国将在 2023 年 6 月 30 日之后停止运营 Kindle 电子书店，自此用户将无法再通过亚马逊中国账户继续购买电子书，一年后，即 2024 年 6 月 30 日之后，用户将无法使用“发送至 Kindle”功能，也就是无法再通过邮箱将电子书文件推送到 Kindle 个人文档服务。&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;切换其他区域的亚马逊账户&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#切换其他区域的亚马逊账户&quot;&gt;&lt;/a&gt; 切换其他区域的亚马逊账户&lt;/h2&gt;
 &lt;p&gt;如果你的 Kindle 设备想要在亚马逊的 Kindle 业务退出中国后继续购买电子书和个人文档服务，就需要换用其它区域的亚马逊账号，比如美国亚马逊、日本亚马逊、英国亚马逊等。&lt;/p&gt;
 &lt;br/&gt;
-&lt;p&gt;因为Kindle 相关的内容服务只能设定到一个区域，你可以在“Manage Your Content and Devices”（管理你的内容和设备）的“Preferences”（偏好设置）中的“Country/Region Settings”（区域设置）进行更改。&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;因为Kindle 相关的内容服务只能设定到一个区域，你可以在“Manage Your Content and Devices”（管理你的内容和设备）的“Preferences”（偏好设置）中的“Country/Region Settings”（区域设置）进行更改。&lt;/p&gt;</summary>
     
     
-      <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
+    
+    <category term="Kindle" scheme="https://blog.zxkidea.top/categories/Kindle/"/>
     
     
-      <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
+    <category term="Kindle" scheme="https://blog.zxkidea.top/tags/Kindle/"/>
     
-      <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
+    <category term="RSS" scheme="https://blog.zxkidea.top/tags/RSS/"/>
     
   </entry>
   
@@ -159,28 +149,26 @@
     <link href="https://blog.zxkidea.top/posts/97d7db00.html"/>
     <id>https://blog.zxkidea.top/posts/97d7db00.html</id>
     <published>2022-06-11T07:22:46.000Z</published>
-    <updated>2022-06-21T03:29:10.026Z</updated>
+    <updated>2022-06-11T07:22:46.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;本方案是在Win10 1903版本、WSL 1.13及Ubuntu 20.04上实现的&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;安装和配置WSL&quot;&gt;安装和配置WSL&lt;/h2&gt;
-&lt;p&gt;Windows本地需要先在微软应用商店安装WSL，然后可以看&lt;a href=&quot;https://sspai.com/post/59380&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;此处的教程&lt;/a&gt;进行配置&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;本方案是在Win10 1903版本、WSL 1.13及Ubuntu 20.04上实现的&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;安装和配置wsl&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装和配置wsl&quot;&gt;&lt;/a&gt; 安装和配置WSL&lt;/h2&gt;
+&lt;p&gt;Windows本地需要先在微软应用商店安装WSL，然后可以看&lt;a href=&quot;https://sspai.com/post/59380&quot;&gt;此处的教程&lt;/a&gt;进行配置&lt;/p&gt;
 &lt;br /&gt;
-&lt;h2 id=&quot;安装和配置oh-my-zsh&quot;&gt;安装和配置oh-my-zsh&lt;/h2&gt;
+&lt;h2 id=&quot;安装和配置oh-my-zsh&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装和配置oh-my-zsh&quot;&gt;&lt;/a&gt; 安装和配置oh-my-zsh&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;安装zsh&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-install zsh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-install zsh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="Linux运维" scheme="https://blog.zxkidea.top/categories/Linux%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
   </entry>
   
@@ -189,12 +177,11 @@
     <link href="https://blog.zxkidea.top/posts/f6844a3f.html"/>
     <id>https://blog.zxkidea.top/posts/f6844a3f.html</id>
     <published>2022-06-03T14:30:46.000Z</published>
-    <updated>2022-06-26T17:12:09.411Z</updated>
+    <updated>2022-06-03T14:30:46.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;安装docker&lt;/strong&gt;&lt;/p&gt;
@@ -210,20 +197,19 @@
 &lt;li&gt;&lt;strong&gt;通过配置文件传入参数&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;下载&lt;a href=&quot;https://file.zxkidea.top/index.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;配置文件1&lt;/a&gt;和&lt;a href=&quot;https://file.zxkidea.top/user.ini&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;配置文件2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载&lt;a href=&quot;https://file.zxkidea.top/index.php&quot;&gt;配置文件1&lt;/a&gt;和&lt;a href=&quot;https://file.zxkidea.top/user.ini&quot;&gt;配置文件2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;修改&lt;/li&gt;
 &lt;li&gt;通过以下的命令进行挂载并运行&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
+&lt;/ul&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -232,11 +218,10 @@
     <link href="https://blog.zxkidea.top/posts/89d4b6e.html"/>
     <id>https://blog.zxkidea.top/posts/89d4b6e.html</id>
     <published>2022-06-03T14:20:33.000Z</published>
-    <updated>2022-06-26T17:13:04.107Z</updated>
+    <updated>2022-06-03T14:20:33.000Z</updated>
     
-    <summary type="html">
     
-      &lt;ol&gt;
+    <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;首先随便启动一个nginx容器&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo docker run --name nginx -p 80:80 -d nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -244,17 +229,16 @@
 &lt;ol start=&quot;2&quot;&gt;
 &lt;li&gt;&lt;strong&gt;进入目标文件夹创建代理服务器的文件夹&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir html conf &lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; html conf &lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -263,28 +247,26 @@
     <link href="https://blog.zxkidea.top/posts/af163b37.html"/>
     <id>https://blog.zxkidea.top/posts/af163b37.html</id>
     <published>2022-06-03T12:44:08.000Z</published>
-    <updated>2022-06-26T17:14:02.019Z</updated>
+    <updated>2022-06-03T12:44:08.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;安装青龙面板&quot;&gt;安装青龙面板&lt;/h2&gt;
+    <summary type="html">&lt;p&gt;&lt;em&gt;本部署教程是在腾讯云搭载2G，2核的Ubuntu 20.04轻量级服务器上进行实现的。&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;安装青龙面板&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装青龙面板&quot;&gt;&lt;/a&gt; 安装青龙面板&lt;/h2&gt;
 &lt;p&gt;docker安装&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;br/&gt;
 &lt;p&gt;启动docker(第一行)，并设置docker开机自启(第二行)&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start docker&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start docker&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="容器部署" scheme="https://blog.zxkidea.top/categories/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.zxkidea.top/tags/Docker/"/>
     
   </entry>
   
@@ -293,23 +275,21 @@
     <link href="https://blog.zxkidea.top/posts/6be227cb.html"/>
     <id>https://blog.zxkidea.top/posts/6be227cb.html</id>
     <published>2022-03-14T06:12:31.000Z</published>
-    <updated>2022-06-26T17:03:17.764Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;创建用户&lt;/h1&gt;
-&lt;h2 id=&quot;1-创建新用户&quot;&gt;1. 创建新用户&lt;/h2&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建用户名为common_usr1的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# adduser common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 为新用户设置密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# passwd common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 永久性删除用户账号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# groupdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 强制删除该用户的主目录和主目录下的所有文件和子目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel -rf username&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看系统中有哪些用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cut -d : -f 1 /etc/passwd&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看可以登录系统的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cat /etc/passwd | grep -v /sbin/nologin | cut -d : -f 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+    <updated>2022-03-14T06:12:31.000Z</updated>
     
     
-      <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    <summary type="html">&lt;h1 id=&quot;创建用户&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#创建用户&quot;&gt;&lt;/a&gt; 创建用户&lt;/h1&gt;
+&lt;h2 id=&quot;1-创建新用户&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-创建新用户&quot;&gt;&lt;/a&gt; 1. 创建新用户&lt;/h2&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 创建用户名为common_usr1的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# adduser common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 为新用户设置密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# passwd common_usr1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 永久性删除用户账号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# groupdel peter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 强制删除该用户的主目录和主目录下的所有文件和子目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# userdel -rf username&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看系统中有哪些用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cut -d : -f 1 /etc/passwd&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看可以登录系统的用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost ~]&lt;span class=&quot;comment&quot;&gt;# cat /etc/passwd | grep -v /sbin/nologin | cut -d : -f 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    
+    <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
     
   </entry>
   
@@ -318,25 +298,23 @@
     <link href="https://blog.zxkidea.top/posts/64145778.html"/>
     <id>https://blog.zxkidea.top/posts/64145778.html</id>
     <published>2020-11-22T12:49:31.000Z</published>
-    <updated>2022-06-26T17:03:30.722Z</updated>
+    <updated>2020-11-22T12:49:31.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;1-在Linux服务器上安装配置VNC-server&quot;&gt;1.在Linux服务器上安装配置VNC-server&lt;/h2&gt;
-&lt;h3 id=&quot;1-1-配置vnc-server&quot;&gt;1.1 配置vnc-server&lt;/h3&gt;
-&lt;h4 id=&quot;1-1-1-安装VNC服务端并设置VNC连接密码&quot;&gt;1.1.1 安装VNC服务端并设置VNC连接密码&lt;/h4&gt;
+    <summary type="html">&lt;h2 id=&quot;1在linux服务器上安装配置vnc-server&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1在linux服务器上安装配置vnc-server&quot;&gt;&lt;/a&gt; 1.在Linux服务器上安装配置VNC-server&lt;/h2&gt;
+&lt;h3 id=&quot;11-配置vnc-server&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11-配置vnc-server&quot;&gt;&lt;/a&gt; 1.1 配置vnc-server&lt;/h3&gt;
+&lt;h4 id=&quot;111-安装vnc服务端并设置vnc连接密码&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#111-安装vnc服务端并设置vnc连接密码&quot;&gt;&lt;/a&gt; 1.1.1 安装VNC服务端并设置VNC连接密码&lt;/h4&gt;
 &lt;p&gt;首先安装vnc的server（若没有安装的话）；需要root权限&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;su&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install tigervnc tigervnc-server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;su&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install tigervnc tigervnc-server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
-      <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="CentOS配置" scheme="https://blog.zxkidea.top/categories/CentOS%E9%85%8D%E7%BD%AE/"/>
     
     
-      <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://blog.zxkidea.top/tags/Linux/"/>
     
-      <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
+    <category term="资料整理" scheme="https://blog.zxkidea.top/tags/%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"/>
     
   </entry>
   
@@ -345,30 +323,28 @@
     <link href="https://blog.zxkidea.top/posts/8343e966.html"/>
     <id>https://blog.zxkidea.top/posts/8343e966.html</id>
     <published>2020-03-11T03:26:23.000Z</published>
-    <updated>2021-05-09T08:34:28.032Z</updated>
+    <updated>2020-03-11T03:26:23.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;一、常用函数大全&quot;&gt;一、常用函数大全&lt;/h2&gt;
-&lt;h3 id=&quot;1-数学函数&quot;&gt;1. 数学函数&lt;/h3&gt;
+    <summary type="html">&lt;h2 id=&quot;一-常用函数大全&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-常用函数大全&quot;&gt;&lt;/a&gt; 一、常用函数大全&lt;/h2&gt;
+&lt;h3 id=&quot;1-数学函数&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-数学函数&quot;&gt;&lt;/a&gt; 1. 数学函数&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;ABS(x)&lt;/code&gt;  返回x的绝对值&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;BIN(x)&lt;/code&gt;  返回x的二进制（OCT返回八进制，HEX返回十六进制）&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;CEILING(x)&lt;/code&gt;  返回大于x的最小整数值——&lt;span style=&quot;background: linear-gradient(to right, #74ebd5, #acb6e5);&quot;&gt;向上取整&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;EXP(x) &lt;/code&gt; 返回值e（自然对数的底）的x次方&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
+&lt;/ul&gt;</summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="数据库" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -377,27 +353,25 @@
     <link href="https://blog.zxkidea.top/posts/7755ff13.html"/>
     <id>https://blog.zxkidea.top/posts/7755ff13.html</id>
     <published>2020-03-09T01:35:13.000Z</published>
-    <updated>2021-05-09T08:28:38.914Z</updated>
+    <updated>2020-03-09T01:35:13.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;Ch10-Update-Transaction&quot;&gt;Ch10.  Update Transaction&lt;/h2&gt;
-&lt;h3 id=&quot;1-事务及其特性：&quot;&gt;1. 事务及其特性：&lt;/h3&gt;
+    <summary type="html">&lt;h2 id=&quot;ch10-update-transaction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch10-update-transaction&quot;&gt;&lt;/a&gt; Ch10.  Update Transaction&lt;/h2&gt;
+&lt;h3 id=&quot;1-事务及其特性&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-事务及其特性&quot;&gt;&lt;/a&gt; 1. 事务及其特性：&lt;/h3&gt;
 &lt;p&gt;&lt;font color = green size = 4&gt;事务：&lt;/font&gt;是访问和更新数据库的程序执行单元；事务中可能包含一个或多个SQL语句，这些语句要么都执行，要么都不执行。&lt;/p&gt;
 &lt;br/&gt;
-&lt;p&gt;&lt;font color = green size = 4&gt;事务的四大特性：ACID&lt;/font&gt;&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;&lt;font color = green size = 4&gt;事务的四大特性：ACID&lt;/font&gt;&lt;/p&gt;</summary>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -406,29 +380,27 @@
     <link href="https://blog.zxkidea.top/posts/9c3362dd.html"/>
     <id>https://blog.zxkidea.top/posts/9c3362dd.html</id>
     <published>2020-03-08T03:27:21.000Z</published>
-    <updated>2021-05-09T08:27:32.971Z</updated>
+    <updated>2020-03-08T03:27:21.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;Ch7-Database-Manage-数据库管理&quot;&gt;Ch7.  Database Manage(数据库管理)&lt;/h2&gt;
-&lt;h3 id=&quot;1-Integrity-Constraints-完整性约束&quot;&gt;1. Integrity Constraints (完整性约束)&lt;/h3&gt;
+    <summary type="html">&lt;h2 id=&quot;ch7-database-manage数据库管理&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch7-database-manage数据库管理&quot;&gt;&lt;/a&gt; Ch7.  Database Manage(数据库管理)&lt;/h2&gt;
+&lt;h3 id=&quot;1-integrity-constraints-完整性约束&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-integrity-constraints-完整性约束&quot;&gt;&lt;/a&gt; 1. Integrity Constraints (完整性约束)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;font color = green size = 4&gt;数据完整性：&lt;/font&gt;存储在数据库中的所有数据值均正确的状态。它是应防止数据库中存在不符合语义规定的数据和防止因错误信息的输入输出造成无效操作或错误信息而提出的。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br/&gt;
-&lt;h4 id=&quot;1）实体完整性&quot;&gt;1）实体完整性&lt;/h4&gt;
-    
-    </summary>
+&lt;h4 id=&quot;1实体完整性&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1实体完整性&quot;&gt;&lt;/a&gt; 1）实体完整性&lt;/h4&gt;</summary>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -437,28 +409,26 @@
     <link href="https://blog.zxkidea.top/posts/6244050a.html"/>
     <id>https://blog.zxkidea.top/posts/6244050a.html</id>
     <published>2020-03-08T01:42:02.000Z</published>
-    <updated>2020-03-21T09:42:21.776Z</updated>
+    <updated>2020-03-08T01:42:02.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/kungfupanda/p/12362163.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/kungfupanda/p/12362163.html&lt;/a&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/kungfupanda/p/12362163.html&quot;&gt;https://www.cnblogs.com/kungfupanda/p/12362163.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;【通俗易懂】关系模式范式分解教程 3NF与BCNF口诀!小白也能看懂&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;1-在模式分解之前，首先对于1NF-2NF-3NF-BCNF做一个简明扼要的介绍。&quot;&gt;1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;1-在模式分解之前首先对于1nf2nf3nfbcnf做一个简明扼要的介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-在模式分解之前首先对于1nf2nf3nfbcnf做一个简明扼要的介绍&quot;&gt;&lt;/a&gt; 1. 在模式分解之前，首先对于1NF,2NF,3NF,BCNF做一个简明扼要的介绍。&lt;/h2&gt;
 &lt;p&gt;1NF是指数据库表的每一列都是不可分割的基本数据项，即实体中的某个属性不能有多个值或者不能有重复的属性。&lt;/p&gt;
-&lt;p&gt;2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;2NF要求属性完全依赖于主键，不能存在仅依赖主关键字一部分的属性。&lt;/p&gt;</summary>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -467,28 +437,26 @@
     <link href="https://blog.zxkidea.top/posts/780f9bb4.html"/>
     <id>https://blog.zxkidea.top/posts/780f9bb4.html</id>
     <published>2020-03-05T15:30:17.000Z</published>
-    <updated>2021-05-09T08:26:16.132Z</updated>
+    <updated>2020-03-05T15:30:17.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;Ch5-Embedded-SQL-（嵌入式SQL）&quot;&gt;Ch5. Embedded SQL （嵌入式SQL）&lt;/h2&gt;
-&lt;h3 id=&quot;1-定义&quot;&gt;1. 定义&lt;/h3&gt;
+    <summary type="html">&lt;h2 id=&quot;ch5-embedded-sql-嵌入式sql&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch5-embedded-sql-嵌入式sql&quot;&gt;&lt;/a&gt; Ch5. Embedded SQL （嵌入式SQL）&lt;/h2&gt;
+&lt;h3 id=&quot;1-定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-定义&quot;&gt;&lt;/a&gt; 1. 定义&lt;/h3&gt;
 &lt;p&gt;&lt;font color = blue size = 4&gt;嵌入式SQL是将SQL嵌入到某一种高级语言之中，如C/C++,Java等 这种高级语言被称为宿主语言&lt;/font&gt;&lt;/p&gt;
 &lt;br/&gt;
-&lt;h3 id=&quot;2-特性&quot;&gt;2. 特性&lt;/h3&gt;
-&lt;p&gt;​	&lt;font color = blue size = 4&gt;1）继承了高级语言的过程控制性&lt;/font&gt;&lt;/p&gt;
-    
-    </summary>
+&lt;h3 id=&quot;2-特性&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#2-特性&quot;&gt;&lt;/a&gt; 2. 特性&lt;/h3&gt;
+&lt;p&gt;​	&lt;font color = blue size = 4&gt;1）继承了高级语言的过程控制性&lt;/font&gt;&lt;/p&gt;</summary>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -497,28 +465,26 @@
     <link href="https://blog.zxkidea.top/posts/928c862a.html"/>
     <id>https://blog.zxkidea.top/posts/928c862a.html</id>
     <published>2020-02-29T04:24:34.000Z</published>
-    <updated>2021-05-09T08:23:01.881Z</updated>
+    <updated>2020-02-29T04:24:34.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h2 id=&quot;Ch3-Basic-SQL-Query-Language&quot;&gt;Ch3:  Basic SQL Query Language&lt;/h2&gt;
-&lt;h3 id=&quot;一-Setting-up-the-Database&quot;&gt;一. Setting up the Database&lt;/h3&gt;
-&lt;h4 id=&quot;1-SQL-Datatype&quot;&gt;1. SQL  Datatype&lt;/h4&gt;
+    <summary type="html">&lt;h2 id=&quot;ch3-basic-sql-query-language&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch3-basic-sql-query-language&quot;&gt;&lt;/a&gt; Ch3:  Basic SQL Query Language&lt;/h2&gt;
+&lt;h3 id=&quot;一-setting-up-the-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-setting-up-the-database&quot;&gt;&lt;/a&gt; 一. Setting up the Database&lt;/h3&gt;
+&lt;h4 id=&quot;1-sql-datatype&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-sql-datatype&quot;&gt;&lt;/a&gt; 1. SQL  Datatype&lt;/h4&gt;
 &lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER(n), CHAR(n)：&lt;/font&gt; fixed-length character strings&lt;/p&gt;
 &lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER VARYING(n), CHAR VARYING(n)：&lt;/font&gt;variable-length character strings&lt;/p&gt;
-&lt;p&gt;&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;&lt;/p&gt;</summary>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -527,27 +493,25 @@
     <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
     <id>https://blog.zxkidea.top/posts/786bf771.html</id>
     <published>2020-01-12T14:48:33.010Z</published>
-    <updated>2021-05-09T08:21:19.238Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Ch1-Introduction&quot;&gt;Ch1:  Introduction&lt;/h2&gt;
-&lt;h2 id=&quot;Ch2-The-Rational-Model&quot;&gt;Ch2:  The Rational Model&lt;/h2&gt;
-&lt;h3 id=&quot;1-The-CAP-Database&quot;&gt;1.The CAP Database&lt;/h3&gt;
-&lt;h3 id=&quot;2-Naming-the-Parts-of-the-Database&quot;&gt;2.Naming the Parts of the Database&lt;/h3&gt;
-&lt;h3 id=&quot;3-Rational-Rules&quot;&gt;3.Rational Rules:&lt;/h3&gt;
-    
-    </summary>
+    <updated>2020-01-12T14:48:33.010Z</updated>
     
     
-      <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    <summary type="html">&lt;h2 id=&quot;ch1-introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch1-introduction&quot;&gt;&lt;/a&gt; Ch1:  Introduction&lt;/h2&gt;
+&lt;h2 id=&quot;ch2-the-rational-model&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch2-the-rational-model&quot;&gt;&lt;/a&gt; Ch2:  The Rational Model&lt;/h2&gt;
+&lt;h3 id=&quot;1the-cap-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1the-cap-database&quot;&gt;&lt;/a&gt; 1.The CAP Database&lt;/h3&gt;
+&lt;h3 id=&quot;2naming-the-parts-of-the-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#2naming-the-parts-of-the-database&quot;&gt;&lt;/a&gt; 2.Naming the Parts of the Database&lt;/h3&gt;
+&lt;h3 id=&quot;3rational-rules&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#3rational-rules&quot;&gt;&lt;/a&gt; 3.Rational Rules:&lt;/h3&gt;</summary>
     
     
-      <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -556,24 +520,22 @@
     <link href="https://blog.zxkidea.top/posts/31d96ab6.html"/>
     <id>https://blog.zxkidea.top/posts/31d96ab6.html</id>
     <published>2019-05-01T08:24:03.000Z</published>
-    <updated>2020-05-30T02:39:40.101Z</updated>
+    <updated>2019-05-01T08:24:03.000Z</updated>
     
-    <summary type="html">
     
-      &lt;p&gt;转载自：五大经典算法分析   &lt;a href=&quot;https://www.cnblogs.com/parzulpan/p/9919208.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/parzulpan/p/9919208.html&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;分治算法&lt;/h1&gt;
+    <summary type="html">&lt;p&gt;转载自：五大经典算法分析   &lt;a href=&quot;https://www.cnblogs.com/parzulpan/p/9919208.html&quot;&gt;https://www.cnblogs.com/parzulpan/p/9919208.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;分治算法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#分治算法&quot;&gt;&lt;/a&gt; 分治算法&lt;/h1&gt;
 &lt;p&gt;&lt;font size = 5&gt;1. 基本概念&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……&lt;/p&gt;
-&lt;p&gt;任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;
-    
-    </summary>
+&lt;p&gt;任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;</summary>
     
     
-      <category term="算法学习" scheme="https://blog.zxkidea.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="算法学习" scheme="https://blog.zxkidea.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="算法" scheme="https://blog.zxkidea.top/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://blog.zxkidea.top/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -582,25 +544,23 @@
     <link href="https://blog.zxkidea.top/posts/efadcc2c.html"/>
     <id>https://blog.zxkidea.top/posts/efadcc2c.html</id>
     <published>2019-05-01T08:05:45.000Z</published>
-    <updated>2019-12-27T14:25:05.975Z</updated>
+    <updated>2019-05-01T08:05:45.000Z</updated>
     
-    <summary type="html">
     
-      &lt;h1&gt;任务管理&lt;/h1&gt;
+    <summary type="html">&lt;h1 id=&quot;任务管理&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#任务管理&quot;&gt;&lt;/a&gt; 任务管理&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br&gt;
-现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br&gt;
-基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br&gt;
+&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br /&gt;
+现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br /&gt;
+基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br /&gt;
 List是一层一层嵌套的，通过列表来组织任务，不断拆分，直到拆分到每一个具体的任务。列表用来确定一个东西的位置，而Tag用来表示一个任务的属性。标签在任务管理工具里可以横跨列表。Tag可以包括时间、优先级、人物，一个比较有趣的思路是用精力来做标签，我们可以把精力分为两档，“Focus”和“Brain Dead”。Filter是过滤，表示通过一定的条件，把我们需要的东西从一大堆信息中筛选出来。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
+&lt;/blockquote&gt;</summary>
     
     
-      <category term="工作效率" scheme="https://blog.zxkidea.top/categories/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
+    
+    <category term="工作效率" scheme="https://blog.zxkidea.top/categories/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
     
     
-      <category term="职场" scheme="https://blog.zxkidea.top/tags/%E8%81%8C%E5%9C%BA/"/>
+    <category term="职场" scheme="https://blog.zxkidea.top/tags/%E8%81%8C%E5%9C%BA/"/>
     
   </entry>
   
