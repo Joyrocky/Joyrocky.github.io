@@ -6,7 +6,7 @@
   <link href="https://blog.zxkidea.top/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2022-07-04T06:09:50.000Z</updated>
+  <updated>2023-01-11T09:34:40.000Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>J1900软路由方案全面指南</title>
+    <link href="https://blog.zxkidea.top/posts/6224fb7a.html"/>
+    <id>https://blog.zxkidea.top/posts/6224fb7a.html</id>
+    <published>2023-01-11T09:34:40.000Z</published>
+    <updated>2023-01-11T09:34:40.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;主要设备材料：J1900(双千兆网口，8G内存)、240G sata SSD(NAS)、128 msata SSD(PVE)、移动宽带。&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;鉴于本方案过于庞杂，中间的过程会使用别人教程来缩减篇幅，可以自行学习验证，主要是提供软路由搭建和使用内网服务的整体思路，也是记录中间踩坑和搜索学习的整个过程。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;由于我们家是移动宽带，所以是大内网的环境，即所谓的访问&lt;code&gt;ip138.com&lt;/code&gt;显示的IP地址与路由器的出口IP地址不一致，并且移动不提供公网IP，这就意味着我们不能使用DDNS的方式从外网访问家中内网的服务。如果是电信的宽带，可以问客服要一下公网IP，理由可以是装摄像头的需要，这样后面就可以使用DDNS了，而不需要使用内网穿透的方式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="软路由" scheme="https://blog.zxkidea.top/categories/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+    
+    <category term="软路由" scheme="https://blog.zxkidea.top/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+    <category term="OpenWrt" scheme="https://blog.zxkidea.top/tags/OpenWrt/"/>
+    
+    <category term="NAS" scheme="https://blog.zxkidea.top/tags/NAS/"/>
+    
+    <category term="内网穿透" scheme="https://blog.zxkidea.top/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win10微软拼音设置小鹤双拼</title>
+    <link href="https://blog.zxkidea.top/posts/ff0f4080.html"/>
+    <id>https://blog.zxkidea.top/posts/ff0f4080.html</id>
+    <published>2022-11-07T04:10:09.000Z</published>
+    <updated>2022-11-07T04:10:09.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;使用&lt;code&gt;Win+R&lt;/code&gt;，输入&lt;code&gt;regedit.exe&lt;/code&gt;打开注册表，找到这个路径：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;计算机\HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://image.zxkidea.top/docsify/20221107/1ARea5SFuFWe.png?imageslim&quot; alt=&quot;rocky&quot; /&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="常用工具" scheme="https://blog.zxkidea.top/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Win10" scheme="https://blog.zxkidea.top/tags/Win10/"/>
+    
+  </entry>
   
   <entry>
     <title>部署NginxProxyManager实现反向代理管理</title>
@@ -512,55 +562,6 @@
     <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
     
     <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>五大经典算法分析</title>
-    <link href="https://blog.zxkidea.top/posts/31d96ab6.html"/>
-    <id>https://blog.zxkidea.top/posts/31d96ab6.html</id>
-    <published>2019-05-01T08:24:03.000Z</published>
-    <updated>2019-05-01T08:24:03.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;转载自：五大经典算法分析   &lt;a href=&quot;https://www.cnblogs.com/parzulpan/p/9919208.html&quot;&gt;https://www.cnblogs.com/parzulpan/p/9919208.html&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;分治算法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#分治算法&quot;&gt;&lt;/a&gt; 分治算法&lt;/h1&gt;
-&lt;p&gt;&lt;font size = 5&gt;1. 基本概念&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换)……&lt;/p&gt;
-&lt;p&gt;任何一个可以用计算机求解的问题所需的计算时间都与其规模有关。问题的规模越小，越容易直接求解，解题所需的计算时间也越少。例如，对于n个元素的排序问题，当n=1时，不需任何计算。n=2时，只要作一次比较即可排好序。n=3时只要作3次比较即可，…。而当n较大时，问题就不那么容易处理了。要想直接解决一个规模较大的问题，有时是相当困难的。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法学习" scheme="https://blog.zxkidea.top/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="算法" scheme="https://blog.zxkidea.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>职场工作效率手册</title>
-    <link href="https://blog.zxkidea.top/posts/efadcc2c.html"/>
-    <id>https://blog.zxkidea.top/posts/efadcc2c.html</id>
-    <published>2019-05-01T08:05:45.000Z</published>
-    <updated>2019-05-01T08:05:45.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;任务管理&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#任务管理&quot;&gt;&lt;/a&gt; 任务管理&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;处理任务的流程：收集、厘清、整理、执行、回顾&lt;br /&gt;
-现代任务管理工具：所有任务管理软件都在用一个体系，称之为LTF体系，List-Tag-Filter。&lt;br /&gt;
-基础任务管理工具只有列表这个功能，高级任务管理工具会包括LTF三个功能，如全平台的Todoist，苹果平台的2Do、Omnifocus等等。&lt;br /&gt;
-List是一层一层嵌套的，通过列表来组织任务，不断拆分，直到拆分到每一个具体的任务。列表用来确定一个东西的位置，而Tag用来表示一个任务的属性。标签在任务管理工具里可以横跨列表。Tag可以包括时间、优先级、人物，一个比较有趣的思路是用精力来做标签，我们可以把精力分为两档，“Focus”和“Brain Dead”。Filter是过滤，表示通过一定的条件，把我们需要的东西从一大堆信息中筛选出来。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="工作效率" scheme="https://blog.zxkidea.top/categories/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
-    
-    
-    <category term="职场" scheme="https://blog.zxkidea.top/tags/%E8%81%8C%E5%9C%BA/"/>
     
   </entry>
   
