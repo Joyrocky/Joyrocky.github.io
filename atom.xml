@@ -24,11 +24,10 @@
     <updated>2023-04-16T05:45:40.000Z</updated>
     
     
-      
-      
     <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#介绍&quot;&gt;&lt;/a&gt; 介绍&lt;/h1&gt;
-&lt;p&gt;我们可以使用Github Actions很方便的实现&lt;code&gt;CI/CD&lt;/code&gt;工作流，我们可以实现一系列自动化的操作。在GitHub </summary>
-      
+&lt;p&gt;我们可以使用Github Actions很方便的实现&lt;code&gt;CI/CD&lt;/code&gt;工作流，我们可以实现一系列自动化的操作。在GitHub Actions中，当我们运行jobs时会触发workflow文件中定义的 action 。当一个workflow被触发后，GitHub Actions会创建一个新的虚拟环境来运行workflow文件中定义的Action。这个虚拟环境可以是预设的操作系统和软件环境，也可以是自定义的Docker镜像。&lt;/p&gt;
+&lt;p&gt;在执行Action的过程中，GitHub Actions会按照workflow文件中定义的步骤依次执行不同的操作，如下载代码仓库、安装依赖包、编译打包等。最终，Action的执行结果将被输出到日志中，用户可以通过查看日志来了解Action的详细执行情况。如果Action执行成功，workflow将继续执行下一步或结束；如果Action执行失败，workflow将停止执行并输出错误信息。&lt;/p&gt;
+&lt;p&gt;本文将介绍使用Github Actions实现自动部署hexo到Github Pages。接下来会简要说明一下原始的博客部署方案以及存在的问题，并且使用GitHub Actions是如何解决这些问题的。&lt;/p&gt;</summary>
     
     
     

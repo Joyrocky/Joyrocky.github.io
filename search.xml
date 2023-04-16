@@ -5230,58 +5230,50 @@ end if；</p>
 <p>我们可以使用Github Actions很方便的实现<code>CI/CD</code>工作流，我们可以实现一系列自动化的操作。在GitHub Actions中，当我们运行jobs时会触发workflow文件中定义的 action 。当一个workflow被触发后，GitHub Actions会创建一个新的虚拟环境来运行workflow文件中定义的Action。这个虚拟环境可以是预设的操作系统和软件环境，也可以是自定义的Docker镜像。</p>
 <p>在执行Action的过程中，GitHub Actions会按照workflow文件中定义的步骤依次执行不同的操作，如下载代码仓库、安装依赖包、编译打包等。最终，Action的执行结果将被输出到日志中，用户可以通过查看日志来了解Action的详细执行情况。如果Action执行成功，workflow将继续执行下一步或结束；如果Action执行失败，workflow将停止执行并输出错误信息。</p>
 <p>本文将介绍使用Github Actions实现自动部署hexo到Github Pages。接下来会简要说明一下原始的博客部署方案以及存在的问题，并且使用GitHub Actions是如何解决这些问题的。</p>
-<br />
+<span id="more"></span>
 <p>原本方案：在自己的笔记本上安装<code>hexo</code>环境，先将需要发布的博客<code>md</code>文件放到<code>_post</code>目录中，然后在目录下使用<code>Git bash here</code>执行如下指令，</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地4000端口预览：</span></span><br><span class="line">hexo s</span><br><span class="line"><span class="comment"># 清理生成页面并预览</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line"><span class="comment"># 自动部署配置：</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>但是这种情况下只能在单机上进行博文的撰写，在其他的设备上发文则需要另外配置相同的<code>hexo</code>环境，并进行文件的同步。此外，我们还可能遇到本地的<code>Node.js</code>版本和<code>Hexo</code>不兼容的问题，若是使用Github Actions进行部署，文章都是通过同一个容器的环境进行渲染，不会出现上述的问题。</p>
-<br />
 <h1 id="自动化部署"><a class="markdownIt-Anchor" href="#自动化部署"></a> 自动化部署</h1>
 <p>本文假设你已经拥有了自己的<code>hexo</code>博客，此处只介绍自动化部署的设置，博客搭建的教程请详见其他教程。</p>
-<br />
 <h2 id="创建代码仓库"><a class="markdownIt-Anchor" href="#创建代码仓库"></a> 创建代码仓库</h2>
 <p>新建一个<code>blog</code>仓库用来存放<code>Hexo</code>项目的源码，仓库的类型为<code>private</code>。</p>
 <p><img data-src="https://image.zxkidea.top/blog/20230416/72rg5kBfwUpl.png?imageslim" alt="rocky" /></p>
 <p>勾选<code>Add a README file</code>完成<code>repository</code>的初始化</p>
-<br />
 <h2 id="生成部署秘钥"><a class="markdownIt-Anchor" href="#生成部署秘钥"></a> 生成部署秘钥</h2>
 <p>本地桌面已安装<code>Git</code>，在新建文件夹中右击<code>Git Bash here</code>生成秘钥：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成秘钥</span></span><br><span class="line">ssh-keygen -f github-deploy-key</span><br></pre></td></tr></table></figure>
 <p>一直回车直到成功并结束。</p>
 <p>当前目录下会有两个文件，私钥文件 <code>github-deploy-key</code> 和 公钥文件<code>github-deploy-key.pub</code> 。</p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/6zk0P6JtFrWY.png?imageslim" alt="mark" /></p>
-<br />
+<p><img data-src="https://image.zxkidea.top/blog/20230416/6zk0P6JtFrWY.png?imageslim" alt="rocky" /></p>
 <h2 id="配置部署秘钥"><a class="markdownIt-Anchor" href="#配置部署秘钥"></a> 配置部署秘钥</h2>
 <p>复制 <code>github-deploy-key</code> 文件内容，在 <code>blog</code> 仓库 <code>Settings -&gt; Secrets -&gt; Add a new secret</code> 页面上添加。</p>
 <ol>
 <li>在 <code>Name</code> 输入框填写 <code>HEXO_DEPLOY_PRI</code>。</li>
 <li>在 <code>Value</code> 输入框填写 <code>github-deploy-key</code> 文件内容。</li>
 </ol>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/bRyCANUoEgfK.png?imageslim" alt="mark" /></p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/wIB34a5kg5gF.png?imageslim" alt="mark" /></p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/q84Ji5LgTl8E.png?imageslim" alt="mark" /></p>
-<br />
+<p><img data-src="https://image.zxkidea.top/blog/20230416/bRyCANUoEgfK.png?imageslim" alt="rocky" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/wIB34a5kg5gF.png?imageslim" alt="rocky" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/q84Ji5LgTl8E.png?imageslim" alt="rocky" /></p>
 <p>复制 <code>github-deploy-key.pub</code> 文件内容，在 <code>your.github.io</code> 仓库 <code>Settings -&gt; Deploy keys -&gt; Add deploy key</code> 页面上添加。</p>
 <ol>
 <li>在 <code>Title</code> 输入框填写 <code>HEXO_DEPLOY_PUB</code>。</li>
 <li>在 <code>Key</code> 输入框填写 <code>github-deploy-key.pub</code> 文件内容。</li>
 <li>勾选 <code>Allow write access</code> 选项。</li>
 </ol>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/NuySFDdVb6kl.png?imageslim" alt="mark" /></p>
-<br />
+<p><img data-src="https://image.zxkidea.top/blog/20230416/NuySFDdVb6kl.png?imageslim" alt="rocky" /></p>
 <h2 id="同步代码"><a class="markdownIt-Anchor" href="#同步代码"></a> 同步代码</h2>
 <p>进入原来<code>Hexo</code>目录下，将目录下的文件提交到<code>blog</code>仓库。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把文件添加到版本库中</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把文件提交到仓库。引号内为提交注释</span></span><br><span class="line">git commit -m <span class="string">&#x27;第一次提交&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关联到远程库</span></span><br><span class="line">git remote add origin https://github.com/Joyrocky/blog.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地库的内容推送到远程</span></span><br><span class="line"><span class="comment">## 第一次使用加上了-u参数，是推送内容并关联分支。</span></span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下次直接提交</span></span><br><span class="line">git push origin main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制更新</span></span><br><span class="line">git push -f origin main</span><br></pre></td></tr></table></figure>
 <p>如果要同步到本地，可以执行下面的命令进行拉取</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 同步下拉代码</span></span><br><span class="line">git pull origin main</span><br></pre></td></tr></table></figure>
-<br />
 <blockquote>
 <p>使用Git进行提交时可能会出现这样的错误：</p>
 </blockquote>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/sCDs4jq7T9UY.png?imageslim" alt="mark" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/sCDs4jq7T9UY.png?imageslim" alt="rocky" /></p>
 <p>出现此种错误的原因是，在当前的git的项目中，存在其中的子文件夹隶属于别的git项目地址，即存在git文件夹。</p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/d3psAjJFkCdq.png?imageslim" alt="mark" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/d3psAjJFkCdq.png?imageslim" alt="rocky" /></p>
 <p>解决方法就是，即删除子文件夹中的git目录即可。如果仍然想要保留子文件夹原git的地址，可以将原来的git文件夹中config拷贝出来保留下来，里面有git原地址相关信息。</p>
-<br />
 <h2 id="编写github-actions代码"><a class="markdownIt-Anchor" href="#编写github-actions代码"></a> 编写GitHub Actions代码</h2>
 <p>在 <code>blog</code> 仓库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，目录结构如下。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">blog (repository)</span><br><span class="line">└── .github</span><br><span class="line">    └── workflows</span><br><span class="line">        └── deploy.yml</span><br></pre></td></tr></table></figure>
@@ -5320,7 +5312,6 @@ end if；</p>
 </ul>
 </li>
 </ul>
-<br />
 <h2 id="第三方-actions"><a class="markdownIt-Anchor" href="#第三方-actions"></a> 第三方 Actions</h2>
 <p>使用第三方 Actions 语法 <code>&#123;owner&#125;/&#123;repo&#125;@&#123;ref&#125;</code> 或者 <code>&#123;owner&#125;/&#123;repo&#125;/&#123;path&#125;@&#123;ref&#125;</code> 例如：</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br></pre></td></tr></table></figure>
@@ -5333,13 +5324,11 @@ end if；</p>
 <p>例如安装 Node.js 版本 v12 到容器中，<code>with.node-version</code> 可以指定 Node.js 版本。</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">v12</span></span><br></pre></td></tr></table></figure>
 <p>可以在这里查找更多 Actions 以及使用方式 <a href="https://github.com/marketplace?type=actions&amp;query=checkout">官方 Actions 市场</a>。</p>
-<br />
 <h2 id="触发部署"><a class="markdownIt-Anchor" href="#触发部署"></a> 触发部署</h2>
 <p>只要将 <code>md</code> 文件通过 <code>Add file</code> –&gt; <code>Upload files</code> 上传到仓库，就会自动触发自动部署。发文地址地址指向了 <code>blog</code> 仓库中的 <code>_post</code> 目录。</p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/kNgJvGFmuNy2.png?imageslim" alt="mark" /></p>
-<p><img data-src="https://image.zxkidea.top/blog/20230416/nStwqBFMDqtT.png?imageslim" alt="mark" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/kNgJvGFmuNy2.png?imageslim" alt="rocky" /></p>
+<p><img data-src="https://image.zxkidea.top/blog/20230416/nStwqBFMDqtT.png?imageslim" alt="rocky" /></p>
 <p>目前的发布时间都在 <code>3</code> 分钟以内。</p>
-<br />
 <h1 id="参考文档"><a class="markdownIt-Anchor" href="#参考文档"></a> 参考文档</h1>
 <blockquote>
 <p>利用 Github Actions 自动部署 Hexo 博客 | Sanonz<br />
