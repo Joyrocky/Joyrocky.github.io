@@ -6,7 +6,7 @@
   <link href="https://blog.zxkidea.top/atom.xml" rel="self"/>
   
   <link href="https://blog.zxkidea.top/"/>
-  <updated>2023-01-11T09:34:40.000Z</updated>
+  <updated>2023-04-16T02:23:30.214Z</updated>
   <id>https://blog.zxkidea.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DatabaseNotes-Ch1,2</title>
+    <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
+    <id>https://blog.zxkidea.top/posts/786bf771.html</id>
+    <published>2023-04-16T02:23:30.214Z</published>
+    <updated>2023-04-16T02:23:30.214Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;ch1-introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch1-introduction&quot;&gt;&lt;/a&gt; Ch1:  Introduction&lt;/h2&gt;
+&lt;h2 id=&quot;ch2-the-rational-model&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch2-the-rational-model&quot;&gt;&lt;/a&gt; Ch2:  The Rational Model&lt;/h2&gt;
+&lt;h3 id=&quot;1the-cap-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1the-cap-database&quot;&gt;&lt;/a&gt; 1.The CAP Database&lt;/h3&gt;
+&lt;h3 id=&quot;2naming-the-parts-of-the-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#2naming-the-parts-of-the-database&quot;&gt;&lt;/a&gt; 2.Naming the Parts of the Database&lt;/h3&gt;
+&lt;h3 id=&quot;3rational-rules&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#3rational-rules&quot;&gt;&lt;/a&gt; 3.Rational Rules:&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
+    
+    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>J1900软路由方案全面指南</title>
@@ -524,33 +551,6 @@
 &lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER(n), CHAR(n)：&lt;/font&gt; fixed-length character strings&lt;/p&gt;
 &lt;p&gt;&lt;font color = blue size = 4&gt;CHARACTER VARYING(n), CHAR VARYING(n)：&lt;/font&gt;variable-length character strings&lt;/p&gt;
 &lt;p&gt;&lt;font color = blue size = 4&gt;NUMERIC(p, s), DECIMAL(p, s), DEC(p, s):&lt;/font&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="数据库基础" scheme="https://blog.zxkidea.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="数据库" scheme="https://blog.zxkidea.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    <category term="考研" scheme="https://blog.zxkidea.top/tags/%E8%80%83%E7%A0%94/"/>
-    
-    <category term="笔记" scheme="https://blog.zxkidea.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DatabaseNotes-Ch1,2</title>
-    <link href="https://blog.zxkidea.top/posts/786bf771.html"/>
-    <id>https://blog.zxkidea.top/posts/786bf771.html</id>
-    <published>2020-01-12T14:48:33.010Z</published>
-    <updated>2020-01-12T14:48:33.010Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;ch1-introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch1-introduction&quot;&gt;&lt;/a&gt; Ch1:  Introduction&lt;/h2&gt;
-&lt;h2 id=&quot;ch2-the-rational-model&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ch2-the-rational-model&quot;&gt;&lt;/a&gt; Ch2:  The Rational Model&lt;/h2&gt;
-&lt;h3 id=&quot;1the-cap-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1the-cap-database&quot;&gt;&lt;/a&gt; 1.The CAP Database&lt;/h3&gt;
-&lt;h3 id=&quot;2naming-the-parts-of-the-database&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#2naming-the-parts-of-the-database&quot;&gt;&lt;/a&gt; 2.Naming the Parts of the Database&lt;/h3&gt;
-&lt;h3 id=&quot;3rational-rules&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#3rational-rules&quot;&gt;&lt;/a&gt; 3.Rational Rules:&lt;/h3&gt;</summary>
     
     
     
