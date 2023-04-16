@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.zxkidea.top/posts/786bf771.html</loc>
-    
-    <lastmod>2023-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.zxkidea.top/posts/6224fb7a.html</loc>
     
     <lastmod>2023-01-11</lastmod>
@@ -176,6 +167,15 @@
     <loc>https://blog.zxkidea.top/posts/928c862a.html</loc>
     
     <lastmod>2020-02-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zxkidea.top/posts/786bf771.html</loc>
+    
+    <lastmod>2020-02-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
